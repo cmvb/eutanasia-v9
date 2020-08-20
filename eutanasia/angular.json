@@ -28,9 +28,25 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./src/assets/scss/bootstrap.scss",
+              "./src/assets/scss/primeicons/primeicons.scss",
+              "./src/assets/scss/primeng/primeng.scss",
+              "./src/assets/scss/primeng/primeflex.scss",
+              "./src/assets/scss/owl.carousel.scss",
+              "./src/assets/scss/owl.theme.default.scss",
+              "./src/assets/scss/magnific-popup.scss",
+              "./src/assets/scss/font-awesome.scss",
+              "./src/assets/scss/animate.scss",
+              "./src/assets/scss/primeng/themes/nova-light/theme.scss",
+              "./src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./src/assets/js/owl.carousel.min.js",
+              "./src/assets/js/jquery.magnific-popup.js",
+              "./src/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -51,13 +67,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "10mb",
+                  "maximumError": "10mb"
                 }
               ]
             }
@@ -92,9 +108,25 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "./src/assets/scss/bootstrap.scss",
+              "./src/assets/scss/primeicons/primeicons.scss",
+              "./src/assets/scss/primeng/primeng.scss",
+              "./src/assets/scss/primeng/primeflex.scss",
+              "./src/assets/scss/owl.carousel.scss",
+              "./src/assets/scss/owl.theme.default.scss",
+              "./src/assets/scss/magnific-popup.scss",
+              "./src/assets/scss/font-awesome.scss",
+              "./src/assets/scss/animate.scss",
+              "./src/assets/scss/primeng/themes/nova-light/theme.scss",
+              "./src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./src/assets/js/owl.carousel.min.js",
+              "./src/assets/js/jquery.magnific-popup.js",
+              "./src/assets/js/main.js"
+            ]
           }
         },
         "lint": {
@@ -123,6 +155,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "eutanasia"
+    }
+  },
+  "defaultProject": "eutanasia",
+  "cli": {
+    "analytics": false
+  }
 }

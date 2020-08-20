@@ -1,0 +1,81 @@
+<!-- Header -->
+<header id="home">
+    <video autoplay [muted]="true" (play)="mostrarTextoHeader($event)" id="myVideo">
+        <source src="assets/video/killing-in-the-name.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Background Image -->
+    <div class="bg-img" style="background-image: url('assets/images/fondo2.jpg');">
+        <div class="overlay"></div>
+    </div>
+    <!-- /Background Image -->
+
+    <!-- Nav -->
+    <nav id="nav" class="navbar nav-transparent">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <img class="logo" src="assets/images/logo.png" alt="logo">
+                        <img class="logo-alt" src="assets/images/logo.png" alt="logo">
+                    </a>
+                </div>
+                <!-- /Logo -->
+                <!-- Collapse nav button -->
+                <div class="nav-collapse">
+                    <span></span>
+                </div>
+                <!-- /Collapse nav button -->
+            </div>
+
+            <!--  Main navigation  -->
+            <ul class="main-nav nav navbar-nav navbar-right">
+                <li><a href="#home">Inicio</a></li>
+                <li><a href="#about">Biografía</a></li>
+                <li><a href="#portfolio">Galería y Multimedia</a></li>
+                <li><a href="#service">Participaciones</a></li>
+                <li><a href="#pricing">Escuchanos</a></li>
+                <li><a href="#team">Banda</a></li>
+                <li class="has-dropdown"><a href="#blog">Blog</a>
+                    <ul class="dropdown">
+                        <li><a href="blog-single.html">Posts</a></li>
+                    </ul>
+                </li>
+                <li><a href="#contact">Registrate</a></li>
+            </ul>
+            <!-- /Main navigation -->
+
+        </div>
+    </nav>
+    <!-- /Nav -->
+
+    <!-- home wrapper -->
+    <div class="home-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- home content -->
+                <div class="col-md-10 col-md-offset-1">
+                    <div id="mostrarTextHeader" [@fadeIn]="fadeIn" class="home-content displayNone">
+                        <h1 class="white-text">Ahora Mismo Estamos Haciendo Música...</h1>
+                        <p class="white-text">"Mi cabeza da vueltas, el tiempo se agita y mis sentidos despiertan"
+                        </p>
+                        <a href="#about" class="white-btn">Explorar...</a>
+                        <a href="#contact" class="main-btn">¡Contacto Para Evento!</a>
+                    </div>
+                </div>
+                <!-- /home content -->
+            </div>
+        </div>
+    </div>
+    <!-- /home wrapper -->
+
+    <audio autoplay loop controls id="demoEutanasia">
+        <source src="assets/audio/demo/3-DE-VUELTA-AL-INFIERNO.mp3" type="audio/mp3">
+    </audio>
+</header>
+<!-- /Header -->
+
+<!-- Notificaciones -->
+<p-toast></p-toast>
