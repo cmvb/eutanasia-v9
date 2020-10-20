@@ -47,14 +47,14 @@ export class ObjectModelInitializer {
       urlRestService: `${HOST}/`,
       urlRestOauth: `${HOST}/oauth/token`,
       urlVCode: `${SYSTEM}/vCode/`,
-      urlControllerUsuario: 'music-room/usuario/',
-      urlControllerUbicacion: 'music-room/ubicacion/',
-      urlControllerTercero: 'music-room/tercero/',
-      urlControllerReporte: 'music-room/reporte-archivo/',
-      urlControllerSala: 'music-room/sala/',
-      urlControllerBandaIntegrante: 'music-room/bandaIntegrante/',
-      tokenUsernameAUTH: 'MusicRoomApp',
-      tokenPasswordAUTH: 'musicroom2019codex',
+      urlConsultarToques: `${HOST}/eutanasia/paratodos/consultarToques`,
+      urlConsultarPosts: `${HOST}/eutanasia/paratodos/consultarPosts`,
+      urlConsultarComentariosPorIdPost: `${HOST}/eutanasia/paratodos/consultarComentariosPorIdPost`,
+      urlConsultarContadorCategoriasPosts: `${HOST}/eutanasia/paratodos/consultarContadorCategoriasPosts`,
+      urlConsultarPostsPorFiltros: `${HOST}/eutanasia/paratodos/consultarPostsPorFiltros`,
+      urlConsultarTags: `${HOST}/eutanasia/paratodos/consultarTags`,
+      tokenUsernameAUTH: 'EutanasiaApp',
+      tokenPasswordAUTH: 'Eutanasia2019codex',
       tokenNameAUTH: 'access_token',
       codigoADMIN: 'RMRADM',
 
@@ -154,6 +154,76 @@ export class ObjectModelInitializer {
       thumbnailImageSrc: rutaImagen,
       alt: nombreImagen,
       title: nombreImagen
+    }
+  };
+
+  getDataToqueModel() {
+    return {
+      id: 0,
+      nombre: '',
+      fecha: '',
+      valorBoleta: 0,
+      valorBoletaPromo: 0,
+      capacidad: 0,
+      ciudad: '',
+      urlPoster: '',
+      organizador: '',
+      // Auditoria
+      estado: 0,
+      fechaCreacion: '',
+      usuarioCreacion: '',
+      fechaActualizacion: '',
+      usuarioActualizacion: ''
+    }
+  };
+
+  getDataPostModel() {
+    return {
+      id: 0,
+      titulo: '',
+      subtitulo: '',
+      articulo: '',
+      autor: '',
+      correoAutor: '',
+      fecha: '',
+      tags: '',
+      categoria: 0,
+      urlImagen: '',
+      cantidadComentarios: 0,
+      // Auditoria
+      estado: 1,
+      fechaCreacion: '',
+      usuarioCreacion: '',
+      fechaActualizacion: '',
+      usuarioActualizacion: ''
+    }
+  };
+
+  getDataComentarioModel() {
+    return {
+      id: 0,
+      idPost: null,
+      idComentarioRespuesta: null,
+      autor: '',
+      correoAutor: '',
+      comentario: '',
+      fecha: '',
+      // Auditoria
+      estado: 1,
+      fechaCreacion: '',
+      usuarioCreacion: '',
+      fechaActualizacion: '',
+      usuarioActualizacion: ''
+    }
+  };
+
+  getDataCategoriasDtoModel() {
+    return {
+      invitacionesEvento: 0,
+      agradecimientosSaludos: 0,
+      criticas: 0,
+      freneticoRockNRoll: 0,
+      noticiasMundiales: 0
     }
   };
 

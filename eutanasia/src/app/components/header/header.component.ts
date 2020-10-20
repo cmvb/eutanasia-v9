@@ -43,4 +43,8 @@ export class HeaderComponent implements OnInit {
     }, 7000);
   }
 
+  redirigirBlogs() {
+    this.router.navigate(['blogs']);
+  }
+
 }

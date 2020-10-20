@@ -14,7 +14,7 @@ export class Functions {
         this.value = procesaFormatearNumero(this, numeroDecimales);
       });
       e.value = procesaFormatearNumero(e, numeroDecimales);
-      if (e.value == '') {
+      if (e.value === '') {
         e.value = 0;
       }
     });
@@ -48,7 +48,7 @@ export class Functions {
           return false;
         }
       });
-      if (e.value == '') {
+      if (e.value === '') {
         e.value = 0;
       }
     });
@@ -63,7 +63,7 @@ export class Functions {
           return false;
         }
       });
-      if (e.value == '') {
+      if (e.value === '') {
         e.value = 0;
       }
     });
@@ -113,13 +113,13 @@ export function procesaFormatearNumero(campo, decimales) {
   var cadena = "";
 
   cadena = campo.value;
-  if (cadena == antiguaCadenaN) {
+  if (cadena === antiguaCadenaN) {
     return cadena;
   }
 
   var prefijo = "";
   if (cadena.length > 0) {
-    if (cadena.charAt(0) == '+' || cadena.charAt(0) == '-') {
+    if (cadena.charAt(0) === '+' || cadena.charAt(0) === '-') {
       prefijo = cadena.charAt(0);
       cadena = cadena.substring(1, cadena.length);
     }
@@ -166,16 +166,16 @@ export function procesaFormatearNumero(campo, decimales) {
   if (cadena.length > 1) {
     cero = -1;
     for (i = 0; i < cadena.length; i++) {
-      if (cadena.charAt(i) == '0')
+      if (cadena.charAt(i) === '0')
         cero = i;
-      else if (cadena.charAt(i) == ',')
+      else if (cadena.charAt(i) === ',')
         break;
       else
         break;
     }
 
     cadena = cadena.substring(cero + 1);
-    cadena = cadena.charAt(0) == ',' ? "0" + cadena : cadena; // Para que
+    cadena = cadena.charAt(0) === ',' ? "0" + cadena : cadena; // Para que
     // no quede
     // ,5 sino
     // 0,5
@@ -194,7 +194,7 @@ export function procesaFormatearNumero(campo, decimales) {
     }
   }
 
-  if (-1 == pos) {
+  if (-1 === pos) {
     // No hay ,
     var primerPunto = cadena.length % 3;
     var complemento = "";
@@ -203,12 +203,12 @@ export function procesaFormatearNumero(campo, decimales) {
     primerPunto = pos % 3;
   }
 
-  primerPunto = primerPunto == 0 ? 3 : primerPunto;
-  pos = pos == -1 ? cadena.length : pos;
+  primerPunto = primerPunto === 0 ? 3 : primerPunto;
+  pos = pos === -1 ? cadena.length : pos;
 
   var nuevaCadena = "";
   for (var i = 0, j = 0; i < pos; i++) {
-    if (j == primerPunto) {
+    if (j === primerPunto) {
       nuevaCadena = nuevaCadena + ".";
       primerPunto = primerPunto + 3;
     }
@@ -229,13 +229,13 @@ export function onlyNumbers(e) {
 
   var special_key = false
   for (var i in specials) {
-    if (key == specials[i]) {
+    if (key === specials[i]) {
       special_key = true;
       break;
     }
   }
 
-  if (letters.indexOf(keyboard) == -1 && !special_key) {
+  if (letters.indexOf(keyboard) === -1 && !special_key) {
     return false;
   }
   return true;
@@ -249,13 +249,13 @@ export function onlyNumbersPlus(e) {
 
   var special_key = false
   for (var i in specials) {
-    if (key == specials[i]) {
+    if (key === specials[i]) {
       special_key = true;
       break;
     }
   }
 
-  if (letters.indexOf(keyboard) == -1 && !special_key) {
+  if (letters.indexOf(keyboard) === -1 && !special_key) {
     return false;
   }
   return true;

@@ -4,36 +4,42 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
 
 @Entity
-@Table(name = "contacts")
+@Table(name = "eu_comentario_tb")
 public class ComentarioTB extends BaseEntidadTB implements Serializable {
-	private static final long serialVersionUID = 1512069790193136335L;
+	private static final long serialVersionUID = -1787166402117947907L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	@Column(name = "id", nullable = false, length = 10)
+	@Column(name = "eco_id", nullable = false, length = 19)
 	private long id;
 
 	@NotNull
-	@Column(name = "name", nullable = false, length = 191)
-	private String name;
+	@Column(name = "eco_idPost", nullable = false, length = 10)
+	private long idPost;
+
+	@Column(name = "eco_idComentarioRespuesta", nullable = false, length = 10)
+	private long idComentarioRespuesta;
 
 	@NotNull
-	@Column(name = "email", nullable = false, length = 191, unique = true)
-	private String email;
+	@Column(name = "eco_autor", nullable = false, length = 100)
+	private String autor;
 
 	@NotNull
-	@Column(name = "state", nullable = false, length = 191)
-	private String state;
+	@Column(name = "eco_correoAutor", nullable = false, length = 100)
+	private String correoAutor;
 
 	@NotNull
-	@Column(name = "city", nullable = false, length = 191)
-	private String city;
+	@Column(name = "eco_comentario", nullable = false, length = 1000)
+	private String comentario;
 
 	public long getId() {
 		return id;
@@ -43,36 +49,44 @@ public class ComentarioTB extends BaseEntidadTB implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public long getIdPost() {
+		return idPost;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setIdPost(long idPost) {
+		this.idPost = idPost;
 	}
 
-	public String getEmail() {
-		return email;
+	public long getIdComentarioRespuesta() {
+		return idComentarioRespuesta;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setIdComentarioRespuesta(long idComentarioRespuesta) {
+		this.idComentarioRespuesta = idComentarioRespuesta;
 	}
 
-	public String getState() {
-		return state;
+	public String getAutor() {
+		return autor;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setAutor(String autor) {
+		this.autor = autor;
 	}
 
-	public String getCity() {
-		return city;
+	public String getCorreoAutor() {
+		return correoAutor;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setCorreoAutor(String correoAutor) {
+		this.correoAutor = correoAutor;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 
 }

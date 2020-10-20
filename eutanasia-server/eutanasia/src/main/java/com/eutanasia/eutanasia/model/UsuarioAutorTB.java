@@ -16,7 +16,7 @@ import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "eu_toque_tb")
-public class ToqueTB extends BaseEntidadTB implements Serializable {
+public class UsuarioAutorTB extends BaseEntidadTB implements Serializable {
 	private static final long serialVersionUID = 3003078345387807851L;
 
 	@Id

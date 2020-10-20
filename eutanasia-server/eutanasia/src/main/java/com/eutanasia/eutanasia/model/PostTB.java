@@ -4,36 +4,59 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.sun.istack.NotNull;
 
 @Entity
-@Table(name = "contacts")
+@Table(name = "eu_post_tb")
 public class PostTB extends BaseEntidadTB implements Serializable {
-	private static final long serialVersionUID = 1512069790193136335L;
+	private static final long serialVersionUID = 6673309064153377654L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@NotNull
-	@Column(name = "id", nullable = false, length = 10)
+	@Column(name = "epo_id", nullable = false, length = 19)
 	private long id;
 
 	@NotNull
-	@Column(name = "name", nullable = false, length = 191)
-	private String name;
+	@Column(name = "epo_titulo", nullable = false, length = 100)
+	private String titulo;
 
 	@NotNull
-	@Column(name = "email", nullable = false, length = 191, unique = true)
-	private String email;
+	@Column(name = "epo_subtitulo", nullable = false, length = 200)
+	private String subtitulo;
 
 	@NotNull
-	@Column(name = "state", nullable = false, length = 191)
-	private String state;
+	@Column(name = "epo_articulo", nullable = false, length = 1000)
+	private String articulo;
 
 	@NotNull
-	@Column(name = "city", nullable = false, length = 191)
-	private String city;
+	@Column(name = "epo_url_imagen", nullable = false, length = 1000)
+	private String urlImagen;
+
+	@NotNull
+	@Column(name = "epo_autor", nullable = false, length = 100)
+	private String autor;
+
+	@NotNull
+	@Column(name = "epo_correoAutor", nullable = false, length = 100)
+	private String correoAutor;
+
+	@NotNull
+	@Column(name = "epo_tags", nullable = false, length = 100)
+	private String tags;
+
+	@NotNull
+	@Column(name = "epo_categoria", nullable = false)
+	private short categoria;
+
+	@NotNull
+	@Column(name = "epo_cantidad_comentarios", nullable = false)
+	private long cantidadComentarios;
 
 	public long getId() {
 		return id;
@@ -43,36 +66,76 @@ public class PostTB extends BaseEntidadTB implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getSubtitulo() {
+		return subtitulo;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSubtitulo(String subtitulo) {
+		this.subtitulo = subtitulo;
 	}
 
-	public String getState() {
-		return state;
+	public String getArticulo() {
+		return articulo;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setArticulo(String articulo) {
+		this.articulo = articulo;
 	}
 
-	public String getCity() {
-		return city;
+	public String getUrlImagen() {
+		return urlImagen;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
+	public void setUrlImagen(String urlImagen) {
+		this.urlImagen = urlImagen;
+	}
+
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
+	public String getCorreoAutor() {
+		return correoAutor;
+	}
+
+	public void setCorreoAutor(String correoAutor) {
+		this.correoAutor = correoAutor;
+	}
+
+	public String getTags() {
+		return tags;
+	}
+
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	public short getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(short categoria) {
+		this.categoria = categoria;
+	}
+
+	public long getCantidadComentarios() {
+		return cantidadComentarios;
+	}
+
+	public void setCantidadComentarios(long cantidadComentarios) {
+		this.cantidadComentarios = cantidadComentarios;
 	}
 
 }

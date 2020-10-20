@@ -57,6 +57,16 @@ export class Enumerados {
           { value: 2, label: properties.lbl_enum_tipo_ubicacion_valor_ciudad }
         ]
       },
+      categorias: {
+        cod: 7, valores: [
+          { value: 0, label: properties.lbl_enum_generico_valor_vacio },
+          { value: 1, label: properties.lbl_enum_categoria_valor_invitacion_evento },
+          { value: 2, label: properties.lbl_enum_categoria_valor_agradecimientos_saludos },
+          { value: 3, label: properties.lbl_enum_categoria_valor_criticas },
+          { value: 4, label: properties.lbl_enum_categoria_valor_frenetico_rnr },
+          { value: 5, label: properties.lbl_enum_categoria_valor_noticias_mundiales }
+        ]
+      },
       //valorIva: {cod: 25},
     }
   };

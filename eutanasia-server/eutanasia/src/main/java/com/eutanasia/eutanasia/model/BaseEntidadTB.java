@@ -18,28 +18,64 @@ import lombok.Setter;
 public class BaseEntidadTB {
 
 	@NotNull
-	@Column(name = "created_at", nullable = false)
+	@Column(name = "eu_estado", nullable = false)
+	private short estado;
+
+	@NotNull
+	@Column(name = "eu_fecha_creacion", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date created_at;
+	private Date fechaCreacion;
 
-	@Column(name = "updated_at", nullable = false)
+	@NotNull
+	@Column(name = "eu_usuario_creacion", nullable = false)
+	private String usuarioCreacion;
+
+	@Column(name = "eu_fecha_actualizacion", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date updated_at;
+	private Date fechaActualizacion;
 
-	public Date getCreated_at() {
-		return created_at;
+	@NotNull
+	@Column(name = "eu_usuario_actualizacion", nullable = false)
+	private String usuarioActualizacion;
+
+	public short getEstado() {
+		return estado;
 	}
 
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
+	public void setEstado(short estado) {
+		this.estado = estado;
 	}
 
-	public Date getUpdated_at() {
-		return updated_at;
+	public Date getFechaCreacion() {
+		return fechaCreacion;
 	}
 
-	public void setUpdated_at(Date updated_at) {
-		this.updated_at = updated_at;
+	public void setFechaCreacion(Date fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public String getUsuarioCreacion() {
+		return usuarioCreacion;
+	}
+
+	public void setUsuarioCreacion(String usuarioCreacion) {
+		this.usuarioCreacion = usuarioCreacion;
+	}
+
+	public Date getFechaActualizacion() {
+		return fechaActualizacion;
+	}
+
+	public void setFechaActualizacion(Date fechaActualizacion) {
+		this.fechaActualizacion = fechaActualizacion;
+	}
+
+	public String getUsuarioActualizacion() {
+		return usuarioActualizacion;
+	}
+
+	public void setUsuarioActualizacion(String usuarioActualizacion) {
+		this.usuarioActualizacion = usuarioActualizacion;
 	}
 
 }

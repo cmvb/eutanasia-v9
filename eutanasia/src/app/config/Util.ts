@@ -87,7 +87,7 @@ export class Util {
   }
 
   limpiarConsolaStorage() {
-    localStorage.clear();
+    sessionStorage.clear();
     sessionStorage.clear();
     console.clear();
     return true;
@@ -136,10 +136,9 @@ export class Util {
   getValorEnumerado(enumerado, id) {
     let valor = { value: 0, label: '' };
 
-    for (var key in enumerado) {
-      let obj = enumerado[key];
+    for (var obj of enumerado) {
       if (obj.value === id) {
-        valor = enumerado[key];
+        valor = obj;
         break;
       }
     }

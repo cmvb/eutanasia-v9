@@ -32,18 +32,20 @@
 
             <!--  Main navigation  -->
             <ul class="main-nav nav navbar-nav navbar-right">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Biografía</a></li>
-                <li><a href="#portfolio">Galería y Multimedia</a></li>
-                <li><a href="#service">Participaciones</a></li>
-                <li><a href="#pricing">Escuchanos</a></li>
-                <li><a href="#team">Banda</a></li>
-                <li class="has-dropdown"><a href="#blog">Blog</a>
+                <li><a href="#home">{{msg.lbl_inicio}}</a></li>
+                <li><a href="#about">{{msg.lbl_bio}}</a></li>
+                <li><a href="#team">{{msg.lbl_banda}}</a></li>
+                <li><a href="#portfolio">{{msg.lbl_galeria_media}}</a></li>
+                <li><a href="#service">{{msg.lbl_participaciones}}</a></li>
+                <li><a href="#pricing">{{msg.lbl_comparte}}</a></li>
+                <li><a href="#publicaciones">{{msg.lbl_ultimas_publicaciones}}</a></li>
+                <li><a (click)="redirigirBlogs()">{{msg.lbl_blog}}</a></li>
+                <li class="has-dropdown"><a>{{msg.lbl_registro_ingreso}}</a>
                     <ul class="dropdown">
-                        <li><a href="blog-single.html">Posts</a></li>
+                        <li><a href="#Login">{{msg.lbl_login}}</a></li>
+                        <li><a href="#register">{{msg.lbl_register}}</a></li>
                     </ul>
                 </li>
-                <li><a href="#contact">Registrate</a></li>
             </ul>
             <!-- /Main navigation -->
 

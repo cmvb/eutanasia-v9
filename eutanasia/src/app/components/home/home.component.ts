@@ -10,6 +10,9 @@ import { SesionService } from 'src/app/services/sesionService/sesion.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { Galleria } from 'primeng/galleria';
 import { interval } from 'rxjs';
+import { ToqueModel } from 'src/app/model/toque-model';
+import { PostModel } from 'src/app/model/post-model';
+import { EutanasiaService } from 'src/app/services/eutanasiaService/eutanasia.service';
 
 declare var $: any;
 
@@ -25,15 +28,8 @@ export class HomeComponent implements OnInit {
   sesion: any;
 
   // Objetos de datos
-  listaEventos1: any[];
-  listaEventos2: any[];
-  listaEventos3: any[];
-  listaEventos4: any[];
-  listaEventos5: any[];
-  listaEventos6: any[];
-  listaEventos7: any[];
-  songPosition: number;
-  songTime: String;
+  listaEventos: ToqueModel[];
+  listaPosts: PostModel[];
 
   // Carousels
   customOptions: OwlOptions = {
@@ -83,26 +79,87 @@ export class HomeComponent implements OnInit {
     }
   ];
 
+  // Reproductor Audio
+  audioObj = new Audio();
+  songPosition: number;
+  songTime: String;
+  songTimeMax: String;
+  cancionActual: number;
+  duracionMaxima: any;
+  cancionSeleccionada: String;
+  subscribeSong: any;
+
   // Utilidades
   msg: any;
+  const: any;
 
-  constructor(private router: Router, private route: ActivatedRoute, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enumerados: Enumerados, public sesionService: SesionService, private messageService: MessageService) {
+  constructor(private router: Router, private route: ActivatedRoute, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enumerados: Enumerados, public sesionService: SesionService, private messageService: MessageService, public eutanasiaService: EutanasiaService) {
     this.sesion = this.objectModelInitializer.getDataServiceSesion();
     this.msg = this.textProperties.getProperties(this.sesionService.objServiceSesion.idioma);
+    this.const = this.objectModelInitializer.getConst();
   }
 
   ngOnInit() {
+    sessionStorage.clear();
     this.songPosition = 0;
+    this.duracionMaxima = 0;
     this.songTime = '00:00';
+    this.songTimeMax = '00:00';
+    this.cancionActual = 1;
+    this.cancionSeleccionada = "Buscando Identidad";
     this.cargarEventos();
+    this.cargarPost();
     this.cargarGaleria();
     this.bindDocumentListeners();
   }
 
   playSongSlider() {
-    // Create an Observable that will publish a value on an interval
+    $('audio').each(function () {
+      this.pause(); // Stop playing
+      this.currentTime = 0; // Reset time
+    });
+    $('#playSong').hide();
+    $('#stopSong').fadeIn('slow');
+    // Cargamos el archivo y la duración
+    switch (this.cancionActual.toString()) {
+      case '1':
+        this.audioObj.src = "assets/audio/demo/1-BUSCANDO-IDENTIDAD.mp3";
+        this.cancionSeleccionada = "Buscando identidad";
+        this.duracionMaxima = 240;
+        break;
+      case '2':
+        this.audioObj.src = "assets/audio/demo/2-YA-ES-TARDE.mp3";
+        this.cancionSeleccionada = "Ya es tarde";
+        this.duracionMaxima = 215;
+        break;
+      case '3':
+        this.audioObj.src = "assets/audio/demo/3-DE-VUELTA-AL-INFIERNO.mp3";
+        this.cancionSeleccionada = "De vuelta al infierno";
+        this.duracionMaxima = 269;
+        break;
+      case '4':
+        this.audioObj.src = "assets/audio/demo/4-PRESTIGIO-FATAL.mp3";
+        this.cancionSeleccionada = "Prestigio fatal";
+        this.duracionMaxima = 200;
+        break;
+      case '5':
+        this.audioObj.src = "assets/audio/demo/5-NO-MORIRE.mp3";
+        this.cancionSeleccionada = "No moriré";
+        this.duracionMaxima = 286;
+        break;
+    }
+    let fechaMaxima = new Date(this.duracionMaxima * 1000);
+    var minutoMax: any = (fechaMaxima.getMinutes() < 9) ? "0" + fechaMaxima.getMinutes() : fechaMaxima.getMinutes();
+    var segundoMax: any = (fechaMaxima.getSeconds() < 9) ? "0" + fechaMaxima.getSeconds() : fechaMaxima.getSeconds();
+
+    this.songTimeMax = minutoMax + ":" + segundoMax;
+
+    this.audioObj.preload = 'metadata';
+    this.audioObj.load();
+    this.audioObj.play();
+
     const secondsCounter = interval(1000);
-    secondsCounter.subscribe(i => {
+    this.subscribeSong = secondsCounter.subscribe(i => {
       this.songPosition = i;
 
       let fecha = new Date(this.songPosition * 1000);
@@ -114,12 +171,44 @@ export class HomeComponent implements OnInit {
       error => {
         this.songPosition = 0;
         this.songTime = '00:00';
+        this.songTimeMax = '00:00';
         console.log(error, "error");
       });
+    setTimeout(function () {
+      this.subscribeSong.unsubscribe();
+      if (this.cancionActual < 5) {
+        this.nextSongSlider();
+      }
+    }, this.duracionMaxima * 1000);
   }
 
   stopSongSlider() {
+    $('audio').each(function () {
+      this.pause(); // Stop playing
+      this.currentTime = 0; // Reset time
+    });
+    $('#stopSong').hide();
+    $('#playSong').fadeIn('slow');
+    this.subscribeSong.unsubscribe();
+    this.audioObj.pause(); // Stop playing
+    this.audioObj.currentTime = 0; // Reset time
+    this.audioObj = new Audio();
+    this.duracionMaxima = 0;
     this.songPosition = 0;
+    this.songTime = '00:00';
+    this.songTimeMax = '00:00';
+  }
+
+  nextSongSlider() {
+    this.stopSongSlider();
+    this.cancionActual++;
+    this.playSongSlider();
+  }
+
+  prevSongSlider() {
+    this.stopSongSlider();
+    this.cancionActual--;
+    this.playSongSlider();
   }
 
   onThumbnailButtonClick() {
@@ -211,43 +300,48 @@ export class HomeComponent implements OnInit {
   }
 
   cargarEventos() {
-    this.listaEventos1 = [];
-    this.listaEventos1.push(this.objectModelInitializer.getDataEvento('2do Concurso de Rock', 'Año: 2013 - Ganadores del 2do puesto. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2013-concurso_rock_2.jpg'));
-    this.listaEventos1.push(this.objectModelInitializer.getDataEvento('Rifa Concierto FORMA', 'Año: 2013 - Agrupación de talentos. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2013-rifa_concierto.jpg'));
-    this.listaEventos1.push(this.objectModelInitializer.getDataEvento('Tribute to the Gods', 'Año: 2013 - Banda invitada. Evento realizado en la ciudad de Bucaramanga.', 'assets/images/events/2013-tribute_to_the_gods.jpg'));
-    this.listaEventos1.push(this.objectModelInitializer.getDataEvento('Underground Rock 2', 'Año: 2013 - Banda local. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2013-underground_rock_2.jpg'));
-
-    this.listaEventos2 = [];
-    this.listaEventos2.push(this.objectModelInitializer.getDataEvento('Underground Rock 3', 'Año: 2013 - Banda local. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2013-underground_rock_3.jpg'));
-    this.listaEventos2.push(this.objectModelInitializer.getDataEvento('Concierto por los Animales', 'Año: 2014 - Banda local. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2014-concierto_por_animales.jpg'));
-    this.listaEventos2.push(this.objectModelInitializer.getDataEvento('3er Concurso de Rock', 'Año: 2014 - Ganadores a mejor guitarrista. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2014-concurso_rock_3.jpg'));
-    this.listaEventos2.push(this.objectModelInitializer.getDataEvento('Underground Rock 4', 'Año: 2014 - Banda local. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2014-underground_rock_iv.jpg'));
-
-    this.listaEventos3 = [];
-    this.listaEventos3.push(this.objectModelInitializer.getDataEvento('La Guardia Fest', 'Año: 2015 - Banda invitada. Evento realizado en la ciudad de Cúcuta.', 'assets/images/events/2015-guardia_fest.jpg'));
-    this.listaEventos3.push(this.objectModelInitializer.getDataEvento('Halloween Trick or Treat', 'Año: 2015 - Banda organizadora. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2015-halloween_trick_or_treat.jpg'));
-    this.listaEventos3.push(this.objectModelInitializer.getDataEvento('Night Rock', 'Año: 2015 - Banda local. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2015-rock_nigth.jpg'));
-    this.listaEventos3.push(this.objectModelInitializer.getDataEvento('Catatumbo Rock Festival', 'Año: 2016 - Banda local. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2016_catatumbo_rock_festival.jpg'));
-
-    this.listaEventos4 = [];
-    this.listaEventos4.push(this.objectModelInitializer.getDataEvento('Concierto de la Fraternidad', 'Año: 2016 - Banda local. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2016-concierto_fraternidad.jpg'));
-    this.listaEventos4.push(this.objectModelInitializer.getDataEvento('Pool Party Tattoo', 'Año: 2016 - Banda local. Evento privado realizado en la ciudad de Ocaña.', 'assets/images/events/2016-pool_party_tattoo.jpg'));
-    this.listaEventos4.push(this.objectModelInitializer.getDataEvento('Rock al Parche 2', 'Año: 2016 - Banda invitada. Evento realizado en la ciudad de Bucaramanga.', 'assets/images/events/2016-rock_al_parche_2.jpg'));
-    this.listaEventos4.push(this.objectModelInitializer.getDataEvento('Rock al Parking', 'Año: 2016 - Banda local. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2016-rock_al_parking.jpg'));
-
-    this.listaEventos5 = [];
-    this.listaEventos5.push(this.objectModelInitializer.getDataEvento('Somos Uno', 'Año: 2016 - Banda invitada. Evento realizado en la ciudad de Cúcuta.', 'assets/images/events/2016-somos_uno.jpg'));
-    this.listaEventos5.push(this.objectModelInitializer.getDataEvento('Estridente Amanecer', 'Año: 2017 - Banda invitada. Evento realizado en la ciudad de Cúcuta.', 'assets/images/events/2017-estridente_amanecer.jpg'));
-    this.listaEventos5.push(this.objectModelInitializer.getDataEvento('Possesed By Metal', 'Año: 2017 - Banda invitada. Evento realizado en la ciudad de Cúcuta.', 'assets/images/events/2017-possesed_by_metal.jpg'));
-    this.listaEventos5.push(this.objectModelInitializer.getDataEvento('Diavel Fest - Round 2', 'Año: 2017 - Ganadores del 3er puesto. Evento realizado en la ciudad de Bucaramanga.', 'assets/images/events/2017-round-2-baron-rojo.jpg'));
-
-    this.listaEventos6 = [];
-    this.listaEventos6.push(this.objectModelInitializer.getDataEvento('Noche de Blasfemias', 'Año: 2018 - Banda invitada. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2018-noche_de_blasfemias.jpg'));
-    this.listaEventos6.push(this.objectModelInitializer.getDataEvento('Beyond the Life and Death', 'Año: 2019 - Banda invitada. Evento realizado en la ciudad de Cúcuta.', 'assets/images/events/2019-beyond_the_life_and_death.jpg'));
-    this.listaEventos6.push(this.objectModelInitializer.getDataEvento('Live Session Alternative', 'Año: 2019 - Banda invitada. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2019-live_session_alternativos.jpg'));
-    this.listaEventos6.push(this.objectModelInitializer.getDataEvento('Rock On Fire', 'Año: 2019 - Banda invitada. Evento realizado en la ciudad de Bogotá.', 'assets/images/events/2019-rock_on_fire.jpg'));
-
-    this.listaEventos7 = [];
-    this.listaEventos7.push(this.objectModelInitializer.getDataEvento('Carnaval Rock', 'Año: 2020 - Banda organizadora. Evento realizado en la ciudad de Ocaña.', 'assets/images/events/2020-carnaval-rock.jpg'));
+    this.listaEventos = [];
+    try {
+      this.restService.getREST(this.const.urlConsultarToques)
+        .subscribe(resp => {
+          this.listaEventos = JSON.parse(JSON.stringify(resp));
+        },
+          error => {
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
   }
+
+  cargarPost() {
+    this.listaPosts = [];
+    let obj = this.objectModelInitializer.getDataPostModel();
+    try {
+      this.restService.postREST(this.const.urlConsultarPostsPorFiltros, obj)
+        .subscribe(resp => {
+          let listaTemporal = JSON.parse(JSON.stringify(resp));
+          if (listaTemporal !== undefined && listaTemporal !== null) {
+            this.listaPosts = listaTemporal.length > 3 ? listaTemporal.slice(listaTemporal.length - 3) : listaTemporal;
+          }
+        },
+          error => {
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  convertirFechaPost(fechaString) {
+    let fecha = new Date(fechaString);
+    return fecha.getUTCDate() + " " + this.objectModelInitializer.getLocaleESForCalendar().monthNamesShort[fecha.getUTCMonth()]
+  }
+
+  verPost(post: PostModel) {
+    this.eutanasiaService.post = post;
+    sessionStorage.setItem('post', JSON.stringify(post));
+    this.router.navigate(['blog']);
+  }
+
 }

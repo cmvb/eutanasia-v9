@@ -3,7 +3,12 @@ export interface ComentarioModel {
     idPost;
     idComentarioRespuesta;
     autor;
+    correoAutor;
     comentario;
-    fecha;
+
     estado;
+    fechaCreacion;
+    usuarioCreacion;
+    fechaActualizacion;
+    usuarioActualizacion;
 }

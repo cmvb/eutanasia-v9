@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.eutanasia.eutanasia.model.PostTB;
-
 public abstract class Util {
 
 	public static final Pattern EMAIL_PATTERN = Pattern
@@ -33,38 +31,8 @@ public abstract class Util {
 		return result;
 	}
 
-	public static List<String> validaDatos(PostTB contact) {
+	public static List<String> validaDatos(String tabla, Object entidadTB) {
 		List<String> errores = new ArrayList<>();
-
-		// Validaciones nombre
-		if (StringUtils.isBlank(contact.getName())) {
-			errores.add(PropertiesUtil.getProperty("lbl_mtto_contact_nombre") + VALOR_VACIO);
-		} else if (!Util.tieneCantidadCharPermitida(contact.getName(), MAX_LENGTH_50)) {
-			errores.add(PropertiesUtil.getProperty("lbl_mtto_contact_nombre") + SUPERA_LONGITUD);
-		}
-
-		// Validaciones correo
-		if (StringUtils.isBlank(contact.getEmail())) {
-			errores.add(PropertiesUtil.getProperty("lbl_mtto_contact_email") + VALOR_VACIO);
-		} else if (!Util.esCorreoValido(contact.getEmail())) {
-			errores.add(PropertiesUtil.getProperty("lbl_mtto_contact_email") + CORREO_NO_VALIDO);
-		} else if (!Util.tieneCantidadCharPermitida(contact.getEmail(), MAX_LENGTH_30)) {
-			errores.add(PropertiesUtil.getProperty("lbl_mtto_contact_email") + SUPERA_LONGITUD);
-		}
-
-		// Validaciones departamento
-		if (StringUtils.isBlank(contact.getState())) {
-			errores.add(PropertiesUtil.getProperty("lbl_mtto_contact_departamento") + VALOR_VACIO);
-		} else if (!Util.tieneCantidadCharPermitida(contact.getState(), MAX_LENGTH_30)) {
-			errores.add(PropertiesUtil.getProperty("lbl_mtto_contact_departamento") + SUPERA_LONGITUD);
-		}
-
-		// Validaciones ciudad
-		if (StringUtils.isBlank(contact.getCity())) {
-			errores.add(PropertiesUtil.getProperty("lbl_mtto_contact_ciudad") + VALOR_VACIO);
-		} else if (!Util.tieneCantidadCharPermitida(contact.getCity(), MAX_LENGTH_50)) {
-			errores.add(PropertiesUtil.getProperty("lbl_mtto_contact_ciudad") + SUPERA_LONGITUD);
-		}
 
 		return errores;
 	}

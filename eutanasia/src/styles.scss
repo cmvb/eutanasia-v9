@@ -376,6 +376,7 @@ textarea:focus {
     .main-nav > li.active > a {
         background: transparent;
         color: #761e0e;
+        cursor: pointer;
     }
     .main-nav > li > a:after {
         content: "";
@@ -1186,7 +1187,7 @@ header {
     display: inline-block;
     padding: 6px 13px;
     font-size: 18px;
-    margin: 2px 0px;
+    margin: 5px;
     background: #f4f4f4;
     color: #10161a;
 }
@@ -1300,6 +1301,7 @@ header {
     background-color: #f4f4f4;
     border-color: #761e0e;
     border-bottom: 1px solid #761e0e;
+    padding: 10px;
 }
 .blog-comments .media.author > .media-body > .media-heading {
     color: #761e0e;
@@ -1416,6 +1418,7 @@ header {
     float: left;
     margin-right: 10px;
     margin-top: 5px;
+    width: 100%;
 }
 
 .widget-post a {
@@ -1522,14 +1525,32 @@ header {
     margin: 0;
 }
 
+.nombreArtista {
+    color: white;
+    text-shadow: 2px 2px 1px #8b201c;
+}
+
 /*------------------------------------*\
 	Responsive
 \*------------------------------------*/
 
 @media only screen and (max-width: 991px) {
+    .box-legend {
+        width: 317px !important;
+    }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .box-legend {
+        width: 413px !important;
+    }
 }
 
 @media only screen and (max-width: 767px) {
+    .box-legend {
+        width: 42% !important;
+    }
+
     .section-header h2.title {
         font-size: 31.5px;
     }
@@ -1793,7 +1814,7 @@ header {
     -webkit-transition: 0.5s all;
     -moz-transition: 0.5s all;
     transition: 0.5s all;
-    -o-transform: 0.5s all;
+    //-o-transform: 0.5s all;
     box-shadow: 5px 5px 1px #d1cfc4;
 }
 .con i:hover {
@@ -1922,10 +1943,13 @@ h4 {
 
 .slider-range {
     margin: auto;
-    background: rgba(255, 255, 255, 0.95);
     width: 80%;
     height: 0.125rem;
     cursor: pointer;
+}
+
+.hoverBlack:hover {
+    color: black;
 }
 
 .body-info {
@@ -2035,4 +2059,25 @@ h4 {
 .fadeIn {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
+}
+
+.sinResultados {
+    font-size: 50px;
+    color: #020202;
+    text-shadow: 1px 1px 1px #751e0e;
+    text-align: center;
+    border: 1px solid #eeeeee;
+    background: #fcf3f3;
+}
+
+.cursorPointer {
+    cursor: pointer;
+}
+
+.p-fieldset {
+    color: #020200;
+    background-color: #ececec;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23efefef' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%23f1f1f1' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%23f4f4f4' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23f7f7f7' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23fafafa' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23fcfcfc' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23ffffff' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: cover;
 }

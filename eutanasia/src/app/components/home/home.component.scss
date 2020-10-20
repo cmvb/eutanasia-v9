@@ -4,6 +4,7 @@
     padding: 10px;
     box-sizing: border-box;
     height: 100vh;
+    max-height: 580px;
 }
 
 .boxGallery {
@@ -46,7 +47,7 @@
     position: absolute;
     width: 500px;
     word-wrap: break-word;
-    height: calc(100% - 178px);
+    height: calc(100% - 149px);
     padding: 10px;
     text-align: justify;
     color: transparent;

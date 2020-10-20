@@ -4,8 +4,15 @@ export interface PostModel {
     subtitulo;
     articulo;
     autor;
-    fecha;
+    correoAutor;
     tags;
     categoria;
+    urlImagen;
+    cantidadComentarios;
+
     estado;
+    fechaCreacion;
+    usuarioCreacion;
+    fechaActualizacion;
+    usuarioActualizacion;
 }
