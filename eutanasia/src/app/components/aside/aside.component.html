@@ -1,0 +1,62 @@
+<!-- Aside -->
+<aside id="aside" class="col-md-3">
+  <!-- Search -->
+  <div class="widget">
+    <div class="widget-search">
+      <input [(ngModel)]="postFiltro.titulo" class="search-input" type="text" placeholder="Buscar"
+        (keydown)="buscarPostPorNombreEnter($event)">
+      <button class="search-btn" type="button"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+  <!-- /Search -->
+
+  <!-- Category -->
+  <div class="widget">
+    <h3 class="title">{{msg.lbl_categorias}}</h3>
+    <div class="widget-category">
+      <a>{{msg.lbl_enum_categoria_valor_invitacion_evento}}<span>({{categoriasContadores.invitacionesEvento}})</span></a>
+      <a>{{msg.lbl_enum_categoria_valor_agradecimientos_saludos}}<span>({{categoriasContadores.agradecimientosSaludos}})</span></a>
+      <a>{{msg.lbl_enum_categoria_valor_criticas}}<span>({{categoriasContadores.criticas}})</span></a>
+      <a>{{msg.lbl_enum_categoria_valor_frenetico_rnr}}<span>({{categoriasContadores.freneticoRockNRoll}})</span></a>
+      <a>{{msg.lbl_enum_categoria_valor_noticias_mundiales}}<span>({{categoriasContadores.noticiasMundiales}})</span></a>
+    </div>
+  </div>
+  <!-- /Category -->
+
+  <!-- Posts sidebar -->
+  <div class="widget">
+    <h3 class="title">{{msg.lbl_posts_populares}}</h3>
+    <!-- single post -->
+    <div *ngIf="listaPostsPopulares.length > 0; else sinResultadosPostsPopulares" class="service-grids">
+      <div *ngFor="let popularPost of listaPostsPopulares" class="widget-post">
+        <a class="cursorPointer" (click)="verPost(popularPost)">
+          <img [src]="popularPost.urlImagen" alt="">{{popularPost.titulo}}
+        </a>
+        <ul class="blog-meta">
+          <li>{{convertirFechaBlog(popularPost.fechaCreacion)}}</li>
+        </ul>
+      </div>
+    </div>
+    <ng-template #sinResultadosPostsPopulares>
+      <div class="service-grids">
+        <div class="col-md-12 ser-grid">
+          <p class="sinResultados shiny">{{msg.lbl_info_sin_resultados}}</p>
+        </div>
+      </div>
+    </ng-template>
+    <!-- /single post -->
+  </div>
+  <!-- /Posts sidebar -->
+
+  <!-- Tags -->
+  <div class="widget">
+    <h3 class="title">{{msg.lbl_tags}}</h3>
+    <div class="widget-tags">
+      <a *ngFor="let tag of listaTags">
+        {{tag}}
+      </a>
+    </div>
+  </div>
+  <!-- /Tags -->
+</aside>
+<!-- /Aside -->

@@ -1,0 +1,268 @@
+package com.eutanasia.eutanasia.service.impl;
+
+import java.io.File;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
+import java.util.function.Predicate;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.ChannelSftp.LsEntry;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
+import com.jcraft.jsch.SftpATTRS;
+import com.jcraft.jsch.SftpException;
+
+@Service
+public class SFTPServicio {
+
+	private JSch jsch = null;
+	private Session session = null;
+	private ChannelSftp channelSftp = null;
+	private Properties config = null;
+
+	/**
+	 * metodo para abrir la conexion con el servidor SFTP
+	 *
+	 * @param servidor
+	 * @param puerto
+	 * @param usuario
+	 * @param clave
+	 * @return
+	 */
+	public boolean conectarServidor(String servidor, int puerto, String usuario, String clave) {
+		boolean resultado = false;
+		try {
+			config = new Properties();
+			jsch = new JSch();
+			session = jsch.getSession(usuario, servidor, puerto);
+			session.setPassword(clave);
+			config.put("StrictHostKeyChecking", "no");
+			JSch.setConfig(config);
+			session.connect();
+			channelSftp = (ChannelSftp) session.openChannel("sftp");
+			channelSftp.connect();
+			if (channelSftp != null) {
+				resultado = true;
+			}
+		} catch (JSchException e) {
+			System.out.println(e.getMessage());
+		}
+		return resultado;
+	}
+
+	/**
+	 * metodo para cerrar la conexion con el servidor SFTP
+	 */
+	public void cerrarConexion() {
+		if (channelSftp != null) {
+			channelSftp.disconnect();
+			session.disconnect();
+			channelSftp = null;
+			session = null;
+			jsch = null;
+		}
+	}
+
+	/**
+	 * metodo para guardar el archivo fisico en el servidor SFTP
+	 *
+	 * @param rutaLocal
+	 * @param rutaSftp
+	 * @return
+	 *
+	 */
+	public boolean guardarArchivoServidor(String rutaLocal, String rutaSftp) throws Exception {
+		boolean resultado = false;
+		try {
+			channelSftp.put(rutaLocal, rutaSftp);
+			resultado = true;
+		} catch (SftpException e) {
+			System.out.println(e.getMessage());
+
+		}
+		return resultado;
+	}
+
+	/**
+	 * Guarda archivo en el servidor por medio de un inputStream
+	 *
+	 * @param nombreArchivo
+	 * @param inputStreamArchivo
+	 * @param sftpRuta
+	 * @return
+	 * @throws Exception
+	 */
+	public String guardarArchivoServidor(String nombreArchivo, InputStream inputStreamArchivo, String sftpRuta)
+			throws Exception {
+		String sRet = "";
+		try {
+			channelSftp.cd(sftpRuta);
+			channelSftp.put(inputStreamArchivo, nombreArchivo);
+		} catch (Exception ex) {
+			sRet = "error al realizar el envío sftp: " + ex.getMessage();
+			System.out.println(sRet);
+		}
+		return sRet;
+
+	}
+
+	/**
+	 * metodo para borrar el archivo guardado en el servidor sftp
+	 *
+	 * @param rutaServidor
+	 * @return
+	 */
+	public boolean borrarArchivoServidor(String rutaServidor) {
+		boolean archivoEliminado = false;
+		try {
+			if (channelSftp != null) {
+				if (channelSftp.realpath(rutaServidor) != null) {
+					channelSftp.rm(rutaServidor);
+					archivoEliminado = true;
+				}
+			}
+		} catch (SftpException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return archivoEliminado;
+	}
+
+	/**
+	 *
+	 * @param archivo
+	 *
+	 */
+	public void borrarArchivoLocal(String archivo) throws Exception {
+		try {
+			File file = new File(archivo);
+			if (!StringUtils.isBlank(file.getAbsolutePath())) {
+				file.delete();
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/**
+	 * metodo para descargar un archivo directamente de un Servidor SFTP remoto
+	 *
+	 * @param rutaSFTP
+	 * @param rutaLocal
+	 * @return
+	 */
+	public boolean descargarArchivo(String rutaSFTP, String rutaLocal) {
+		boolean result = false;
+
+		try {
+			if (channelSftp != null) {
+				channelSftp.get(rutaSFTP, rutaLocal);
+				result = true;
+			}
+		} catch (SftpException e) {
+			System.out.println(Arrays.toString(e.getStackTrace()));
+		}
+
+		return result;
+	}
+
+	/**
+	 * metodo para obtener el InputStream de un archivo del Servidor SFTP remoto
+	 *
+	 * @param rutaSFTP
+	 * @return
+	 */
+	public InputStream obtenerInputStreamArchivo(String rutaSFTP) {
+		InputStream result = null;
+
+		try {
+			if (channelSftp != null) {
+				result = channelSftp.get(rutaSFTP);
+			}
+		} catch (SftpException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return result;
+	}
+
+	/**
+	 * metodo para validar carpeta directamente de un Servidor SFTP remoto
+	 *
+	 * @param rutaSFTP
+	 * @return
+	 */
+	public boolean esValidaRuta(String rutaSFTP) {
+
+		boolean result = true;
+
+		if (channelSftp != null) {
+			try {
+				channelSftp.stat(rutaSFTP);
+			} catch (SftpException e) {
+				result = false;
+
+			}
+		}
+
+		return result;
+	}
+
+	/**
+	 * metodo para validar carpeta directamente de un Servidor SFTP remoto
+	 *
+	 * @param rutaCompleta
+	 * @return
+	 */
+	public boolean validarCarpetaRutaCompleta2(String rutaCompleta) {
+		boolean result = true;
+		SftpATTRS attrs = null;
+
+		if (channelSftp != null) {
+			try {
+				attrs = channelSftp.stat(rutaCompleta);
+			} catch (SftpException e) {
+				System.out.println(e.getMessage());
+			}
+
+			result = attrs != null;
+		}
+		return result;
+	}
+
+	/**
+	 * metodo para crear carpeta directamente de un Servidor SFTP remoto
+	 *
+	 * @param rutaCompleta
+	 * @return
+	 */
+	public void crearDirectorio(String rutaSFTP) throws SftpException {
+		channelSftp.mkdir(rutaSFTP);
+	}
+
+	/**
+	 * metodo para listar archivos filtrados por nombre directamente de un Servidor
+	 * SFTP remoto
+	 *
+	 * @param rutaCompleta
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<String> listarArchivosFiltrados(String rutaSFTP, String nombre) throws SftpException {
+		List<LsEntry> carpetasInternas = channelSftp.ls(rutaSFTP);
+
+		List<String> result = new ArrayList<>();
+		Predicate<LsEntry> f = g -> g.getFilename().matches(nombre + "-[0-9]{1,2}.csv");
+		carpetasInternas.stream().filter(f).forEach(e -> result.add(e.getFilename()));
+
+		return result;
+	}
+
+}

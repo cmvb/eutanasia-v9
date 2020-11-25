@@ -1,0 +1,98 @@
+package com.eutanasia.eutanasia.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.sun.istack.NotNull;
+
+@Entity
+@Table(name = "eu_comentario_tb")
+public class ComentarioTB extends BaseEntidadTB implements Serializable {
+	private static final long serialVersionUID = -1787166402117947907L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NotNull
+	@Column(name = "eco_id", nullable = false, length = 19)
+	private long id;
+
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "eua_id")
+	private UsuarioAutorTB usuarioAutorTB;
+
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "epo_id")
+	private PostTB postTB;
+
+	@OneToOne
+	@JoinColumn(name = "eco_id_comentario_respuesta")
+	private ComentarioTB comentarioRespuestaTB;
+
+	@NotNull
+	@Column(name = "eco_correoAutor", nullable = false, length = 100)
+	private String correoAutor;
+
+	@NotNull
+	@Column(name = "eco_comentario", nullable = false, length = 1000)
+	private String comentario;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public PostTB getPostTB() {
+		return postTB;
+	}
+
+	public void setPostTB(PostTB postTB) {
+		this.postTB = postTB;
+	}
+
+	public UsuarioAutorTB getUsuarioAutorTB() {
+		return usuarioAutorTB;
+	}
+
+	public void setUsuarioAutorTB(UsuarioAutorTB usuarioAutorTB) {
+		this.usuarioAutorTB = usuarioAutorTB;
+	}
+
+	public ComentarioTB getComentarioRespuestaTB() {
+		return comentarioRespuestaTB;
+	}
+
+	public void setComentarioRespuestaTB(ComentarioTB comentarioRespuestaTB) {
+		this.comentarioRespuestaTB = comentarioRespuestaTB;
+	}
+
+	public String getCorreoAutor() {
+		return correoAutor;
+	}
+
+	public void setCorreoAutor(String correoAutor) {
+		this.correoAutor = correoAutor;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+}

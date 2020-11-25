@@ -1,0 +1,169 @@
+<!-- Header -->
+<header id="home">
+    <video autoplay [muted]="true" (play)="mostrarTextoHeader($event)" id="myVideo">
+        <source src="assets/video/killing-in-the-name.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <!-- Background Image -->
+    <div class="bg-img" style="background-image: url('assets/images/fondo2.jpg');">
+        <div class="overlay"></div>
+    </div>
+    <!-- /Background Image -->
+
+    <!-- Nav -->
+    <nav id="nav" class="navbar nav-transparent">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Logo -->
+                <div class="navbar-brand">
+                    <a href="index.html">
+                        <img class="logo" src="assets/images/logo.png" alt="logo">
+                        <img class="logo-alt" src="assets/images/logo.png" alt="logo">
+                    </a>
+                </div>
+                <!-- /Logo -->
+                <!-- Collapse nav button -->
+                <div class="nav-collapse">
+                    <span></span>
+                </div>
+                <!-- /Collapse nav button -->
+            </div>
+
+            <!--  Main navigation  -->
+            <ul class="main-nav nav navbar-nav navbar-right">
+                <li><a href="#home">{{msg.lbl_inicio}}</a></li>
+                <li><a href="#about">{{msg.lbl_bio}}</a></li>
+                <li><a href="#team">{{msg.lbl_banda}}</a></li>
+                <li><a href="#portfolio">{{msg.lbl_galeria_media}}</a></li>
+                <li><a href="#service">{{msg.lbl_participaciones}}</a></li>
+                <li><a href="#pricing">{{msg.lbl_comparte}}</a></li>
+                <li><a href="#publicaciones">{{msg.lbl_ultimas_publicaciones}}</a></li>
+                <li><a (click)="redirigirBlogs()">{{msg.lbl_blog}}</a></li>
+                <li class="has-dropdown"><a>{{msg.lbl_registro_ingreso}}</a>
+                    <ul class="dropdown">
+                        <li><a (click)="abrirModalLogin()">{{msg.lbl_login}}</a></li>
+                        <li><a (click)="abrirModalRegister()">{{msg.lbl_register}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- /Main navigation -->
+
+            <!-- Modals Login/Register -->
+            <p-dialog [showHeader]="true" header="{{msg.lbl_login}}" [(visible)]="disModLogin" [modal]="true"
+                [style]="{width: '30vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false"
+                [closable]="true">
+                <div class="reply-form">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBLogin.usuario"
+                                placeholder="{{msg.lbl_header_usuario}}" />
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="password" pInputText [(ngModel)]="usuarioAutorTBLogin.password"
+                                placeholder="{{msg.lbl_header_clave}}" />
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                            <p-button label="{{msg.lbl_btn_ingresar}}" (click)="disModLogin=false" icon="pi pi-key"
+                                styleClass="main-btn font-20px">
+                            </p-button>
+                        </div>
+                    </div>
+                </div>
+            </p-dialog>
+
+            <p-dialog [showHeader]="true" header="{{msg.lbl_register}}" [(visible)]="disModRegistrar" [modal]="true"
+                [style]="{width: '60vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false"
+                [closable]="true">
+                <div class="reply-form">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <div *ngIf="!mostrarImagenRegister" class="choose-files" (click)="startUpload()">
+                                <i class="pi pi-plus-circle font-40px"></i>
+                            </div>
+                            <div *ngIf="mostrarImagenRegister"
+                                style="background-image: url(assets/images/users/man1.svg) !important;background-position: center;background-repeat: no-repeat;" class="choose-files"
+                                (click)="limpiarAdjuntos()">
+                                <i class="pi pi-times font-20px cerrarImagen"></i>
+                            </div>
+                            <p-fileUpload #fileInputRegister mode="basic" name="archivosTemporales[]"
+                                customUpload="true" (uploadHandler)="handlerUpload($event)" accept="image/*"
+                                maxFileSize="10000000" (onClear)="limpiarAdjuntos()"
+                                chooseLabel="{{msg.lbl_btn_escoger_archivo}}"
+                                uploadLabel="{{msg.lbl_btn_subir_archivos}}" cancelLabel="{{msg.lbl_btn_cancelar}}"
+                                invalidFileSizeMessageSummary="{{msg.lbl_summary_danger}}"
+                                invalidFileSizeMessageDetail="{{msg.lbl_mensaje_file_detail_size}}"
+                                invalidFileTypeMessageSummary="{{msg.lbl_summary_danger}}"
+                                invalidFileTypeMessageDetail="{{msg.lbl_mensaje_file_detail_type}}">
+                            </p-fileUpload>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login"
+                            style="padding-bottom: 0 !important">
+                            <textarea pInputTextarea [(ngModel)]="usuarioAutorTBRegister.resena"
+                                placeholder="{{msg.lbl_header_resena}}"></textarea>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBRegister.nombres"
+                                placeholder="{{msg.lbl_header_nombre}}">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBRegister.apellidos"
+                                placeholder="{{msg.lbl_header_apellido}}">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBRegister.usuario"
+                                placeholder="{{msg.lbl_header_usuario}}">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="email" pInputText [(ngModel)]="usuarioAutorTBRegister.correo"
+                                placeholder="{{msg.lbl_header_correo}}">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <p-calendar placeholder="{{msg.lbl_header_fecha_nacimiento}}"
+                                [(ngModel)]="usuarioAutorTBRegister.fechaNacimiento"></p-calendar>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="password" pInputText
+                                [(ngModel)]="usuarioAutorTBRegister.password" placeholder="{{msg.lbl_header_clave}}">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="password" pInputText [(ngModel)]="repeatPassword"
+                                placeholder="{{msg.lbl_header_repetir_clave}}">
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                            <p-button label="{{msg.lbl_btn_registrarse}}" (click)="disModRegistrar=false"
+                                icon="pi pi-user-plus" styleClass="main-btn font-20px"></p-button>
+                        </div>
+                    </div>
+                </div>
+            </p-dialog>
+            <!-- /Modals Login/Register -->
+        </div>
+    </nav>
+    <!-- /Nav -->
+
+    <!-- home wrapper -->
+    <div class="home-wrapper">
+        <div class="container">
+            <div class="row">
+                <!-- home content -->
+                <div class="col-md-10 col-md-offset-1">
+                    <div id="mostrarTextHeader" [@fadeIn]="fadeIn" class="home-content displayNone">
+                        <h1 class="white-text">Ahora Mismo Estamos Haciendo Música...</h1>
+                        <p class="white-text">"Mi cabeza da vueltas, el tiempo se agita y mis sentidos despiertan"
+                        </p>
+                        <a href="#about" class="white-btn">Explorar...</a>
+                        <a href="#contact" class="main-btn">¡Contacto Para Evento!</a>
+                    </div>
+                </div>
+                <!-- /home content -->
+            </div>
+        </div>
+    </div>
+    <!-- /home wrapper -->
+
+    <audio autoplay loop controls id="demoEutanasia">
+        <source src="assets/audio/demo/3-DE-VUELTA-AL-INFIERNO.mp3" type="audio/mp3">
+    </audio>
+</header>
+<!-- /Header -->

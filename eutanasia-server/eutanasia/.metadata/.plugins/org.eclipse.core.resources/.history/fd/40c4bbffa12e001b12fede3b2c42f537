@@ -1,0 +1,14 @@
+# EUTANASIA WEBPAGE
+eutanasia.app												= Sigma Test 2020
+
+# Mensajes de Validaciones - Genéricos
+eutanasia.msg.validate.valor.incorrecto						= Valor Incorrecto.
+eutanasia.msg.validate.valor.vacio							= Valor Vacío.
+eutanasia.msg.validate.correoInvalido						= La estructura del Correo es inválida.
+eutanasia.msg.validate.valor.superaLongitud					= El valor digitado supera la longitud permitida.
+ 
+# Módulo Ubicaciones
+lbl_mtto_contact_departamento								= Departamento: 
+lbl_mtto_contact_nombre										= Nombre: 
+lbl_mtto_contact_ciudad										= Ciudad: 
+lbl_mtto_contact_email										= Correo: 

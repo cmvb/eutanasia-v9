@@ -1,0 +1,143 @@
+package com.eutanasia.eutanasia.util;
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.eutanasia.eutanasia.dto.ArchivoDTO;
+import com.eutanasia.eutanasia.service.ISFTPServicio;
+
+public abstract class Util {
+
+	public static final Pattern EMAIL_PATTERN = Pattern
+			.compile("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+	public static final String VALOR_NULL_OBJETO = PropertiesUtil.getProperty("eutanasia.msg.validate.valor.objeto");
+	public static final String VALOR_VACIO = PropertiesUtil.getProperty("eutanasia.msg.validate.valor.vacio");
+	public static final String VALOR_INCORRECTO = PropertiesUtil.getProperty("eutanasia.msg.validate.valor.incorrecto");
+	public static final String CORREO_NO_VALIDO = PropertiesUtil.getProperty("eutanasia.msg.validate.correoInvalido");
+	public static final String SUPERA_LONGITUD = PropertiesUtil
+			.getProperty("eutanasia.msg.validate.valor.superaLongitud");
+
+	public static final String ARCHIVO = PropertiesUtil.getProperty("lbl.archivo.archivo");
+	public static final String NOMBRE_ARCHIVO = PropertiesUtil.getProperty("lbl.archivo.nombre");
+	public static final String RUTA_ARCHIVO = PropertiesUtil.getProperty("lbl.archivo.ruta");
+
+	public static final int MAX_LENGTH_50 = 50;
+	public static final int MAX_LENGTH_30 = 30;
+
+	public static boolean esCorreoValido(String email) {
+		Matcher mather = EMAIL_PATTERN.matcher(email.toLowerCase());
+		return mather.find();
+	}
+
+	public static boolean tieneCantidadCharPermitida(String cadenaValidar, int cantidadChar) {
+		boolean result = false;
+		if (!StringUtils.isBlank(cadenaValidar)) {
+			result = cadenaValidar.length() <= cantidadChar;
+		}
+		return result;
+	}
+
+	public static List<String> validaDatos(String tabla, Object entidadTB) {
+		List<String> errores = new ArrayList<>();
+		// TODO CREAR VALIDACIONES
+
+		return errores;
+	}
+
+	public static List<String> validarArchivo(ArchivoDTO archivoDto) {
+		List<String> errores = new ArrayList<>();
+
+		if (archivoDto != null) {
+			if (archivoDto.getArchivo() == null) {
+				errores.add(ARCHIVO + VALOR_INCORRECTO);
+			}
+			if (StringUtils.isBlank(archivoDto.getNombreArchivo())) {
+				errores.add(NOMBRE_ARCHIVO + VALOR_VACIO);
+			}
+			if (StringUtils.isBlank(archivoDto.getRutaArchivo())) {
+				errores.add(RUTA_ARCHIVO + VALOR_VACIO);
+			}
+		} else {
+			errores.add(VALOR_NULL_OBJETO);
+		}
+
+		return errores;
+	}
+
+	public static ArchivoDto subirArchivoSFTP(ArchivoDTO archivo, ISFTPServicio sftpServicio) {
+		EscParametrizacion escrutaSftp, separadoSftp;
+		boolean bandera = true;
+		try {
+			escrutaSftp = escParametrizacionDao.consultaParametro(ConstantesServiciosWeb.RUTA_SFTP);
+			separadoSftp = escParametrizacionDao.consultaParametro(ConstantesServiciosWeb.SEPARADOR_SFTP);
+			String rutaSftp = escrutaSftp.getValor();
+			String separadorSftp = separadoSftp.getValor();
+
+			// Abrir conexion a servidor sftp
+			bandera = sftpServicio.conectarServidor(
+					escParametrizacionDao.consultaParametro(ConstantesServiciosWeb.SERVIDOR_SFTP).getValor(),
+					Integer.parseInt(
+							escParametrizacionDao.consultaParametro(ConstantesServiciosWeb.PUERTO_SFTP).getValor()),
+					escParametrizacionDao.consultaParametro(ConstantesServiciosWeb.USUARIO_SFTP).getValor(),
+					escParametrizacionDao.consultaParametro(ConstantesServiciosWeb.CLAVE_SFTP).getValor());
+
+			// validar conexion a servidor
+			if (bandera) {
+				// validar que la ruta no este vacia
+				if (!StringUtils.isBlank(rutaSftp)) {
+					// validar que la ruta exista en el servidor
+					bandera = sftpServicio.esValidaRuta(rutaSftp);
+					if (bandera) {
+						rutaSftp = rutaSftp + cedula;
+						bandera = sftpServicio.esValidaRuta(rutaSftp);
+
+						// validar de que exista la ruta o en su defecto que la cree
+						if (!bandera) {
+							sftpServicio.crearDirectorio(rutaSftp);
+						}
+						rutaSftp = rutaSftp + separadorSftp + idSolicitud;
+						bandera = sftpServicio.esValidaRuta(rutaSftp);
+
+						// validar de que exista la ruta o en su defecto que la cree
+						if (!bandera) {
+							sftpServicio.crearDirectorio(rutaSftp);
+						}
+
+						// Validar que la lista que se envia con el arreglo no este vacia
+						if (!listaObservacionAdjunto.isEmpty()) {
+							int n = 1;
+
+							// guardar archivos en el servidor que llegan en la lista
+							for (AdjuntoDto observacionAdjunto : listaObservacionAdjunto) {
+								if (observacionAdjunto.getArchivo() != null
+										&& observacionAdjunto.getArchivo().length > 0) {
+									InputStream inputStreamArchivo = new ByteArrayInputStream(
+											observacionAdjunto.getArchivo());
+									sftpServicio.guardarArchivoServidor(observacionAdjunto.getNombreArchivo(),
+											inputStreamArchivo, rutaSftp + separadorSftp);
+									observacionAdjunto.setRutaArchivo(
+											rutaSftp + separadorSftp + observacionAdjunto.getNombreArchivo());
+								}
+								n++;
+							}
+
+						}
+					}
+
+				}
+			}
+
+			// cerrar conexion con servidor SFTP
+			sftpServicio.cerrarConexion();
+		} catch (Exception ex) {
+			sftpServicio.cerrarConexion();
+		}
+	}
+
+}

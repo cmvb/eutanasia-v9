@@ -1,0 +1,13 @@
+package com.eutanasia.eutanasia.dto;
+
+import java.io.Serializable;
+
+//@XmlRootElement
+public class ArchivoDTO implements Serializable {
+
+
+	String nombreArchivo;
+    byte[] archivo;
+    String rutaArchivo;
+
+}
