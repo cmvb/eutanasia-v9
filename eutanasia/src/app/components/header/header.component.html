@@ -82,7 +82,7 @@
                                 <i class="pi pi-plus-circle font-40px"></i>
                             </div>
                             <div *ngIf="mostrarImagenRegister"
-                                style="background-image: url(assets/images/users/man1.svg) !important;background-position: center;background-repeat: no-repeat;" class="choose-files"
+                                style="background-image: url({{archivoImagenRegister.rutaArchivo}}) !important;background-position: center;background-repeat: no-repeat;" class="choose-files"
                                 (click)="limpiarAdjuntos()">
                                 <i class="pi pi-times font-20px cerrarImagen"></i>
                             </div>
