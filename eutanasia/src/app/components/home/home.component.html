@@ -1,548 +1,559 @@
-<!-- HEADER -->
-<app-header></app-header>
-<!-- HEADER -->
+<p-scrollPanel #scrollHome [style]="{width: '100%', height: '100vh'}" styleClass="custom">
 
-<!-- About -->
-<div id="about" class="section md-padding" style="padding-bottom: 0px !important;">
-	<!-- Container -->
-	<div class="container">
-		<!-- Row -->
-		<div class="row">
-			<!-- Section header -->
-			<div class="section-header text-center">
-				<h2 class="title">
-					<p>{{msg.lbl_bienvenido}}</p>{{msg.lbl_oficial_web_page}}
-				</h2>
+	<!-- HEADER -->
+	<app-header></app-header>
+	<!-- HEADER -->
+
+	<!-- Notificaciones -->
+	<p-toast></p-toast>
+
+	<!-- About -->
+	<div id="about" class="section md-padding" style="padding-bottom: 0px !important;">
+		<!-- Container -->
+		<div class="container">
+			<!-- Row -->
+			<div class="row">
+				<!-- Section header -->
+				<div class="section-header text-center">
+					<h2 class="title">
+						<p>{{msg.lbl_bienvenido}}</p>{{msg.lbl_oficial_web_page}}
+					</h2>
+				</div>
+				<!-- /Section header -->
+
+				<!-- about -->
+				<div class="biography-grids">
+					<div class="col-md-6 biography-grid">
+						<img style="padding: 5px 0" src="assets/images/s.jpg" class="img-responsive" />
+					</div>
+					<div class="col-md-6 biography-grid" style="color: #020200;">
+						<p style="padding-top: 0">{{msg.lbl_biografia_1}}</p>
+						<p>{{msg.lbl_biografia_2}}</p>
+					</div>
+				</div>
+
+				<div class="biography-grids">
+					<div class="col-md-12 biography-grid">
+						<p-fieldset legend="2013" [toggleable]="true" [collapsed]="true">
+							<p>{{msg.lbl_biografia_2013_1}}</p>
+
+							<p>{{msg.lbl_biografia_2013_2}}</p>
+
+							<p>{{msg.lbl_biografia_2013_3}}</p>
+						</p-fieldset>
+					</div>
+					<div class="col-md-12 biography-grid">
+						<p-fieldset legend="2014" [toggleable]="true" [collapsed]="true">
+							<p>{{msg.lbl_biografia_2014_1}}
+							</p>
+						</p-fieldset>
+					</div>
+					<div class="col-md-12 biography-grid">
+						<p-fieldset legend="2015" [toggleable]="true" [collapsed]="true">
+							<p>{{msg.lbl_biografia_2015_1}}</p>
+						</p-fieldset>
+					</div>
+					<div class="col-md-12 biography-grid">
+						<p-fieldset legend="2016" [toggleable]="true" [collapsed]="true">
+							<p>{{msg.lbl_biografia_2016_1}}</p>
+						</p-fieldset>
+					</div>
+					<div class="col-md-12 biography-grid">
+						<p-fieldset legend="2017" [toggleable]="true" [collapsed]="true">
+							<p>{{msg.lbl_biografia_2017_1}}</p>
+						</p-fieldset>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<!-- /about -->
 			</div>
-			<!-- /Section header -->
-
-			<!-- about -->
-			<div class="biography-grids">
-				<div class="col-md-6 biography-grid">
-					<img style="padding: 5px 0" src="assets/images/s.jpg" class="img-responsive" />
-				</div>
-				<div class="col-md-6 biography-grid" style="color: #020200;">
-					<p style="padding-top: 0">{{msg.lbl_biografia_1}}</p>
-					<p>{{msg.lbl_biografia_2}}</p>
-				</div>
-			</div>
-
-			<div class="biography-grids">
-				<div class="col-md-12 biography-grid">
-					<p-fieldset legend="2013" [toggleable]="true" [collapsed]="true">
-						<p>{{msg.lbl_biografia_2013_1}}</p>
-
-						<p>{{msg.lbl_biografia_2013_2}}</p>
-
-						<p>{{msg.lbl_biografia_2013_3}}</p>
-					</p-fieldset>
-				</div>
-				<div class="col-md-12 biography-grid">
-					<p-fieldset legend="2014" [toggleable]="true" [collapsed]="true">
-						<p>{{msg.lbl_biografia_2014_1}}
-						</p>
-					</p-fieldset>
-				</div>
-				<div class="col-md-12 biography-grid">
-					<p-fieldset legend="2015" [toggleable]="true" [collapsed]="true">
-						<p>{{msg.lbl_biografia_2015_1}}</p>
-					</p-fieldset>
-				</div>
-				<div class="col-md-12 biography-grid">
-					<p-fieldset legend="2016" [toggleable]="true" [collapsed]="true">
-						<p>{{msg.lbl_biografia_2016_1}}</p>
-					</p-fieldset>
-				</div>
-				<div class="col-md-12 biography-grid">
-					<p-fieldset legend="2017" [toggleable]="true" [collapsed]="true">
-						<p>{{msg.lbl_biografia_2017_1}}</p>
-					</p-fieldset>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<!-- /about -->
+			<!-- /Row -->
 		</div>
-		<!-- /Row -->
+		<!-- /Container -->
 	</div>
-	<!-- /Container -->
-</div>
-<!-- /About -->
+	<!-- /About -->
 
-<!-- Team -->
-<div id="team" class="section md-padding" style="padding-top: 20px !important;">
-	<!-- Container -->
-	<div class="container">
-		<!-- Row -->
-		<div class="row">
-			<!-- Section header -->
-			<div class="section-header text-center">
-				<h2 class="title">{{msg.lbl_banda}}</h2>
-			</div>
-			<!-- /Section header -->
-
-			<!-- Galer -->
-			<div class="containerGallery">
-				<div class="boxGallery">
-					<div class="box-legend">
-						<h1 class="nombreArtista">{{msg.lbl_banda_pedro}}</h1>
-						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
-							magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
-					</div>
-					<img src="assets/images/band/pedro.jpg">
-					<span>{{msg.lbl_banda_vocalista}}</span>
+	<!-- Team -->
+	<div id="team" class="section md-padding" style="padding-top: 20px !important;">
+		<!-- Container -->
+		<div class="container">
+			<!-- Row -->
+			<div class="row">
+				<!-- Section header -->
+				<div class="section-header text-center">
+					<h2 class="title">{{msg.lbl_banda}}</h2>
 				</div>
-				<div class="boxGallery">
-					<div class="box-legend">
-						<h1 class="nombreArtista">{{msg.lbl_banda_pipe}}</h1>
-						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
-							magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
-					</div>
-					<img src="assets/images/band/pipe.jpg">
-					<span>{{msg.lbl_banda_guitarrista}}</span>
-				</div>
-				<div class="boxGallery">
-					<div class="box-legend">
-						<h1 class="nombreArtista">{{msg.lbl_banda_carlos}}</h1>
-						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
-							magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
-					</div>
-					<img src="assets/images/band/carlos.jpg">
-					<span>{{msg.lbl_banda_bajista}}</span>
-				</div>
-				<div class="boxGallery">
-					<div class="box-legend">
-						<h1 class="nombreArtista">{{msg.lbl_banda_leo}}</h1>
-						<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
-							magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
-					</div>
-					<img src="assets/images/band/leo.jpg">
-					<span>{{msg.lbl_banda_baterista}}</span>
-				</div>
-			</div>
-			<!-- /Galer -->
-		</div>
-		<!-- /Row -->
-	</div>
-	<!-- /Container -->
-</div>
-<!-- /Team -->
+				<!-- /Section header -->
 
-<!-- Portfolio -->
-<div id="portfolio" class="section md-padding bg-grey">
-	<!-- Container -->
-	<div class="container">
-		<!-- Row -->
-		<div class="row">
-			<!-- Section header -->
-			<div class="section-header text-center">
-				<h2 class="title">{{msg.lbl_galeria_media}}</h2>
-			</div>
-			<!-- /Section header -->
-
-			<!-- Work -->
-			<div class="col-md-6 col-xs-12">
-				<div class="player-container">
-					<p-galleria #galleria [(value)]="images" [(activeIndex)]="activeIndex" [numVisible]="5"
-						[containerStyle]="{'max-width':'640px'}" [containerClass]="galleriaClass()"
-						[showThumbnails]="showThumbnails" [showItemNavigators]="true" [showItemNavigatorsOnHover]="true"
-						[circular]="true" [autoPlay]="true" [transitionInterval]="3000">
-						<ng-template pTemplate="item" let-item>
-							<img [src]="item.previewImageSrc"
-								[ngStyle]="{height: !fullscreen ? '400px' : 'auto', 'width': !fullscreen ? '100%' : '', 'display': !fullscreen ? 'block' : ''}" />
-						</ng-template>
-						<ng-template pTemplate="thumbnail" let-item>
-							<div class="p-grid p-nogutter p-justify-center">
-								<img [src]="item.thumbnailImageSrc" />
-							</div>
-						</ng-template>
-						<ng-template pTemplate="footer" let-item>
-							<div class="custom-galleria-footer">
-								<button type="button" pButton icon="pi pi-list"
-									(click)="onThumbnailButtonClick()"></button>
-								<span *ngIf="images" class="title-container">
-									<span>{{activeIndex + 1}}/{{images.length}}</span>
-									<span class="title">{{images[activeIndex].title}}</span>
-									<span>{{images[activeIndex].alt}}</span>
-								</span>
-								<button type="button" pButton [icon]="fullScreenIcon()" (click)="toggleFullScreen()"
-									class="fullscreen-button"></button>
-							</div>
-						</ng-template>
-					</p-galleria>
-				</div>
-			</div>
-			<!-- /Work -->
-
-			<!-- Work -->
-			<div class="col-md-6 col-xs-12">
-				<div class="player-container">
-					<div class="player-body">
-						<div class="body-cover">
-							<ul class="list list--cover">
-								<li>
-									<a class="list-link"><i class="fa fa-ellipsis-h"></i></a>
-								</li>´
-								<li>
-									<a class="list-link"></a>
-								</li>
-								<li>
-									<a class="list-link"><i style="padding-right: 5px;"
-											class="fa fa-music"></i>{{msg.lbl_banda_frenetico_rock_and_roll}}
-										- {{cancionSeleccionada}}</a>
-								</li>
-							</ul>
-							<img src="assets/images/fondo.jpg" alt="Album cover" />
-
-							<div class="slider-range">
-								<p-slider [(ngModel)]="songPosition" [disabled]="true" [min]="0" [max]="duracionMaxima">
-								</p-slider>
-								{{songTime}} - {{songTimeMax}}
-							</div>
+				<!-- Galer -->
+				<div class="containerGallery">
+					<div class="boxGallery">
+						<div class="box-legend">
+							<h1 class="nombreArtista">{{msg.lbl_banda_pedro}}</h1>
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
+								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
 						</div>
+						<img src="assets/images/band/pedro.jpg">
+						<span>{{msg.lbl_banda_vocalista}}</span>
+					</div>
+					<div class="boxGallery">
+						<div class="box-legend">
+							<h1 class="nombreArtista">{{msg.lbl_banda_pipe}}</h1>
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
+								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
+						</div>
+						<img src="assets/images/band/pipe.jpg">
+						<span>{{msg.lbl_banda_guitarrista}}</span>
+					</div>
+					<div class="boxGallery">
+						<div class="box-legend">
+							<h1 class="nombreArtista">{{msg.lbl_banda_carlos}}</h1>
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
+								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
+						</div>
+						<img src="assets/images/band/carlos.jpg">
+						<span>{{msg.lbl_banda_bajista}}</span>
+					</div>
+					<div class="boxGallery">
+						<div class="box-legend">
+							<h1 class="nombreArtista">{{msg.lbl_banda_leo}}</h1>
+							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
+								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
+						</div>
+						<img src="assets/images/band/leo.jpg">
+						<span>{{msg.lbl_banda_baterista}}</span>
+					</div>
+				</div>
+				<!-- /Galer -->
+			</div>
+			<!-- /Row -->
+		</div>
+		<!-- /Container -->
+	</div>
+	<!-- /Team -->
 
-						<div class="body-info">
-							<div class="info-song">
-								<div class="body-buttons">
-									<ul class="list list--buttons">
-										<li class="btnPlayer">
-											<button pButton pRipple type="button" icon="pi pi-step-backward"
-												(click)="prevSongSlider()" [disabled]="cancionActual == 1"
-												class="p-button-rounded p-button-danger p-button-text textWhite"></button>
-										</li>
-										<li class="btnPlayer">
-											<button id="playSong" pButton pRipple type="button" icon="pi pi-play"
-												(click)="playSongSlider()"
-												class="p-button-rounded p-button-danger p-button-text textWhite"></button>
-											<button id="stopSong" pButton pRipple type="button" icon="pi pi-pause"
-												(click)="stopSongSlider()"
-												class="p-button-rounded p-button-danger p-button-text textWhite displayNone"></button>
-										</li>
-										<li class="btnPlayer">
-											<button pButton pRipple type="button" icon="pi pi-step-forward"
-												(click)="nextSongSlider()" [disabled]="cancionActual == 5"
-												class="p-button-rounded p-button-danger p-button-text textWhite"></button>
-										</li>
-									</ul>
+	<!-- Portfolio -->
+	<div id="portfolio" class="section md-padding bg-grey">
+		<!-- Container -->
+		<div class="container">
+			<!-- Row -->
+			<div class="row">
+				<!-- Section header -->
+				<div class="section-header text-center">
+					<h2 class="title">{{msg.lbl_galeria_media}}</h2>
+				</div>
+				<!-- /Section header -->
+
+				<!-- Work -->
+				<div class="col-md-6 col-xs-12">
+					<div class="player-container">
+						<p-galleria #galleria [(value)]="images" [(activeIndex)]="activeIndex" [numVisible]="5"
+							[containerStyle]="{'max-width':'640px'}" [containerClass]="galleriaClass()"
+							[showThumbnails]="showThumbnails" [showItemNavigators]="true"
+							[showItemNavigatorsOnHover]="true" [circular]="true" [autoPlay]="true"
+							[transitionInterval]="3000">
+							<ng-template pTemplate="item" let-item>
+								<img [src]="item.previewImageSrc"
+									[ngStyle]="{height: !fullscreen ? '400px' : 'auto', 'width': !fullscreen ? '100%' : '', 'display': !fullscreen ? 'block' : ''}" />
+							</ng-template>
+							<ng-template pTemplate="thumbnail" let-item>
+								<div class="p-grid p-nogutter p-justify-center">
+									<img [src]="item.thumbnailImageSrc" />
+								</div>
+							</ng-template>
+							<ng-template pTemplate="footer" let-item>
+								<div class="custom-galleria-footer">
+									<button type="button" pButton icon="pi pi-list"
+										(click)="onThumbnailButtonClick()"></button>
+									<span *ngIf="images" class="title-container">
+										<span>{{activeIndex + 1}}/{{images.length}}</span>
+										<span class="title">{{images[activeIndex].title}}</span>
+										<span>{{images[activeIndex].alt}}</span>
+									</span>
+									<button type="button" pButton [icon]="fullScreenIcon()" (click)="toggleFullScreen()"
+										class="fullscreen-button"></button>
+								</div>
+							</ng-template>
+						</p-galleria>
+					</div>
+				</div>
+				<!-- /Work -->
+
+				<!-- Work -->
+				<div class="col-md-6 col-xs-12">
+					<div class="player-container">
+						<div class="player-body">
+							<div class="body-cover">
+								<ul class="list list--cover">
+									<li>
+										<a class="list-link"><i class="fa fa-ellipsis-h"></i></a>
+									</li>´
+									<li>
+										<a class="list-link"></a>
+									</li>
+									<li>
+										<a class="list-link"><i style="padding-right: 5px;"
+												class="fa fa-music"></i>{{msg.lbl_banda_frenetico_rock_and_roll}}
+											- {{cancionSeleccionada}}</a>
+									</li>
+								</ul>
+								<img src="assets/images/fondo.jpg" alt="Album cover" />
+
+								<div class="slider-range">
+									<p-slider [(ngModel)]="songPosition" [disabled]="true" [min]="0"
+										[max]="duracionMaxima">
+									</p-slider>
+									{{songTime}} - {{songTimeMax}}
+								</div>
+							</div>
+
+							<div class="body-info">
+								<div class="info-song">
+									<div class="body-buttons">
+										<ul class="list list--buttons">
+											<li class="btnPlayer">
+												<button pButton pRipple type="button" icon="pi pi-step-backward"
+													(click)="prevSongSlider()" [disabled]="cancionActual == 1"
+													class="p-button-rounded p-button-danger p-button-text textWhite"></button>
+											</li>
+											<li class="btnPlayer">
+												<button id="playSong" pButton pRipple type="button" icon="pi pi-play"
+													(click)="playSongSlider()"
+													class="p-button-rounded p-button-danger p-button-text textWhite"></button>
+												<button id="stopSong" pButton pRipple type="button" icon="pi pi-pause"
+													(click)="stopSongSlider()"
+													class="p-button-rounded p-button-danger p-button-text textWhite displayNone"></button>
+											</li>
+											<li class="btnPlayer">
+												<button pButton pRipple type="button" icon="pi pi-step-forward"
+													(click)="nextSongSlider()" [disabled]="cancionActual == 5"
+													class="p-button-rounded p-button-danger p-button-text textWhite"></button>
+											</li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				<!-- /Work -->
 			</div>
-			<!-- /Work -->
+			<!-- /Row -->
 		</div>
-		<!-- /Row -->
+		<!-- /Container -->
 	</div>
-	<!-- /Container -->
-</div>
-<!-- /Portfolio -->
+	<!-- /Portfolio -->
 
-<!-- Service -->
-<div id="service" class="section md-padding">
-	<div class="container">
-		<div class="section-header text-center">
-			<h2 class="title">{{msg.lbl_participaciones}}</h2>
-		</div>
-		<div class="border"></div>
-
-		<div *ngIf="listaEventos.length > 0; else sinResultados" class="service-grids">
-			<div *ngFor="let evento of listaEventos" class="col-md-3 ser-grid">
-				<div class="ser-top">
-					<div class="con hvr-shutter-in-horizontal">
-						<i class="glyphicon" aria-hidden="true"><img [src]="evento.urlPoster"
-								class="img-responsive" /></i>
-					</div>
-					<h4>{{evento.nombre}}</h4>
-					<p>{{evento.descripcion}}</p>
-				</div>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-		<ng-template #sinResultados>
-			<div class="service-grids">
-				<div class="col-md-12 ser-grid">
-					<p class="sinResultados shiny">{{msg.lbl_info_sin_resultados}}</p>
-				</div>
-			</div>
-		</ng-template>
-	</div>
-</div>
-<!-- /Service -->
-
-<!-- Why Choose Us -->
-<div id="features" class="section md-padding bg-grey">
-	<!-- Container -->
-	<div class="container">
-		<!-- Row -->
-		<div class="row">
-			<!-- why choose us content -->
-			<div class="col-md-6">
-				<div class="section-header">
-					<h2 class="title">{{msg.lbl_banda_frenetico_rock_and_roll}}</h2>
-				</div>
-				<p>{{msg.lbl_banda_descripcion_demo}}</p>
-				<div class="feature">
-					<i class="fa fa-check"></i>
-					<p>{{msg.lbl_banda_demo_1}}</p>
-				</div>
-				<div class="feature">
-					<i class="fa fa-check"></i>
-					<p>{{msg.lbl_banda_demo_2}}</p>
-				</div>
-				<div class="feature">
-					<i class="fa fa-check"></i>
-					<p>{{msg.lbl_banda_demo_3}}</p>
-				</div>
-				<div class="feature">
-					<i class="fa fa-check"></i>
-					<p>{{msg.lbl_banda_demo_4}}</p>
-				</div>
-				<div class="feature">
-					<i class="fa fa-check"></i>
-					<p>{{msg.lbl_banda_demo_5}}</p>
-				</div>
-			</div>
-			<!-- /why choose us content -->
-			<!-- Choose slider -->
-			<div class="col-md-6">
-				<owl-carousel-o [options]="customOptions">
-					<ng-template carouselSlide>
-						<img class="img-responsive" src="assets/images/demo.jpg" alt="">
-					</ng-template>
-					<ng-template carouselSlide>
-						<img class="img-responsive" src="assets/images/compilado.jpg" alt="">
-					</ng-template>
-				</owl-carousel-o>
-			</div>
-			<!-- /Choose slider -->
-		</div>
-		<!-- /Row -->
-	</div>
-	<!-- /Container -->
-</div>
-<!-- /Why Choose Us -->
-
-<!-- Numbers -->
-<div id="numbers" class="section sm-padding">
-	<!-- Background Image -->
-	<div class="bg-img" style="background-image: url('assets/images/fondo2.jpg');">
-		<div class="overlay"></div>
-	</div>
-	<!-- /Background Image -->
-
-	<!-- Container -->
-	<div class="container">
-		<!-- Row -->
-		<div class="row">
-			<!-- number -->
-			<div class="col-sm-3 col-xs-6">
-				<div class="number">
-					<i class="fa fa-users"></i>
-					<h3 class="white-text"><span class="counter">451</span></h3>
-					<span class="white-text">{{msg.lbl_eutanasicos}}</span>
-				</div>
-			</div>
-			<!-- /number -->
-
-			<!-- number -->
-			<div class="col-sm-3 col-xs-6">
-				<div class="number">
-					<i class="fa fa-trophy"></i>
-					<h3 class="white-text"><span class="counter">25</span></h3>
-					<span class="white-text">{{msg.lbl_participaciones}}</span>
-				</div>
-			</div>
-			<!-- /number -->
-
-			<!-- number -->
-			<div class="col-sm-3 col-xs-6">
-				<div class="number">
-					<i class="fa fa-calendar"></i>
-					<h3 class="white-text"><span class="counter"></span>{{msg.lbl_por_definir}}</h3>
-					<span class="white-text">{{msg.lbl_proximo_evento}}</span>
-				</div>
-			</div>
-			<!-- /number -->
-
-			<!-- number -->
-			<div class="col-sm-3 col-xs-6">
-				<div class="number">
-					<i class="fa fa-file"></i>
-					<h3 class="white-text"><span class="counter">150000</span></h3>
-					<span class="white-text">{{msg.lbl_posts}}</span>
-				</div>
-			</div>
-			<!-- /number -->
-		</div>
-		<!-- /Row -->
-	</div>
-	<!-- /Container -->
-</div>
-<!-- /Numbers -->
-
-<!-- Pricing -->
-<div id="pricing" class="section md-padding">
-
-	<!-- Container -->
-	<div class="container">
-		<!-- Row -->
-		<div class="row">
-			<!-- Section header -->
+	<!-- Service -->
+	<div id="service" class="section md-padding">
+		<div class="container">
 			<div class="section-header text-center">
-				<h2 class="title">{{msg.lbl_comparte}}</h2>
-				<p>{{msg.lbl_banda_ayuda_compartir}}</p>
+				<h2 class="title">{{msg.lbl_participaciones}}</h2>
 			</div>
-			<!-- /Section header -->
+			<div class="border"></div>
 
-			<div class="service-grids">
-				<div class="col-md-6 ser-grid text-center">
-					<iframe style="border: 1px solid #dacfcf;box-shadow: 0 0 5px #000;" width="560" height="315"
-						src="https://www.youtube.com/embed/PZMzYK1ZNaI?autohide=1" frameborder="0"
-						allowfullscreen></iframe>
-				</div>
-				<div class="col-md-6 ser-grid text-center">
-					<iframe style="border: 1px solid #dacfcf;box-shadow: 0 0 5px #000;" width="560" height="315"
-						src="https://www.youtube.com/embed/p4t8_3qyETw?autohide=1" frameborder="0"
-						allowfullscreen></iframe>
-				</div>
-			</div>
-		</div>
-		<!-- Row -->
-	</div>
-	<!-- /Container -->
-</div>
-<!-- /Pricing -->
-
-<!-- Testimonial -->
-<div id="testimonial" class="section md-padding">
-	<!-- Background Image -->
-	<div class="bg-img" style="background-image: url('assets/images/fondo2.jpg');">
-		<div class="overlay"></div>
-	</div>
-	<!-- /Background Image -->
-
-	<!-- Container -->
-	<div class="container">
-		<!-- Row -->
-		<div class="row">
-			<!-- Section header -->
-			<div class="section-header text-center">
-				<h2 class="title textWhite">{{msg.lbl_colaboradores}}</h2>
-			</div>
-			<!-- /Section header -->
-
-			<!-- Testimonial slider -->
-			<div class="col-md-10 col-md-offset-1">
-				<owl-carousel-o [options]="customOptions">
-					<ng-template carouselSlide>
-						<!-- testimonial -->
-						<div class="testimonial">
-							<div class="testimonial-meta">
-								<img href="http://www.carlosjacomeartworks.com/" src="assets/images/carlosjacome.jpg">
-								<h3 class="white-text">{{msg.lbl_banda_carlos_jacome}}</h3>
-								<span>{{msg.lbl_disenador_grafico}}</span>
-							</div>
-							<p style="padding: 5px;" class="white-text text-justify">
-								{{msg.lbl_banda_resena_carlos_jacome}}</p>
+			<div *ngIf="listaEventos.length > 0; else sinResultados" class="service-grids">
+				<div *ngFor="let evento of listaEventos" class="col-md-3 ser-grid">
+					<div class="ser-top">
+						<div class="con hvr-shutter-in-horizontal">
+							<i class="glyphicon" aria-hidden="true"><img [src]="evento.urlPoster"
+									class="img-responsive" /></i>
 						</div>
-						<!-- /testimonial -->
-					</ng-template>
-					<ng-template carouselSlide>
-						<!-- testimonial -->
-						<div class="testimonial">
-							<div class="testimonial-meta">
-								<img width="auto !important" src="assets/images/guardia.png">
-								<h3 class="white-text">{{msg.lbl_banda_guardia_estudio}}</h3>
-								<span>{{msg.lbl_estudio_grabacion}}</span>
-							</div>
-							<p style="padding: 5px;" class="white-text text-justify">Molestie at elementum eu facilisis
-								sed odio. Scelerisque in dictum non consectetur a erat. Aliquam id diam maecenas
-								ultricies mi eget mauris.</p>
-						</div>
-						<!-- /testimonial -->
-					</ng-template>
-				</owl-carousel-o>
-			</div>
-			<!-- /Testimonial slider -->
-		</div>
-		<!-- /Row -->
-	</div>
-	<!-- /Container -->
-</div>
-<!-- /Testimonial -->
-
-<!-- Blog -->
-<div id="publicaciones" class="section md-padding bg-grey">
-	<!-- Container -->
-	<div class="container">
-		<!-- Row -->
-		<div class="row">
-			<!-- Section header -->
-			<div class="section-header text-center">
-				<h2 class="title">{{msg.lbl_ultimas_publicaciones}}</h2>
-			</div>
-			<!-- /Section header -->
-
-			<!-- blog -->
-			<div *ngIf="listaPosts.length > 0; else sinResultadosPosts" class="service-grids">
-				<div *ngFor="let post of listaPosts" class="col-md-4">
-					<div class="blog">
-						<div class="blog-img">
-							<img class="img-responsive" [src]="post.urlImagen" alt="">
-						</div>
-						<div class="blog-content">
-							<ul class="blog-meta">
-								<li><i class="fa fa-user"></i>{{post.autor}}</li>
-								<li><i class="fa fa-clock-o"></i>{{convertirFechaPost(post.fechaCreacion)}}</li>
-								<li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
-							</ul>
-							<h3>{{post.titulo}}</h3>
-							<p>{{post.subtitulo}}</p>
-							<a class="hoverBlack cursorPointer" (click)="verPost(post)">{{msg.lbl_leer_mas}}</a>
-						</div>
+						<h4>{{evento.nombre}}</h4>
+						<p>{{evento.descripcion}}</p>
 					</div>
 				</div>
+				<div class="clearfix"></div>
 			</div>
-			<ng-template #sinResultadosPosts>
+			<ng-template #sinResultados>
 				<div class="service-grids">
 					<div class="col-md-12 ser-grid">
 						<p class="sinResultados shiny">{{msg.lbl_info_sin_resultados}}</p>
 					</div>
 				</div>
 			</ng-template>
-			<!-- /blog -->
 		</div>
-		<!-- /Row -->
 	</div>
-	<!-- /Container -->
-</div>
-<!-- /Blog -->
+	<!-- /Service -->
 
-<!-- Contact -->
-<div id="contact" class="section md-padding">
-	<!-- Container -->
-	<div class="container">
-		<!-- Row -->
-		<div class="row">
-			<!-- Section-header -->
-			<div class="section-header text-center">
-				<h2 class="title">{{msg.lbl_contacto}}</h2>
-				<input type="submit" class="main-btn" value="Registrar Eutanásico" />
+	<!-- Why Choose Us -->
+	<div id="features" class="section md-padding bg-grey">
+		<!-- Container -->
+		<div class="container">
+			<!-- Row -->
+			<div class="row">
+				<!-- why choose us content -->
+				<div class="col-md-6">
+					<div class="section-header">
+						<h2 class="title">{{msg.lbl_banda_frenetico_rock_and_roll}}</h2>
+					</div>
+					<p>{{msg.lbl_banda_descripcion_demo}}</p>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p>{{msg.lbl_banda_demo_1}}</p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p>{{msg.lbl_banda_demo_2}}</p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p>{{msg.lbl_banda_demo_3}}</p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p>{{msg.lbl_banda_demo_4}}</p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p>{{msg.lbl_banda_demo_5}}</p>
+					</div>
+				</div>
+				<!-- /why choose us content -->
+				<!-- Choose slider -->
+				<div class="col-md-6">
+					<owl-carousel-o [options]="customOptions">
+						<ng-template carouselSlide>
+							<img class="img-responsive" src="assets/images/demo.jpg" alt="">
+						</ng-template>
+						<ng-template carouselSlide>
+							<img class="img-responsive" src="assets/images/compilado.jpg" alt="">
+						</ng-template>
+					</owl-carousel-o>
+				</div>
+				<!-- /Choose slider -->
 			</div>
-			<!-- /Section-header -->
-
-			<div class="map">
-				<iframe
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d830.1069021886983!2d-73.3544373416631!3d8.235285134887176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x119b8b5e31460d67!2sColumna+de+la+Libertad+de+los+Esclavos!5e0!3m2!1ses!2sco!4v1487799660955"
-					width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-			</div>
+			<!-- /Row -->
 		</div>
-		<!-- /Row -->
+		<!-- /Container -->
 	</div>
-	<!-- /Container -->
-</div>
-<!-- /Contact -->
+	<!-- /Why Choose Us -->
 
-<!-- FOOTER -->
-<app-footer></app-footer>
-<!-- FOOTER -->
+	<!-- Numbers -->
+	<div id="numbers" class="section sm-padding">
+		<!-- Background Image -->
+		<div class="bg-img" style="background-image: url('assets/images/fondo2.jpg');">
+			<div class="overlay"></div>
+		</div>
+		<!-- /Background Image -->
+
+		<!-- Container -->
+		<div class="container">
+			<!-- Row -->
+			<div class="row">
+				<!-- number -->
+				<div class="col-sm-3 col-xs-6">
+					<div class="number">
+						<i class="fa fa-users"></i>
+						<h3 class="white-text"><span class="counter">451</span></h3>
+						<span class="white-text">{{msg.lbl_eutanasicos}}</span>
+					</div>
+				</div>
+				<!-- /number -->
+
+				<!-- number -->
+				<div class="col-sm-3 col-xs-6">
+					<div class="number">
+						<i class="fa fa-trophy"></i>
+						<h3 class="white-text"><span class="counter">25</span></h3>
+						<span class="white-text">{{msg.lbl_participaciones}}</span>
+					</div>
+				</div>
+				<!-- /number -->
+
+				<!-- number -->
+				<div class="col-sm-3 col-xs-6">
+					<div class="number">
+						<i class="fa fa-calendar"></i>
+						<h3 class="white-text"><span class="counter"></span>{{msg.lbl_por_definir}}</h3>
+						<span class="white-text">{{msg.lbl_proximo_evento}}</span>
+					</div>
+				</div>
+				<!-- /number -->
+
+				<!-- number -->
+				<div class="col-sm-3 col-xs-6">
+					<div class="number">
+						<i class="fa fa-file"></i>
+						<h3 class="white-text"><span class="counter">150000</span></h3>
+						<span class="white-text">{{msg.lbl_posts}}</span>
+					</div>
+				</div>
+				<!-- /number -->
+			</div>
+			<!-- /Row -->
+		</div>
+		<!-- /Container -->
+	</div>
+	<!-- /Numbers -->
+
+	<!-- Pricing -->
+	<div id="pricing" class="section md-padding">
+
+		<!-- Container -->
+		<div class="container">
+			<!-- Row -->
+			<div class="row">
+				<!-- Section header -->
+				<div class="section-header text-center">
+					<h2 class="title">{{msg.lbl_comparte}}</h2>
+					<p>{{msg.lbl_banda_ayuda_compartir}}</p>
+				</div>
+				<!-- /Section header -->
+
+				<div class="service-grids">
+					<div class="col-md-6 ser-grid text-center">
+						<iframe style="border: 1px solid #dacfcf;box-shadow: 0 0 5px #000;" width="560" height="315"
+							src="https://www.youtube.com/embed/PZMzYK1ZNaI?autohide=1" frameborder="0"
+							allowfullscreen></iframe>
+					</div>
+					<div class="col-md-6 ser-grid text-center">
+						<iframe style="border: 1px solid #dacfcf;box-shadow: 0 0 5px #000;" width="560" height="315"
+							src="https://www.youtube.com/embed/p4t8_3qyETw?autohide=1" frameborder="0"
+							allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+			<!-- Row -->
+		</div>
+		<!-- /Container -->
+	</div>
+	<!-- /Pricing -->
+
+	<!-- Testimonial -->
+	<div id="testimonial" class="section md-padding">
+		<!-- Background Image -->
+		<div class="bg-img" style="background-image: url('assets/images/fondo2.jpg');">
+			<div class="overlay"></div>
+		</div>
+		<!-- /Background Image -->
+
+		<!-- Container -->
+		<div class="container">
+			<!-- Row -->
+			<div class="row">
+				<!-- Section header -->
+				<div class="section-header text-center">
+					<h2 class="title textWhite">{{msg.lbl_colaboradores}}</h2>
+				</div>
+				<!-- /Section header -->
+
+				<!-- Testimonial slider -->
+				<div class="col-md-10 col-md-offset-1">
+					<owl-carousel-o [options]="customOptions">
+						<ng-template carouselSlide>
+							<!-- testimonial -->
+							<div class="testimonial">
+								<div class="testimonial-meta">
+									<img href="http://www.carlosjacomeartworks.com/"
+										src="assets/images/carlosjacome.jpg">
+									<h3 class="white-text">{{msg.lbl_banda_carlos_jacome}}</h3>
+									<span>{{msg.lbl_disenador_grafico}}</span>
+								</div>
+								<p style="padding: 5px;" class="white-text text-justify">
+									{{msg.lbl_banda_resena_carlos_jacome}}</p>
+							</div>
+							<!-- /testimonial -->
+						</ng-template>
+						<ng-template carouselSlide>
+							<!-- testimonial -->
+							<div class="testimonial">
+								<div class="testimonial-meta">
+									<img width="auto !important" src="assets/images/guardia.png">
+									<h3 class="white-text">{{msg.lbl_banda_guardia_estudio}}</h3>
+									<span>{{msg.lbl_estudio_grabacion}}</span>
+								</div>
+								<p style="padding: 5px;" class="white-text text-justify">Molestie at elementum eu
+									facilisis
+									sed odio. Scelerisque in dictum non consectetur a erat. Aliquam id diam maecenas
+									ultricies mi eget mauris.</p>
+							</div>
+							<!-- /testimonial -->
+						</ng-template>
+					</owl-carousel-o>
+				</div>
+				<!-- /Testimonial slider -->
+			</div>
+			<!-- /Row -->
+		</div>
+		<!-- /Container -->
+	</div>
+	<!-- /Testimonial -->
+
+	<!-- Blog -->
+	<div id="publicaciones" class="section md-padding bg-grey">
+		<!-- Container -->
+		<div class="container">
+			<!-- Row -->
+			<div class="row">
+				<!-- Section header -->
+				<div class="section-header text-center">
+					<h2 class="title">{{msg.lbl_ultimas_publicaciones}}</h2>
+				</div>
+				<!-- /Section header -->
+
+				<!-- blog -->
+				<div *ngIf="listaPosts.length > 0; else sinResultadosPosts" class="service-grids">
+					<div *ngFor="let post of listaPosts" class="col-md-4">
+						<div class="blog">
+							<div class="blog-img">
+								<img class="img-responsive" [src]="post.urlImagen" alt="">
+							</div>
+							<div class="blog-content">
+								<ul class="blog-meta">
+									<li><i class="fa fa-user"></i>{{post.autor}}</li>
+									<li><i class="fa fa-clock-o"></i>{{convertirFechaPost(post.fechaCreacion)}}</li>
+									<li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
+								</ul>
+								<h3>{{post.titulo}}</h3>
+								<p>{{post.subtitulo}}</p>
+								<a class="hoverBlack cursorPointer" (click)="verPost(post)">{{msg.lbl_leer_mas}}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ng-template #sinResultadosPosts>
+					<div class="service-grids">
+						<div class="col-md-12 ser-grid">
+							<p class="sinResultados shiny">{{msg.lbl_info_sin_resultados}}</p>
+						</div>
+					</div>
+				</ng-template>
+				<!-- /blog -->
+			</div>
+			<!-- /Row -->
+		</div>
+		<!-- /Container -->
+	</div>
+	<!-- /Blog -->
+
+	<!-- Contact -->
+	<div id="contact" class="section md-padding">
+		<!-- Container -->
+		<div class="container">
+			<!-- Row -->
+			<div class="row">
+				<!-- Section-header -->
+				<div class="section-header text-center">
+					<h2 class="title">{{msg.lbl_contacto}}</h2>
+					<input type="submit" class="main-btn" value="Registrar Eutanásico" />
+				</div>
+				<!-- /Section-header -->
+
+				<div class="map">
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d830.1069021886983!2d-73.3544373416631!3d8.235285134887176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x119b8b5e31460d67!2sColumna+de+la+Libertad+de+los+Esclavos!5e0!3m2!1ses!2sco!4v1487799660955"
+						width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+			</div>
+			<!-- /Row -->
+		</div>
+		<!-- /Container -->
+	</div>
+	<!-- /Contact -->
+
+	<!-- FOOTER -->
+	<app-footer></app-footer>
+	<!-- FOOTER -->
+
+</p-scrollPanel>

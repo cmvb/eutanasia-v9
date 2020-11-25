@@ -461,4 +461,34 @@ export class Util {
   copiarElemento(source, target) {
     return Object.assign(target, source);
   }
+
+  //funcion que valida la respuesta de un servicio del EAP
+  reportarExcepcionWS(objResponseWS: any) {
+    let mensaje = { severity: '', summary: '', detail: '' };
+    let result = typeof objResponseWS === 'undefined' || objResponseWS === null || objResponseWS === 'null' ? null : JSON.parse(JSON.stringify(objResponseWS)).response.result;
+
+    if (typeof result === 'undefined' || result === null || result === 'null' || result === "ERROR") {
+      Object.assign(this.mensaje, mensaje);
+      mensaje.severity = this.const.severity[2];
+      mensaje.summary = objResponseWS.response.result + " " + objResponseWS.response.code + ": ";
+      mensaje.detail = objResponseWS.response.description + ". " + objResponseWS.response.detail + ". ";
+    } else {
+      mensaje = null;
+    }
+    return mensaje;
+  }
+
+  construirMensajeExcepcion(error, summary) {
+    let mensaje = { severity: '', summary: '', detail: '' };
+
+    if (typeof error === 'undefined' || error === null || error === 'null') {
+      Object.assign(this.mensaje, mensaje);
+      mensaje.severity = this.const.severity[3];
+      mensaje.summary = summary;
+      mensaje.detail = error;
+    } else {
+      mensaje = null;
+    }
+    return mensaje;
+  }
 }

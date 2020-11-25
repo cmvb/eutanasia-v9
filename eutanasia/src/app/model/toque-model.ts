@@ -1,13 +1,14 @@
 export interface ToqueModel {
     id;
     nombre;
-    fecha;
+    descripcion;
     valorBoleta;
     valorBoletaPromo;
     capacidad;
     ciudad;
     urlPoster;
     organizador;
+    fecha;
 
     estado;
     fechaCreacion;

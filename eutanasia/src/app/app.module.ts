@@ -1,5 +1,7 @@
 // Imports PrimeNG
+import { FileUploadModule } from 'primeng/fileupload';
 import { DialogModule } from 'primeng/dialog';
+import { CalendarModule } from 'primeng/calendar';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
@@ -109,7 +111,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ButtonModule,
     SliderModule,
     FieldsetModule,
-    DialogModule
+    DialogModule,
+    CalendarModule,
+    FileUploadModule
   ],
   providers: [TextProperties, Enumerados, ObjectModelInitializer, Guardian, Util, Functions, MessageService, SesionService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

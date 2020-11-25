@@ -1,190 +1,197 @@
-<header style="background-image: url('assets/images/banner.jpg');">
-  <!-- Nav -->
-  <nav id="nav" class="navbar nav-transparent">
-    <div class="container">
-      <div class="navbar-header">
-        <!-- Logo -->
-        <div class="navbar-brand">
-          <a href="index.html">
-            <img class="logo" src="assets/images/logo.png" alt="logo">
-            <img class="logo-alt" src="assets/images/logo.png" alt="logo">
-          </a>
-        </div>
-        <!-- /Logo -->
-        <!-- Collapse nav button -->
-        <div class="nav-collapse">
-          <span></span>
-        </div>
-        <!-- /Collapse nav button -->
-      </div>
+<p-scrollPanel #scrollBlog [style]="{width: '100%', height: '100vh'}" styleClass="custom">
 
-      <!--  Main navigation  -->
-      <ul class="main-nav nav navbar-nav navbar-right">
-        <li><a href="#home">{{msg.lbl_inicio}}</a></li>
-        <li><a href="#about">{{msg.lbl_bio}}</a></li>
-        <li><a href="#team">{{msg.lbl_banda}}</a></li>
-        <li><a href="#portfolio">{{msg.lbl_galeria_media}}</a></li>
-        <li><a href="#service">{{msg.lbl_participaciones}}</a></li>
-        <li><a href="#pricing">{{msg.lbl_comparte}}</a></li>
-        <li><a href="#publicaciones">{{msg.lbl_ultimas_publicaciones}}</a></li>
-        <li><a href="#blog">{{msg.lbl_blog}}</a></li>
-        <li class="has-dropdown"><a>{{msg.lbl_registro_ingreso}}</a>
-          <ul class="dropdown">
-            <li><a href="#Login">{{msg.lbl_login}}</a></li>
-            <li><a href="#register">{{msg.lbl_register}}</a></li>
-          </ul>
-        </li>
-      </ul>
-      <!-- /Main navigation -->
-
-    </div>
-  </nav>
-  <!-- /Nav -->
-
-  <!-- header wrapper -->
-  <div class="header-wrapper sm-padding bg-grey">
-    <div class="container">
-      <h2>{{post.titulo}}</h2>
-      <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="index.html">{{msg.lbl_blog}}</a></li>
-        <li class="breadcrumb-item"><a href="index.html#blog">{{msg.lbl_posts}}</a></li>
-        <li class="breadcrumb-item active">{{post.titulo}}</li>
-      </ul>
-    </div>
-  </div>
-  <!-- /header wrapper -->
-</header>
-<!-- /Header -->
-
-<!-- Notificaciones -->
-<p-toast></p-toast>
-<!-- Blog -->
-<div id="blog" class="section md-padding" *ngIf="post !== undefined">
-  <!-- Container -->
-  <div class="container">
-    <!-- Row -->
-    <div class="row">
-      <!-- ASIDE -->
-      <app-aside></app-aside>
-      <!-- ASIDE -->
-
-      <!-- Main -->
-      <main id="main" class="col-md-9">
-        <div class="blog">
-          <div class="blog-img">
-            <img class="img-responsive" [src]="post.urlImagen" alt="">
-          </div>
-          <div class="blog-content">
-            <ul class="blog-meta">
-              <li><i class="fa fa-user"></i>{{post.autor}}</li>
-              <li><i class="fa fa-clock-o"></i>{{convertirFechaBlog(post.fechaCreacion)}}</li>
-              <li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
-              <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})</li>
-            </ul>
-
-            <h3>{{post.titulo}}</h3>
-            <h5>{{post.subtitulo}}</h5>
-            <p>{{post.articulo}}</p>
-          </div>
-
-          <!-- blog tags -->
-          <div class="blog-tags">
-            <h5>{{msg.lbl_tags}}</h5>
-            <a *ngFor="let tag of listaTags">
-              <i class="fa fa-tag"></i>{{tag}}
+  <!-- Header -->
+  <header style="background-image: url('assets/images/banner.jpg');">
+    <!-- Nav -->
+    <nav id="nav" class="navbar nav-transparent">
+      <div class="container">
+        <div class="navbar-header">
+          <!-- Logo -->
+          <div class="navbar-brand">
+            <a href="index.html">
+              <img class="logo" src="assets/images/logo.png" alt="logo">
+              <img class="logo-alt" src="assets/images/logo.png" alt="logo">
             </a>
           </div>
-          <!-- blog tags -->
-
-          <!-- blog author -->
-          <div class="blog-author">
-            <div class="media">
-              <div class="media-left">
-                <img class="media-object" src="assets/images/author.jpg" alt="">
-              </div>
-              <div class="media-body">
-                <div class="media-heading">
-                  <h3>{{post.autor}}</h3>
-                  <div class="author-social">
-                    <a><i class="fa fa-facebook"></i></a>
-                    <a><i class="fa fa-twitter"></i></a>
-                    <a><i class="fa fa-google-plus"></i></a>
-                    <a><i class="fa fa-instagram"></i></a>
-                  </div>
-                </div>
-                <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non
-                  blandit massa enim nec.</p>
-              </div>
-            </div>
+          <!-- /Logo -->
+          <!-- Collapse nav button -->
+          <div class="nav-collapse">
+            <span></span>
           </div>
-          <!-- /blog author -->
+          <!-- /Collapse nav button -->
+        </div>
 
-          <!-- blog comments -->
-          <div class="blog-comments">
-            <h3 class="title">({{post.cantidadComentarios}}) Comentarios</h3>
+        <!--  Main navigation  -->
+        <ul class="main-nav nav navbar-nav navbar-right">
+          <li><a href="#home">{{msg.lbl_inicio}}</a></li>
+          <li><a href="#about">{{msg.lbl_bio}}</a></li>
+          <li><a href="#team">{{msg.lbl_banda}}</a></li>
+          <li><a href="#portfolio">{{msg.lbl_galeria_media}}</a></li>
+          <li><a href="#service">{{msg.lbl_participaciones}}</a></li>
+          <li><a href="#pricing">{{msg.lbl_comparte}}</a></li>
+          <li><a href="#publicaciones">{{msg.lbl_ultimas_publicaciones}}</a></li>
+          <li><a href="#blog">{{msg.lbl_blog}}</a></li>
+          <li class="has-dropdown"><a>{{msg.lbl_registro_ingreso}}</a>
+            <ul class="dropdown">
+              <li><a href="#Login">{{msg.lbl_login}}</a></li>
+              <li><a href="#register">{{msg.lbl_register}}</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- /Main navigation -->
 
-            <!-- comment -->
-            <div *ngIf="listaComentarios.length > 0; else sinResultadosComment" class="service-grids">
-              <div *ngFor="let comentario of listaComentarios" class="media">
+      </div>
+    </nav>
+    <!-- /Nav -->
+
+    <!-- header wrapper -->
+    <div class="header-wrapper sm-padding bg-grey">
+      <div class="container">
+        <h2>{{post.titulo}}</h2>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">{{msg.lbl_blog}}</a></li>
+          <li class="breadcrumb-item"><a href="index.html#blog">{{msg.lbl_posts}}</a></li>
+          <li class="breadcrumb-item active">{{post.titulo}}</li>
+        </ul>
+      </div>
+    </div>
+    <!-- /header wrapper -->
+  </header>
+  <!-- /Header -->
+
+  <!-- Notificaciones -->
+  <p-toast></p-toast>
+
+  <!-- Blog -->
+  <div id="blog" class="section md-padding" *ngIf="post !== undefined">
+    <!-- Container -->
+    <div class="container">
+      <!-- Row -->
+      <div class="row">
+        <!-- ASIDE -->
+        <app-aside></app-aside>
+        <!-- ASIDE -->
+
+        <!-- Main -->
+        <main id="main" class="col-md-9">
+          <div class="blog">
+            <div class="blog-img">
+              <img class="img-responsive" [src]="post.urlImagen" alt="">
+            </div>
+            <div class="blog-content">
+              <ul class="blog-meta">
+                <li><i class="fa fa-user"></i>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</li>
+                <li><i class="fa fa-clock-o"></i>{{convertirFechaBlog(post.fechaCreacion)}}</li>
+                <li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
+                <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})</li>
+              </ul>
+
+              <h3>{{post.titulo}}</h3>
+              <h5>{{post.subtitulo}}</h5>
+              <p>{{post.articulo}}</p>
+            </div>
+
+            <!-- blog tags -->
+            <div class="blog-tags">
+              <h5>{{msg.lbl_tags}}</h5>
+              <a *ngFor="let tag of listaTags">
+                <i class="fa fa-tag"></i>{{tag}}
+              </a>
+            </div>
+            <!-- blog tags -->
+
+            <!-- blog author -->
+            <div class="blog-author">
+              <div class="media">
                 <div class="media-left">
-                  <img class="media-object" src="assets/images/perso1.jpg" alt="">
+                  <img class="media-object" src="assets/images/author.jpg" alt="">
                 </div>
                 <div class="media-body">
-                  <h4 class="media-heading">{{comentario.autor}}<span
-                      class="time">{{convertirFechaBlog(comentario.fechaCreacion)}}</span><a class="reply">Responder
-                      <i class="fa fa-reply"></i></a></h4>
-                  <p>{{comentario.comentario}}</p>
-                </div>
-
-                <!-- author reply comment -->
-                <div *ngIf="obtenerRespuestas(comentario).length > 0" class="service-grids margin-verticals-10px">
-                  <div *ngFor="let respuesta of obtenerRespuestas(comentario)" class="media author">
-                    <div class="media-left">
-                      <img class="media-object" src="assets/images/perso2.jpg" alt="">
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">{{respuesta.autor}}<span
-                          class="time">{{convertirFechaBlog(respuesta.fechaCreacion)}}</span><a class="reply">Responder
-                          <i class="fa fa-reply"></i></a></h4>
-                      <p>{{respuesta.comentario}}</p>
+                  <div class="media-heading">
+                    <h3>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</h3>
+                    <div class="author-social">
+                      <a><i class="fa fa-facebook"></i></a>
+                      <a><i class="fa fa-twitter"></i></a>
+                      <a><i class="fa fa-google-plus"></i></a>
+                      <a><i class="fa fa-instagram"></i></a>
                     </div>
                   </div>
+                  <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non
+                    blandit massa enim nec.</p>
                 </div>
-                <!-- /comment -->
               </div>
             </div>
-            <ng-template #sinResultadosComment>
-              <div class="service-grids">
-                <div class="col-md-12 ser-grid">
-                  <p class="sinResultados shiny">{{msg.lbl_info_sin_resultados}}</p>
+            <!-- /blog author -->
+
+            <!-- blog comments -->
+            <div class="blog-comments">
+              <h3 class="title">({{post.cantidadComentarios}}) Comentarios</h3>
+
+              <!-- comment -->
+              <div *ngIf="listaComentarios.length > 0; else sinResultadosComment" class="service-grids">
+                <div *ngFor="let comentario of listaComentarios" class="media">
+                  <div class="media-left">
+                    <img class="media-object" src="assets/images/perso1.jpg" alt="">
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading">{{comentario.autor}}<span
+                        class="time">{{convertirFechaBlog(comentario.fechaCreacion)}}</span><a class="reply">Responder
+                        <i class="fa fa-reply"></i></a></h4>
+                    <p>{{comentario.comentario}}</p>
+                  </div>
+
+                  <!-- author reply comment -->
+                  <div *ngIf="obtenerRespuestas(comentario).length > 0" class="service-grids margin-verticals-10px">
+                    <div *ngFor="let respuesta of obtenerRespuestas(comentario)" class="media author">
+                      <div class="media-left">
+                        <img class="media-object" src="assets/images/perso2.jpg" alt="">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="media-heading">{{respuesta.autor}}<span
+                            class="time">{{convertirFechaBlog(respuesta.fechaCreacion)}}</span><a
+                            class="reply">Responder
+                            <i class="fa fa-reply"></i></a></h4>
+                        <p>{{respuesta.comentario}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /comment -->
                 </div>
               </div>
-            </ng-template>
-            <!-- /comment -->
-          </div>
-          <!-- /blog comments -->
+              <ng-template #sinResultadosComment>
+                <div class="service-grids">
+                  <div class="col-md-12 ser-grid">
+                    <p class="sinResultados shiny">{{msg.lbl_info_sin_resultados}}</p>
+                  </div>
+                </div>
+              </ng-template>
+              <!-- /comment -->
+            </div>
+            <!-- /blog comments -->
 
-          <!-- reply form -->
-          <div class="reply-form">
-            <h3 class="title">Tu opinión es importante para nosotros</h3>
-            <form>
-              <input class="input" type="text" placeholder="Nombre o Alias">
-              <input class="input" type="email" placeholder="Correo">
-              <textarea placeholder="Agrega tu comentario (Máximo 1000 Caracteres)"></textarea>
-              <button type="submit" class="main-btn">Comentar</button>
-            </form>
+            <!-- reply form -->
+            <div class="reply-form">
+              <h3 class="title">{{msg.lbl_mtto_generico_opinion}}</h3>
+              <form>
+                <input class="input" type="text" placeholder="Nombre o Alias">
+                <input class="input" type="email" placeholder="Correo">
+                <textarea placeholder="Agrega tu comentario (Máximo 1000 Caracteres)"></textarea>
+                <button type="submit" class="main-btn">Comentar</button>
+              </form>
+            </div>
+            <!-- /reply form -->
           </div>
-          <!-- /reply form -->
-        </div>
-      </main>
-      <!-- /Main -->
+        </main>
+        <!-- /Main -->
+      </div>
+      <!-- /Row -->
     </div>
-    <!-- /Row -->
+    <!-- /Container -->
   </div>
-  <!-- /Container -->
-</div>
-<!-- /Blog -->
+  <!-- /Blog -->
 
-<!-- FOOTER -->
-<app-footer></app-footer>
-<!-- FOOTER -->
+  <!-- FOOTER -->
+  <app-footer></app-footer>
+  <!-- FOOTER -->
+
+</p-scrollPanel>

@@ -37,6 +37,35 @@ Table OF Contents
 
 ------------------------------------*/
 
+//Paleta de Colores
+$color-rojo: #77110a;
+$color-gris: gray;
+$color-grisClaro: whitesmoke;
+$color-azul: #0097ab;
+$color-verde: #00ab2b;
+$color-negro: #222;
+$color-blanco: #fff;
+$color-dorado: rgb(223, 190, 46);
+$color-plata: rgb(170, 170, 170);
+$color-violeta: rgb(99, 0, 145);
+$color-rosa: rgb(253, 93, 155);
+
+//Fuentes
+$tamañoFuenteTitulo: x-large !important;
+$tamañoFuenteParrafo: 12px !important;
+$tamañoFuenteTablaHeader: 14px !important;
+$tamañoFuenteTablaBody: 12px !important;
+
+//Margen y espaciado
+$margenTitulo: 15px 0px !important;
+$paddingTitulo: 0px !important;
+$margenParrafo: 0px !important;
+$paddingParrafo: 0px !important;
+$margenTablaHeader: 0px !important;
+$paddingTablaHeader: 0px !important;
+$margenTablaBody: 0px !important;
+$paddingTablaBody: 0px !important;
+
 /*------------------------------------*\
 	General
 \*------------------------------------*/
@@ -257,7 +286,7 @@ textarea:focus {
 .white-btn,
 .outline-btn {
     display: inline-block;
-    padding: 10px 35px;
+    padding: 5px 35px;
     margin: 3px;
     border: 2px solid transparent;
     border-radius: 3px;
@@ -896,6 +925,49 @@ header {
     margin-bottom: 10px;
 }
 
+.font-20px {
+    font-size: 20px;
+}
+
+.font-40px {
+    font-size: 40px;
+}
+
+.text-white {
+    color: $color-blanco;
+}
+
+.p-calendar {
+    width: 100%;
+}
+
+.p-dialog-content {
+    overflow-y: hidden !important;
+    overflow-x: hidden;
+    background-image: url(assets/images/fondo2.jpg) !important;
+}
+
+.padding-form-login {
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.p-scrollpanel-content {
+    padding: 0 !important;
+}
+
+.p-scrollpanel .p-scrollpanel-bar {
+    background: #7e1e18 !important;
+}
+
+.p-dialog .p-dialog-header .p-dialog-title {
+    font-size: 2rem !important;
+}
+
+.p-scrollpanel-bar-x {
+    display: none;
+}
+
 /*------------------------------------*\
 	Pricing
 \*------------------------------------*/
@@ -1314,7 +1386,7 @@ header {
 /* blog reply form */
 
 .reply-form {
-    margin: 40px 0px;
+    margin: 5px 20px;
 }
 
 .reply-form form .input,
@@ -1538,6 +1610,74 @@ header {
     .box-legend {
         width: 317px !important;
     }
+}
+
+.choose-files {
+    cursor: pointer;
+    background: #c1c1c1a3;
+    border: 2px dotted $color-blanco;
+    min-height: 200px;
+    color: $color-blanco;
+    text-shadow: 1px 1px 1px #2e2f34;
+    padding-top: 85px;
+}
+
+.choose-files:hover {
+    text-shadow: none;
+}
+
+.p-button.p-fileupload-choose {
+    font-size: 16px !important;
+    margin: 10px;
+    background: #761e0e !important;
+    border: 1px solid #761e0e !important;
+}
+
+.p-calendar .p-inputtext {
+    border-radius: 0px !important;
+}
+
+.p-datepicker table td > span {
+    font-size: 16px;
+}
+
+.p-datepicker table th > span {
+    font-size: 16px;
+}
+
+.p-inputtext {
+    font-family: inherit !important;
+    font-size: inherit !important;
+}
+
+.p-button:enabled:active {
+    background: #860000d1;
+    color: #ffffff;
+    border-color: #860000;
+}
+
+.p-fileupload-choose:not(.p-disabled):active {
+    background: #860000d1;
+    color: #ffffff;
+    border-color: #860000;
+}
+
+.p-fileupload-choose:not(.p-disabled):active {
+    background: #860000d1;
+    color: #ffffff;
+    border-color: #860000;
+}
+
+.p-button:hover {
+    background: #860000d1;
+    color: #ffffff;
+    border-color: #860000;
+}
+
+.p-button:focus {
+    background: #860000d1;
+    color: #ffffff;
+    border-color: #860000;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1843,6 +1983,12 @@ header {
 
 h4 {
     margin-bottom: 5px;
+}
+
+.cerrarImagen {
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
 
 #service {

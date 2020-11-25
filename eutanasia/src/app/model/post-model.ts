@@ -1,13 +1,15 @@
+import { UsuarioAutorModel } from './usuarioAutor-model';
+
 export interface PostModel {
     id;
+    usuarioAutorTB: UsuarioAutorModel;
     titulo;
     subtitulo;
     articulo;
-    autor;
+    urlImagen;
     correoAutor;
     tags;
     categoria;
-    urlImagen;
     cantidadComentarios;
 
     estado;

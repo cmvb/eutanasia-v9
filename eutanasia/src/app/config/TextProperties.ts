@@ -117,6 +117,10 @@ export class TextProperties {
       lbl_mensaje_error_403_no_permisos: idioma === constant.idiomaEs ? 'No cuenta con permisos para visualizar el contenido.' : 'You do not have permissions to view its content.',
       lbl_mensaje_error_403_sesion_expirada: idioma === constant.idiomaEs ? 'Su sesión ha expirado. Debe ingresar de nuevo a la aplicación.' : 'Your session has expired. You must enter the application again.',
       lbl_mensaje_error_500_no_sesion: idioma === constant.idiomaEs ? 'No tiene una Sesión Iniciada.' : 'You dont have a session started.',
+      lbl_mensaje_file_detail_size: idioma == constant.idiomaEs ? 'El archivo seleccionado supera el límite de tamaño permitido' : 'The selected file exceeds the allowed size limit',
+      lbl_mensaje_file_detail_type: idioma == constant.idiomaEs ? 'El archivo seleccionado no cumple con la extensión permitida' : 'The selected file does not meet the allowed extension',
+      lbl_mensaje_file_toolbar: idioma == constant.idiomaEs ? 'Seleccione los archivos que desea adjuntar con su respectiva observación' : 'Select the files you want to attach with their respective observation',
+      lbl_mensaje_file_selected: idioma == constant.idiomaEs ? 'Archivo Seleccionado' : 'File Selected',
 
       // Modales
       lbl_info_titulo_modal_error: idioma === constant.idiomaEs ? 'ERROR' : 'ERROR',
@@ -166,10 +170,17 @@ export class TextProperties {
       lbl_btn_escoger: idioma === constant.idiomaEs ? 'Escoger' : 'Choose',
       lbl_btn_escoger_archivo: idioma === constant.idiomaEs ? 'Escoger Archivo' : 'Choose File',
       lbl_subir_archivos: idioma === constant.idiomaEs ? 'Subir Archivos' : 'Upload Files',
+      lbl_btn_subir_archivos: idioma == constant.idiomaEs ? 'Subir Archivos' : 'Upload Files',
 
       // Header
       lbl_header_usuario: idioma === constant.idiomaEs ? 'Usuario' : 'User',
-      lbl_header_nombre: idioma === constant.idiomaEs ? 'Nombre' : 'Name',
+      lbl_header_clave: idioma === constant.idiomaEs ? 'Clave' : 'Password',
+      lbl_header_repetir_clave: idioma === constant.idiomaEs ? 'Repetir Clave' : 'Repeat Password',
+      lbl_header_nombre: idioma === constant.idiomaEs ? 'Nombres' : 'Names',
+      lbl_header_apellido: idioma === constant.idiomaEs ? 'Apellidos' : 'surnames',
+      lbl_header_correo: idioma === constant.idiomaEs ? 'Correo' : 'E-Mail',
+      lbl_header_resena: idioma === constant.idiomaEs ? 'Reseña' : 'Review',
+      lbl_header_fecha_nacimiento: idioma === constant.idiomaEs ? 'Fecha Nacimiento' : 'Birth Date',
 
       // Titles
       lbl_mtto_consulta: idioma === constant.idiomaEs ? 'Consulta' : 'Query',
@@ -231,6 +242,8 @@ export class TextProperties {
       lbl_mtto_generico_step_4_registrar_usuario: idioma === constant.idiomaEs ? 'Ingrese el código de verificación que se ha enviado a su correo para Activar la Cuenta.' : 'Enter the verification code that sent your email to activate the account.',
       lbl_mtto_generico_step_registrar_usuario_error: idioma === constant.idiomaEs ? 'Los datos suministrados en este Paso son incorrectos. Verifique la información.' : 'The data provided in this step is incorrect. Check the information.',
       lbl_mtto_generico_codigo_verificaicion_enviado_ok: idioma === constant.idiomaEs ? 'Se ha enviado el Código de Verificación de Cuenta correctamente.' : 'The Account Verification Code has been sent correctly.',
+      lbl_mtto_generico_opinion: idioma === constant.idiomaEs ? 'Tu opinión es importante para nosotros' : 'Your opinion is important to us',
+
     }
   };
 }

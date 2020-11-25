@@ -53,6 +53,7 @@ export class ObjectModelInitializer {
       urlConsultarContadorCategoriasPosts: `${HOST}/eutanasia/paratodos/consultarContadorCategoriasPosts`,
       urlConsultarPostsPorFiltros: `${HOST}/eutanasia/paratodos/consultarPostsPorFiltros`,
       urlConsultarTags: `${HOST}/eutanasia/paratodos/consultarTags`,
+      urlSubirImagen: `${HOST}/eutanasia/paratodos/subirImagen`,
       tokenUsernameAUTH: 'EutanasiaApp',
       tokenPasswordAUTH: 'Eutanasia2019codex',
       tokenNameAUTH: 'access_token',
@@ -157,19 +158,43 @@ export class ObjectModelInitializer {
     }
   };
 
+  // Models
+
   getDataToqueModel() {
     return {
       id: 0,
       nombre: '',
-      fecha: '',
+      descripcion: '',
       valorBoleta: 0,
       valorBoletaPromo: 0,
       capacidad: 0,
       ciudad: '',
       urlPoster: '',
       organizador: '',
+      fecha: '',
       // Auditoria
-      estado: 0,
+      estado: 1,
+      fechaCreacion: '',
+      usuarioCreacion: '',
+      fechaActualizacion: '',
+      usuarioActualizacion: ''
+    }
+  };
+
+  getDataUsuarioAutorModel() {
+    return {
+      id: 0,
+      nombres: '',
+      apellidos: '',
+      usuario: '',
+      password: '',
+      rol: '',
+      correo: '',
+      fechaNacimiento: '',
+      urlImagen: '',
+      resena: '',
+      // Auditoria
+      estado: 1,
       fechaCreacion: '',
       usuarioCreacion: '',
       fechaActualizacion: '',
@@ -180,15 +205,14 @@ export class ObjectModelInitializer {
   getDataPostModel() {
     return {
       id: 0,
+      usuarioAutorTB: this.getDataUsuarioAutorModel(),
       titulo: '',
       subtitulo: '',
       articulo: '',
-      autor: '',
+      urlImagen: '',
       correoAutor: '',
-      fecha: '',
       tags: '',
       categoria: 0,
-      urlImagen: '',
       cantidadComentarios: 0,
       // Auditoria
       estado: 1,
@@ -202,12 +226,11 @@ export class ObjectModelInitializer {
   getDataComentarioModel() {
     return {
       id: 0,
-      idPost: null,
-      idComentarioRespuesta: null,
-      autor: '',
+      usuarioAutorTB: this.getDataUsuarioAutorModel(),
+      postTB: this.getDataPostModel(),
+      comentarioRespuestaTB: this.getDataComentarioModel(),
       correoAutor: '',
       comentario: '',
-      fecha: '',
       // Auditoria
       estado: 1,
       fechaCreacion: '',
@@ -217,6 +240,22 @@ export class ObjectModelInitializer {
     }
   };
 
+  getDataMeGustaModel() {
+    return {
+      id: 0,
+      usuarioAutorTB: this.getDataUsuarioAutorModel(),
+      postTB: this.getDataPostModel(),
+      // Auditoria
+      estado: 1,
+      fechaCreacion: '',
+      usuarioCreacion: '',
+      fechaActualizacion: '',
+      usuarioActualizacion: ''
+    }
+  };
+
+  // DTO's Models
+
   getDataCategoriasDtoModel() {
     return {
       invitacionesEvento: 0,
@@ -224,6 +263,14 @@ export class ObjectModelInitializer {
       criticas: 0,
       freneticoRockNRoll: 0,
       noticiasMundiales: 0
+    }
+  };
+
+  getDataArchivoDtoModel() {
+    return {
+      nombreArchivo: '',
+      archivo: '',
+      rutaArchivo: ''
     }
   };
 

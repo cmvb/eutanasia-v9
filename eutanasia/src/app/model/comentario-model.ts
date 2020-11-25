@@ -1,8 +1,11 @@
+import { PostModel } from './post-model';
+import { UsuarioAutorModel } from './usuarioAutor-model';
+
 export interface ComentarioModel {
     id;
-    idPost;
+    usuarioAutorTB: UsuarioAutorModel;
+    postTB: PostModel;
     idComentarioRespuesta;
-    autor;
     correoAutor;
     comentario;
 
