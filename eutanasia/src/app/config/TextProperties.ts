@@ -44,7 +44,7 @@ export class TextProperties {
       lbl_info_sin_resultados: idioma === constant.idiomaEs ? 'Sin Resultados' : 'Without Results',
       lbl_info_fallo_conectar_base_datos: idioma === constant.idiomaEs ? 'No hay Conexión a la Base de Datos' : 'Without Conection to Data Base',
       lbl_info_cargando_resultados: idioma === constant.idiomaEs ? 'Cargando Resultados' : 'Loading Results',
-      lbl_info_proceso_completo: idioma === constant.idiomaEs ? 'Proceso realizado Satisfactoriamente' : 'Process Complete',
+      lbl_info_proceso_completo: idioma === constant.idiomaEs ? 'Proceso realizado satisfactoriamente' : 'Process complete',
       lbl_error_403: idioma === constant.idiomaEs ? '403' : '403',
       lbl_error_404: idioma === constant.idiomaEs ? '404' : '404',
       lbl_error_500: idioma === constant.idiomaEs ? '500' : '500',
@@ -55,6 +55,7 @@ export class TextProperties {
       lbl_ir_a: idioma === constant.idiomaEs ? 'Ir a: ' : 'Go to: ',
       lbl_ir_inicio: idioma === constant.idiomaEs ? 'Ir al Login' : 'Go to Login',
       lbl_btn_olvidaste_tu_clave: idioma === constant.idiomaEs ? '¿Olvidaste tu Clave?' : 'Do You forget your Password?',
+      lbl_btn_restaurar_clave: idioma === constant.idiomaEs ? 'Restaurar Clave' : 'Restore Password',
       lbl_btn_no_ha_llegado_correo_vcode: idioma === constant.idiomaEs ? '¿No ha llegado ningún Correo? Presiona para Reintentar.' : 'No mail has arrived? Press to Retry.',
       lbl_drag_archivos: idioma === constant.idiomaEs ? 'Haga [Clic] o arrastre un archivo aquí' : 'Click or Drag a file here',
       lbl_cantidad_max_archivos: idioma === constant.idiomaEs ? 'Cantidad máxima: 5 archivos' : 'Only 5 Files',
@@ -120,7 +121,9 @@ export class TextProperties {
       lbl_mensaje_file_detail_size: idioma == constant.idiomaEs ? 'El archivo seleccionado supera el límite de tamaño permitido' : 'The selected file exceeds the allowed size limit',
       lbl_mensaje_file_detail_type: idioma == constant.idiomaEs ? 'El archivo seleccionado no cumple con la extensión permitida' : 'The selected file does not meet the allowed extension',
       lbl_mensaje_file_toolbar: idioma == constant.idiomaEs ? 'Seleccione los archivos que desea adjuntar con su respectiva observación' : 'Select the files you want to attach with their respective observation',
-      lbl_mensaje_file_selected: idioma == constant.idiomaEs ? 'Archivo Seleccionado' : 'File Selected',
+      lbl_mensaje_file_selected: idioma == constant.idiomaEs ? 'Archivo seleccionado' : 'File selected',
+      lbl_mensaje_password_no_coincide: idioma == constant.idiomaEs ? 'Las claves no coinciden' : 'The password no match',
+      lbl_mensaje_password_confirmar: idioma == constant.idiomaEs ? 'Debe confirmar la clave' : 'You must confirm password',
 
       // Modales
       lbl_info_titulo_modal_error: idioma === constant.idiomaEs ? 'ERROR' : 'ERROR',

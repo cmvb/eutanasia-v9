@@ -6,6 +6,7 @@ import com.eutanasia.eutanasia.dto.CategoriasDTO;
 import com.eutanasia.eutanasia.model.ComentarioTB;
 import com.eutanasia.eutanasia.model.PostTB;
 import com.eutanasia.eutanasia.model.ToqueTB;
+import com.eutanasia.eutanasia.model.UsuarioAutorTB;
 
 public interface IEutanasiaService {
 
@@ -45,6 +46,11 @@ public interface IEutanasiaService {
 	public ComentarioTB crearComentario(ComentarioTB comentario);
 
 	/*
+	 * Método para crear usuario
+	 */
+	public UsuarioAutorTB crearUsuario(UsuarioAutorTB usuarioAutor);
+
+	/*
 	 * Método para modificar post
 	 */
 	public PostTB modificarPost(PostTB post);
@@ -63,5 +69,10 @@ public interface IEutanasiaService {
 	 * Método para eliminar comentario
 	 */
 	public void eliminarComentario(long idComentario);
+
+	/*
+	 * Método para Login
+	 */
+	public UsuarioAutorTB loginUsuario(String usuario, String password);
 
 }

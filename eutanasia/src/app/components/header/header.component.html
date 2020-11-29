@@ -68,6 +68,11 @@
                                 styleClass="main-btn font-20px">
                             </p-button>
                         </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                            <label class="textPlata">{{msg.lbl_btn_olvidaste_tu_clave}}
+                                <span class="cursorPointer textWhite textHoverRed">{{msg.lbl_btn_restaurar_clave}}</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </p-dialog>
@@ -81,10 +86,10 @@
                             <div *ngIf="!mostrarImagenRegister" class="choose-files" (click)="startUpload()">
                                 <i class="pi pi-plus-circle font-40px"></i>
                             </div>
-                            <div *ngIf="mostrarImagenRegister"
-                                style="background-image: url({{archivoImagenRegister.rutaArchivo}}) !important;background-position: center;background-repeat: no-repeat;" class="choose-files"
-                                (click)="limpiarAdjuntos()">
-                                <i class="pi pi-times font-20px cerrarImagen"></i>
+                            <div *ngIf="mostrarImagenRegister" class="choose-files no-padding">
+                                <img *ngIf="srcImagenRegister !== undefined && srcImagenRegister !== null" class="w100"
+                                    [src]="srcImagenRegister" style="height: 196px;" />
+                                <i class="pi pi-times font-20px cerrarImagen" (click)="limpiarAdjuntos()"></i>
                             </div>
                             <p-fileUpload #fileInputRegister mode="basic" name="archivosTemporales[]"
                                 customUpload="true" (uploadHandler)="handlerUpload($event)" accept="image/*"
@@ -131,8 +136,12 @@
                                 placeholder="{{msg.lbl_header_repetir_clave}}">
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                            <p-button label="{{msg.lbl_btn_registrarse}}" (click)="disModRegistrar=false"
+                            <p-button label="{{msg.lbl_btn_registrarse}}" (click)="crearUsuarioEutanasico()"
                                 icon="pi pi-user-plus" styleClass="main-btn font-20px"></p-button>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                            <p-messages></p-messages>
                         </div>
                     </div>
                 </div>

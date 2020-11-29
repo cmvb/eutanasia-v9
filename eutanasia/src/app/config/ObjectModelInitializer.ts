@@ -54,6 +54,7 @@ export class ObjectModelInitializer {
       urlConsultarPostsPorFiltros: `${HOST}/eutanasia/paratodos/consultarPostsPorFiltros`,
       urlConsultarTags: `${HOST}/eutanasia/paratodos/consultarTags`,
       urlSubirImagen: `${HOST}/eutanasia/paratodos/subirImagen`,
+      urlCrearUsuario: `${HOST}/eutanasia/paratodos/crearUsuario`,
       tokenUsernameAUTH: 'EutanasiaApp',
       tokenPasswordAUTH: 'Eutanasia2019codex',
       tokenNameAUTH: 'access_token',

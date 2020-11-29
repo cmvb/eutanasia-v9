@@ -479,16 +479,26 @@ export class Util {
   }
 
   construirMensajeExcepcion(error, summary) {
-    let mensaje = { severity: '', summary: '', detail: '' };
+    let listaMensajes = [];
 
-    if (typeof error === 'undefined' || error === null || error === 'null') {
-      Object.assign(this.mensaje, mensaje);
-      mensaje.severity = this.const.severity[3];
-      mensaje.summary = summary;
-      mensaje.detail = error;
+    if (typeof error !== 'undefined' || error !== null || error !== 'null') {
+      // Extraemos por el split de mensajes |
+      let listaErrores = error.mensaje.split('|');
+      listaErrores.forEach(errorMSG => {
+        let mensaje = { severity: '', summary: '', detail: '' };
+        Object.assign(this.mensaje, mensaje);
+        mensaje.severity = this.const.severity[3];
+        mensaje.summary = summary;
+        mensaje.detail = errorMSG;
+        if (errorMSG.length > 0) {
+          listaMensajes.push(mensaje);
+        }
+      });
     } else {
-      mensaje = null;
+      listaMensajes = null;
     }
-    return mensaje;
+
+    this.playError();
+    return listaMensajes;
   }
 }

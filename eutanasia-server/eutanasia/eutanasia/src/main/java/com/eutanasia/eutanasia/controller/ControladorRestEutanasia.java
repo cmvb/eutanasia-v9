@@ -1,13 +1,16 @@
 package com.eutanasia.eutanasia.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -19,19 +22,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eutanasia.eutanasia.dto.CategoriasDTO;
+import com.eutanasia.eutanasia.dto.MailDTO;
 import com.eutanasia.eutanasia.exception.ModelNotFoundException;
 import com.eutanasia.eutanasia.model.ComentarioTB;
 import com.eutanasia.eutanasia.model.PostTB;
 import com.eutanasia.eutanasia.model.ToqueTB;
+import com.eutanasia.eutanasia.model.UsuarioAutorTB;
 import com.eutanasia.eutanasia.service.IEutanasiaService;
 import com.eutanasia.eutanasia.util.ConstantesTablasNombre;
 import com.eutanasia.eutanasia.util.ConstantesValidaciones;
 import com.eutanasia.eutanasia.util.PropertiesUtil;
 import com.eutanasia.eutanasia.util.Util;
+import com.eutanasia.eutanasia.util.UtilMail;
 
 @RestController
 @RequestMapping("/eutanasia/paratodos")
 public class ControladorRestEutanasia {
+
+	@Value("${email.servidor}")
+	private String EMAIL_SERVIDOR;
+
+	@Value("${ruta.verificar.cuenta.nueva}")
+	private String URL_VERIFICAR_CUENTA_NUEVA;
+
+	@Value("${template.mail.activateUser}")
+	private String TEMPLATE_MAIL_ACTIVATE_USER;
+
+	@Autowired
+	UtilMail mailUtil;
 
 	@Autowired
 	IEutanasiaService eutanasiaService;
@@ -123,6 +141,24 @@ public class ControladorRestEutanasia {
 		}
 	}
 
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/loginUsuario")
+	public ResponseEntity<UsuarioAutorTB> loginUsuario(@RequestBody UsuarioAutorTB usuarioAutor) {
+		UsuarioAutorTB usuarioLogueado = null;
+		if (usuarioAutor != null && !StringUtils.isBlank(usuarioAutor.getUsuario())
+				&& !StringUtils.isBlank(usuarioAutor.getPassword())) {
+			usuarioLogueado = eutanasiaService.loginUsuario(usuarioAutor.getUsuario(), usuarioAutor.getPassword());
+			if (usuarioLogueado == null) {
+				throw new ModelNotFoundException(
+						ConstantesValidaciones.ERROR_LOGIN_DATOS_INCORRECTOS_INACTIVOS.toString());
+			}
+		} else {
+			throw new ModelNotFoundException(ConstantesValidaciones.ERROR_LOGIN_DATOS_INSUFICIENTES);
+		}
+
+		return new ResponseEntity<UsuarioAutorTB>(usuarioLogueado, HttpStatus.OK);
+	}
+
 	// Crear
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -163,6 +199,43 @@ public class ControladorRestEutanasia {
 		}
 
 		return new ResponseEntity<ComentarioTB>(newComentario, HttpStatus.OK);
+	}
+
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/crearUsuario")
+	public ResponseEntity<UsuarioAutorTB> crearUsuario(@RequestBody UsuarioAutorTB usuarioAutor) {
+		List<String> errores = Util.validaDatos(ConstantesTablasNombre.MRA_USUARIO_AUTOR_TB, usuarioAutor);
+		UsuarioAutorTB newUsuario = new UsuarioAutorTB();
+		if (errores.isEmpty()) {
+			newUsuario = eutanasiaService.crearUsuario(usuarioAutor);
+			if (newUsuario != null) {
+				MailDTO mailDto = new MailDTO();
+				mailDto.setFrom(EMAIL_SERVIDOR);
+				mailDto.setTo(newUsuario.getCorreo());
+				mailDto.setSubject("ENVÍO CÓDIGO DE VERIFICACIÓN DE CUENTA - MUSIC ROOM");
+
+				Map<String, Object> model = new HashMap<>();
+				model.put("user", newUsuario.getUsuario());
+				model.put("nombreCompleto", newUsuario.getNombres() + " " + newUsuario.getApellidos());
+				model.put("email", newUsuario.getCorreo());
+				model.put("resetUrl", URL_VERIFICAR_CUENTA_NUEVA + newUsuario.getUsuario());
+				mailDto.setModel(model);
+
+				mailUtil.sendMail(mailDto, TEMPLATE_MAIL_ACTIVATE_USER);
+			} else {
+				throw new ModelNotFoundException(ConstantesValidaciones.MSG_USUARIO_REPETIDO);
+			}
+		} else {
+			StringBuilder mensajeErrores = new StringBuilder();
+
+			for (String error : errores) {
+				mensajeErrores.append(error + "|");
+			}
+
+			throw new ModelNotFoundException(mensajeErrores.toString());
+		}
+
+		return new ResponseEntity<UsuarioAutorTB>(newUsuario, HttpStatus.OK);
 	}
 
 	// Modificar

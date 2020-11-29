@@ -143,14 +143,14 @@ public class PostsDaoImpl extends AbstractDao<PostTB> implements IPostsDao {
 
 	@Override
 	public PostTB crearPost(PostTB post) {
-		post = colocarValoresDefecto(post);
+		post = colocarValoresDefecto(post, ConstantesValidaciones.PHASE_CREATE);
 		super.create(post);
 		return post;
 	}
 
 	@Override
 	public PostTB modificarPost(PostTB post) {
-		post = colocarValoresDefecto(post);
+		post = colocarValoresDefecto(post, ConstantesValidaciones.PHASE_UPDATE);
 		super.update(post);
 		return post;
 	}
@@ -160,12 +160,12 @@ public class PostsDaoImpl extends AbstractDao<PostTB> implements IPostsDao {
 		super.deleteById(idPost);
 	}
 
-	private PostTB colocarValoresDefecto(PostTB post) {
-		if (post.getId() > 0) {
+	private PostTB colocarValoresDefecto(PostTB post, String fase) {
+		if (ConstantesValidaciones.PHASE_CREATE.equalsIgnoreCase(fase)) {
 			post.setFechaCreacion(new Date());
+			post.setUsuarioCreacion("SYSTEM");
 		}
 		post.setFechaActualizacion(new Date());
-		post.setUsuarioCreacion("SYSTEM");
 		post.setUsuarioActualizacion("SYSTEM");
 		return post;
 	}
