@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.eutanasia.eutanasia.dao.AbstractDao;
 import com.eutanasia.eutanasia.dao.IComentariosDao;
 import com.eutanasia.eutanasia.model.ComentarioTB;
+import com.eutanasia.eutanasia.util.ConstantesValidaciones;
 
 @Repository
 public class ComentariosDaoImpl extends AbstractDao<ComentarioTB> implements IComentariosDao {
@@ -45,14 +46,14 @@ public class ComentariosDaoImpl extends AbstractDao<ComentarioTB> implements ICo
 
 	@Override
 	public ComentarioTB crearComentario(ComentarioTB comentario) {
-		comentario = colocarValoresDefecto(comentario);
+		comentario = colocarValoresDefecto(comentario, ConstantesValidaciones.PHASE_CREATE);
 		super.create(comentario);
 		return comentario;
 	}
 
 	@Override
 	public ComentarioTB modificarComentario(ComentarioTB comentario) {
-		comentario = colocarValoresDefecto(comentario);
+		comentario = colocarValoresDefecto(comentario, ConstantesValidaciones.PHASE_UPDATE);
 		super.update(comentario);
 		return comentario;
 	}
@@ -62,12 +63,12 @@ public class ComentariosDaoImpl extends AbstractDao<ComentarioTB> implements ICo
 		super.deleteById(idComentario);
 	}
 
-	private ComentarioTB colocarValoresDefecto(ComentarioTB comentario) {
-		if (comentario.getId() > 0) {
+	private ComentarioTB colocarValoresDefecto(ComentarioTB comentario, String fase) {
+		if (ConstantesValidaciones.PHASE_CREATE.equalsIgnoreCase(fase)) {
 			comentario.setFechaCreacion(new Date());
+			comentario.setUsuarioCreacion("SYSTEM");
 		}
 		comentario.setFechaActualizacion(new Date());
-		comentario.setUsuarioCreacion("SYSTEM");
 		comentario.setUsuarioActualizacion("SYSTEM");
 		return comentario;
 	}

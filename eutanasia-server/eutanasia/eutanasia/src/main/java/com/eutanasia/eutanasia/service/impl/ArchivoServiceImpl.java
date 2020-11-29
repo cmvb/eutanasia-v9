@@ -1,14 +1,18 @@
 package com.eutanasia.eutanasia.service.impl;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import javax.transaction.Transactional;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.eutanasia.eutanasia.dto.ArchivoDTO;
 import com.eutanasia.eutanasia.service.IArchivoService;
 import com.eutanasia.eutanasia.service.ISFTPServicio;
-import com.eutanasia.eutanasia.util.Util;
 
 @Service
 public class ArchivoServiceImpl implements IArchivoService {
@@ -16,12 +20,64 @@ public class ArchivoServiceImpl implements IArchivoService {
 	@Autowired
 	private ISFTPServicio SFTPServicio;
 
+	@Value("${sftp.puerto}")
+	private String PUERTO_SFTP;
+
+	@Value("${sftp.servidor}")
+	private String SERVIDOR_SFTP;
+
+	@Value("${sftp.usuario}")
+	private String USUARIO_SFTP;
+
+	@Value("${sftp.password}")
+	private String CLAVE_SFTP;
+
 	@Transactional
 	@Override
-	public ArchivoDTO subirImagen(ArchivoDTO archivoDto) {
-		ArchivoDTO archivoResponse = Util.subirArchivoSFTP(archivoDto, SFTPServicio);
+	public ArchivoDTO subirImagen(ArchivoDTO archivo) {
+		ArchivoDTO archivoRespuesta = null;
+		boolean sftpConectado = false;
 
-		return archivoResponse;
+		try {
+			String rutaSFTP = archivo.getRutaArchivo();
+
+			// Abrir conexion a servidor sftp
+			sftpConectado = SFTPServicio.conectarServidor(SERVIDOR_SFTP, Integer.parseInt(PUERTO_SFTP), USUARIO_SFTP,
+					CLAVE_SFTP);
+
+			// validar conexion a servidor
+			if (sftpConectado) {
+				boolean rutaExiste = false;
+
+				// validar que la ruta no este vacia
+				if (!StringUtils.isBlank(rutaSFTP)) {
+					// validar que la ruta exista en el servidor
+					rutaExiste = SFTPServicio.esValidaRuta(rutaSFTP);
+					if (!rutaExiste) {
+						SFTPServicio.crearDirectorio(rutaSFTP);
+					}
+
+					rutaExiste = false;
+					rutaSFTP = rutaSFTP + archivo.getNombreArchivo();
+
+					// guardar archivos en el servidor que llegan en la lista
+					if (archivo.getArchivo() != null && archivo.getArchivo().length > 0) {
+						InputStream inputStreamArchivo = new ByteArrayInputStream(archivo.getArchivo());
+						SFTPServicio.guardarArchivoServidor(inputStreamArchivo, rutaSFTP);
+						archivo.setRutaArchivo(rutaSFTP);
+
+						archivoRespuesta = archivo;
+					}
+				}
+			}
+
+			// cerrar conexion con servidor SFTP
+			SFTPServicio.cerrarConexion();
+		} catch (Exception ex) {
+			SFTPServicio.cerrarConexion();
+		}
+
+		return archivoRespuesta;
 	}
 
 }
