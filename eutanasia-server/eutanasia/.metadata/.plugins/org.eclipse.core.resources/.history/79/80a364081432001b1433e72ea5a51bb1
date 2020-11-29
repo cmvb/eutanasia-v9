@@ -223,7 +223,7 @@ public class ControladorRestEutanasia {
 
 				mailUtil.sendMail(mailDto, TEMPLATE_MAIL_ACTIVATE_USER);
 			} else {
-				throw new ModelNotFoundException(ConstantesValidaciones.MSG_USUARIO_REPETIDO);
+				throw new ModelNotFoundException(mensajeErrores.toString());
 			}
 		} else {
 			StringBuilder mensajeErrores = new StringBuilder();

@@ -208,23 +208,19 @@ public class ControladorRestEutanasia {
 		UsuarioAutorTB newUsuario = new UsuarioAutorTB();
 		if (errores.isEmpty()) {
 			newUsuario = eutanasiaService.crearUsuario(usuarioAutor);
-			if (newUsuario != null) {
-				MailDTO mailDto = new MailDTO();
-				mailDto.setFrom(EMAIL_SERVIDOR);
-				mailDto.setTo(newUsuario.getCorreo());
-				mailDto.setSubject("ENVÍO CÓDIGO DE VERIFICACIÓN DE CUENTA - MUSIC ROOM");
+			MailDTO mailDto = new MailDTO();
+			mailDto.setFrom(EMAIL_SERVIDOR);
+			mailDto.setTo(newUsuario.getCorreo());
+			mailDto.setSubject("ENVÍO CÓDIGO DE VERIFICACIÓN DE CUENTA - MUSIC ROOM");
 
-				Map<String, Object> model = new HashMap<>();
-				model.put("user", newUsuario.getUsuario());
-				model.put("nombreCompleto", newUsuario.getNombres() + " " + newUsuario.getApellidos());
-				model.put("email", newUsuario.getCorreo());
-				model.put("resetUrl", URL_VERIFICAR_CUENTA_NUEVA + newUsuario.getUsuario());
-				mailDto.setModel(model);
+			Map<String, Object> model = new HashMap<>();
+			model.put("user", newUsuario.getUsuario());
+			model.put("nombreCompleto", newUsuario.getNombres() + " " + newUsuario.getApellidos());
+			model.put("email", newUsuario.getCorreo());
+			model.put("resetUrl", URL_VERIFICAR_CUENTA_NUEVA + newUsuario.getUsuario());
+			mailDto.setModel(model);
 
-				mailUtil.sendMail(mailDto, TEMPLATE_MAIL_ACTIVATE_USER);
-			} else {
-				throw new ModelNotFoundException(ConstantesValidaciones.MSG_USUARIO_REPETIDO);
-			}
+			mailUtil.sendMail(mailDto, TEMPLATE_MAIL_ACTIVATE_USER);
 		} else {
 			StringBuilder mensajeErrores = new StringBuilder();
 

@@ -75,11 +75,6 @@ public class EutanasiaServiceImpl implements IEutanasiaService {
 	@Transactional
 	@Override
 	public UsuarioAutorTB crearUsuario(UsuarioAutorTB usuarioAutor) {
-		List<UsuarioAutorTB> listaUsuarios = usuariosDAO.consultarUsuariosPorUsuario(usuarioAutor.getUsuario());
-		if (listaUsuarios != null && !listaUsuarios.isEmpty()) {
-			// Usuario repetido
-			return null;
-		}
 		String passwordEncrypt = Util.encriptarPassword(usuarioAutor.getPassword());
 		usuarioAutor.setPassword(passwordEncrypt);
 		return usuariosDAO.crearUsuario(usuarioAutor);

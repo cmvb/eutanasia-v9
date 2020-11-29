@@ -11,7 +11,6 @@ eutanasia.msg.validate.valor.incorrecto						= Valor Incorrecto.
 eutanasia.msg.validate.valor.vacio							= Valor Vacío.
 eutanasia.msg.validate.correoInvalido						= La estructura del Correo es inválida.
 eutanasia.msg.validate.valor.superaLongitud					= El valor digitado supera la longitud permitida.
-peutanasia.msg.validate.usuarioRepetido						= No puede registrarse el usuario. Ya existe un usuario activo para el usuario digitado.
 
 # Rutas
 eutanasia.ruta.sftp.archivos								= /data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/

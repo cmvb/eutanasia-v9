@@ -45,8 +45,6 @@ public final class ConstantesValidaciones {
 			.getProperty("eutanasia.msg.validate.tabla.no.establecida");
 	public static final String SUPERA_LONGITUD = PropertiesUtil
 			.getProperty("eutanasia.msg.validate.valor.superaLongitud");
-	public static final String MSG_USUARIO_REPETIDO = PropertiesUtil.getProperty("eutanasia.msg.validate.usuarioRepetido");
-	
 
 	// Labels
 	public static final String ARCHIVO = PropertiesUtil.getProperty("lbl.archivo.archivo");
