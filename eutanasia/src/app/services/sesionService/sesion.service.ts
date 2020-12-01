@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { ObjectModelInitializer } from 'src/app/config/ObjectModelInitializer';
+import { ObjServiceSessionDTOModel } from 'src/app/model/dto/objServiceSession-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SesionService {
   // Fases
-  objServiceSesion: any;
+  objServiceSesion: ObjServiceSessionDTOModel;
 
   constructor(public objectModelInitializer: ObjectModelInitializer) {
     this.inicializar();
-    if (sessionStorage.getItem('objServiceSesion') !== undefined && sessionStorage.getItem('objServiceSesion') !== null) {
-      this.objServiceSesion = JSON.parse(sessionStorage.getItem('objServiceSesion'));
+    if (!this.existeSession()) {
+      this.tomarSessionDeStorage();
     }
   }
 
@@ -19,7 +20,6 @@ export class SesionService {
     this.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
     this.objServiceSesion.phase = undefined;
     this.objServiceSesion.usuarioSesion = undefined;
-    this.objServiceSesion.usuarioRegister = undefined;
     this.objServiceSesion.tokenSesion = undefined;
     this.objServiceSesion.decodedToken = undefined;
     this.objServiceSesion.expirationDate = undefined;
@@ -32,34 +32,30 @@ export class SesionService {
 
   getUsuarioSesionActual() {
     let result = null;
-    if (typeof this.objServiceSesion.usuarioSesion !== 'undefined' && this.objServiceSesion.usuarioSesion !== null && this.objServiceSesion.usuarioSesion !== 'null') {
+    if (this.objServiceSesion !== undefined && this.objServiceSesion !== null && this.objServiceSesion.usuarioSesion !== undefined && this.objServiceSesion.usuarioSesion !== null) {
       result = this.objServiceSesion.usuarioSesion;
     }
     return result;
   }
 
-  isSesionActiva() {
+  existeSession() {
+    return this.objServiceSesion !== undefined && this.objServiceSesion !== null && this.objServiceSesion.usuarioSesion !== undefined && this.objServiceSesion.usuarioSesion !== null;
+  }
 
+  cerrarSession() {
+    sessionStorage.clear();
+    this.objServiceSesion = undefined;
+  }
+
+  tomarSessionDeStorage() {
+    let objServiceSesion = sessionStorage.getItem('objServiceSesion');
+    if (objServiceSesion !== undefined && objServiceSesion !== null) {
+      this.objServiceSesion = JSON.parse(objServiceSesion);
+    }
   }
 
   tienePermisos(URLactual: String) {
     let resultTienePermisos = false;
-    if (this.objServiceSesion.usuarioSesion.usuarioTb !== undefined && this.objServiceSesion.usuarioSesion.usuarioTb !== null && this.objServiceSesion.usuarioSesion.usuarioTb.listaRoles !== undefined && this.objServiceSesion.usuarioSesion.usuarioTb.listaRoles !== null) {
-      for (let i in this.objServiceSesion.usuarioSesion.usuarioTb.listaRoles) {
-        let rolUsuario = this.objServiceSesion.usuarioSesion.usuarioTb.listaRoles[i];
-
-        if (!URLactual.includes("dashboard")) {
-          if (URLactual.includes(rolUsuario.path) || rolUsuario.codigo === this.objectModelInitializer.getConst().codigoADMIN) {
-            resultTienePermisos = true;
-            break;
-          }
-        }
-        else {
-          resultTienePermisos = true;
-          break;
-        }
-      }
-    }
 
     return resultTienePermisos;
   }

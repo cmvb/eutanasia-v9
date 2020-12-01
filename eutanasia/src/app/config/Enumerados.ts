@@ -15,50 +15,35 @@ export class Enumerados {
     return {
       sino: {
         cod: 1, valores: [
-          { value: 1, label: properties.lbl_enum_si },
-          { value: 0, label: properties.lbl_enum_no }
-        ]
-      },
-      modulo: {
-        cod: 2, valores: [
-          { value: 1, label: properties.lbl_enum_modulo_tb_perfil },
-          { value: 2, label: properties.lbl_enum_modulo_tb_usuario },
-          { value: 3, label: properties.lbl_enum_modulo_tb_perfil_x_usuario }
+          { value: 0, label: properties.lbl_enum_no },
+          { value: 1, label: properties.lbl_enum_si }
         ]
       },
       sexo: {
-        cod: 3, valores: [
+        cod: 2, valores: [
+          { value: 0, label: properties.lbl_enum_generico_valor_vacio },
           { value: 1, label: properties.lbl_enum_sexo_valor_masculino },
           { value: 2, label: properties.lbl_enum_sexo_valor_femenino },
-          { value: 3, label: properties.lbl_enum_sexo_valor_ambos }
+          { value: 3, label: properties.lbl_enum_sexo_valor_otro }
         ]
       },
-      tipoUsuario: {
+      rolUsuario: {
+        cod: 3, valores: [
+          { value: 0, label: properties.lbl_enum_generico_valor_vacio },
+          { value: 1, label: properties.lbl_enum_rol_usuario_valor_administrador },
+          { value: 2, label: properties.lbl_enum_rol_usuario_valor_fan },
+          { value: 3, label: properties.lbl_enum_rol_usuario_valor_contacto_laboral }
+        ]
+      },
+      estadoUsuario: {
         cod: 4, valores: [
-          { value: 0, label: properties.lbl_enum_generico_valor_vacio },
-          { value: 1, label: properties.lbl_enum_tipo_usuario_valor_cliente },
-          { value: 2, label: properties.lbl_enum_tipo_usuario_valor_empleado },
-          { value: 3, label: properties.lbl_enum_tipo_usuario_valor_administrador }
+          { value: 0, label: properties.lbl_enum_estado_valor_usuario_inactivo },
+          { value: 1, label: properties.lbl_enum_estado_valor_usuario_activo },
+          { value: 2, label: properties.lbl_enum_estado_valor_usuario_rechazado }
         ]
       },
-      tipoDocumento: {
+      categoriaPost: {
         cod: 5, valores: [
-          { value: 0, label: properties.lbl_enum_generico_valor_vacio },
-          { value: 1, label: properties.lbl_enum_tipo_documento_valor_cc },
-          { value: 2, label: properties.lbl_enum_tipo_documento_valor_ti },
-          { value: 3, label: properties.lbl_enum_tipo_documento_valor_ce }
-        ]
-      },
-      tipoUbicacion: {
-        cod: 6, valores: [
-          { value: -1, label: properties.lbl_enum_generico_valor_vacio },
-          { value: 0, label: properties.lbl_enum_tipo_ubicacion_valor_pais },
-          { value: 1, label: properties.lbl_enum_tipo_ubicacion_valor_departamento },
-          { value: 2, label: properties.lbl_enum_tipo_ubicacion_valor_ciudad }
-        ]
-      },
-      categorias: {
-        cod: 7, valores: [
           { value: 0, label: properties.lbl_enum_generico_valor_vacio },
           { value: 1, label: properties.lbl_enum_categoria_valor_invitacion_evento },
           { value: 2, label: properties.lbl_enum_categoria_valor_agradecimientos_saludos },
@@ -66,8 +51,7 @@ export class Enumerados {
           { value: 4, label: properties.lbl_enum_categoria_valor_frenetico_rnr },
           { value: 5, label: properties.lbl_enum_categoria_valor_noticias_mundiales }
         ]
-      },
-      //valorIva: {cod: 25},
+      }
     }
   };
 }

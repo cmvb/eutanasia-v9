@@ -1,28 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="ConstantesValidaciones.VALOR_INCORRECTO"/>
+		<item key="selection" value="Util"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="util"/>
+			<item value="\"/>
+			<item value="crearu"/>
+			<item value="coloc"/>
+			<item value="colo"/>
+			<item value="color"/>
+			<item value="encriptarAES"/>
+			<item value="KEY_LENGTH"/>
+			<item value="ITERATIONS"/>
+			<item value="ALPHABET"/>
 			<item value="VALOR_INCORRECTO"/>
 			<item value="VALOR_VACIO"/>
 			<item value="context"/>
 			<item value="reset"/>
 			<item value="resetur"/>
-			<item value="nombrecom"/>
-			<item value="${"/>
-			<item value="token"/>
-			<item value="aes"/>
-			<item value="encriptarAES"/>
-			<item value="lbl.archivo"/>
-			<item value="comentario"/>
-			<item value="ComentarioTB"/>
 		</list>
 		<list key="replacehistory">
+			<item value="/"/>
+			<item value="encriptarPassword"/>
+			<item value="encriptar"/>
+			<item value="ConstantesValidaciones.KEY_LENGTH"/>
+			<item value="ConstantesValidaciones.ITERATIONS"/>
+			<item value="ConstantesValidaciones.CARACTERES"/>
 			<item value="ConstantesValidaciones.VALOR_INCORRECTO"/>
 			<item value="ConstantesValidaciones.VALOR_VACIO"/>
 			<item value="Util.VALOR_VACIO"/>
@@ -31,7 +39,7 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="407"/>
+		<item key="DIALOG_X_ORIGIN" value="372"/>
 		<item key="DIALOG_Y_ORIGIN" value="107"/>
 		<item key="DIALOG_WIDTH" value="284"/>
 		<item key="DIALOG_HEIGHT" value="391"/>

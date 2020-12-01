@@ -98,8 +98,7 @@ export class ObjectModelInitializer {
     return {
       // data
       phase: '',
-      usuarioSesion: '',
-      usuarioRegister: '',
+      usuarioSesion: this.getDataUsuarioAutorModel(),
       tokenSesion: '',
       decodedToken: '',
       expirationDate: '',

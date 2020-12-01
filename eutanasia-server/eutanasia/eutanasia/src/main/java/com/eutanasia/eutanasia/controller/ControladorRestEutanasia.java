@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.eutanasia.eutanasia.dto.CategoriasDTO;
 import com.eutanasia.eutanasia.dto.MailDTO;
+import com.eutanasia.eutanasia.enums.EEstado;
 import com.eutanasia.eutanasia.exception.ModelNotFoundException;
 import com.eutanasia.eutanasia.model.ComentarioTB;
 import com.eutanasia.eutanasia.model.PostTB;
@@ -45,14 +46,11 @@ public class ControladorRestEutanasia {
 	@Value("${ruta.verificar.cuenta.nueva}")
 	private String URL_VERIFICAR_CUENTA_NUEVA;
 
-	@Value("${template.mail.activateUser}")
-	private String TEMPLATE_MAIL_ACTIVATE_USER;
+	@Autowired
+	private UtilMail mailUtil;
 
 	@Autowired
-	UtilMail mailUtil;
-
-	@Autowired
-	IEutanasiaService eutanasiaService;
+	private IEutanasiaService eutanasiaService;
 
 	// Consultar
 
@@ -207,12 +205,13 @@ public class ControladorRestEutanasia {
 		List<String> errores = Util.validaDatos(ConstantesTablasNombre.MRA_USUARIO_AUTOR_TB, usuarioAutor);
 		UsuarioAutorTB newUsuario = new UsuarioAutorTB();
 		if (errores.isEmpty()) {
+			usuarioAutor.setEstado((short) EEstado.INACTIVO.ordinal());
 			newUsuario = eutanasiaService.crearUsuario(usuarioAutor);
 			if (newUsuario != null) {
 				MailDTO mailDto = new MailDTO();
 				mailDto.setFrom(EMAIL_SERVIDOR);
 				mailDto.setTo(newUsuario.getCorreo());
-				mailDto.setSubject("ENVÍO CÓDIGO DE VERIFICACIÓN DE CUENTA - MUSIC ROOM");
+				mailDto.setSubject("ACTIVACIÓN USUARIO NUEVO - EUTANASIA WEB PAGE");
 
 				Map<String, Object> model = new HashMap<>();
 				model.put("user", newUsuario.getUsuario());
@@ -221,7 +220,7 @@ public class ControladorRestEutanasia {
 				model.put("resetUrl", URL_VERIFICAR_CUENTA_NUEVA + newUsuario.getUsuario());
 				mailDto.setModel(model);
 
-				mailUtil.sendMail(mailDto, TEMPLATE_MAIL_ACTIVATE_USER);
+				mailUtil.sendMail(mailDto, ConstantesValidaciones.TEMPLATE_MAIL_ACTIVATE_USER);
 			} else {
 				throw new ModelNotFoundException(ConstantesValidaciones.MSG_USUARIO_REPETIDO);
 			}

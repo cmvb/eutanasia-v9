@@ -1,0 +1,16 @@
+package com.eutanasia.eutanasia.enums;
+
+public enum ESiNo {
+	INACTIVO("I"), ACTIVO("A"), RECHAZADO("R");
+
+	private final String nombre;
+
+	private ESiNo(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+}

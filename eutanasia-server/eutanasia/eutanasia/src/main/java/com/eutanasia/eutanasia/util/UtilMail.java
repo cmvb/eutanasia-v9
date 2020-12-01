@@ -1,7 +1,5 @@
 package com.eutanasia.eutanasia.util;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.nio.charset.StandardCharsets;
 
 import javax.mail.internet.MimeMessage;
@@ -11,17 +9,18 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.context.Context;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
 import com.eutanasia.eutanasia.dto.MailDTO;
-
+	
 @Component
 public class UtilMail {
 
 	@Autowired
 	private JavaMailSender emailSender;
 
-//	@Autowired
-//	private SpringTemplateEngine templateEngine;
+	@Autowired
+	private SpringTemplateEngine templateEngine;
 
 	public void sendMail(MailDTO mail, String urlMail) {
 		try {
@@ -31,17 +30,7 @@ public class UtilMail {
 
 			Context context = new Context();
 			context.setVariables(mail.getModel());
-//			String html = templateEngine.process("html5/vcode-mailtemplate.html", context);
-
-			String cadena = "";
-			String html = "";
-			FileReader f = new FileReader(urlMail);
-			BufferedReader b = new BufferedReader(f);
-			while ((cadena = b.readLine()) != null) {
-				html += cadena;
-			}
-			b.close();
-
+			String html = templateEngine.process("nuevoUsuario.html", context);
 			String htmlReemplazado = new String(mail.getHtmlReemplazado(html));
 
 			helper.setTo(mail.getTo());

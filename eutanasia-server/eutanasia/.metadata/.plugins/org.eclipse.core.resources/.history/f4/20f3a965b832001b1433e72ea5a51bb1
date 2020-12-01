@@ -1,0 +1,18 @@
+spring:
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: eutanasiarockandroll@gmail.com
+    password: freneticorockandroll
+    port: 587
+    properties:
+      mail:
+        ssl:
+          enable: true
+        smtp:
+          auth: false
+          starttls:
+            enable: true
+            required: false
+    protocol: smtp
+    test-connection: false

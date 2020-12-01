@@ -98,12 +98,12 @@ export class Util {
       return this.enums.sino.valores;
     } else if (enumerado === this.enums.sexo.cod) {
       return this.enums.sexo.valores;
-    } else if (enumerado === this.enums.tipoUsuario.cod) {
-      return this.enums.tipoUsuario.valores;
-    } else if (enumerado === this.enums.tipoDocumento.cod) {
-      return this.enums.tipoDocumento.valores;
-    } else if (enumerado === this.enums.tipoUbicacion.cod) {
-      return this.enums.tipoUbicacion.valores;
+    } else if (enumerado === this.enums.rolUsuario.cod) {
+      return this.enums.rolUsuario.valores;
+    } else if (enumerado === this.enums.estadoUsuario.cod) {
+      return this.enums.estadoUsuario.valores;
+    } else if (enumerado === this.enums.categoriaPost.cod) {
+      return this.enums.categoriaPost.valores;
     }
 
     else if (enumerado === null) {
@@ -481,7 +481,7 @@ export class Util {
   construirMensajeExcepcion(error, summary) {
     let listaMensajes = [];
 
-    if (typeof error !== 'undefined' || error !== null || error !== 'null') {
+    if (error !== undefined && error !== null && error.mensaje !== undefined && error.mensaje !== null) {
       // Extraemos por el split de mensajes |
       let listaErrores = error.mensaje.split('|');
       listaErrores.forEach(errorMSG => {
@@ -495,10 +495,14 @@ export class Util {
         }
       });
     } else {
-      listaMensajes = null;
-    }
+      let mensaje = { severity: '', summary: '', detail: '' };
+      mensaje.severity = this.const.severity[3];
+      mensaje.summary = summary;
+      mensaje.detail = this.msg.lbl_mensaje_sin_detalles_error;
+      listaMensajes.push(mensaje);
 
-    this.playError();
+      this.playError();
+    }
     return listaMensajes;
   }
 }

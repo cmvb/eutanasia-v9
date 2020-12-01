@@ -12,6 +12,7 @@ import { MessageService } from 'primeng/api';
 import { FileUpload } from 'primeng/fileupload';
 import { ArchivoModel } from 'src/app/model/archivo-model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Enumerados } from 'src/app/config/Enumerados';
 
 declare var $: any;
 
@@ -45,7 +46,7 @@ export class HeaderComponent implements OnInit {
   msg: any;
   const: any;
 
-  constructor(private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer, private messageService: MessageService, public restService: RestService, public textProperties: TextProperties, public objectModelInitializer: ObjectModelInitializer, public sesionService: SesionService, public util: Util) {
+  constructor(private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer, private enums: Enumerados, private messageService: MessageService, public restService: RestService, public textProperties: TextProperties, public objectModelInitializer: ObjectModelInitializer, public sesionService: SesionService, public util: Util) {
     this.msg = this.textProperties.getProperties(this.sesionService.objServiceSesion.idioma);
     this.const = this.objectModelInitializer.getConst();
   }
@@ -54,12 +55,19 @@ export class HeaderComponent implements OnInit {
     this.archivosTemporales = [];
     this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
-    let userLogin = sessionStorage.getItem('userLogin');
-    if (userLogin !== undefined && userLogin !== null) {
-      this.usuarioAutorTBLogin = JSON.parse(userLogin);
+
+    if (this.sesionService.existeSession()) {
+      this.usuarioAutorTBLogin = this.sesionService.getUsuarioSesionActual();
+    } else {
+      this.sesionService.tomarSessionDeStorage();
+      this.usuarioAutorTBLogin = this.sesionService.getUsuarioSesionActual();
+      if (this.usuarioAutorTBLogin === null) {
+        this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
+      }
     }
   }
 
+  // Otras Funciones
   mostrarTextoHeader(event) {
     setTimeout(() => {
       $('#mostrarTextHeader').fadeIn('slow');
@@ -68,15 +76,6 @@ export class HeaderComponent implements OnInit {
 
   redirigirBlogs() {
     this.router.navigate(['blogs']);
-  }
-
-  abrirModalLogin() {
-    this.disModLogin = true;
-  }
-
-  abrirModalRegister() {
-    this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
-    this.disModRegistrar = true;
   }
 
   startUpload() {
@@ -101,6 +100,67 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  limpiarAdjuntos() {
+    this.mostrarImagenRegister = false;
+    //this.fileInputRegister.clear();
+    this.archivoImagenRegister = this.objectModelInitializer.getDataArchivoDtoModel();
+    this.archivosTemporales = [];
+  }
+
+  simularClickPorId(id) {
+    $('#' + id).click();
+  }
+
+  esUsuarioLogueado() {
+    let result = false;
+    let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
+    if (usuarioSession !== undefined && usuarioSession !== null) {
+      result = true;
+    }
+
+    return result;
+  }
+
+  esUsuarioLogueadoActivo() {
+    let result = false;
+    let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
+    let valorEstadoActivo = this.util.getValorEnumerado(this.enums.getEnumerados().estadoUsuario.valores, 1);
+    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value) {
+      result = true;
+    }
+
+    return result;
+  }
+
+  sanitizarUrlImgCargada(bytesArray: any, tipoArchivo) {
+    if (tipoArchivo === 'svg') {
+      this.srcImagenRegister = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + bytesArray);
+    } else {
+      tipoArchivo = tipoArchivo + ';base64,';
+      this.srcImagenRegister = 'data:image/' + tipoArchivo + bytesArray;
+    }
+  }
+
+  cerrarSesion() {
+    this.usuarioAutorTBLogin = undefined;
+    this.sesionService.cerrarSession();
+  }
+
+  // Modales
+  abrirModalLogin() {
+    this.disModLogin = true;
+  }
+
+  abrirModalRegister() {
+    this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
+    this.disModRegistrar = true;
+  }
+
+  abrirModalUpdateUser() {
+    //this.disModUpdateUser = true;
+  }
+
+  // Servicios Web
   subirImagen(fileGuardar: ArchivoModel) {
     try {
       this.limpiarAdjuntos();
@@ -130,17 +190,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  limpiarAdjuntos() {
-    this.mostrarImagenRegister = false;
-    this.fileInputRegister.clear();
-    this.archivoImagenRegister = this.objectModelInitializer.getDataArchivoDtoModel();
-    this.archivosTemporales = [];
-  }
-
-  simularClickPorId(id) {
-    $('#' + id).click();
-  }
-
   crearUsuarioEutanasico() {
     try {
       if (this.repeatPassword === undefined || this.repeatPassword === null) {
@@ -157,7 +206,13 @@ export class HeaderComponent implements OnInit {
             if (respuesta !== null) {
               // Ocultar modal de registro y llenar en memoria el usuario en sesion
               this.disModRegistrar = false;
-              sessionStorage.setItem('userLogin', JSON.stringify(respuesta));
+              this.srcImagenRegister = undefined;
+              this.mostrarImagenRegister = false;
+              this.repeatPassword = '';
+              this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
+              this.sesionService.objServiceSesion.usuarioSesion = respuesta;
+              this.usuarioAutorTBLogin = respuesta;
+              sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
               this.messageService.clear();
               this.messageService.add({ severity: this.const.severity[1], summary: this.msg.lbl_summary_succes, detail: this.msg.lbl_info_proceso_completo });
             }
@@ -177,15 +232,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  sanitizarUrlImgCargada(bytesArray: any, tipoArchivo) {
-    if (tipoArchivo === 'svg') {
-      this.srcImagenRegister = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + bytesArray);
-    } else {
-      tipoArchivo = tipoArchivo + ';base64,';
-      this.srcImagenRegister = 'data:image/' + tipoArchivo + bytesArray;
-    }
-  }
-
   login() {
     try {
       if (this.repeatPassword === undefined || this.repeatPassword === null) {
@@ -199,9 +245,11 @@ export class HeaderComponent implements OnInit {
           .subscribe(resp => {
             let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
             if (respuesta !== null) {
-              // Ocultar modal de registro y llenar en memoria el usuario en sesion protegiendo la clave
-              this.disModRegistrar = false;
-              sessionStorage.setItem('userLogin', JSON.stringify(respuesta));
+              // Ocultar modal de login y llenar en memoria el usuario en sesion protegiendo la clave
+              this.disModLogin = false;
+              this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
+              this.sesionService.objServiceSesion.usuarioSesion = respuesta;
+              sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
               this.messageService.clear();
               this.messageService.add({ severity: this.const.severity[1], summary: this.msg.lbl_summary_succes, detail: this.msg.lbl_info_proceso_completo });
             }
