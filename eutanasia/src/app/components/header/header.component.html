@@ -40,10 +40,17 @@
                 <li><a href="#pricing">{{msg.lbl_comparte}}</a></li>
                 <li><a href="#publicaciones">{{msg.lbl_ultimas_publicaciones}}</a></li>
                 <li><a (click)="redirigirBlogs()">{{msg.lbl_blog}}</a></li>
-                <li class="has-dropdown"><a>{{msg.lbl_registro_ingreso}}</a>
+                <li *ngIf="!esUsuarioLogueado()" class="has-dropdown"><a>{{msg.lbl_registro_ingreso}}</a>
                     <ul class="dropdown">
                         <li><a (click)="abrirModalLogin()">{{msg.lbl_login}}</a></li>
                         <li><a (click)="abrirModalRegister()">{{msg.lbl_register}}</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="esUsuarioLogueado()" class="has-dropdown"><a>{{usuarioAutorTBLogin.usuario}}</a>
+                    <ul class="dropdown">
+                        <li><a (click)="cerrarSesion()">{{msg.lbl_tip_cerrar_sesion}}</a></li>
+                        <li><a *ngIf="esUsuarioLogueadoActivo()"
+                                (click)="abrirModalUpdateUser()">{{msg.lbl_actualizar_usuario}}</a></li>
                     </ul>
                 </li>
             </ul>
@@ -70,7 +77,8 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
                             <label class="textPlata">{{msg.lbl_btn_olvidaste_tu_clave}}
-                                <span class="cursorPointer textWhite textHoverRed">{{msg.lbl_btn_restaurar_clave}}</span>
+                                <span
+                                    class="cursorPointer textWhite textHoverRed">{{msg.lbl_btn_restaurar_clave}}</span>
                             </label>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 package com.eutanasia.eutanasia.enums;
 
 public enum ERolUsuario {
-	ADMINISTRADOR("AD"), FAN("FA"), CONTACTO_LABORAL("CL");
+	VACIO("VACIO"), ADMINISTRADOR("AD"), FAN("FA"), CONTACTO_LABORAL("CL");
 
 	private final String nombre;
 

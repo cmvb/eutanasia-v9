@@ -1927,3 +1927,409 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.sun.mail:
 2020-11-29 02:25:18,806 [Worker-252: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
 2020-11-29 02:25:18,809 [Worker-252: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2020-11-29 02:25:18,809 [Worker-252: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:28:24,008 [Worker-255: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:28:24,008 [Worker-255: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:28:24,009 [Worker-255: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:28:24,011 [Worker-255: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:28:24,011 [Worker-255: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:39:07,463 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:39:07,463 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:39:07,464 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:39:07,466 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:39:07,467 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:41:56,224 [Worker-253: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:41:56,225 [Worker-253: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:41:56,226 [Worker-253: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:41:56,227 [Worker-253: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:41:56,227 [Worker-253: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:43:00,585 [Worker-266: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:43:00,585 [Worker-266: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:43:00,587 [Worker-266: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:43:00,588 [Worker-266: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:43:00,588 [Worker-266: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:43:34,262 [Worker-251: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:43:34,263 [Worker-251: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:43:34,264 [Worker-251: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:43:34,266 [Worker-251: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:43:34,266 [Worker-251: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:43:36,965 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:43:36,965 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:43:36,966 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:43:36,969 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:43:36,969 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:43:50,338 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:43:50,339 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:43:50,339 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:43:50,342 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:43:50,342 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:44:51,812 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:44:51,812 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:44:51,813 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:44:51,816 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:44:51,817 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:44:58,354 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:44:58,356 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-29 02:44:58,358 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-29 02:44:58,360 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:44:58,361 [Worker-260: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:45:05,005 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:45:05,006 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-29 02:45:05,008 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-29 02:45:05,010 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:45:05,010 [Worker-264: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:56:32,760 [Worker-263: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:56:32,760 [Worker-263: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:56:32,761 [Worker-263: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:56:32,763 [Worker-263: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:56:32,763 [Worker-263: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:58:17,327 [Worker-274: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:58:17,328 [Worker-274: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:58:17,329 [Worker-274: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:58:17,330 [Worker-274: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:58:17,330 [Worker-274: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:58:22,457 [Worker-270: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:58:22,458 [Worker-270: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:58:22,459 [Worker-270: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:58:22,460 [Worker-270: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:58:22,460 [Worker-270: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 02:59:02,026 [Worker-270: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:59:02,026 [Worker-270: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 02:59:02,028 [Worker-270: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 02:59:02,029 [Worker-270: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 02:59:02,029 [Worker-270: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 18:37:19,100 [Worker-362: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 18:37:19,103 [Worker-362: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-29 18:37:19,109 [Worker-362: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-29 18:37:19,112 [Worker-362: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 18:37:19,113 [Worker-362: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 18:43:32,565 [Worker-365: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 18:43:32,566 [Worker-365: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-29 18:43:32,569 [Worker-365: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-29 18:43:32,571 [Worker-365: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 18:43:32,571 [Worker-365: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 18:43:47,557 [Worker-364: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 18:43:47,559 [Worker-364: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-29 18:43:47,563 [Worker-364: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-29 18:43:47,565 [Worker-364: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 18:43:47,566 [Worker-364: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 18:46:07,607 [Worker-372: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 18:46:07,607 [Worker-372: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 18:46:07,610 [Worker-372: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 18:46:07,612 [Worker-372: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 18:46:07,612 [Worker-372: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 21:03:32,137 [Worker-411: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 21:03:32,137 [Worker-411: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 21:03:32,138 [Worker-411: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 21:03:32,139 [Worker-411: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 21:03:32,139 [Worker-411: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-29 22:01:53,178 [Worker-436: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 22:01:53,179 [Worker-436: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-29 22:01:53,180 [Worker-436: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-29 22:01:53,182 [Worker-436: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-29 22:01:53,182 [Worker-436: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:18:34,203 [Worker-510: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:18:34,205 [Worker-510: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-30 02:18:34,207 [Worker-510: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-30 02:18:34,209 [Worker-510: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:18:34,209 [Worker-510: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:19:40,071 [Worker-510: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:19:40,071 [Worker-510: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 02:19:40,072 [Worker-510: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 02:19:40,073 [Worker-510: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:19:40,073 [Worker-510: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:22:21,405 [Worker-515: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:22:21,405 [Worker-515: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 02:22:21,406 [Worker-515: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 02:22:21,408 [Worker-515: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:22:21,409 [Worker-515: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:23:24,966 [Worker-517: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:23:24,967 [Worker-517: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 02:23:24,968 [Worker-517: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 02:23:24,969 [Worker-517: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:23:24,969 [Worker-517: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:23:34,421 [Worker-519: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:23:34,421 [Worker-519: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 02:23:34,422 [Worker-519: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 02:23:34,424 [Worker-519: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:23:34,424 [Worker-519: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:24:54,171 [Worker-518: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:24:54,171 [Worker-518: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 02:24:54,173 [Worker-518: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 02:24:54,174 [Worker-518: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:24:54,174 [Worker-518: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:24:57,250 [Worker-521: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:24:57,250 [Worker-521: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 02:24:57,251 [Worker-521: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 02:24:57,253 [Worker-521: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:24:57,253 [Worker-521: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:27:35,868 [Worker-519: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:27:35,868 [Worker-519: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 02:27:35,869 [Worker-519: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 02:27:35,872 [Worker-519: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:27:35,872 [Worker-519: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:44:04,690 [Worker-528: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:44:04,692 [Worker-528: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-30 02:44:04,695 [Worker-528: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-30 02:44:04,697 [Worker-528: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:44:04,697 [Worker-528: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:44:10,072 [Worker-537: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:44:10,073 [Worker-537: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-30 02:44:10,076 [Worker-537: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-30 02:44:10,078 [Worker-537: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:44:10,078 [Worker-537: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 02:45:03,714 [Worker-536: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:45:03,714 [Worker-536: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 02:45:03,715 [Worker-536: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 02:45:03,717 [Worker-536: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 02:45:03,717 [Worker-536: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 20:16:09,453 [Worker-4: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2020-11-30 21:00:59,787 [Worker-15: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.eutanasia:eutanasia:0.0.1-SNAPSHOT @ C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\pom.xml.
+2020-11-30 21:01:02,549 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:01:02,565 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-30 21:01:02,623 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-30 21:01:02,630 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:01:02,631 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:01:02,649 [Worker-15: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of eutanasia
+2020-11-30 21:01:02,650 [Worker-15: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for eutanasia
+2020-11-30 21:01:02,661 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:01:06,069 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:01:06,072 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-30 21:01:06,075 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-30 21:01:06,096 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:01:06,096 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:06:23,849 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:06:23,850 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:06:23,852 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:06:23,854 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:06:23,854 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:08:10,904 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:08:10,906 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-30 21:08:10,911 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-30 21:08:10,913 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:08:10,913 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:32:56,040 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:32:56,041 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:32:56,041 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:32:56,047 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:32:56,047 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:35:16,895 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:35:16,895 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:35:16,895 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:35:16,899 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:35:16,899 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:35:52,717 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:35:52,717 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:35:52,718 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:35:52,723 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:35:52,723 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:36:18,236 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:36:18,236 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:36:18,237 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:36:18,241 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:36:18,241 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:37:03,009 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:37:03,009 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:37:03,010 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:37:03,014 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:37:03,014 [Worker-21: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:41:46,217 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:41:46,218 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:41:46,218 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:41:46,224 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:41:46,224 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:53:55,558 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:53:55,559 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:53:55,559 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:53:55,563 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:53:55,563 [Worker-31: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:57:21,964 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:57:21,964 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:57:21,965 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:57:21,968 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:57:21,968 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:57:42,797 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:57:42,797 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:57:42,798 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:57:42,802 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:57:42,803 [Worker-35: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 21:58:13,322 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:58:13,323 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 21:58:13,323 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 21:58:13,326 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 21:58:13,327 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 22:03:37,005 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:03:37,006 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 22:03:37,006 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 22:03:37,010 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:03:37,010 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 22:03:52,982 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:03:52,983 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 22:03:52,983 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 22:03:52,988 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:03:52,988 [Worker-44: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 22:07:26,971 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:07:26,972 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 22:07:26,972 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 22:07:26,976 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:07:26,976 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 22:12:07,588 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:12:07,588 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 22:12:07,589 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 22:12:07,592 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:12:07,593 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 22:12:57,809 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:12:57,809 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 22:12:57,810 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 22:12:57,814 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:12:57,814 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 22:19:05,213 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:19:05,213 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 22:19:05,213 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 22:19:05,218 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:19:05,218 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 22:56:27,210 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:56:27,210 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 22:56:27,210 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 22:56:27,214 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 22:56:27,214 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:10:15,465 [Worker-71: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:10:15,466 [Worker-71: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 23:10:15,467 [Worker-71: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:10:15,469 [Worker-71: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:10:15,469 [Worker-71: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:11:11,413 [Worker-71: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:11:11,413 [Worker-71: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 23:11:11,415 [Worker-71: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:11:11,417 [Worker-71: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:11:11,417 [Worker-71: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:11:41,388 [Worker-73: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:11:41,388 [Worker-73: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 23:11:41,389 [Worker-73: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:11:41,390 [Worker-73: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:11:41,391 [Worker-73: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:13:49,379 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:13:49,379 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 23:13:49,381 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:13:49,382 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:13:49,382 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:19:19,842 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:19:19,843 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 23:19:19,844 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:19:19,846 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:19:19,846 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:26:13,044 [Worker-92: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:26:13,045 [Worker-92: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 23:26:13,046 [Worker-92: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:26:13,047 [Worker-92: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:26:13,047 [Worker-92: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:34:26,794 [Worker-95: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:34:26,794 [Worker-95: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 23:34:26,795 [Worker-95: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:34:26,797 [Worker-95: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:34:26,797 [Worker-95: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:34:33,194 [Worker-97: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:34:33,194 [Worker-97: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-11-30 23:34:33,195 [Worker-97: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:34:33,196 [Worker-97: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:34:33,196 [Worker-97: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:56:50,837 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:56:50,837 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:56:50,837 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:56:50,839 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:56:50,840 [Worker-113: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:58:30,922 [Worker-111: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:58:30,924 [Worker-111: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-11-30 23:58:30,927 [Worker-111: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-11-30 23:58:30,938 [Worker-111: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:58:30,938 [Worker-111: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-11-30 23:59:46,717 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:59:46,717 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:59:46,718 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-11-30 23:59:46,719 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-11-30 23:59:46,719 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 00:00:02,507 [Worker-114: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2020-12-01 00:00:03,051 [Worker-114: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.eutanasia:eutanasia:0.0.1-SNAPSHOT @ C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\pom.xml.
+2020-12-01 00:00:04,440 [Worker-114: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /eutanasia/src/main/java
+2020-12-01 00:00:04,441 [Worker-114: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /eutanasia/src/main/resources
+2020-12-01 00:00:04,441 [Worker-114: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /eutanasia/src/main/resources
+2020-12-01 00:00:04,442 [Worker-114: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /eutanasia/src/test/java
+2020-12-01 00:00:05,911 [Worker-114: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for eutanasia
+2020-12-01 00:00:05,926 [Worker-114: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 3 sec
+2020-12-01 00:00:08,606 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:00:08,607 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 00:00:08,623 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 00:00:08,644 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:00:08,644 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 00:00:08,644 [Worker-116: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of eutanasia
+2020-12-01 00:00:08,644 [Worker-116: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for eutanasia
+2020-12-01 00:00:08,649 [Worker-116: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:00:44,356 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:00:44,357 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-12-01 00:00:44,357 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-12-01 00:00:44,358 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:00:44,359 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 00:00:57,305 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:00:57,308 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 00:00:57,312 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 00:00:57,328 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:00:57,328 [Worker-115: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 00:01:14,525 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:01:14,526 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-12-01 00:01:14,527 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-12-01 00:01:14,528 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:01:14,528 [Worker-114: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 00:06:34,846 [Worker-123: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:06:34,848 [Worker-123: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 00:06:34,851 [Worker-123: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 00:06:34,852 [Worker-123: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:06:34,852 [Worker-123: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 00:08:35,097 [Worker-124: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:08:35,097 [Worker-124: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-12-01 00:08:35,098 [Worker-124: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-12-01 00:08:35,100 [Worker-124: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 00:08:35,100 [Worker-124: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 01:15:55,291 [Worker-148: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:15:55,293 [Worker-148: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 01:15:55,297 [Worker-148: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 01:15:55,299 [Worker-148: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:15:55,300 [Worker-148: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 01:42:18,605 [Worker-159: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:42:18,607 [Worker-159: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 01:42:18,611 [Worker-159: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 01:42:18,613 [Worker-159: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:42:18,613 [Worker-159: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 01:42:33,838 [Worker-159: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:42:33,840 [Worker-159: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 01:42:33,844 [Worker-159: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 01:42:33,847 [Worker-159: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:42:33,847 [Worker-159: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 01:42:43,231 [Worker-156: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:42:43,232 [Worker-156: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 01:42:43,234 [Worker-156: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 01:42:43,236 [Worker-156: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:42:43,236 [Worker-156: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 01:42:48,826 [Worker-160: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:42:48,828 [Worker-160: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 01:42:48,832 [Worker-160: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 01:42:48,833 [Worker-160: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:42:48,834 [Worker-160: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 01:43:49,903 [Worker-156: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:43:49,905 [Worker-156: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 01:43:49,907 [Worker-156: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 01:43:49,909 [Worker-156: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:43:49,909 [Worker-156: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 01:45:31,482 [Worker-155: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:45:31,484 [Worker-155: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 01:45:31,487 [Worker-155: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 01:45:31,490 [Worker-155: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:45:31,490 [Worker-155: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 01:46:19,096 [Worker-138: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:46:19,097 [Worker-138: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 01:46:19,101 [Worker-138: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 01:46:19,104 [Worker-138: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:46:19,104 [Worker-138: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-01 01:51:57,546 [Worker-155: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:51:57,548 [Worker-155: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-01 01:51:57,552 [Worker-155: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 4 resources
+2020-12-01 01:51:57,554 [Worker-155: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-01 01:51:57,554 [Worker-155: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources

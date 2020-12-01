@@ -28,6 +28,7 @@ export class TextProperties {
       lbl_login: idioma === constant.idiomaEs ? 'Login' : 'Login',
       lbl_categorias: idioma === constant.idiomaEs ? 'Categorías' : 'Categories',
       lbl_register: idioma === constant.idiomaEs ? 'Registro' : 'Register',
+      lbl_actualizar_usuario: idioma === constant.idiomaEs ? 'Actualizar Usuario' : 'Update User',
       lbl_posts_populares: idioma === constant.idiomaEs ? 'Posts Populares' : 'Populare Posts',
       lbl_colaboradores: idioma === constant.idiomaEs ? 'Colaboradores' : 'Collaborators',
       lbl_bienvenido: idioma === constant.idiomaEs ? 'Bienvenido' : 'Welcome',
@@ -210,26 +211,17 @@ export class TextProperties {
       lbl_enum_si: idioma === constant.idiomaEs ? 'Si' : 'Yes',
       lbl_enum_no: idioma === constant.idiomaEs ? 'No' : 'No',
 
-      lbl_enum_modulo_test: idioma === constant.idiomaEs ? 'Test' : 'Test',
-      lbl_enum_modulo_tb_perfil: idioma === constant.idiomaEs ? 'Perfil' : 'Profile',
-      lbl_enum_modulo_tb_usuario: idioma === constant.idiomaEs ? 'Usuario' : 'User',
-      lbl_enum_modulo_tb_perfil_x_usuario: idioma === constant.idiomaEs ? 'Perfil x Usuario' : 'Profile x User',
+      lbl_enum_sexo_valor_masculino: idioma === constant.idiomaEs ? 'Masculino' : 'Male',
+      lbl_enum_sexo_valor_femenino: idioma === constant.idiomaEs ? 'Femenino' : 'Female',
+      lbl_enum_sexo_valor_otro: idioma === constant.idiomaEs ? 'Otro' : 'Other',
 
-      lbl_enum_sexo_valor_masculino: idioma === constant.idiomaEs ? 'Masculino' : 'Man',
-      lbl_enum_sexo_valor_femenino: idioma === constant.idiomaEs ? 'Femenino' : 'Femenino',
-      lbl_enum_sexo_valor_ambos: idioma === constant.idiomaEs ? 'Ambos' : 'Ambos',
+      lbl_enum_rol_usuario_valor_administrador: idioma === constant.idiomaEs ? 'Administrador' : 'Admin',
+      lbl_enum_rol_usuario_valor_fan: idioma === constant.idiomaEs ? 'Fan' : 'Fan',
+      lbl_enum_rol_usuario_valor_contacto_laboral: idioma === constant.idiomaEs ? 'Contacto Laboral' : 'Work Contact',
 
-      lbl_enum_tipo_usuario_valor_cliente: idioma === constant.idiomaEs ? 'Cliente' : 'Client',
-      lbl_enum_tipo_usuario_valor_empleado: idioma === constant.idiomaEs ? 'Empleado' : 'Employed',
-      lbl_enum_tipo_usuario_valor_administrador: idioma === constant.idiomaEs ? 'Administrador' : 'Admin',
-
-      lbl_enum_tipo_documento_valor_cc: idioma === constant.idiomaEs ? 'CC' : 'CC',
-      lbl_enum_tipo_documento_valor_ti: idioma === constant.idiomaEs ? 'TI' : 'TI',
-      lbl_enum_tipo_documento_valor_ce: idioma === constant.idiomaEs ? 'CE' : 'CE',
-
-      lbl_enum_tipo_ubicacion_valor_pais: idioma === constant.idiomaEs ? 'País' : 'Country',
-      lbl_enum_tipo_ubicacion_valor_departamento: idioma === constant.idiomaEs ? 'Departamento/Región/Estado' : 'Department/Region/State',
-      lbl_enum_tipo_ubicacion_valor_ciudad: idioma === constant.idiomaEs ? 'Ciudad' : 'City',
+      lbl_enum_estado_valor_usuario_inactivo: idioma === constant.idiomaEs ? 'Inactivo' : 'Inactive',
+      lbl_enum_estado_valor_usuario_activo: idioma === constant.idiomaEs ? 'Activo' : 'Active',
+      lbl_enum_estado_valor_usuario_rechazado: idioma === constant.idiomaEs ? 'Rechazado' : 'Rejected',
 
       lbl_enum_categoria_valor_invitacion_evento: idioma === constant.idiomaEs ? 'Invitación Evento' : 'Event Invitation',
       lbl_enum_categoria_valor_agradecimientos_saludos: idioma === constant.idiomaEs ? 'Agradecimientos y Saludos' : 'Thanks and Greetings',

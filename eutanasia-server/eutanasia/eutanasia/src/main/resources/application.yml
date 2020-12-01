@@ -2,14 +2,16 @@ spring:
   mail:
     default-encoding: UTF-8
     host: smtp.gmail.com
-    username: cmverab@ufpso.edu.co
-    password: Carlosm.12
+    username: eutanasiarockandroll@gmail.com
+    password: freneticorockandroll
     port: 587
     properties:
       mail:
         ssl:
           enable: true
         smtp:
+          ssl:
+            trust: smtp.gmail.com
           auth: true
           starttls:
             enable: true
