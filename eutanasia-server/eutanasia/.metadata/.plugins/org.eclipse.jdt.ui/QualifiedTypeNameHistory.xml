@@ -11,7 +11,8 @@
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="org.thymeleaf.context.Context"/>
-    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.ConstantesValidaciones"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.enums.EEstado"/>
+    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.ConstantesTablasNombre"/>
+    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.ConstantesValidaciones"/>
 </qualifiedTypeNameHistroy>
