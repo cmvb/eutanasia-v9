@@ -86,7 +86,7 @@ audio {
     position: fixed;
     z-index: 10;
     bottom: 10px;
-    padding: 10px 80px;
+    padding: 10px 10%;
     width: 100%;
     opacity: 0.7;
 }
@@ -348,6 +348,12 @@ textarea:focus {
     }
     #nav.nav-transparent .navbar-brand .logo {
         display: block !important;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    #accordian {
+        display: none;
     }
 }
 
@@ -925,6 +931,10 @@ header {
     margin-bottom: 10px;
 }
 
+.font-12px {
+    font-size: 12px;
+}
+
 .font-20px {
     font-size: 20px;
 }
@@ -1277,10 +1287,30 @@ header {
     color: #fff;
 }
 
+.menu {
+    padding: 10px 10px;
+    border-radius: 50px;
+    background: #a4a2a22b;
+    margin: 5px 30px;
+    box-shadow: 1px 1px 1px $color-gris;
+}
+
+.menu:hover {
+    box-shadow: none;
+}
+
+iframe {
+    width: 100% !important;
+}
+
 /* -- blog author -- */
 
 .blog-author {
     margin: 40px 0px;
+}
+
+.iconMovilPad {
+    padding-right: 5px;
 }
 
 .blog-author .media .media-left {
@@ -2236,6 +2266,66 @@ h4 {
 
 .cursorPointer {
     cursor: pointer;
+}
+
+#accordian {
+    background-image: url(assets/images/fondo2.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    position: inherit;
+    color: #77110a;
+    box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.6), 0 0 200px 1px rgba(255, 255, 255, 0.5);
+}
+/*heading styles*/
+#accordian h3 {
+    font-size: 12px;
+    line-height: 34px;
+    padding: 0 10px;
+    cursor: pointer;
+    /*fallback for browsers not supporting gradients*/
+    background: $color-rojo;
+    background: linear-gradient($color-rojo, #002535);
+}
+/*heading hover effect*/
+#accordian h3:hover {
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.7);
+    color: $color-blanco;
+    background: $color-rojo;
+}
+/*iconfont styles*/
+#accordian h3 span {
+    font-size: 16px;
+    margin-right: 10px;
+}
+/*list items*/
+#accordian li {
+    list-style-type: none;
+}
+/*links*/
+#accordian ul ul li a {
+    color: $color-rojo;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 27px;
+    display: block;
+    padding: 0 15px;
+    /*transition for smooth hover animation*/
+    transition: all 0.15s;
+}
+/*hover effect on links*/
+#accordian ul ul li a:hover {
+    background: $color-rojo;
+    color: $color-blanco;
+    border-left: 5px solid #222;
+}
+/*Lets hide the non active LIs by default*/
+#accordian ul ul {
+    display: block;
+}
+#accordian li.active ul {
+    display: block;
 }
 
 .p-fieldset {

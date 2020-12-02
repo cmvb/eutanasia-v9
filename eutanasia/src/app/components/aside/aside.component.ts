@@ -37,7 +37,6 @@ export class AsideComponent implements OnInit {
   listaPostsPopulares: PostModel[];
 
   // Utilidades
-  msg: any;
   const: any;
   locale: any;
   maxDate = new Date();
@@ -45,7 +44,6 @@ export class AsideComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enumerados: Enumerados, public sesionService: SesionService, private messageService: MessageService, private sanitization: DomSanitizer, public eutanasiaService: EutanasiaService) {
     this.sesion = this.objectModelInitializer.getDataServiceSesion();
-    this.msg = this.textProperties.getProperties(this.sesionService.objServiceSesion.idioma);
     this.const = this.objectModelInitializer.getConst();
     this.enums = enumerados.getEnumerados();
     this.locale = this.sesionService.objServiceSesion.idioma === this.objectModelInitializer.getConst().idiomaEs ? this.objectModelInitializer.getLocaleESForCalendar() : this.objectModelInitializer.getLocaleENForCalendar();
@@ -53,7 +51,6 @@ export class AsideComponent implements OnInit {
 
   ngOnInit() {
     this.listaPostsPopulares = [];
-    sessionStorage.clear();
     this.postFiltro = this.objectModelInitializer.getDataPostModel();
     this.cargarContadoresCategorias();
     this.buscarPostsMasPopulares();

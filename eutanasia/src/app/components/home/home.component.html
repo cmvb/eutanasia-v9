@@ -16,7 +16,7 @@
 				<!-- Section header -->
 				<div class="section-header text-center">
 					<h2 class="title">
-						<p>{{msg.lbl_bienvenido}}</p>{{msg.lbl_oficial_web_page}}
+						<p>{{sesionService.msg.lbl_bienvenido}}</p>{{sesionService.msg.lbl_oficial_web_page}}
 					</h2>
 				</div>
 				<!-- /Section header -->
@@ -27,40 +27,40 @@
 						<img style="padding: 5px 0" src="assets/images/s.jpg" class="img-responsive" />
 					</div>
 					<div class="col-md-6 biography-grid" style="color: #020200;">
-						<p style="padding-top: 0">{{msg.lbl_biografia_1}}</p>
-						<p>{{msg.lbl_biografia_2}}</p>
+						<p style="padding-top: 0">{{sesionService.msg.lbl_biografia_1}}</p>
+						<p>{{sesionService.msg.lbl_biografia_2}}</p>
 					</div>
 				</div>
 
 				<div class="biography-grids">
 					<div class="col-md-12 biography-grid">
 						<p-fieldset legend="2013" [toggleable]="true" [collapsed]="true">
-							<p>{{msg.lbl_biografia_2013_1}}</p>
+							<p>{{sesionService.msg.lbl_biografia_2013_1}}</p>
 
-							<p>{{msg.lbl_biografia_2013_2}}</p>
+							<p>{{sesionService.msg.lbl_biografia_2013_2}}</p>
 
-							<p>{{msg.lbl_biografia_2013_3}}</p>
+							<p>{{sesionService.msg.lbl_biografia_2013_3}}</p>
 						</p-fieldset>
 					</div>
 					<div class="col-md-12 biography-grid">
 						<p-fieldset legend="2014" [toggleable]="true" [collapsed]="true">
-							<p>{{msg.lbl_biografia_2014_1}}
+							<p>{{sesionService.msg.lbl_biografia_2014_1}}
 							</p>
 						</p-fieldset>
 					</div>
 					<div class="col-md-12 biography-grid">
 						<p-fieldset legend="2015" [toggleable]="true" [collapsed]="true">
-							<p>{{msg.lbl_biografia_2015_1}}</p>
+							<p>{{sesionService.msg.lbl_biografia_2015_1}}</p>
 						</p-fieldset>
 					</div>
 					<div class="col-md-12 biography-grid">
 						<p-fieldset legend="2016" [toggleable]="true" [collapsed]="true">
-							<p>{{msg.lbl_biografia_2016_1}}</p>
+							<p>{{sesionService.msg.lbl_biografia_2016_1}}</p>
 						</p-fieldset>
 					</div>
 					<div class="col-md-12 biography-grid">
 						<p-fieldset legend="2017" [toggleable]="true" [collapsed]="true">
-							<p>{{msg.lbl_biografia_2017_1}}</p>
+							<p>{{sesionService.msg.lbl_biografia_2017_1}}</p>
 						</p-fieldset>
 					</div>
 					<div class="clearfix"></div>
@@ -81,7 +81,7 @@
 			<div class="row">
 				<!-- Section header -->
 				<div class="section-header text-center">
-					<h2 class="title">{{msg.lbl_banda}}</h2>
+					<h2 class="title">{{sesionService.msg.lbl_banda}}</h2>
 				</div>
 				<!-- /Section header -->
 
@@ -89,39 +89,39 @@
 				<div class="containerGallery">
 					<div class="boxGallery">
 						<div class="box-legend">
-							<h1 class="nombreArtista">{{msg.lbl_banda_pedro}}</h1>
+							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_pedro}}</h1>
 							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
 								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
 						</div>
 						<img src="assets/images/band/pedro.jpg">
-						<span>{{msg.lbl_banda_vocalista}}</span>
+						<span>{{sesionService.msg.lbl_banda_vocalista}}</span>
 					</div>
 					<div class="boxGallery">
 						<div class="box-legend">
-							<h1 class="nombreArtista">{{msg.lbl_banda_pipe}}</h1>
+							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_pipe}}</h1>
 							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
 								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
 						</div>
 						<img src="assets/images/band/pipe.jpg">
-						<span>{{msg.lbl_banda_guitarrista}}</span>
+						<span>{{sesionService.msg.lbl_banda_guitarrista}}</span>
 					</div>
 					<div class="boxGallery">
 						<div class="box-legend">
-							<h1 class="nombreArtista">{{msg.lbl_banda_carlos}}</h1>
+							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_carlos}}</h1>
 							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
 								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
 						</div>
 						<img src="assets/images/band/carlos.jpg">
-						<span>{{msg.lbl_banda_bajista}}</span>
+						<span>{{sesionService.msg.lbl_banda_bajista}}</span>
 					</div>
 					<div class="boxGallery">
 						<div class="box-legend">
-							<h1 class="nombreArtista">{{msg.lbl_banda_leo}}</h1>
+							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_leo}}</h1>
 							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
 								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
 						</div>
 						<img src="assets/images/band/leo.jpg">
-						<span>{{msg.lbl_banda_baterista}}</span>
+						<span>{{sesionService.msg.lbl_banda_baterista}}</span>
 					</div>
 				</div>
 				<!-- /Galer -->
@@ -140,7 +140,7 @@
 			<div class="row">
 				<!-- Section header -->
 				<div class="section-header text-center">
-					<h2 class="title">{{msg.lbl_galeria_media}}</h2>
+					<h2 class="title">{{sesionService.msg.lbl_galeria_media}}</h2>
 				</div>
 				<!-- /Section header -->
 
@@ -193,7 +193,7 @@
 									</li>
 									<li>
 										<a class="list-link"><i style="padding-right: 5px;"
-												class="fa fa-music"></i>{{msg.lbl_banda_frenetico_rock_and_roll}}
+												class="fa fa-music"></i>{{sesionService.msg.lbl_banda_frenetico_rock_and_roll}}
 											- {{cancionSeleccionada}}</a>
 									</li>
 								</ul>
@@ -248,7 +248,7 @@
 	<div id="service" class="section md-padding">
 		<div class="container">
 			<div class="section-header text-center">
-				<h2 class="title">{{msg.lbl_participaciones}}</h2>
+				<h2 class="title">{{sesionService.msg.lbl_participaciones}}</h2>
 			</div>
 			<div class="border"></div>
 
@@ -268,7 +268,7 @@
 			<ng-template #sinResultados>
 				<div class="service-grids">
 					<div class="col-md-12 ser-grid">
-						<p class="sinResultados shiny">{{msg.lbl_info_sin_resultados}}</p>
+						<p class="sinResultados shiny">{{sesionService.msg.lbl_info_sin_resultados}}</p>
 					</div>
 				</div>
 			</ng-template>
@@ -285,28 +285,28 @@
 				<!-- why choose us content -->
 				<div class="col-md-6">
 					<div class="section-header">
-						<h2 class="title">{{msg.lbl_banda_frenetico_rock_and_roll}}</h2>
+						<h2 class="title">{{sesionService.msg.lbl_banda_frenetico_rock_and_roll}}</h2>
 					</div>
-					<p>{{msg.lbl_banda_descripcion_demo}}</p>
+					<p>{{sesionService.msg.lbl_banda_descripcion_demo}}</p>
 					<div class="feature">
 						<i class="fa fa-check"></i>
-						<p>{{msg.lbl_banda_demo_1}}</p>
-					</div>
-					<div class="feature">
-						<i class="fa fa-check"></i>
-						<p>{{msg.lbl_banda_demo_2}}</p>
+						<p>{{sesionService.msg.lbl_banda_demo_1}}</p>
 					</div>
 					<div class="feature">
 						<i class="fa fa-check"></i>
-						<p>{{msg.lbl_banda_demo_3}}</p>
+						<p>{{sesionService.msg.lbl_banda_demo_2}}</p>
 					</div>
 					<div class="feature">
 						<i class="fa fa-check"></i>
-						<p>{{msg.lbl_banda_demo_4}}</p>
+						<p>{{sesionService.msg.lbl_banda_demo_3}}</p>
 					</div>
 					<div class="feature">
 						<i class="fa fa-check"></i>
-						<p>{{msg.lbl_banda_demo_5}}</p>
+						<p>{{sesionService.msg.lbl_banda_demo_4}}</p>
+					</div>
+					<div class="feature">
+						<i class="fa fa-check"></i>
+						<p>{{sesionService.msg.lbl_banda_demo_5}}</p>
 					</div>
 				</div>
 				<!-- /why choose us content -->
@@ -346,7 +346,7 @@
 					<div class="number">
 						<i class="fa fa-users"></i>
 						<h3 class="white-text"><span class="counter">451</span></h3>
-						<span class="white-text">{{msg.lbl_eutanasicos}}</span>
+						<span class="white-text">{{sesionService.msg.lbl_eutanasicos}}</span>
 					</div>
 				</div>
 				<!-- /number -->
@@ -356,7 +356,7 @@
 					<div class="number">
 						<i class="fa fa-trophy"></i>
 						<h3 class="white-text"><span class="counter">25</span></h3>
-						<span class="white-text">{{msg.lbl_participaciones}}</span>
+						<span class="white-text">{{sesionService.msg.lbl_participaciones}}</span>
 					</div>
 				</div>
 				<!-- /number -->
@@ -365,8 +365,8 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="number">
 						<i class="fa fa-calendar"></i>
-						<h3 class="white-text"><span class="counter"></span>{{msg.lbl_por_definir}}</h3>
-						<span class="white-text">{{msg.lbl_proximo_evento}}</span>
+						<h3 class="white-text"><span class="counter"></span>{{sesionService.msg.lbl_por_definir}}</h3>
+						<span class="white-text">{{sesionService.msg.lbl_proximo_evento}}</span>
 					</div>
 				</div>
 				<!-- /number -->
@@ -376,7 +376,7 @@
 					<div class="number">
 						<i class="fa fa-file"></i>
 						<h3 class="white-text"><span class="counter">150000</span></h3>
-						<span class="white-text">{{msg.lbl_posts}}</span>
+						<span class="white-text">{{sesionService.msg.lbl_posts}}</span>
 					</div>
 				</div>
 				<!-- /number -->
@@ -396,8 +396,8 @@
 			<div class="row">
 				<!-- Section header -->
 				<div class="section-header text-center">
-					<h2 class="title">{{msg.lbl_comparte}}</h2>
-					<p>{{msg.lbl_banda_ayuda_compartir}}</p>
+					<h2 class="title">{{sesionService.msg.lbl_comparte}}</h2>
+					<p>{{sesionService.msg.lbl_banda_ayuda_compartir}}</p>
 				</div>
 				<!-- /Section header -->
 
@@ -434,7 +434,7 @@
 			<div class="row">
 				<!-- Section header -->
 				<div class="section-header text-center">
-					<h2 class="title textWhite">{{msg.lbl_colaboradores}}</h2>
+					<h2 class="title textWhite">{{sesionService.msg.lbl_colaboradores}}</h2>
 				</div>
 				<!-- /Section header -->
 
@@ -447,11 +447,11 @@
 								<div class="testimonial-meta">
 									<img href="http://www.carlosjacomeartworks.com/"
 										src="assets/images/carlosjacome.jpg">
-									<h3 class="white-text">{{msg.lbl_banda_carlos_jacome}}</h3>
-									<span>{{msg.lbl_disenador_grafico}}</span>
+									<h3 class="white-text">{{sesionService.msg.lbl_banda_carlos_jacome}}</h3>
+									<span>{{sesionService.msg.lbl_disenador_grafico}}</span>
 								</div>
 								<p style="padding: 5px;" class="white-text text-justify">
-									{{msg.lbl_banda_resena_carlos_jacome}}</p>
+									{{sesionService.msg.lbl_banda_resena_carlos_jacome}}</p>
 							</div>
 							<!-- /testimonial -->
 						</ng-template>
@@ -460,8 +460,8 @@
 							<div class="testimonial">
 								<div class="testimonial-meta">
 									<img width="auto !important" src="assets/images/guardia.png">
-									<h3 class="white-text">{{msg.lbl_banda_guardia_estudio}}</h3>
-									<span>{{msg.lbl_estudio_grabacion}}</span>
+									<h3 class="white-text">{{sesionService.msg.lbl_banda_guardia_estudio}}</h3>
+									<span>{{sesionService.msg.lbl_estudio_grabacion}}</span>
 								</div>
 								<p style="padding: 5px;" class="white-text text-justify">Molestie at elementum eu
 									facilisis
@@ -488,7 +488,7 @@
 			<div class="row">
 				<!-- Section header -->
 				<div class="section-header text-center">
-					<h2 class="title">{{msg.lbl_ultimas_publicaciones}}</h2>
+					<h2 class="title">{{sesionService.msg.lbl_ultimas_publicaciones}}</h2>
 				</div>
 				<!-- /Section header -->
 
@@ -507,7 +507,8 @@
 								</ul>
 								<h3>{{post.titulo}}</h3>
 								<p>{{post.subtitulo}}</p>
-								<a class="hoverBlack cursorPointer" (click)="verPost(post)">{{msg.lbl_leer_mas}}</a>
+								<a class="hoverBlack cursorPointer"
+									(click)="verPost(post)">{{sesionService.msg.lbl_leer_mas}}</a>
 							</div>
 						</div>
 					</div>
@@ -515,7 +516,7 @@
 				<ng-template #sinResultadosPosts>
 					<div class="service-grids">
 						<div class="col-md-12 ser-grid">
-							<p class="sinResultados shiny">{{msg.lbl_info_sin_resultados}}</p>
+							<p class="sinResultados shiny">{{sesionService.msg.lbl_info_sin_resultados}}</p>
 						</div>
 					</div>
 				</ng-template>
@@ -535,8 +536,9 @@
 			<div class="row">
 				<!-- Section-header -->
 				<div class="section-header text-center">
-					<h2 class="title">{{msg.lbl_contacto}}</h2>
-					<input type="submit" class="main-btn" value="Registrar Eutanásico" />
+					<h2 class="title">{{sesionService.msg.lbl_contacto}}</h2>
+					<input *ngIf="!esUsuarioLogueadoHome()" (click)="simularClickPorId('registerUser')" type="submit"
+						class="main-btn" value="Registrar Eutanásico" />
 				</div>
 				<!-- /Section-header -->
 

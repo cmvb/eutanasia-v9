@@ -13,6 +13,7 @@ import { interval } from 'rxjs';
 import { ToqueModel } from 'src/app/model/toque-model';
 import { PostModel } from 'src/app/model/post-model';
 import { EutanasiaService } from 'src/app/services/eutanasiaService/eutanasia.service';
+import { UsuarioAutorModel } from 'src/app/model/usuarioAutor-model';
 
 declare var $: any;
 
@@ -90,17 +91,17 @@ export class HomeComponent implements OnInit {
   subscribeSong: any;
 
   // Utilidades
-  msg: any;
   const: any;
+  enums: any;
 
   constructor(private router: Router, private route: ActivatedRoute, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enumerados: Enumerados, public sesionService: SesionService, private messageService: MessageService, public eutanasiaService: EutanasiaService) {
     this.sesion = this.objectModelInitializer.getDataServiceSesion();
-    this.msg = this.textProperties.getProperties(this.sesionService.objServiceSesion.idioma);
     this.const = this.objectModelInitializer.getConst();
+    this.enums = enumerados.getEnumerados();
   }
 
   ngOnInit() {
-    sessionStorage.clear();
+    console.clear();
     this.songPosition = 0;
     this.duracionMaxima = 0;
     this.songTime = '00:00';
@@ -287,7 +288,6 @@ export class HomeComponent implements OnInit {
     return `pi ${this.fullscreen ? 'pi-window-minimize' : 'pi-window-maximize'}`;
   }
 
-
   cargarGaleria() {
     this.images = [];
     for (let index = 1; index < 58; index++) {
@@ -320,7 +320,7 @@ export class HomeComponent implements OnInit {
     try {
       this.restService.postREST(this.const.urlConsultarPostsPorFiltros, obj)
         .subscribe(resp => {
-          let listaTemporal = JSON.parse(JSON.stringify(resp));
+          let listaTemporal: PostModel[] = JSON.parse(JSON.stringify(resp));
           if (listaTemporal !== undefined && listaTemporal !== null) {
             this.listaPosts = listaTemporal.length > 3 ? listaTemporal.slice(listaTemporal.length - 3) : listaTemporal;
           }
@@ -339,9 +339,39 @@ export class HomeComponent implements OnInit {
   }
 
   verPost(post: PostModel) {
-    this.eutanasiaService.post = post;
-    sessionStorage.setItem('post', JSON.stringify(post));
-    this.router.navigate(['blog']);
+    if (this.esUsuarioLogueadoActivoHome()) {
+      this.eutanasiaService.post = post;
+      sessionStorage.setItem('post', JSON.stringify(post));
+      this.router.navigate(['blog']);
+    } else {
+      this.messageService.clear();
+      this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mensaje_debe_ser_usuario_logueado });
+    }
+  }
+
+  esUsuarioLogueadoHome() {
+    let result = false;
+    let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
+    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.id > 0) {
+      result = true;
+    }
+
+    return result;
+  }
+
+  esUsuarioLogueadoActivoHome() {
+    let result = false;
+    let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
+    let valorEstadoActivo = this.util.getValorEnumerado(this.enums.estadoUsuario.valores, 1);
+    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value) {
+      result = true;
+    }
+
+    return result;
+  }
+
+  simularClickPorId(id) {
+    $('#' + id)[0].click();
   }
 
 }

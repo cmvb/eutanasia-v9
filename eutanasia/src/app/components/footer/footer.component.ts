@@ -19,4 +19,5 @@ export class FooterComponent implements OnInit {
       scrollTop: 0
     }, 600);
   }
+
 }

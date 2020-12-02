@@ -50,19 +50,19 @@ public class PostsDaoImpl extends AbstractDao<PostTB> implements IPostsDao {
 		StringBuilder JPQL = new StringBuilder("SELECT t FROM PostTB t WHERE 1 = 1 ");
 		// WHERE
 		if (filtroPost.getId() > 0) {
-			JPQL.append(" AND t.idPost = :ID_POST ");
+			JPQL.append(" AND t.id = :ID_POST ");
 			pamameters.put("ID_POST", filtroPost.getId());
 		}
 		if (filtroPost.getUsuarioAutorTB() != null
 				&& !StringUtils.isBlank(filtroPost.getUsuarioAutorTB().getNombres())) {
-			JPQL.append(" AND UPPERCASE(t.autor) LIKE ").append(ConstantesValidaciones.COMODIN_BD)
-					.append("UPPERCASE(:AUTOR_POST)").append(ConstantesValidaciones.COMODIN_BD);
-			pamameters.put("AUTOR_POST", filtroPost.getUsuarioAutorTB().getNombres());
+			JPQL.append(" AND UPPER(t.usuarioAutorTB.nombres) LIKE :AUTOR_POST ");
+			pamameters.put("AUTOR_POST", ConstantesValidaciones.COMODIN_BD
+					+ filtroPost.getUsuarioAutorTB().getNombres().toUpperCase() + ConstantesValidaciones.COMODIN_BD);
 		}
 		if (!StringUtils.isBlank(filtroPost.getTitulo())) {
-			JPQL.append(" AND UPPERCASE(t.titulo) LIKE ").append(ConstantesValidaciones.COMODIN_BD)
-					.append("UPPERCASE(:TITULO_POST)").append(ConstantesValidaciones.COMODIN_BD);
-			pamameters.put("TITULO_POST", filtroPost.getTitulo());
+			JPQL.append(" AND UPPER(t.titulo) LIKE :TITULO_POST ");
+			pamameters.put("TITULO_POST", ConstantesValidaciones.COMODIN_BD + filtroPost.getTitulo().toUpperCase()
+					+ ConstantesValidaciones.COMODIN_BD);
 		}
 		if (filtroPost.getCategoria() > 0) {
 			JPQL.append(" AND t.categoria = :CATEGORIA_POST ");
@@ -73,12 +73,12 @@ public class PostsDaoImpl extends AbstractDao<PostTB> implements IPostsDao {
 			pamameters.put("ESTADO_POST", filtroPost.getEstado());
 		}
 		if (!StringUtils.isBlank(filtroPost.getTags())) {
-			JPQL.append(" AND UPPERCASE(t.tags) LIKE ").append(ConstantesValidaciones.COMODIN_BD)
-					.append("UPPERCASE(:TAG_POST)").append(ConstantesValidaciones.COMODIN_BD);
-			pamameters.put("TAG_POST", filtroPost.getTags());
+			JPQL.append(" AND UPPER(t.tags) LIKE :TAG_POST ");
+			pamameters.put("TAG_POST", ConstantesValidaciones.COMODIN_BD + filtroPost.getTags().toUpperCase()
+					+ ConstantesValidaciones.COMODIN_BD);
 		}
 		// Q. Order By
-		JPQL.append(" ORDER BY t.fechaActualizacion DESC");
+		JPQL.append(" ORDER BY t.id DESC");
 		// END QUERY
 
 		TypedQuery<PostTB> query = em.createQuery(JPQL.toString(), PostTB.class);

@@ -9,10 +9,7 @@ declare var $: any;
 
 @Injectable()
 export class Guardian implements CanActivate {
-  msg: any;
-
   constructor(private router: Router, public objectModelInitializer: ObjectModelInitializer, public textProperties: TextProperties, public sesionService: SesionService) {
-    this.msg = this.textProperties.getProperties(this.sesionService.objServiceSesion.idioma);
   }
 
   canActivate(

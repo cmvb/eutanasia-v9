@@ -26,8 +26,10 @@ export class TextProperties {
 
       // Generales
       lbl_login: idioma === constant.idiomaEs ? 'Login' : 'Login',
+      lbl_idioma: idioma === constant.idiomaEs ? 'Idioma' : 'Lenguage',
       lbl_categorias: idioma === constant.idiomaEs ? 'Categorías' : 'Categories',
       lbl_register: idioma === constant.idiomaEs ? 'Registro' : 'Register',
+      lbl_responder: idioma === constant.idiomaEs ? 'Responder' : 'Reply',
       lbl_actualizar_usuario: idioma === constant.idiomaEs ? 'Actualizar Usuario' : 'Update User',
       lbl_posts_populares: idioma === constant.idiomaEs ? 'Posts Populares' : 'Populare Posts',
       lbl_colaboradores: idioma === constant.idiomaEs ? 'Colaboradores' : 'Collaborators',
@@ -76,6 +78,7 @@ export class TextProperties {
       lbl_leer_mas: idioma === constant.idiomaEs ? 'Leer Más...' : 'Read more...',
       lbl_disenador_grafico: idioma === constant.idiomaEs ? 'Diseñador Gráfico' : 'Graphic Designer',
       lbl_estudio_grabacion: idioma === constant.idiomaEs ? 'Estudio de Grabación' : 'Recording Studio',
+      lbl_mensaje_agrega_comentario: idioma === constant.idiomaEs ? 'Agrega tu comentario (máximo 1000 caracteres)' : 'Add your comment (max 1000 chars)',
 
       // Banda
       lbl_banda: idioma === constant.idiomaEs ? 'Banda' : 'Band',
@@ -125,6 +128,7 @@ export class TextProperties {
       lbl_mensaje_file_selected: idioma == constant.idiomaEs ? 'Archivo seleccionado' : 'File selected',
       lbl_mensaje_password_no_coincide: idioma == constant.idiomaEs ? 'Las claves no coinciden' : 'The password no match',
       lbl_mensaje_password_confirmar: idioma == constant.idiomaEs ? 'Debe confirmar la clave' : 'You must confirm password',
+      lbl_mensaje_debe_ser_usuario_logueado: idioma == constant.idiomaEs ? 'Debe ser usuario logueado para acceder al contenido.' : 'You must be a logged in user to access the content.',
 
       // Modales
       lbl_info_titulo_modal_error: idioma === constant.idiomaEs ? 'ERROR' : 'ERROR',
@@ -156,6 +160,7 @@ export class TextProperties {
       lbl_btn_registrarse: idioma === constant.idiomaEs ? 'Registrarse' : 'Register',
       lbl_btn_inicio: idioma === constant.idiomaEs ? 'Inicio' : 'Login',
       lbl_btn_consultar: idioma === constant.idiomaEs ? 'Consultar' : 'Query',
+      lbl_btn_comentar: idioma === constant.idiomaEs ? 'Comentar' : 'Comment',
       lbl_btn_crear: idioma === constant.idiomaEs ? 'Crear' : 'Create',
       lbl_btn_editar: idioma === constant.idiomaEs ? 'Editar' : 'Edit',
       lbl_btn_limpiar: idioma === constant.idiomaEs ? 'Limpiar' : 'Clean',

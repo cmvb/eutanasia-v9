@@ -15,7 +15,8 @@ public final class ConstantesValidaciones {
 	// Rutas Útiles
 	public static final String RUTA_JASPER_REPORTS = PropertiesUtil.getProperty("eutanasia.ruta.jasper.reports");
 	public static final String RUTA_SFTP_IMAGES_USUARIO = PropertiesUtil.getProperty("eutanasia.ruta.images.user");
-	public static final String TEMPLATE_MAIL_ACTIVATE_USER = PropertiesUtil.getProperty("eutanasia.template.mail.activateUser");
+	public static final String TEMPLATE_MAIL_ACTIVATE_USER = PropertiesUtil
+			.getProperty("eutanasia.template.mail.activateUser");
 
 	// Simbolos y constantes
 	public static final String COMODIN_BD = "%";
@@ -46,8 +47,11 @@ public final class ConstantesValidaciones {
 			.getProperty("eutanasia.msg.validate.tabla.no.establecida");
 	public static final String SUPERA_LONGITUD = PropertiesUtil
 			.getProperty("eutanasia.msg.validate.valor.superaLongitud");
-	public static final String MSG_USUARIO_REPETIDO = PropertiesUtil.getProperty("eutanasia.msg.validate.usuarioRepetido");
-	
+	public static final String MSG_USUARIO_REPETIDO = PropertiesUtil
+			.getProperty("eutanasia.msg.validate.usuarioRepetido");
+	public static final String MSG_CORREO_REPETIDO = PropertiesUtil
+			.getProperty("eutanasia.msg.validate.correoRepetido");
+	public static final String MSG_NO_POSTS = PropertiesUtil.getProperty("eutanasia.msg.validate.no.posts");
 
 	// Labels
 	public static final String ARCHIVO = PropertiesUtil.getProperty("lbl.archivo.archivo");

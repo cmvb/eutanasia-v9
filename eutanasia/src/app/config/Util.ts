@@ -12,7 +12,6 @@ export var objs: any;
 
 @Injectable()
 export class Util {
-  msg: any;
   mensaje: any;
   const: any;
   enums: any;
@@ -23,7 +22,6 @@ export class Util {
   constructor(public textProperties: TextProperties, public objectModelInitializer: ObjectModelInitializer, public enumerados: Enumerados, public sesionService: SesionService, dataFunctions: Functions, private messageService: MessageService) {
     this.mensaje = this.objectModelInitializer.getDataMessage();
     this.const = this.objectModelInitializer.getConst();
-    this.msg = this.textProperties.getProperties(this.sesionService.objServiceSesion.idioma);
     this.func = dataFunctions;
     this.enums = this.enumerados.getEnumerados();
     this.modeloTablas = this.objectModelInitializer.getDataModeloTablas();
@@ -298,8 +296,8 @@ export class Util {
       let mensajeTitulo = { severity: '', summary: '', detail: '' };
       Object.assign(this.mensaje, mensajeTitulo);
       mensajeTitulo.severity = title.length > 0 ? this.const.severity[2] : this.const.severity[3];
-      mensajeTitulo.summary = title.length > 0 ? this.msg.lbl_summary_warning : this.msg.lbl_summary_unknown_danger;
-      mensajeTitulo.detail = title.length > 0 ? title : this.msg.lbl_mensaje_sin_detalles_error;
+      mensajeTitulo.summary = title.length > 0 ? this.sesionService.msg.lbl_summary_warning : this.sesionService.msg.lbl_summary_unknown_danger;
+      mensajeTitulo.detail = title.length > 0 ? title : this.sesionService.msg.lbl_mensaje_sin_detalles_error;
       listaMensajes.push(mensajeTitulo);
 
       for (let valid of validaciones) {
@@ -318,7 +316,7 @@ export class Util {
       }
     }
     else {
-      return [{ severity: this.const.severity[3], summary: this.msg.lbl_summary_danger, detail: this.msg.lbl_mensaje_no_conexion_servidor }];
+      return [{ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mensaje_no_conexion_servidor }];
     }
 
     let audio = new Audio();
@@ -498,7 +496,7 @@ export class Util {
       let mensaje = { severity: '', summary: '', detail: '' };
       mensaje.severity = this.const.severity[3];
       mensaje.summary = summary;
-      mensaje.detail = this.msg.lbl_mensaje_sin_detalles_error;
+      mensaje.detail = this.sesionService.msg.lbl_mensaje_sin_detalles_error;
       listaMensajes.push(mensaje);
 
       this.playError();

@@ -55,6 +55,8 @@ export class ObjectModelInitializer {
       urlConsultarTags: `${HOST}/eutanasia/paratodos/consultarTags`,
       urlSubirImagen: `${HOST}/eutanasia/paratodos/subirImagen`,
       urlCrearUsuario: `${HOST}/eutanasia/paratodos/crearUsuario`,
+      urlModificarUsuario: `${HOST}/eutanasia/paratodos/modificarUsuario`,
+      urlLogin: `${HOST}/eutanasia/paratodos/loginUsuario`,
       tokenUsernameAUTH: 'EutanasiaApp',
       tokenPasswordAUTH: 'Eutanasia2019codex',
       tokenNameAUTH: 'access_token',
@@ -67,8 +69,8 @@ export class ObjectModelInitializer {
       rangoYears: '1900:3000',
 
       // Otras Variables
-      idiomaEs: 1,
-      idiomaEn: 2,
+      idiomaEs: 0,
+      idiomaEn: 1,
       phaseAdd: 'add',
       phaseDelete: 'delete',
       phaseSearch: 'search',
@@ -102,7 +104,7 @@ export class ObjectModelInitializer {
       tokenSesion: '',
       decodedToken: '',
       expirationDate: '',
-      idioma: '',
+      idioma: 0,
 
       // Excepciones
       mensajeError403: '',

@@ -8,10 +8,10 @@
     <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxExpect.Open.Condition.Key"/>
     <fullyQualifiedTypeName name="javax.crypto.Cipher"/>
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.Util"/>
-    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.enums.EEstado"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="org.thymeleaf.context.Context"/>
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.ConstantesValidaciones"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.enums.EEstado"/>
 </qualifiedTypeNameHistroy>

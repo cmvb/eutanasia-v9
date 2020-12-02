@@ -37,6 +37,7 @@
               "./src/assets/scss/magnific-popup.scss",
               "./src/assets/scss/font-awesome.scss",
               "./src/assets/scss/animate.scss",
+              "./src/assets/scss/wpp.scss",
               "./src/assets/scss/primeng/themes/nova-light/theme.scss",
               "./src/styles.scss"
             ],
@@ -45,6 +46,7 @@
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "./src/assets/js/owl.carousel.min.js",
               "./src/assets/js/jquery.magnific-popup.js",
+              "./src/assets/js/wpp.js",
               "./src/assets/js/main.js"
             ]
           },
@@ -117,6 +119,7 @@
               "./src/assets/scss/magnific-popup.scss",
               "./src/assets/scss/font-awesome.scss",
               "./src/assets/scss/animate.scss",
+              "./src/assets/scss/wpp.scss",
               "./src/assets/scss/primeng/themes/nova-light/theme.scss",
               "./src/styles.scss"
             ],
@@ -125,6 +128,7 @@
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "./src/assets/js/owl.carousel.min.js",
               "./src/assets/js/jquery.magnific-popup.js",
+              "./src/assets/js/wpp.js",
               "./src/assets/js/main.js"
             ]
           }

@@ -1,3 +1,22 @@
+$(function () {
+    var idioma = 0;
+    var objServiceSesion = sessionStorage.getItem('objServiceSesion');
+    if (objServiceSesion !== undefined && objServiceSesion !== null) {
+        idioma = JSON.parse(objServiceSesion).idioma;
+    }
+    debugger;
+    $('#WAButton').floatingWhatsApp({
+        phone: '+573219315302', //WhatsApp Business phone number
+        headerTitle: idioma == 0 ? '¡Chatea con la banda por Whatsapp!' : 'Chat with the band on WhatsApp!', //Popup Title
+        popupMessage: idioma == 0 ? 'Hola, ¿En qué te ayudo?' : 'Hello, how can we help you?', //Popup Message
+        showPopup: true, //Enables popup display
+        buttonImage: '<img src="assets/images/wpp.png" />', //Button Image
+        //headerColor: 'crimson', //Custom header color
+        //backgroundColor: 'crimson', //Custom background button color
+        position: "right" //Position: left | right
+    });
+});
+
 (function ($) {
     "use strict"
     ///////////////////////////

@@ -7657,3 +7657,1014 @@ Binding(CTRL+R,
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 00:00:56.637
 !MESSAGE executing callback sts4.classpath.gMYlKmMQ SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 04:59:59.140
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.gMYlKmMQ
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 04:59:59.141
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.gMYlKmMQ
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 04:59:59.142
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 04:59:59.142
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.gMYlKmMQ => OK
+!SESSION 2020-12-01 17:22:57.375 -----------------------------------------------
+eclipse.buildId=4.8.1.202010230733
+java.version=15
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_CO
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.springframework.boot.ide.branding.sts4
+
+!ENTRY org.eclipse.ui 2 0 2020-12-01 17:23:05.699
+!MESSAGE Warnings while parsing the key bindings from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.bindings' extension point
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.699
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.select.enclosing'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.select.enclosing'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.select.next'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.select.next'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.select.previous'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.select.previous'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.select.last'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.select.last'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.source.quickMenu'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.source.quickMenu'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.add.import'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.organize.imports'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.refactor.quickMenu'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.refactor.quickMenu'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.rename.element'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.rename.element'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.move.element'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.move.element'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.modify.method.parameters'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.modify.method.parameters'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.inline'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.inline'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.extract.method'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.extract.method'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.700
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.extract.local.variable'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.701
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.extract.local.variable'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.701
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.edit.text.java.open.hierarchy'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.701
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.TypeHierarchy'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.701
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.TypeHierarchy'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.701
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.PackageExplorer'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.701
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.PackageExplorer'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.701
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.SourceView'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.701
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.SourceView'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.701
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.JavadocView'
+!SUBENTRY 1 org.eclipse.ui 2 0 2020-12-01 17:23:05.701
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.wst.jsdt.ui', id='org.eclipse.wst.jsdt.ui.JavadocView'
+
+!ENTRY org.eclipse.jface 2 0 2020-12-01 17:23:08.766
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-12-01 17:23:08.766
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1921b43c,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@79e15c4a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:19.331
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:19.332
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@3bd623b2[org.springframework.tooling.boot.ls:1.23.0.202010230633(id=673)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:19.336
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:19.666
+!MESSAGE Instantiating ReusableClasspathListenerHandler
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-12-01 17:23:22.381
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\veracm'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:24.703
+!MESSAGE Boot LS startup time from start to initialized: 5354ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:25.125
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.cIGTPPySisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:25.132
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:25.136
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:25.138
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:25.139
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:25.140
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.cIGTPPyS => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:25.193
+!MESSAGE classpath=150 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:25.212
+!MESSAGE buffering callback sts4.classpath.cIGTPPyS eutanasia false 150
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:25.213
+!MESSAGE executing callback sts4.classpath.cIGTPPyS 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-12-01 17:23:25.255
+!MESSAGE executing callback sts4.classpath.cIGTPPyS SUCCESS [done]
+
+!ENTRY org.eclipse.ui 2 2 2020-12-01 18:01:15.154
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2020-12-01 18:01:25.440
+!MESSAGE No line style provider for org.eclipse.wst.sse.ST_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2020-12-01 18:01:25.440
+!MESSAGE No line style provider for org.eclipse.wst.sse.UNKNOWN_PARTITION_TYPE
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2020-12-01 18:01:25.441
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DEFAULT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2020-12-01 18:01:25.441
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_CDATA
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2020-12-01 18:01:25.456
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_DECL
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2020-12-01 18:01:25.457
+!MESSAGE No line style provider for org.eclipse.wst.xml.XML_COMMENT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2020-12-01 18:01:25.457
+!MESSAGE No line style provider for org.eclipse.wst.xml.dtd.internal_subset
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2020-12-01 18:01:25.457
+!MESSAGE No line style provider for org.eclipse.wst.xml.PROCESSING_INSTRUCTION:
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2020-12-01 18:01:25.458
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT
+
+!ENTRY org.eclipse.wst.html.ui 1 1 2020-12-01 18:01:25.460
+!MESSAGE No line style provider for org.eclipse.wst.html.SCRIPT.EVENTHANDLER
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:09:53.270
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:10:33.860
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.jface 2 0 2020-12-01 18:20:41.304
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-12-01 18:20:41.304
+!MESSAGE A conflict occurred for CTRL+SHIFT+C:
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.tm4e.languageconfiguration.togglelinecommentcommand,Toggle Line Comment,
+		,
+		Category(org.eclipse.tm4e.languageconfiguration.category,TM4E Language Configuration,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@70b9bbe2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.springframework.tooling.boot.ls.ToggleComment,Toggle Comment,
+		,
+		Category(org.springframework.ide.eclipse.commands,Spring Generic Text Editor,Spring Language Server Commands,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4d1f3e95,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:24:11.615
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:28:33.541
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:28:47.172
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:28:49.461
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:29:12.755
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:32:53.174
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:33:36.927
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:36:14.803
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 18:53:02.309
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.jface 2 0 2020-12-01 21:53:37.443
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-12-01 21:53:37.443
+!MESSAGE A conflict occurred for CTRL+R:
+Binding(CTRL+R,
+	ParameterizedCommand(Command(org.eclipse.debug.ui.commands.RunToLine,Run to Line,
+		Resume and break when execution reaches the current line,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@1ca54ed7,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.debug.ui.debugging,,,system)
+Binding(CTRL+R,
+	ParameterizedCommand(Command(org.springframework.ide.eclipse.boot.restart.commands.restart,Trigger Restart,
+		Restart Spring Boot Application,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6a86239f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.debug.ui.console,,,system)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 22:25:51.529
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.jdt.core 4 4 2020-12-01 23:00:57.519
+!MESSAGE Exception occurred during problem detection:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package com.eutanasia.eutanasia.dao.impl;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Repository;
+
+import com.eutanasia.eutanasia.dao.AbstractDao;
+import com.eutanasia.eutanasia.dao.IPostsDao;
+import com.eutanasia.eutanasia.dto.CategoriasDTO;
+import com.eutanasia.eutanasia.model.PostTB;
+import com.eutanasia.eutanasia.util.ConstantesValidaciones;
+
+@Repository
+public class PostsDaoImpl extends AbstractDao<PostTB> implements IPostsDao {
+
+	@PersistenceContext(unitName = "default")
+	private EntityManager em;
+
+	@Override
+	public List<PostTB> consultarPosts() {
+		// PARAMETROS
+		Map<String, Object> pamameters = new HashMap<>();
+
+		// QUERY
+		StringBuilder JPQL = new StringBuilder("SELECT t FROM PostTB t WHERE 1 = 1 ");
+		// Q. Order By
+		JPQL.append(" ORDER BY t.id");
+		// END QUERY
+
+		TypedQuery<PostTB> query = em.createQuery(JPQL.toString(), PostTB.class);
+		pamameters.forEach((k, v) -> query.setParameter(k, v));
+
+		return query.getResultList();
+	}
+
+	@Override
+	public List<PostTB> consultarPostsPorFiltros(PostTB filtroPost) {
+		// PARAMETROS
+		Map<String, Object> pamameters = new HashMap<>();
+
+		// QUERY
+		StringBuilder JPQL = new StringBuilder("SELECT t FROM PostTB t WHERE 1 = 1 ");
+		// WHERE
+		if (filtroPost.getId() > 0) {
+			JPQL.append(" AND t.id = :ID_POST ");
+			pamameters.put("ID_POST", filtroPost.getId());
+		}
+		if (filtroPost.getUsuarioAutorTB() != null
+				&& !StringUtils.isBlank(filtroPost.getUsuarioAutorTB().getNombres())) {
+			JPQL.append(" AND UPPERCASE(t.usuarioAutorTB.nombres) LIKE '").append(ConstantesValidaciones.COMODIN_BD)
+					.append(":AUTOR_POST").append(ConstantesValidaciones.COMODIN_BD).append("'");
+			pamameters.put("AUTOR_POST", filtroPost.getUsuarioAutorTB().getNombres());
+		}
+		if (!StringUtils.isBlank(filtroPost.getTitulo())) {
+			JPQL.append(" AND UPPERCASE(t.titulo) LIKE '").append(ConstantesValidaciones.COMODIN_BD)
+					.append(":TITULO_POST").append(ConstantesValidaciones.COMODIN_BD).append("'");
+			pamameters.put("TITULO_POST", filtroPost.getTitulo());
+		}
+		if (filtroPost.getCategoria() > 0) {
+			JPQL.append(" AND t.categoria = :CATEGORIA_POST ");
+			pamameters.put("CATEGORIA_POST", filtroPost.getCategoria());
+		}
+		if (filtroPost.getEstado() > 0) {
+			JPQL.append(" AND t.estado = :ESTADO_POST ");
+			pamameters.put("ESTADO_POST", filtroPost.getEstado());
+		}
+		if (!StringUtils.isBlank(filtroPost.getTags())) {
+			JPQL.append(" AND UPPERCASE(t.tags) LIKE '").append(ConstantesValidaciones.COMODIN_BD).append(":TAG_POST")
+					.append(ConstantesValidaciones.COMODIN_BD).append("'");
+			pamameters.put("TAG_POST", filtroPost.getTags()});
+		}
+		// Q. Order By
+		JPQL.append(" ORDER BY t.id DESC");
+		// END QUERY
+
+		TypedQuery<PostTB> query = em.createQuery(JPQL.toString(), PostTB.class);
+		pamameters.forEach((k, v) -> query.setParameter(k, v));
+
+		return query.getResultList();
+	}
+
+	@Override
+	public CategoriasDTO consultarContadorCategoriasPosts() {
+		CategoriasDTO result = null;
+
+		// PARAMETROS
+		Map<String, Object> pamameters = new HashMap<>();
+
+		// QUERY
+		StringBuilder JPQL = new StringBuilder("SELECT t FROM PostTB t WHERE 1 = 1 ");
+		// Q. Order By
+		JPQL.append(" ORDER BY t.id");
+		// END QUERY
+
+		TypedQuery<PostTB> query = em.createQuery(JPQL.toString(), PostTB.class);
+		pamameters.forEach((k, v) -> query.setParameter(k, v));
+
+		long invitacionesEvento = 0;
+		long agradecimientosSaludos = 0;
+		long criticas = 0;
+		long freneticoRockNRoll = 0;
+		long noticiasMundiales = 0;
+
+		List<PostTB> listaPost = query.getResultList();
+		for (PostTB postTb : listaPost) {
+			switch ((int) postTb.getEstado()) {
+			case 0:
+				invitacionesEvento++;
+				break;
+			case 1:
+				agradecimientosSaludos++;
+				break;
+			case 2:
+				criticas++;
+				break;
+			case 3:
+				freneticoRockNRoll++;
+				break;
+			case 4:
+				noticiasMundiales++;
+				break;
+			}
+		}
+
+		result = new CategoriasDTO(agradecimientosSaludos, criticas, freneticoRockNRoll, invitacionesEvento,
+				noticiasMundiales);
+		result.setAgradecimientosSaludos(agradecimientosSaludos);
+		result.setCriticas(criticas);
+		result.setFreneticoRockNRoll(freneticoRockNRoll);
+		result.setInvitacionesEvento(invitacionesEvento);
+		result.setNoticiasMundiales(noticiasMundiales);
+
+		return result;
+	}
+
+	@Override
+	public PostTB crearPost(PostTB post) {
+		post = colocarValoresDefecto(post, ConstantesValidaciones.PHASE_CREATE);
+		super.create(post);
+		return post;
+	}
+
+	@Override
+	public PostTB modificarPost(PostTB post) {
+		post = colocarValoresDefecto(post, ConstantesValidaciones.PHASE_UPDATE);
+		super.update(post);
+		return post;
+	}
+
+	@Override
+	public void eliminarPost(long idPost) {
+		super.deleteById(idPost);
+	}
+
+	private PostTB colocarValoresDefecto(PostTB post, String fase) {
+		if (ConstantesValidaciones.PHASE_CREATE.equalsIgnoreCase(fase)) {
+			post.setFechaCreacion(new Date());
+			post.setUsuarioCreacion("SYSTEM");
+		}
+		post.setFechaActualizacion(new Date());
+		post.setUsuarioActualizacion("SYSTEM");
+		return post;
+	}
+
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3719)
+	at java.base/java.lang.String.rangeCheck(String.java:298)
+	at java.base/java.lang.String.<init>(String.java:294)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.disambiguatedToken(Scanner.java:5491)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.getNextToken(Scanner.java:1461)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.readTokenFromScanner(LexStream.java:84)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.token(LexStream.java:154)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.kind(LexStream.java:194)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.parseCheck(DiagnoseParser.java:2029)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.checkPrimaryDistance(DiagnoseParser.java:855)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.primaryPhase(DiagnoseParser.java:590)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.errorRecovery(DiagnoseParser.java:498)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.diagnoseParse(DiagnoseParser.java:382)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.reportSyntaxErrors(Parser.java:14004)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12857)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13051)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13008)
+	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1048)
+	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:192)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:268)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:736)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:802)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2020-12-01 23:00:57.522
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 1
+Java Model Exception: java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:324)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:192)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:268)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:736)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:802)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+Caused by: java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3719)
+	at java.base/java.lang.String.rangeCheck(String.java:298)
+	at java.base/java.lang.String.<init>(String.java:294)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.disambiguatedToken(Scanner.java:5491)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.getNextToken(Scanner.java:1461)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.readTokenFromScanner(LexStream.java:84)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.token(LexStream.java:154)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.kind(LexStream.java:194)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.parseCheck(DiagnoseParser.java:2029)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.checkPrimaryDistance(DiagnoseParser.java:855)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.primaryPhase(DiagnoseParser.java:590)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.errorRecovery(DiagnoseParser.java:498)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.diagnoseParse(DiagnoseParser.java:382)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.reportSyntaxErrors(Parser.java:14004)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12857)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13051)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13008)
+	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1048)
+	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:271)
+	... 19 more
+Caused by: java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3719)
+	at java.base/java.lang.String.rangeCheck(String.java:298)
+	at java.base/java.lang.String.<init>(String.java:294)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.disambiguatedToken(Scanner.java:5491)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.getNextToken(Scanner.java:1461)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.readTokenFromScanner(LexStream.java:84)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.token(LexStream.java:154)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.kind(LexStream.java:194)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.parseCheck(DiagnoseParser.java:2029)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.checkPrimaryDistance(DiagnoseParser.java:855)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.primaryPhase(DiagnoseParser.java:590)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.errorRecovery(DiagnoseParser.java:498)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.diagnoseParse(DiagnoseParser.java:382)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.reportSyntaxErrors(Parser.java:14004)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12857)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13051)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13008)
+	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1048)
+	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:192)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:268)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:736)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:802)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+!SUBENTRY 1 org.eclipse.jdt.core 4 1005 2020-12-01 23:00:57.523
+!MESSAGE offset 4165, count -1036, length 5402
+!STACK 0
+java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3719)
+	at java.base/java.lang.String.rangeCheck(String.java:298)
+	at java.base/java.lang.String.<init>(String.java:294)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.disambiguatedToken(Scanner.java:5491)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.getNextToken(Scanner.java:1461)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.readTokenFromScanner(LexStream.java:84)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.token(LexStream.java:154)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.kind(LexStream.java:194)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.parseCheck(DiagnoseParser.java:2029)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.checkPrimaryDistance(DiagnoseParser.java:855)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.primaryPhase(DiagnoseParser.java:590)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.errorRecovery(DiagnoseParser.java:498)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.diagnoseParse(DiagnoseParser.java:382)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.reportSyntaxErrors(Parser.java:14004)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12857)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13051)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13008)
+	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1048)
+	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:192)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:268)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:736)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:802)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+!SUBENTRY 1 org.eclipse.jdt.core 4 1005 2020-12-01 23:00:57.523
+!MESSAGE offset 4165, count -1036, length 5402
+!STACK 0
+java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3719)
+	at java.base/java.lang.String.rangeCheck(String.java:298)
+	at java.base/java.lang.String.<init>(String.java:294)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.disambiguatedToken(Scanner.java:5491)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.getNextToken(Scanner.java:1461)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.readTokenFromScanner(LexStream.java:84)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.token(LexStream.java:154)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.kind(LexStream.java:194)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.parseCheck(DiagnoseParser.java:2029)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.checkPrimaryDistance(DiagnoseParser.java:855)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.primaryPhase(DiagnoseParser.java:590)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.errorRecovery(DiagnoseParser.java:498)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.diagnoseParse(DiagnoseParser.java:382)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.reportSyntaxErrors(Parser.java:14004)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12857)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13051)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13008)
+	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1048)
+	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:192)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:268)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:736)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:802)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2020-12-01 23:00:57.523
+!MESSAGE Error in JDT Core during reconcile
+!STACK 1
+Java Model Exception: java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:324)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:192)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:268)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:736)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:802)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+Caused by: java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3719)
+	at java.base/java.lang.String.rangeCheck(String.java:298)
+	at java.base/java.lang.String.<init>(String.java:294)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.disambiguatedToken(Scanner.java:5491)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.getNextToken(Scanner.java:1461)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.readTokenFromScanner(LexStream.java:84)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.token(LexStream.java:154)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.kind(LexStream.java:194)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.parseCheck(DiagnoseParser.java:2029)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.checkPrimaryDistance(DiagnoseParser.java:855)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.primaryPhase(DiagnoseParser.java:590)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.errorRecovery(DiagnoseParser.java:498)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.diagnoseParse(DiagnoseParser.java:382)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.reportSyntaxErrors(Parser.java:14004)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12857)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13051)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13008)
+	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1048)
+	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:271)
+	... 19 more
+Caused by: java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3719)
+	at java.base/java.lang.String.rangeCheck(String.java:298)
+	at java.base/java.lang.String.<init>(String.java:294)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.disambiguatedToken(Scanner.java:5491)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.getNextToken(Scanner.java:1461)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.readTokenFromScanner(LexStream.java:84)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.token(LexStream.java:154)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.kind(LexStream.java:194)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.parseCheck(DiagnoseParser.java:2029)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.checkPrimaryDistance(DiagnoseParser.java:855)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.primaryPhase(DiagnoseParser.java:590)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.errorRecovery(DiagnoseParser.java:498)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.diagnoseParse(DiagnoseParser.java:382)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.reportSyntaxErrors(Parser.java:14004)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12857)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13051)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13008)
+	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1048)
+	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:192)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:268)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:736)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:802)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+!SUBENTRY 1 org.eclipse.jdt.core 4 1005 2020-12-01 23:00:57.524
+!MESSAGE offset 4165, count -1036, length 5402
+!STACK 0
+java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3719)
+	at java.base/java.lang.String.rangeCheck(String.java:298)
+	at java.base/java.lang.String.<init>(String.java:294)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.disambiguatedToken(Scanner.java:5491)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.getNextToken(Scanner.java:1461)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.readTokenFromScanner(LexStream.java:84)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.token(LexStream.java:154)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.kind(LexStream.java:194)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.parseCheck(DiagnoseParser.java:2029)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.checkPrimaryDistance(DiagnoseParser.java:855)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.primaryPhase(DiagnoseParser.java:590)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.errorRecovery(DiagnoseParser.java:498)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.diagnoseParse(DiagnoseParser.java:382)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.reportSyntaxErrors(Parser.java:14004)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12857)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13051)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13008)
+	at org.eclipse.jdt.internal.compiler.SourceElementParser.parseCompilationUnit(SourceElementParser.java:1048)
+	at org.eclipse.jdt.internal.core.CompilationUnitProblemFinder.process(CompilationUnitProblemFinder.java:271)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:192)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:268)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:596)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1141)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:173)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:94)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:736)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:802)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1318)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:131)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.access$0(JavaReconcilingStrategy.java:113)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:93)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:90)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:157)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:76)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:210)
+
+!ENTRY org.eclipse.jdt.core.manipulation 4 2 2020-12-01 23:00:57.531
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.core.manipulation".
+!STACK 0
+java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3719)
+	at java.base/java.lang.String.rangeCheck(String.java:298)
+	at java.base/java.lang.String.<init>(String.java:294)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.disambiguatedToken(Scanner.java:5491)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.getNextToken(Scanner.java:1461)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.readTokenFromScanner(LexStream.java:84)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.token(LexStream.java:154)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.kind(LexStream.java:194)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.parseCheck(DiagnoseParser.java:2029)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.checkPrimaryDistance(DiagnoseParser.java:855)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.primaryPhase(DiagnoseParser.java:590)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.errorRecovery(DiagnoseParser.java:498)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.diagnoseParse(DiagnoseParser.java:382)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.reportSyntaxErrors(Parser.java:14004)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12857)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13051)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13008)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11395)
+	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:850)
+	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(CompilationUnitResolver.java:1173)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(CompilationUnitResolver.java:714)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1205)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:820)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider$1.run(CoreASTProvider.java:272)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.createAST(CoreASTProvider.java:264)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.getAST(CoreASTProvider.java:197)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.getAST(CoreASTProvider.java:187)
+	at org.eclipse.jdt.core.manipulation.SharedASTProviderCore.getAST(SharedASTProviderCore.java:138)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:167)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:152)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jdt.core.manipulation 4 0 2020-12-01 23:00:57.532
+!MESSAGE Error in JDT Core during AST creation
+!STACK 0
+java.lang.StringIndexOutOfBoundsException: offset 4165, count -1036, length 5402
+	at java.base/java.lang.String.checkBoundsOffCount(String.java:3719)
+	at java.base/java.lang.String.rangeCheck(String.java:298)
+	at java.base/java.lang.String.<init>(String.java:294)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.disambiguatedToken(Scanner.java:5491)
+	at org.eclipse.jdt.internal.compiler.parser.Scanner.getNextToken(Scanner.java:1461)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.readTokenFromScanner(LexStream.java:84)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.token(LexStream.java:154)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.LexStream.kind(LexStream.java:194)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.parseCheck(DiagnoseParser.java:2029)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.checkPrimaryDistance(DiagnoseParser.java:855)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.primaryPhase(DiagnoseParser.java:590)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.errorRecovery(DiagnoseParser.java:498)
+	at org.eclipse.jdt.internal.compiler.parser.diagnose.DiagnoseParser.diagnoseParse(DiagnoseParser.java:382)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.reportSyntaxErrors(Parser.java:14004)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:12857)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13051)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.parse(Parser.java:13008)
+	at org.eclipse.jdt.internal.compiler.parser.Parser.dietParse(Parser.java:11395)
+	at org.eclipse.jdt.internal.compiler.Compiler.internalBeginToCompile(Compiler.java:850)
+	at org.eclipse.jdt.internal.compiler.Compiler.beginToCompile(Compiler.java:394)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(CompilationUnitResolver.java:1173)
+	at org.eclipse.jdt.core.dom.CompilationUnitResolver.resolve(CompilationUnitResolver.java:714)
+	at org.eclipse.jdt.core.dom.ASTParser.internalCreateAST(ASTParser.java:1205)
+	at org.eclipse.jdt.core.dom.ASTParser.createAST(ASTParser.java:820)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider$1.run(CoreASTProvider.java:272)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.createAST(CoreASTProvider.java:264)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.getAST(CoreASTProvider.java:197)
+	at org.eclipse.jdt.core.manipulation.CoreASTProvider.getAST(CoreASTProvider.java:187)
+	at org.eclipse.jdt.core.manipulation.SharedASTProviderCore.getAST(SharedASTProviderCore.java:138)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup.calculateASTandInform(SelectionListenerWithASTManager.java:167)
+	at org.eclipse.jdt.internal.ui.viewsupport.SelectionListenerWithASTManager$PartListenerGroup$1.run(SelectionListenerWithASTManager.java:152)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 23:22:15.093
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-01 23:23:09.102
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+
+!ENTRY org.eclipse.lsp4e 2 0 2020-12-02 00:35:24.694
+!MESSAGE Javadoc unavailable. Failed to obtain it.
+!STACK 0
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:385)
+	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2086)
+	at org.eclipse.lsp4e.jdt.LSJavaHoverProvider.getHoverInfo2(LSJavaHoverProvider.java:70)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)

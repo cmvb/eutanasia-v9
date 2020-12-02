@@ -36,7 +36,6 @@ import { NgxUiLoaderConfig, NgxUiLoaderHttpModule, NgxUiLoaderModule, NgxUiLoade
 import { AppComponent } from './app.component';
 import { Guardian } from './config/Guardian';
 import { HomeComponent } from './components/home/home.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { AsideComponent } from './components/aside/aside.component';
 
@@ -83,7 +82,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    DashboardComponent,
     BlogComponent,
     AsideComponent
   ],

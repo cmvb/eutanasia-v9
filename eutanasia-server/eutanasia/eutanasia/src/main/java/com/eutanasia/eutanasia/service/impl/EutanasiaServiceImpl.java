@@ -18,6 +18,8 @@ import com.eutanasia.eutanasia.model.PostTB;
 import com.eutanasia.eutanasia.model.ToqueTB;
 import com.eutanasia.eutanasia.model.UsuarioAutorTB;
 import com.eutanasia.eutanasia.service.IEutanasiaService;
+import com.eutanasia.eutanasia.util.ConstantesValidaciones;
+import com.eutanasia.eutanasia.util.PasswordUtil;
 import com.eutanasia.eutanasia.util.Util;
 
 @Service
@@ -56,6 +58,11 @@ public class EutanasiaServiceImpl implements IEutanasiaService {
 	}
 
 	@Override
+	public List<UsuarioAutorTB> consultarUsuariosPorFiltros(UsuarioAutorTB filtroUsuario) {
+		return usuariosDAO.consultarUsuariosPorFiltros(filtroUsuario);
+	}
+
+	@Override
 	public List<ComentarioTB> consultarComentariosPorIdPost(long idPost) {
 		return comentariosDAO.consultarComentariosPorIdPost(idPost);
 	}
@@ -75,11 +82,6 @@ public class EutanasiaServiceImpl implements IEutanasiaService {
 	@Transactional
 	@Override
 	public UsuarioAutorTB crearUsuario(UsuarioAutorTB usuarioAutor) {
-		List<UsuarioAutorTB> listaUsuarios = usuariosDAO.consultarUsuariosPorUsuario(usuarioAutor.getUsuario());
-		if (listaUsuarios != null && !listaUsuarios.isEmpty()) {
-			// Usuario repetido
-			return null;
-		}
 		String passwordEncrypt = Util.encriptarPassword(usuarioAutor.getPassword());
 		usuarioAutor.setPassword(passwordEncrypt);
 		return usuariosDAO.crearUsuario(usuarioAutor);
@@ -95,6 +97,12 @@ public class EutanasiaServiceImpl implements IEutanasiaService {
 	@Override
 	public ComentarioTB modificarComentario(ComentarioTB comentario) {
 		return comentariosDAO.modificarComentario(comentario);
+	}
+
+	@Transactional
+	@Override
+	public UsuarioAutorTB modificarUsuario(UsuarioAutorTB usuarioAutor) {
+		return usuariosDAO.modificarUsuario(usuarioAutor);
 	}
 
 	@Transactional
@@ -115,9 +123,10 @@ public class EutanasiaServiceImpl implements IEutanasiaService {
 		UsuarioAutorTB usuarioLogueado = null;
 		List<UsuarioAutorTB> listaUsuariosAutorTB = usuariosDAO.consultarUsuariosPorUsuario(usuario);
 		if (listaUsuariosAutorTB != null && !listaUsuariosAutorTB.isEmpty()) {
-			String passwordEncrypt = Util.encriptarPassword(password);
-			if (listaUsuariosAutorTB.get(0).getPassword().equals(passwordEncrypt)
-					&& listaUsuariosAutorTB.get(0).getEstado() == EEstado.ACTIVO.ordinal()) {
+			String salt = PasswordUtil.getSalt(ConstantesValidaciones.SALT_ENCRIPTAR_CLAVE, password);
+			boolean passwordVerificada = PasswordUtil.verifyUserPassword(password,
+					listaUsuariosAutorTB.get(0).getPassword(), salt);
+			if (passwordVerificada && listaUsuariosAutorTB.get(0).getEstado() == EEstado.ACTIVO.ordinal()) {
 				usuarioLogueado = listaUsuariosAutorTB.get(0);
 			}
 		}

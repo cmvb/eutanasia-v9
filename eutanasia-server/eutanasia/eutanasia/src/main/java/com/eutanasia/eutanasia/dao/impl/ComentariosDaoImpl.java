@@ -31,7 +31,7 @@ public class ComentariosDaoImpl extends AbstractDao<ComentarioTB> implements ICo
 		StringBuilder JPQL = new StringBuilder("SELECT t FROM ComentarioTB t WHERE 1 = 1 ");
 		// WHERE
 		if (idPost > 0) {
-			JPQL.append("AND t.idPost = :ID_POST ");
+			JPQL.append("AND t.id = :ID_POST ");
 			pamameters.put("ID_POST", idPost);
 		}
 		// Q. Order By
