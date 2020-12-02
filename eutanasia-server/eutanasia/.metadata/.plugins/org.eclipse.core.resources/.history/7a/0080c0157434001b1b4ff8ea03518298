@@ -51,7 +51,7 @@ public class UsuariosDaoImpl extends AbstractDao<UsuarioAutorTB> implements IUsu
 		Map<String, Object> pamameters = new HashMap<>();
 
 		// QUERY
-		StringBuilder JPQL = new StringBuilder("SELECT t FROM UsuarioAutorTB t WHERE 1 = 1 ");
+		StringBuilder JPQL = new StringBuilder("SELECT t FROM PostTB t WHERE 1 = 1 ");
 		// WHERE
 		if (filtroUsuario.getId() > 0) {
 			JPQL.append(" AND t.id = :ID_USUARIO ");
