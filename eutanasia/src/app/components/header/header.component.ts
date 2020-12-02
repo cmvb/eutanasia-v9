@@ -102,7 +102,7 @@ export class HeaderComponent implements OnInit {
 
   limpiarAdjuntos() {
     this.mostrarImagenRegister = false;
-    //this.fileInputRegister.clear();
+    this.fileInputRegister.clear();
     this.archivoImagenRegister = this.objectModelInitializer.getDataArchivoDtoModel();
     this.archivosTemporales = [];
   }
