@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Util"/>
+		<item key="selection" value="modif"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="util"/>
-			<item value="\"/>
-			<item value="crearu"/>
-			<item value="coloc"/>
-			<item value="colo"/>
-			<item value="color"/>
-			<item value="encriptarAES"/>
-			<item value="KEY_LENGTH"/>
-			<item value="ITERATIONS"/>
-			<item value="ALPHABET"/>
-			<item value="VALOR_INCORRECTO"/>
-			<item value="VALOR_VACIO"/>
-			<item value="context"/>
-			<item value="reset"/>
-			<item value="resetur"/>
+			<item value="modif"/>
+			<item value="modig"/>
+			<item value="LLAVE_ENCRIPTAR"/>
+			<item value="encry"/>
+			<item value="incorrectos"/>
+			<item value="barra1"/>
+			<item value="C:/Users/veracm/Documents/ProjectsCB/EUTANASIA-V9/eutanasia/src/assets/images/logo2020.svg"/>
+			<item value="logo2020"/>
+			<item value="barra2"/>
+			<item value="man1"/>
+			<item value="login"/>
+			<item value="EMAIL_SERVIDOR"/>
+			<item value="URL_VERIFICAR_CUENTA_NUEVA"/>
+			<item value="token"/>
+			<item value="url"/>
 		</list>
 		<list key="replacehistory">
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
 			<item value="/"/>
+			<item value="rgb(10, 22, 20)"/>
 			<item value="encriptarPassword"/>
 			<item value="encriptar"/>
 			<item value="ConstantesValidaciones.KEY_LENGTH"/>

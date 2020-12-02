@@ -12,20 +12,20 @@
 
   <!-- Category -->
   <div class="widget">
-    <h3 class="title">{{msg.lbl_categorias}}</h3>
+    <h3 class="title">{{sesionService.msg.lbl_categorias}}</h3>
     <div class="widget-category">
-      <a>{{msg.lbl_enum_categoria_valor_invitacion_evento}}<span>({{categoriasContadores.invitacionesEvento}})</span></a>
-      <a>{{msg.lbl_enum_categoria_valor_agradecimientos_saludos}}<span>({{categoriasContadores.agradecimientosSaludos}})</span></a>
-      <a>{{msg.lbl_enum_categoria_valor_criticas}}<span>({{categoriasContadores.criticas}})</span></a>
-      <a>{{msg.lbl_enum_categoria_valor_frenetico_rnr}}<span>({{categoriasContadores.freneticoRockNRoll}})</span></a>
-      <a>{{msg.lbl_enum_categoria_valor_noticias_mundiales}}<span>({{categoriasContadores.noticiasMundiales}})</span></a>
+      <a>{{sesionService.msg.lbl_enum_categoria_valor_invitacion_evento}}<span>({{categoriasContadores.invitacionesEvento}})</span></a>
+      <a>{{sesionService.msg.lbl_enum_categoria_valor_agradecimientos_saludos}}<span>({{categoriasContadores.agradecimientosSaludos}})</span></a>
+      <a>{{sesionService.msg.lbl_enum_categoria_valor_criticas}}<span>({{categoriasContadores.criticas}})</span></a>
+      <a>{{sesionService.msg.lbl_enum_categoria_valor_frenetico_rnr}}<span>({{categoriasContadores.freneticoRockNRoll}})</span></a>
+      <a>{{sesionService.msg.lbl_enum_categoria_valor_noticias_mundiales}}<span>({{categoriasContadores.noticiasMundiales}})</span></a>
     </div>
   </div>
   <!-- /Category -->
 
   <!-- Posts sidebar -->
   <div class="widget">
-    <h3 class="title">{{msg.lbl_posts_populares}}</h3>
+    <h3 class="title">{{sesionService.msg.lbl_posts_populares}}</h3>
     <!-- single post -->
     <div *ngIf="listaPostsPopulares.length > 0; else sinResultadosPostsPopulares" class="service-grids">
       <div *ngFor="let popularPost of listaPostsPopulares" class="widget-post">
@@ -40,7 +40,7 @@
     <ng-template #sinResultadosPostsPopulares>
       <div class="service-grids">
         <div class="col-md-12 ser-grid">
-          <p class="sinResultados shiny">{{msg.lbl_info_sin_resultados}}</p>
+          <p class="sinResultados shiny">{{sesionService.msg.lbl_info_sin_resultados}}</p>
         </div>
       </div>
     </ng-template>
@@ -50,7 +50,7 @@
 
   <!-- Tags -->
   <div class="widget">
-    <h3 class="title">{{msg.lbl_tags}}</h3>
+    <h3 class="title">{{sesionService.msg.lbl_tags}}</h3>
     <div class="widget-tags">
       <a *ngFor="let tag of listaTags">
         {{tag}}

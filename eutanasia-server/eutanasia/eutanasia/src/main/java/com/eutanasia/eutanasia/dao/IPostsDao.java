@@ -23,7 +23,7 @@ public interface IPostsDao {
 	/*
 	 * Método para consultar los posts por filtros ordenados por más recientes
 	 */
-	public List<PostTB> consultarPostsPorFiltros(PostTB filtroPost);
+	List<PostTB> consultarPostsPorFiltros(PostTB filtroPost);
 
 	/*
 	 * Método para crear post

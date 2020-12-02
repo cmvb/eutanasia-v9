@@ -1,26 +1,17 @@
 package com.eutanasia.eutanasia.util;
 
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.util.Arrays;
 import java.util.Base64;
-import java.util.Random;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
 public class PasswordUtil {
 
-	private static final Random RANDOM = new SecureRandom();
-
-	public static String getSalt(int length) {
-		StringBuilder returnValue = new StringBuilder(length);
-		for (int i = 0; i < length; i++) {
-			returnValue.append(ConstantesValidaciones.CARACTERES
-					.charAt(RANDOM.nextInt(ConstantesValidaciones.CARACTERES.length())));
-		}
-		return new String(returnValue);
+	public static String getSalt(int length, String clave) {
+		return clave + length + ConstantesValidaciones.LLAVE_ENCRIPTAR;
 	}
 
 	public static byte[] hash(char[] password, byte[] salt) {
@@ -48,11 +39,7 @@ public class PasswordUtil {
 
 	public static boolean verifyUserPassword(String providedPassword, String securedPassword, String salt) {
 		boolean returnValue = false;
-
-		// Generate New secure password with the same salt
 		String newSecurePassword = generateSecurePassword(providedPassword, salt);
-
-		// Check if two passwords are equal
 		returnValue = newSecurePassword.equalsIgnoreCase(securedPassword);
 
 		return returnValue;

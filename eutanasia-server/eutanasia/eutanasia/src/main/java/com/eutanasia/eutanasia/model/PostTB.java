@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class PostTB extends BaseEntidadTB implements Serializable {
 	private long id;
 
 	@NotNull
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "eua_id")
 	private UsuarioAutorTB usuarioAutorTB;
 
@@ -46,7 +47,7 @@ public class PostTB extends BaseEntidadTB implements Serializable {
 	private String urlImagen;
 
 	@NotNull
-	@Column(name = "epo_correoAutor", nullable = false, length = 100)
+	@Column(name = "epo_correo_autor", nullable = false, length = 100)
 	private String correoAutor;
 
 	@NotNull

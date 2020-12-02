@@ -36,6 +36,11 @@ public interface IEutanasiaService {
 	public List<ComentarioTB> consultarComentariosPorIdPost(long idPost);
 
 	/*
+	 * Método para consultar los usuarios por filtros ordenados por más recientes
+	 */
+	public List<UsuarioAutorTB> consultarUsuariosPorFiltros(UsuarioAutorTB filtroUsuario);
+
+	/*
 	 * Método para crear post
 	 */
 	public PostTB crearPost(PostTB post);
@@ -74,5 +79,10 @@ public interface IEutanasiaService {
 	 * Método para Login
 	 */
 	public UsuarioAutorTB loginUsuario(String usuario, String password);
+
+	/*
+	 * Método para modificar usuario
+	 */
+	public UsuarioAutorTB modificarUsuario(UsuarioAutorTB usuarioAutor);
 
 }

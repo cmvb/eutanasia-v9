@@ -15,6 +15,11 @@ public interface IUsuariosDao {
 	List<UsuarioAutorTB> consultarUsuariosPorUsuario(String usuario);
 
 	/*
+	 * Método para consultar los usuarios por filtros ordenados por más recientes
+	 */
+	List<UsuarioAutorTB> consultarUsuariosPorFiltros(UsuarioAutorTB filtroUsuario);
+
+	/*
 	 * Método para crear usuario
 	 */
 	UsuarioAutorTB crearUsuario(UsuarioAutorTB usuarioAutor);

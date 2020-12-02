@@ -15,31 +15,48 @@
           </div>
           <!-- /Logo -->
           <!-- Collapse nav button -->
-          <div class="nav-collapse">
-            <span></span>
+          <div (click)="mostrarOcultarMenuBlog()" class="nav-collapse textHoverRed menu">
+            <i class="list--buttons pi pi-ellipsis-v font-20px"></i>
           </div>
           <!-- /Collapse nav button -->
         </div>
 
         <!--  Main navigation  -->
         <ul class="main-nav nav navbar-nav navbar-right">
-          <li><a href="#home">{{msg.lbl_inicio}}</a></li>
-          <li><a href="#about">{{msg.lbl_bio}}</a></li>
-          <li><a href="#team">{{msg.lbl_banda}}</a></li>
-          <li><a href="#portfolio">{{msg.lbl_galeria_media}}</a></li>
-          <li><a href="#service">{{msg.lbl_participaciones}}</a></li>
-          <li><a href="#pricing">{{msg.lbl_comparte}}</a></li>
-          <li><a href="#publicaciones">{{msg.lbl_ultimas_publicaciones}}</a></li>
-          <li><a href="#blog">{{msg.lbl_blog}}</a></li>
-          <li class="has-dropdown"><a>{{msg.lbl_registro_ingreso}}</a>
+          <li class="has-dropdown"><a>{{sesionService.msg.lbl_idioma}}</a>
+            <ul class="dropdown" style="width: 50px;">
+              <li>
+                <a (click)="sesionService.cambiarIdioma(0)">
+                  <img class="w100 cursorPointer" src="assets/images/idiomaEspanol.png" style="height: 20px;" />
+                </a>
+              </li>
+              <li>
+                <a (click)="sesionService.cambiarIdioma(1)">
+                  <img class="w100 cursorPointer" src="assets/images/idiomaIngles.png" style="height: 20px;" />
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="#home">{{sesionService.msg.lbl_inicio}}</a></li>
+          <li><a href="#about">{{sesionService.msg.lbl_bio}}</a></li>
+          <li><a href="#team">{{sesionService.msg.lbl_banda}}</a></li>
+          <li><a href="#portfolio">{{sesionService.msg.lbl_galeria_media}}</a></li>
+          <li><a href="#service">{{sesionService.msg.lbl_participaciones}}</a></li>
+          <li><a href="#pricing">{{sesionService.msg.lbl_comparte}}</a></li>
+          <li><a href="#publicaciones">{{sesionService.msg.lbl_ultimas_publicaciones}}</a></li>
+          <li><a (click)="redirigirBlogsBlog()">{{sesionService.msg.lbl_blog}}</a></li>
+          <li *ngIf="esUsuarioLogueadoActivoBlog()" class="has-dropdown"><a>{{usuarioAutorTBLogin.usuario}}</a>
             <ul class="dropdown">
-              <li><a href="#Login">{{msg.lbl_login}}</a></li>
-              <li><a href="#register">{{msg.lbl_register}}</a></li>
+              <li><a (click)="cerrarSesionBlog()">{{sesionService.msg.lbl_tip_cerrar_sesion}}</a></li>
+              <li><a (click)="abrirModalUpdateUserBlog()">{{sesionService.msg.lbl_actualizar_usuario}}</a></li>
             </ul>
           </li>
         </ul>
         <!-- /Main navigation -->
 
+        <!-- Modals UpdateUser -->
+
+        <!-- /Modals UpdateUser -->
       </div>
     </nav>
     <!-- /Nav -->
@@ -49,13 +66,68 @@
       <div class="container">
         <h2>{{post.titulo}}</h2>
         <ul class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">{{msg.lbl_blog}}</a></li>
-          <li class="breadcrumb-item"><a href="index.html#blog">{{msg.lbl_posts}}</a></li>
+          <li class="breadcrumb-item"><a href="index.html">{{sesionService.msg.lbl_blog}}</a></li>
+          <li class="breadcrumb-item"><a href="index.html#blog">{{sesionService.msg.lbl_posts}}</a></li>
           <li class="breadcrumb-item active">{{post.titulo}}</li>
         </ul>
       </div>
     </div>
     <!-- /header wrapper -->
+
+    <!-- Menú Responsive -->
+    <div id="accordian" *ngIf="showMenuMovil">
+      <ul style="background-color:#ffffffd9">
+        <li>
+          <ul>
+            <li><a href="#home"><i class="pi pi-home font-12px iconMovilPad"></i>{{sesionService.msg.lbl_inicio}}</a>
+            </li>
+            <li><a href="#about"><i
+                  class="pi pi-info-circle font-12px iconMovilPad"></i>{{sesionService.msg.lbl_bio}}</a></li>
+            <li><a href="#team"><i class="pi pi-star font-12px iconMovilPad"></i>{{sesionService.msg.lbl_banda}}</a>
+            </li>
+            <li><a href="#portfolio"><i
+                  class="pi pi-images font-12px iconMovilPad"></i>{{sesionService.msg.lbl_galeria_media}}</a>
+            </li>
+            <li><a href="#service"><i
+                  class="pi pi-sliders-v font-12px iconMovilPad"></i>{{sesionService.msg.lbl_participaciones}}</a>
+            </li>
+            <li><a href="#pricing"><i
+                  class="pi pi-share-alt font-12px iconMovilPad"></i>{{sesionService.msg.lbl_comparte}}</a></li>
+            <li>
+              <a href="#publicaciones">
+                <i class="pi pi-clone font-12px iconMovilPad"></i>
+                {{sesionService.msg.lbl_ultimas_publicaciones}}
+              </a>
+            </li>
+            <li>
+              <a (click)="redirigirBlogsBlog()">
+                <i class="pi pi-comments font-12px iconMovilPad"></i>
+                {{sesionService.msg.lbl_blog}}
+              </a>
+            </li>
+            <li *ngIf="esUsuarioLogueadoActivoBlog()">
+              <a>
+                <i class="pi pi-users font-12px iconMovilPad"></i>
+                {{usuarioAutorTBLogin.usuario}}
+              </a>
+            </li>
+            <li *ngIf="esUsuarioLogueadoActivoBlog()">
+              <a (click)="abrirModalUpdateUserBlog()">
+                <i class="pi pi-user-edit font-12px iconMovilPad"></i>
+                {{sesionService.msg.lbl_actualizar_usuario}}
+              </a>
+            </li>
+            <li *ngIf="esUsuarioLogueadoActivoBlog()">
+              <a (click)="cerrarSesionBlog()">
+                <i class="pi pi-power-off font-12px iconMovilPad"></i>
+                {{sesionService.msg.lbl_tip_cerrar_sesion}}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /Menú Responsive -->
   </header>
   <!-- /Header -->
 
@@ -84,6 +156,7 @@
                 <li><i class="fa fa-clock-o"></i>{{convertirFechaBlog(post.fechaCreacion)}}</li>
                 <li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
                 <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})</li>
+                <li><div class="fb-share-button" data-href="http://localhost:4200/#/home" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4200%2F%23%2Fhome&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div></li>
               </ul>
 
               <h3>{{post.titulo}}</h3>
@@ -93,7 +166,7 @@
 
             <!-- blog tags -->
             <div class="blog-tags">
-              <h5>{{msg.lbl_tags}}</h5>
+              <h5>{{sesionService.msg.lbl_tags}}</h5>
               <a *ngFor="let tag of listaTags">
                 <i class="fa fa-tag"></i>{{tag}}
               </a>
@@ -116,8 +189,7 @@
                       <a><i class="fa fa-instagram"></i></a>
                     </div>
                   </div>
-                  <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non
-                    blandit massa enim nec.</p>
+                  <p>{{post.usuarioAutorTB.resena}}</p>
                 </div>
               </div>
             </div>
@@ -134,8 +206,10 @@
                     <img class="media-object" src="assets/images/perso1.jpg" alt="">
                   </div>
                   <div class="media-body">
-                    <h4 class="media-heading">{{comentario.autor}}<span
-                        class="time">{{convertirFechaBlog(comentario.fechaCreacion)}}</span><a class="reply">Responder
+                    <h4 class="media-heading">{{comentario.usuarioAutorTB.nombres}}
+                      {{comentario.usuarioAutorTB.apellidos}}<span
+                        class="time">{{convertirFechaBlog(comentario.fechaCreacion)}}</span><a
+                        class="reply">{{sesionService.msg.lbl_responder}}
                         <i class="fa fa-reply"></i></a></h4>
                     <p>{{comentario.comentario}}</p>
                   </div>
@@ -147,9 +221,10 @@
                         <img class="media-object" src="assets/images/perso2.jpg" alt="">
                       </div>
                       <div class="media-body">
-                        <h4 class="media-heading">{{respuesta.autor}}<span
+                        <h4 class="media-heading">{{respuesta.usuarioAutorTB.nombres}}
+                          {{respuesta.usuarioAutorTB.apellidos}}<span
                             class="time">{{convertirFechaBlog(respuesta.fechaCreacion)}}</span><a
-                            class="reply">Responder
+                            class="reply">{{sesionService.msg.lbl_responder}}
                             <i class="fa fa-reply"></i></a></h4>
                         <p>{{respuesta.comentario}}</p>
                       </div>
@@ -161,7 +236,7 @@
               <ng-template #sinResultadosComment>
                 <div class="service-grids">
                   <div class="col-md-12 ser-grid">
-                    <p class="sinResultados shiny">{{msg.lbl_info_sin_resultados}}</p>
+                    <p class="sinResultados shiny">{{sesionService.msg.lbl_info_sin_resultados}}</p>
                   </div>
                 </div>
               </ng-template>
@@ -171,13 +246,10 @@
 
             <!-- reply form -->
             <div class="reply-form">
-              <h3 class="title">{{msg.lbl_mtto_generico_opinion}}</h3>
-              <form>
-                <input class="input" type="text" placeholder="Nombre o Alias">
-                <input class="input" type="email" placeholder="Correo">
-                <textarea placeholder="Agrega tu comentario (Máximo 1000 Caracteres)"></textarea>
-                <button type="submit" class="main-btn">Comentar</button>
-              </form>
+              <h3 class="title">{{sesionService.msg.lbl_mtto_generico_opinion}}</h3>
+              <textarea pInputTextarea [(ngModel)]="comentarioNuevo" size="1000"
+                placeholder="{{sesionService.msg.lbl_mensaje_agrega_comentario}}"></textarea>
+              <button type="submit" class="main-btn">{{sesionService.msg.lbl_btn_comentar}}</button>
             </div>
             <!-- /reply form -->
           </div>

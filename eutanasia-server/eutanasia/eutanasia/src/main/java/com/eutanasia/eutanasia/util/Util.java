@@ -120,7 +120,7 @@ public abstract class Util {
 	}
 
 	public static String encriptarPassword(String password) {
-		String salt = PasswordUtil.getSalt(ConstantesValidaciones.SALT_ENCRIPTAR_CLAVE);
+		String salt = PasswordUtil.getSalt(ConstantesValidaciones.SALT_ENCRIPTAR_CLAVE, password);
 		return PasswordUtil.generateSecurePassword(password, salt);
 	}
 

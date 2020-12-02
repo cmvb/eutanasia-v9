@@ -11,6 +11,8 @@ import { SesionService } from 'src/app/services/sesionService/sesion.service';
 import { PostModel } from 'src/app/model/post-model';
 import { EutanasiaService } from 'src/app/services/eutanasiaService/eutanasia.service';
 import { ComentarioModel } from 'src/app/model/comentario-model';
+import { ArchivoModel } from 'src/app/model/archivo-model';
+import { UsuarioAutorModel } from 'src/app/model/usuarioAutor-model';
 
 declare var $: any;
 
@@ -29,9 +31,13 @@ export class BlogComponent implements OnInit {
   listaTags: any[];
   listaComentarios: ComentarioModel[];
   mapaComentarios: any;
+  comentarioNuevo: any;
+  usuarioAutorTBLogin: UsuarioAutorModel;
+  archivosTemporales: any[];
+  archivoImagenRegister: ArchivoModel;
+  showMenuMovil: boolean;
 
   // Utilidades
-  msg: any;
   const: any;
   locale: any;
   maxDate = new Date();
@@ -39,13 +45,15 @@ export class BlogComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enumerados: Enumerados, public sesionService: SesionService, private messageService: MessageService, private sanitization: DomSanitizer, public eutanasiaService: EutanasiaService) {
     this.sesion = this.objectModelInitializer.getDataServiceSesion();
-    this.msg = this.textProperties.getProperties(this.sesionService.objServiceSesion.idioma);
     this.const = this.objectModelInitializer.getConst();
     this.locale = this.sesionService.objServiceSesion.idioma === this.objectModelInitializer.getConst().idiomaEs ? this.objectModelInitializer.getLocaleESForCalendar() : this.objectModelInitializer.getLocaleENForCalendar();
     this.enums = enumerados.getEnumerados();
   }
 
   ngOnInit() {
+    console.clear();
+    this.usuarioAutorTBLogin = this.sesionService.getUsuarioSesionActual();
+    this.comentarioNuevo = '';
     this.eutanasiaService.post = JSON.parse(sessionStorage.getItem('post'));
     if (this.eutanasiaService.post !== undefined && this.eutanasiaService.post !== null) {
       this.post = this.eutanasiaService.post;
@@ -53,10 +61,67 @@ export class BlogComponent implements OnInit {
       this.cargarComentarios();
       this.posicionarArriba();
     } else {
-      sessionStorage.clear();
+      // TODO: redirección a timeline
       this.router.navigate(['home']);
     }
   }
+
+  ngDoCheck() {
+    this.post = this.eutanasiaService.post;
+    return true;
+  }
+
+  // Otras Funciones
+  convertirFechaBlog(fechaString) {
+    let fecha = new Date(fechaString);
+    return fecha.getUTCDate() + " " + this.objectModelInitializer.getLocaleESForCalendar().monthNamesShort[fecha.getUTCMonth()]
+  }
+
+  posicionarArriba() {
+    $('body,html').animate({
+      scrollTop: 0
+    }, 600);
+  }
+
+  redirigirBlogsBlog() {
+    this.router.navigate(['blogs']);
+  }
+
+  obtenerRespuestas(comentario: ComentarioModel) {
+    return this.mapaComentarios.get(comentario.id);
+  }
+
+  obtenerCategoria(valorCategoria) {
+    try {
+      return this.util.getValorEnumerado(this.enums.categoriaPost.valores, valorCategoria).label;
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  mostrarOcultarMenuBlog() {
+    this.showMenuMovil = !this.showMenuMovil;
+  }
+
+  esUsuarioLogueadoActivoBlog() {
+    let result = false;
+    let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
+    let valorEstadoActivo = this.util.getValorEnumerado(this.enums.estadoUsuario.valores, 1);
+    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value) {
+      result = true;
+    }
+
+    return result;
+  }
+
+  cerrarSesionBlog() {
+    this.sesionService.cerrarSession();
+    this.sesionService.objServiceSesion= this.objectModelInitializer.getDataServiceSesion();
+    this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
+    this.router.navigate(['home']);
+  }
+
+  // Servicios Web
 
   cargarComentarios() {
     this.listaComentarios = [];
@@ -89,31 +154,10 @@ export class BlogComponent implements OnInit {
     }
   }
 
-  convertirFechaBlog(fechaString) {
-    let fecha = new Date(fechaString);
-    return fecha.getUTCDate() + " " + this.objectModelInitializer.getLocaleESForCalendar().monthNamesShort[fecha.getUTCMonth()]
+  // Modales
+
+  abrirModalUpdateUserBlog() {
+    //this.disModUpdateUser = true;
   }
 
-  posicionarArriba() {
-    $('body,html').animate({
-      scrollTop: 0
-    }, 600);
-  }
-
-  obtenerRespuestas(comentario: ComentarioModel) {
-    return this.mapaComentarios.get(comentario.id);
-  }
-
-  obtenerCategoria(valorCategoria) {
-    try {
-      return this.util.getValorEnumerado(this.enums.categorias.valores, valorCategoria).label;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  ngDoCheck() {
-    this.post = this.eutanasiaService.post;
-    return true;
-  }
 }

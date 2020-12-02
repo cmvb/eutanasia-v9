@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ObjectModelInitializer } from 'src/app/config/ObjectModelInitializer';
+import { TextProperties } from 'src/app/config/TextProperties';
 import { ObjServiceSessionDTOModel } from 'src/app/model/dto/objServiceSession-dto';
+
+declare var $: any;
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +11,9 @@ import { ObjServiceSessionDTOModel } from 'src/app/model/dto/objServiceSession-d
 export class SesionService {
   // Fases
   objServiceSesion: ObjServiceSessionDTOModel;
+  msg: any;
 
-  constructor(public objectModelInitializer: ObjectModelInitializer) {
+  constructor(public textProperties: TextProperties, public objectModelInitializer: ObjectModelInitializer) {
     this.inicializar();
     if (!this.existeSession()) {
       this.tomarSessionDeStorage();
@@ -28,6 +32,29 @@ export class SesionService {
     this.objServiceSesion.mensajeError500 = undefined;
     this.objServiceSesion.mensajeConfirmacion = undefined;
     this.objServiceSesion.idioma = this.objectModelInitializer.getConst().idiomaEs;
+    this.msg = this.textProperties.getProperties(this.objServiceSesion.idioma);
+  }
+
+  cambiarIdioma(idioma: number) {
+    this.msg = this.textProperties.getProperties(idioma);
+    this.cambiarIdiomaWPP(idioma);
+  }
+
+  cambiarIdiomaWPP(idioma) {
+    var WAButton = document.getElementById("WAButton");
+    while (WAButton.firstChild) {
+      WAButton.removeChild(WAButton.firstChild);
+    }
+    $('#WAButton').floatingWhatsApp({
+      phone: '+573219315302', //WhatsApp Business phone number
+      headerTitle: idioma == 0 ? '¡Chatea con la banda por Whatsapp!' : 'Chat with the band on WhatsApp!', //Popup Title
+      popupMessage: idioma == 0 ? 'Hola, ¿En qué te ayudo?' : 'Hello, how can we help you?', //Popup Message
+      showPopup: true, //Enables popup display
+      buttonImage: '<img src="assets/images/wpp.png" />', //Button Image
+      //headerColor: 'crimson', //Custom header color
+      //backgroundColor: 'crimson', //Custom background button color
+      position: "right" //Position: left | right
+    });
   }
 
   getUsuarioSesionActual() {

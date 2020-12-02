@@ -38,20 +38,20 @@ export class HeaderComponent implements OnInit {
   archivoImagenRegister: ArchivoModel;
   mostrarImagenRegister: boolean;
   srcImagenRegister: any;
+  showMenuMovil: boolean;
 
   // Objetos de Animaciones
   fadeIn: any;
 
   // Utilidades
-  msg: any;
   const: any;
 
   constructor(private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer, private enums: Enumerados, private messageService: MessageService, public restService: RestService, public textProperties: TextProperties, public objectModelInitializer: ObjectModelInitializer, public sesionService: SesionService, public util: Util) {
-    this.msg = this.textProperties.getProperties(this.sesionService.objServiceSesion.idioma);
     this.const = this.objectModelInitializer.getConst();
   }
 
   ngOnInit() {
+    console.clear();
     this.archivosTemporales = [];
     this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
@@ -114,7 +114,7 @@ export class HeaderComponent implements OnInit {
   esUsuarioLogueado() {
     let result = false;
     let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
-    if (usuarioSession !== undefined && usuarioSession !== null) {
+    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.id > 0) {
       result = true;
     }
 
@@ -142,22 +142,28 @@ export class HeaderComponent implements OnInit {
   }
 
   cerrarSesion() {
-    this.usuarioAutorTBLogin = undefined;
     this.sesionService.cerrarSession();
+    this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
   }
 
   // Modales
   abrirModalLogin() {
+    this.messageService.clear();
     this.disModLogin = true;
   }
 
   abrirModalRegister() {
+    this.messageService.clear();
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
     this.disModRegistrar = true;
   }
 
   abrirModalUpdateUser() {
     //this.disModUpdateUser = true;
+  }
+
+  mostrarOcultarMenu() {
+    this.showMenuMovil = !this.showMenuMovil;
   }
 
   // Servicios Web
@@ -171,13 +177,13 @@ export class HeaderComponent implements OnInit {
             // Cargar Modal exitoso
             this.mostrarImagenRegister = true;
             this.messageService.clear();
-            this.messageService.add({ severity: this.const.severity[1], summary: this.msg.lbl_summary_succes, detail: this.msg.lbl_mensaje_archivo_subido });
+            this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_mensaje_archivo_subido });
             this.archivoImagenRegister = respuesta;
             this.sanitizarUrlImgCargada(this.archivoImagenRegister.archivo, this.archivoImagenRegister.nombreArchivo.split(".")[1]);
           }
         },
           error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.msg.lbl_summary_danger);
+            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
             this.messageService.clear();
             listaMensajes.forEach(mensaje => {
               this.messageService.add(mensaje);
@@ -191,13 +197,14 @@ export class HeaderComponent implements OnInit {
   }
 
   crearUsuarioEutanasico() {
+    sessionStorage.clear();
     try {
       if (this.repeatPassword === undefined || this.repeatPassword === null) {
         this.messageService.clear();
-        this.messageService.add({ severity: this.const.severity[3], summary: this.msg.lbl_summary_danger, detail: this.msg.lbl_mensaje_password_confirmar });
+        this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mensaje_password_confirmar });
       } else if (this.repeatPassword !== this.usuarioAutorTBRegister.password) {
         this.messageService.clear();
-        this.messageService.add({ severity: this.const.severity[3], summary: this.msg.lbl_summary_danger, detail: this.msg.lbl_mensaje_password_no_coincide });
+        this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mensaje_password_no_coincide });
       } else {
         this.usuarioAutorTBRegister.urlImagen = this.archivoImagenRegister.rutaArchivo;
         this.restService.postREST(this.const.urlCrearUsuario, this.usuarioAutorTBRegister)
@@ -214,11 +221,11 @@ export class HeaderComponent implements OnInit {
               this.usuarioAutorTBLogin = respuesta;
               sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
               this.messageService.clear();
-              this.messageService.add({ severity: this.const.severity[1], summary: this.msg.lbl_summary_succes, detail: this.msg.lbl_info_proceso_completo });
+              this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
             }
           },
             error => {
-              let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.msg.lbl_summary_danger);
+              let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
               this.messageService.clear();
               listaMensajes.forEach(mensaje => {
                 this.messageService.add(mensaje);
@@ -233,37 +240,30 @@ export class HeaderComponent implements OnInit {
   }
 
   login() {
+    sessionStorage.clear();
     try {
-      if (this.repeatPassword === undefined || this.repeatPassword === null) {
-        this.messageService.clear();
-        this.messageService.add({ severity: this.const.severity[3], summary: this.msg.lbl_summary_danger, detail: this.msg.lbl_mensaje_password_confirmar });
-      } else if (this.repeatPassword !== this.usuarioAutorTBRegister.password) {
-        this.messageService.clear();
-        this.messageService.add({ severity: this.const.severity[3], summary: this.msg.lbl_summary_danger, detail: this.msg.lbl_mensaje_password_no_coincide });
-      } else {
-        this.restService.postREST(this.const.urlLogin, this.usuarioAutorTBRegister)
-          .subscribe(resp => {
-            let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
-            if (respuesta !== null) {
-              // Ocultar modal de login y llenar en memoria el usuario en sesion protegiendo la clave
-              this.disModLogin = false;
-              this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
-              this.sesionService.objServiceSesion.usuarioSesion = respuesta;
-              sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
-              this.messageService.clear();
-              this.messageService.add({ severity: this.const.severity[1], summary: this.msg.lbl_summary_succes, detail: this.msg.lbl_info_proceso_completo });
-            }
-          },
-            error => {
-              let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.msg.lbl_summary_danger);
-              this.messageService.clear();
-              listaMensajes.forEach(mensaje => {
-                this.messageService.add(mensaje);
-              });
+      this.restService.postREST(this.const.urlLogin, this.usuarioAutorTBLogin)
+        .subscribe(resp => {
+          let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
+          if (respuesta !== null) {
+            // Ocultar modal de login y llenar en memoria el usuario en sesion protegiendo la clave
+            this.disModLogin = false;
+            this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
+            this.sesionService.objServiceSesion.usuarioSesion = respuesta;
+            sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
+            this.messageService.clear();
+            this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
+          }
+        },
+          error => {
+            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
+            this.messageService.clear();
+            listaMensajes.forEach(mensaje => {
+              this.messageService.add(mensaje);
+            });
 
-              console.log(error, "error");
-            })
-      }
+            console.log(error, "error");
+          })
     } catch (e) {
       console.log(e);
     }
