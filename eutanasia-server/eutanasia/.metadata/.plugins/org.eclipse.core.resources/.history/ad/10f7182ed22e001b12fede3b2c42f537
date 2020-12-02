@@ -1,8 +1,0 @@
-package com.eutanasia.eutanasia.service.impl;
-
-public class Snippet {
-	//guardar archivos en sftp
-	                Util.archivosSftpEscalamiento(solicitudRequest.getListaAdjunto(), idSolicitud, solicitudRequest.getDocumentoCliente(), sftpServicio, escParametrizacionDao);
-	                guardarAdjuntos(solicitudRequest.getListaAdjunto(), solicitud);
-}
-
