@@ -234,7 +234,7 @@ a[x-apple-data-detectors=true] {
 					style="word-break: break-word; vertical-align: top; border-collapse: collapse;"
 					valign="top">
 					<div
-						style="background-color: #FFFFFF; background-image: url('https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/logo2020.svg')">
+						style="background-color: #FFFFFF; background-image: url('https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg')">
 						<div class="block-grid mixed-two-up no-stack"
 							data-body-width-father="650px" rel="col-num-container-box-father"
 							style="Margin: 0 auto; min-width: 320px; max-width: 650px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: transparent;">
@@ -259,7 +259,7 @@ a[x-apple-data-detectors=true] {
 											style="border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent; padding-bottom: 0px; padding-right: 0px; padding-left: 0px;">
 
 											<img alt="Image" border="0" class="left fixedwidth"
-												src="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/logo2020.svg"
+												src="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"
 												style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; border: 0; height: 100%; float: none; width: auto; display: block; width: 60%; padding-left: 20%; padding-right: 20%;"
 												title="Image" width="130" />
 
@@ -361,7 +361,7 @@ a[x-apple-data-detectors=true] {
 												<div style="font-size: 1px; line-height: 30px"> </div>
 												<img align="center" alt="Image" border="0"
 													class="center autowidth"
-													src="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/man1.svg"
+													src="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/man1.svg"
 													style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; border: 0; height: auto; float: none; width: 100%; max-width: 150px; display: block;"
 													title="Image" width="150" />
 											</div>

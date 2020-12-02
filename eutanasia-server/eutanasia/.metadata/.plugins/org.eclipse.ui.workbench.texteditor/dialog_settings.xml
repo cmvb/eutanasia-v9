@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/man1.svg"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/man1.svg"/>
+			<item value="man"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
+			<item value="logo"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/users/man1.svg"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
+			<item value="logo2020"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/barra2.svg"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/barra1.svg"/>
+			<item value="barra1"/>
+			<item value="url"/>
 			<item value=" + "/>
 			<item value="manytoone"/>
 			<item value="consultarComentariosPorIdPost"/>
 			<item value="filtroPost"/>
-			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
-			<item value="logo2020"/>
-			<item value="modif"/>
-			<item value="modig"/>
-			<item value="LLAVE_ENCRIPTAR"/>
-			<item value="encry"/>
-			<item value="incorrectos"/>
-			<item value="barra1"/>
-			<item value="C:/Users/veracm/Documents/ProjectsCB/EUTANASIA-V9/eutanasia/src/assets/images/logo2020.svg"/>
-			<item value="barra2"/>
-			<item value="man1"/>
 		</list>
 		<list key="replacehistory">
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/man1.svg"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/logo2020.svg"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/man1.svg"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/barra2.svg"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/barra1.svg"/>
 			<item value=""/>
 			<item value="filtroUsuario"/>
 			<item value="https://github.com/cmvb/eutanasia-v9/blob/master/eutanasia/src/assets/images/logo2020.svg"/>
@@ -34,17 +40,11 @@
 			<item value="encriptarPassword"/>
 			<item value="encriptar"/>
 			<item value="ConstantesValidaciones.KEY_LENGTH"/>
-			<item value="ConstantesValidaciones.ITERATIONS"/>
-			<item value="ConstantesValidaciones.CARACTERES"/>
-			<item value="ConstantesValidaciones.VALOR_INCORRECTO"/>
-			<item value="ConstantesValidaciones.VALOR_VACIO"/>
-			<item value="Util.VALOR_VACIO"/>
-			<item value="lbl.usuario"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="724"/>
-		<item key="DIALOG_Y_ORIGIN" value="142"/>
+		<item key="DIALOG_X_ORIGIN" value="381"/>
+		<item key="DIALOG_Y_ORIGIN" value="315"/>
 		<item key="DIALOG_WIDTH" value="284"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
