@@ -24,6 +24,23 @@ public class UsuariosDaoImpl extends AbstractDao<UsuarioAutorTB> implements IUsu
 	private EntityManager em;
 
 	@Override
+	public List<UsuarioAutorTB> consultarUsuarios() {
+		// PARAMETROS
+		Map<String, Object> pamameters = new HashMap<>();
+
+		// QUERY
+		StringBuilder JPQL = new StringBuilder("SELECT t FROM UsuarioAutorTB t WHERE 1 = 1 ");
+		// Q. Order By
+		JPQL.append(" ORDER BY t.id");
+		// END QUERY
+
+		TypedQuery<UsuarioAutorTB> query = em.createQuery(JPQL.toString(), UsuarioAutorTB.class);
+		pamameters.forEach((k, v) -> query.setParameter(k, v));
+
+		return query.getResultList();
+	}
+
+	@Override
 	public List<UsuarioAutorTB> consultarUsuariosPorUsuario(String usuario) {
 		// PARAMETROS
 		Map<String, Object> pamameters = new HashMap<>();

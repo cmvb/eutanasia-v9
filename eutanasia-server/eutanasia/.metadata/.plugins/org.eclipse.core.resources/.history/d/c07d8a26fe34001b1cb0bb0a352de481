@@ -1,0 +1,44 @@
+# EUTANASIA WEBPAGE
+eutanasia.app												= Eutanasia 2020
+eutanasia.key.encrypt										= EuTaNaSiA2020
+
+# Mensajes de Validaciones - Genéricos
+eutanasia.msg.validate.valor.objeto							= El objeto no cumple con la estructura esperada o no hay información en él.
+eutanasia.msg.login.datos.incorrectos						= No se puede ingresar. Verifique que los datos suministrados para Usuario y Clave son correctos y que el Usuario esté ACTIVO.
+eutanasia.msg.login.datos.insuficientes						= No se han proporcionado los datos necesarios para realizar el ingreso.
+eutanasia.msg.validate.tabla.no.establecida					= No se han definido validaciones para el objeto seleccionado.
+eutanasia.msg.validate.valor.incorrecto						= Valor Incorrecto.
+eutanasia.msg.validate.valor.vacio							= Valor Vacío.
+eutanasia.msg.validate.correoInvalido						= La estructura del Correo es inválida.
+eutanasia.msg.validate.valor.superaLongitud					= El valor digitado supera la longitud permitida.
+eutanasia.msg.validate.usuarioRepetido						= Ya existe un usuario activo con el usuario digitado.
+eutanasia.msg.validate.correoRepetido						= Ya existe un usuario activo con el correo digitado.
+eutanasia.msg.validate.no.posts								= No se ha encontrado post con los datos proporcionados.
+
+# Rutas
+eutanasia.ruta.sftp.archivos								= /data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/
+eutanasia.ruta.jasper.reports								= /reports/
+eutanasia.template.mail.activateUser						= C:/Users/veracm/Documents/ProjectsCB/EUTANASIA-V9/eutanasia-server/eutanasia/eutanasia/src/main/resources/templates/nuevoUsuario.html
+ 
+# Labels Usuario
+lbl.usuario.usuario											= Usuario: 
+lbl.usuario.nombres											= Nombres: 
+lbl.usuario.apellidos										= Apellidos: 
+lbl.usuario.correo											= Correo: 
+lbl.usuario.fecha.nacimiento								= Fecha Nacimiento: 
+lbl.usuario.resena											= Reseña: 
+lbl.usuario.clave											= Clave: 
+lbl.usuario.imagen											= Imágen: 
+
+# Labels Archivo
+lbl.archivo.archivo											= Archivo: 
+lbl.archivo.nombre											= Nombre Archivo: 
+lbl.archivo.ruta											= Ruta Archivo: 
+
+lbl.comentario.comentario									= Comentario: 
+lbl.comentario.autor										= Autor: 
+lbl.comentario.post											= Post: 
+	public static final String COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.comentario");
+	public static final String USUARIO_AUTOR_COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.autor");
+	public static final String POST_COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.post"); 
+ 

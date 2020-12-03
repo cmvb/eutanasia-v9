@@ -17,6 +17,8 @@ public final class ConstantesValidaciones {
 	public static final String RUTA_SFTP_IMAGES_USUARIO = PropertiesUtil.getProperty("eutanasia.ruta.images.user");
 	public static final String TEMPLATE_MAIL_ACTIVATE_USER = PropertiesUtil
 			.getProperty("eutanasia.template.mail.activateUser");
+	public static final String TEMPLATE_MAIL_RECORDAR_CLAVE = PropertiesUtil
+			.getProperty("eutanasia.template.mail.recordarClave");
 
 	// Simbolos y constantes
 	public static final String COMODIN_BD = "%";
@@ -36,6 +38,7 @@ public final class ConstantesValidaciones {
 	// Mensajes
 	public static final String ERROR_LOGIN_DATOS_INCORRECTOS_INACTIVOS = PropertiesUtil
 			.getProperty("eutanasia.msg.login.datos.incorrectos");
+	public static final String ERROR_RESTAURAR_CLAVE = PropertiesUtil.getProperty("eutanasia.msg.restaurar.clave");
 	public static final String ERROR_LOGIN_DATOS_INSUFICIENTES = PropertiesUtil
 			.getProperty("eutanasia.msg.login.datos.insuficientes");
 	public static final String LLAVE_ENCRIPTAR = PropertiesUtil.getProperty("eutanasia.key.encrypt");
@@ -66,5 +69,9 @@ public final class ConstantesValidaciones {
 	public static final String FECHA_NACIMIENTO_USUARIO = PropertiesUtil.getProperty("lbl.usuario.fecha.nacimiento");
 	public static final String CLAVE_USUARIO = PropertiesUtil.getProperty("lbl.usuario.clave");
 	public static final String IMAGEN_USUARIO = PropertiesUtil.getProperty("lbl.usuario.imagen");
+
+	public static final String COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.comentario");
+	public static final String USUARIO_AUTOR_COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.autor");
+	public static final String POST_COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.post");
 
 }

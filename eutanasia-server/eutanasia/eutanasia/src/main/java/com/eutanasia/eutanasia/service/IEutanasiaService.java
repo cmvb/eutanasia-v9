@@ -29,6 +29,11 @@ public interface IEutanasiaService {
 	 * Método para consultar posts
 	 */
 	public List<PostTB> consultarPosts();
+	
+	/*
+	 * Método para consultar usuarios
+	 */
+	public List<UsuarioAutorTB> consultarUsuarios();
 
 	/*
 	 * Método para consultar comentarios por el id del post

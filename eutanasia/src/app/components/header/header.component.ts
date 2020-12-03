@@ -39,6 +39,7 @@ export class HeaderComponent implements OnInit {
   mostrarImagenRegister: boolean;
   srcImagenRegister: any;
   showMenuMovil: boolean;
+  loginRestaurar: boolean;
 
   // Objetos de Animaciones
   fadeIn: any;
@@ -152,6 +153,11 @@ export class HeaderComponent implements OnInit {
     this.disModLogin = true;
   }
 
+  toggleRestaurarLogin() {
+    this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
+    this.loginRestaurar = !this.loginRestaurar;
+  }
+
   abrirModalRegister() {
     this.messageService.clear();
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
@@ -251,6 +257,33 @@ export class HeaderComponent implements OnInit {
             this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
             this.sesionService.objServiceSesion.usuarioSesion = respuesta;
             sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
+            this.messageService.clear();
+            this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
+          }
+        },
+          error => {
+            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
+            this.messageService.clear();
+            listaMensajes.forEach(mensaje => {
+              this.messageService.add(mensaje);
+            });
+
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  restaurarClave() {
+    sessionStorage.clear();
+    try {
+      this.restService.postREST(this.const.urlRestaurarClave, this.usuarioAutorTBLogin)
+        .subscribe(resp => {
+          let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
+          if (respuesta !== null) {
+            // Ocultar modal de login y llenar en memoria el usuario en sesion protegiendo la clave
+            this.disModLogin = false;
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
           }

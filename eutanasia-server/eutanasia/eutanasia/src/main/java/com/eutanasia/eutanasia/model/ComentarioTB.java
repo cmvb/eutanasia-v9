@@ -39,10 +39,6 @@ public class ComentarioTB extends BaseEntidadTB implements Serializable {
 	private long idComentarioRespuesta;
 
 	@NotNull
-	@Column(name = "eco_correoAutor", nullable = false, length = 100)
-	private String correoAutor;
-
-	@NotNull
 	@Column(name = "eco_comentario", nullable = false, length = 1000)
 	private String comentario;
 
@@ -76,14 +72,6 @@ public class ComentarioTB extends BaseEntidadTB implements Serializable {
 
 	public void setIdComentarioRespuesta(long idComentarioRespuesta) {
 		this.idComentarioRespuesta = idComentarioRespuesta;
-	}
-
-	public String getCorreoAutor() {
-		return correoAutor;
-	}
-
-	public void setCorreoAutor(String correoAutor) {
-		this.correoAutor = correoAutor;
 	}
 
 	public String getComentario() {

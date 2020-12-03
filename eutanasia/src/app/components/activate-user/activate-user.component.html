@@ -1,0 +1,64 @@
+<p-scrollPanel #scrollActivarUser [style]="{width: '100%', height: '100vh'}" styleClass="custom">
+
+    <!-- Header -->
+    <header style="background-image: url('assets/images/banner.jpg');">
+        <!-- Nav -->
+        <nav id="nav" class="navbar nav-transparent">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- Logo -->
+                    <div class="navbar-brand">
+                        <a href="index.html">
+                            <img class="logo" src="assets/images/logo.png" alt="logo">
+                            <img class="logo-alt" src="assets/images/logo.png" alt="logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- /Nav -->
+
+        <!-- header wrapper -->
+        <div class="header-wrapper sm-padding bg-grey">
+            <div class="container">
+                <h2>{{sesionService.msg.lbl_oficial_web_page}}</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">{{sesionService.msg.lbl_menu_usuario}}</a></li>
+                    <li class="breadcrumb-item active">{{sesionService.msg.lbl_activar_usuario}}</li>
+                </ul>
+            </div>
+        </div>
+        <!-- /header wrapper -->
+    </header>
+    <!-- /Header -->
+
+    <!-- Notificaciones -->
+    <p-toast></p-toast>
+
+    <!-- AUser -->
+    <div class="section activateUser">
+        <!-- Container -->
+        <div class="mdl-grid row justify-content-center">
+            <!-- Main -->
+            <main id="main" class="col-md-6" style="padding: 85px;">
+                <div class="blog-content" style="background: #ffffff3b;padding: 10px;">
+                    <!-- reply form -->
+                    <div class="reply-form">
+                        <h1 class="title textWhite font-40px">{{sesionService.msg.lbl_summary_info}}</h1>
+                        <h3 class="title textWhite font-20px">{{mensajeMostrar}}</h3>
+                        <p-messages></p-messages>
+                    </div>
+                    <!-- /reply form -->
+                </div>
+            </main>
+            <!-- /Main -->
+        </div>
+        <!-- /Container -->
+    </div>
+    <!-- /AUser -->
+
+    <!-- FOOTER -->
+    <app-footer></app-footer>
+    <!-- FOOTER -->
+
+</p-scrollPanel>

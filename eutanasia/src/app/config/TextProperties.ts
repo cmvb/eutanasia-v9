@@ -27,6 +27,7 @@ export class TextProperties {
       // Generales
       lbl_login: idioma === constant.idiomaEs ? 'Login' : 'Login',
       lbl_idioma: idioma === constant.idiomaEs ? 'Idioma' : 'Lenguage',
+      lbl_activar_usuario: idioma === constant.idiomaEs ? 'Activar Usuario' : 'Activate User',
       lbl_categorias: idioma === constant.idiomaEs ? 'Categorías' : 'Categories',
       lbl_register: idioma === constant.idiomaEs ? 'Registro' : 'Register',
       lbl_responder: idioma === constant.idiomaEs ? 'Responder' : 'Reply',

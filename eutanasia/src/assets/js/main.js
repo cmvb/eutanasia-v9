@@ -4,7 +4,7 @@ $(function () {
     if (objServiceSesion !== undefined && objServiceSesion !== null) {
         idioma = JSON.parse(objServiceSesion).idioma;
     }
-    debugger;
+    
     $('#WAButton').floatingWhatsApp({
         phone: '+573219315302', //WhatsApp Business phone number
         headerTitle: idioma == 0 ? '¡Chatea con la banda por Whatsapp!' : 'Chat with the band on WhatsApp!', //Popup Title

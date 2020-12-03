@@ -30,7 +30,7 @@ public class UtilMail {
 
 			Context context = new Context();
 			context.setVariables(mail.getModel());
-			String html = templateEngine.process("nuevoUsuario.html", context);
+			String html = templateEngine.process(urlMail, context);
 			String htmlReemplazado = new String(mail.getHtmlReemplazado(html));
 
 			helper.setTo(mail.getTo());

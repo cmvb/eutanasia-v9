@@ -136,12 +136,22 @@ a {
     transition: 0.2s opacity;
 }
 
+.contadorPost{
+    position: absolute;
+    right: 60px;
+    bottom: 56px;
+    padding: 5px;
+    background: gainsboro;
+    color: $color-rojo;
+    font-weight: bold;
+}
+
 a:hover,
 a:focus {
     text-decoration: none;
     outline: none;
     opacity: 0.8;
-    color: #fff;
+    color: #ab350b;
 }
 
 .main-color {
@@ -1396,6 +1406,18 @@ iframe {
     font-size: 12px;
     text-transform: uppercase;
     font-weight: 400;
+}
+
+.activateUser {
+    background-image: url(assets/images/formPortada.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 450px;
+}
+
+.reply:hover {
+    color: $color-rojo;
 }
 
 .blog-comments .media.author {

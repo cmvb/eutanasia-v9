@@ -32,6 +32,7 @@ export class BlogComponent implements OnInit {
   listaComentarios: ComentarioModel[];
   mapaComentarios: any;
   comentarioNuevo: any;
+  respuestaNueva: any;
   usuarioAutorTBLogin: UsuarioAutorModel;
   archivosTemporales: any[];
   archivoImagenRegister: ArchivoModel;
@@ -54,6 +55,7 @@ export class BlogComponent implements OnInit {
     console.clear();
     this.usuarioAutorTBLogin = this.sesionService.getUsuarioSesionActual();
     this.comentarioNuevo = '';
+    this.respuestaNueva = '';
     this.eutanasiaService.post = JSON.parse(sessionStorage.getItem('post'));
     if (this.eutanasiaService.post !== undefined && this.eutanasiaService.post !== null) {
       this.post = this.eutanasiaService.post;
@@ -116,9 +118,19 @@ export class BlogComponent implements OnInit {
 
   cerrarSesionBlog() {
     this.sesionService.cerrarSession();
-    this.sesionService.objServiceSesion= this.objectModelInitializer.getDataServiceSesion();
+    this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
     this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
     this.router.navigate(['home']);
+  }
+
+  toggleRespuesta(idComentario) {
+    $('#comment' + idComentario).toggleClass('displayNone');
+  }
+
+  // Modales
+
+  abrirModalUpdateUserBlog() {
+    //this.disModUpdateUser = true;
   }
 
   // Servicios Web
@@ -154,10 +166,67 @@ export class BlogComponent implements OnInit {
     }
   }
 
-  // Modales
+  crearComentario() {
+    try {
+      let comentarioNuevo: ComentarioModel = this.objectModelInitializer.getDataComentarioModel();
+      comentarioNuevo.comentario = this.comentarioNuevo;
+      comentarioNuevo.postTB = this.post;
+      comentarioNuevo.usuarioAutorTB = this.post.usuarioAutorTB;
+      this.restService.postREST(this.const.urlCrearComentario, comentarioNuevo)
+        .subscribe(resp => {
+          let respuesta: ComentarioModel = JSON.parse(JSON.stringify(resp));
+          if (respuesta !== null) {
+            // Mostrar mensaje exitoso y consultar comentarios de nuevo
+            this.comentarioNuevo = '';
+            this.cargarComentarios();
+            this.messageService.clear();
+            this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
+          }
+        },
+          error => {
+            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
+            this.messageService.clear();
+            listaMensajes.forEach(mensaje => {
+              this.messageService.add(mensaje);
+            });
 
-  abrirModalUpdateUserBlog() {
-    //this.disModUpdateUser = true;
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  responderComentario(idComentario: number) {
+    try {
+      let comentarioNuevo: ComentarioModel = this.objectModelInitializer.getDataComentarioModel();
+      comentarioNuevo.comentario = this.respuestaNueva;
+      comentarioNuevo.postTB = this.post;
+      comentarioNuevo.usuarioAutorTB = this.post.usuarioAutorTB;
+      comentarioNuevo.idComentarioRespuesta = idComentario;
+      this.restService.postREST(this.const.urlCrearComentario, comentarioNuevo)
+        .subscribe(resp => {
+          let respuesta: ComentarioModel = JSON.parse(JSON.stringify(resp));
+          if (respuesta !== null) {
+            // Mostrar mensaje exitoso y consultar comentarios de nuevo
+            this.respuestaNueva = '';
+            this.cargarComentarios();
+            this.messageService.clear();
+            this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
+          }
+        },
+          error => {
+            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
+            this.messageService.clear();
+            listaMensajes.forEach(mensaje => {
+              this.messageService.add(mensaje);
+            });
+
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
   }
 
 }

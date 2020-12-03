@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/man1.svg"/>
+		<item key="selection" value="modifi"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/man1.svg"/>
-			<item value="man"/>
-			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
-			<item value="logo"/>
-			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/users/man1.svg"/>
-			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
-			<item value="logo2020"/>
-			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/barra2.svg"/>
-			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/barra1.svg"/>
-			<item value="barra1"/>
+			<item value="modifi"/>
+			<item value="usuariospor"/>
+			<item value="activa"/>
+			<item value="URL_VERIFICAR_CUENTA_NUEVA"/>
+			<item value="urlMail"/>
+			<item value="${resetUrl}"/>
 			<item value="url"/>
-			<item value=" + "/>
-			<item value="manytoone"/>
-			<item value="consultarComentariosPorIdPost"/>
-			<item value="filtroPost"/>
+			<item value="rese"/>
+			<item value="reset"/>
+			<item value="token"/>
+			<item value="logi"/>
+			<item value="idpo"/>
+			<item value="man"/>
+			<item value="svg"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/man1.svg"/>
 		</list>
 		<list key="replacehistory">
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/master/eutanasia/src/assets/images/emailTemplate/barra2.png"/>
+			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/master/eutanasia/src/assets/images/emailTemplate/logo2020.png"/>
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/man1.svg"/>
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/logo2020.svg"/>
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/man1.svg"/>
@@ -38,8 +40,6 @@
 			<item value="/"/>
 			<item value="rgb(10, 22, 20)"/>
 			<item value="encriptarPassword"/>
-			<item value="encriptar"/>
-			<item value="ConstantesValidaciones.KEY_LENGTH"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

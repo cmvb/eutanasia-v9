@@ -53,6 +53,11 @@ public class EutanasiaServiceImpl implements IEutanasiaService {
 	}
 
 	@Override
+	public List<UsuarioAutorTB> consultarUsuarios() {
+		return usuariosDAO.consultarUsuarios();
+	}
+
+	@Override
 	public List<PostTB> consultarPostsPorFiltros(PostTB filtroPost) {
 		return postsDAO.consultarPostsPorFiltros(filtroPost);
 	}
