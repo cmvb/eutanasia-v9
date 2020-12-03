@@ -52,6 +52,11 @@ import { ObjectModelInitializer } from './config/ObjectModelInitializer';
 import { MessageService } from 'primeng/api';
 import { SesionService } from './services/sesionService/sesion.service';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
 // Constantes
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   "bgsColor": "#fff",
@@ -121,7 +126,11 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     DialogModule,
     CalendarModule,
     FileUploadModule,
-    TableModule
+    TableModule,
+
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule, 
+    AngularFirestoreModule
   ],
   providers: [TextProperties, Enumerados, ObjectModelInitializer, Guardian, Util, Functions, MessageService, SesionService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

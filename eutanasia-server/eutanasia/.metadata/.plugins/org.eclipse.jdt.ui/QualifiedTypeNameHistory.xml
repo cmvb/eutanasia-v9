@@ -7,12 +7,14 @@
     <fullyQualifiedTypeName name="java.security.InvalidKeyException"/>
     <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxExpect.Open.Condition.Key"/>
     <fullyQualifiedTypeName name="javax.crypto.Cipher"/>
-    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.Util"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Value"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="org.thymeleaf.context.Context"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.enums.EEstado"/>
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.ConstantesTablasNombre"/>
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.ConstantesValidaciones"/>
+    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.enums.EEstado"/>
+    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.Util"/>
+    <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
+    <fullyQualifiedTypeName name="java.net.URL"/>
 </qualifiedTypeNameHistroy>
