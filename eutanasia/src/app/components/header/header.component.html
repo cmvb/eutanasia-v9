@@ -78,7 +78,7 @@
                 [modal]="true" [style]="{width: '60vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false"
                 [closable]="true">
                 <div class="reply-form">
-                    <div class="row justify-content-center">
+                    <div *ngIf="!loginRestaurar" class="row justify-content-center">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
                             <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBLogin.usuario"
                                 placeholder="{{sesionService.msg.lbl_header_usuario}}" />
@@ -94,8 +94,30 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
                             <label class="textPlata">{{sesionService.msg.lbl_btn_olvidaste_tu_clave}}
-                                <span
+                                <span (click)="toggleRestaurarLogin()"
                                     class="cursorPointer textWhite textHoverRed">{{sesionService.msg.lbl_btn_restaurar_clave}}</span>
+                            </label>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                            <p-messages></p-messages>
+                        </div>
+                    </div>
+
+                    <div *ngIf="loginRestaurar" class="row justify-content-center">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBLogin.usuario"
+                                placeholder="{{sesionService.msg.lbl_header_usuario}}" />
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                            <p-button label="{{sesionService.msg.lbl_btn_restaurar_clave}}" (click)="restaurarClave()"
+                                icon="pi pi-key" styleClass="main-btn font-20px">
+                            </p-button>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                            <label class="textPlata">{{sesionService.msg.lbl_btn_olvidaste_tu_clave}}
+                                <span (click)="toggleRestaurarLogin()"
+                                    class="cursorPointer textWhite textHoverRed">{{sesionService.msg.lbl_login}}</span>
                             </label>
                         </div>
 

@@ -1,5 +1,6 @@
 package com.eutanasia.eutanasia.controller;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,11 +40,38 @@ public class ControladorRestUsuarios {
 	@Value("${ruta.verificar.cuenta.nueva}")
 	private String URL_VERIFICAR_CUENTA_NUEVA;
 
+	@Value("${ruta.recordar.clave}")
+	private String URL_RECORDAR_CLAVE;
+
 	@Autowired
 	private UtilMail mailUtil;
 
 	@Autowired
 	private IEutanasiaService eutanasiaService;
+
+	// SELECT
+
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/consultarUsuarios")
+	public ResponseEntity<List<UsuarioAutorTB>> consultarUsuarios() {
+		try {
+			List<UsuarioAutorTB> listaUsuarios = eutanasiaService.consultarUsuarios();
+			return new ResponseEntity<List<UsuarioAutorTB>>(listaUsuarios, HttpStatus.OK);
+		} catch (JSONException e) {
+			throw new ModelNotFoundException(e.getMessage());
+		}
+	}
+
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/consultarUsuariosPorFiltros")
+	public ResponseEntity<List<UsuarioAutorTB>> consultarUsuariosPorFiltros(@RequestBody UsuarioAutorTB usuarioAutor) {
+		try {
+			List<UsuarioAutorTB> listaUsuarios = eutanasiaService.consultarUsuariosPorFiltros(usuarioAutor);
+			return new ResponseEntity<List<UsuarioAutorTB>>(listaUsuarios, HttpStatus.OK);
+		} catch (JSONException e) {
+			throw new ModelNotFoundException(e.getMessage());
+		}
+	}
 
 	// LOGIN
 
@@ -63,6 +92,137 @@ public class ControladorRestUsuarios {
 			}
 
 			return new ResponseEntity<UsuarioAutorTB>(usuarioLogueado, HttpStatus.OK);
+		} catch (JSONException e) {
+			throw new ModelNotFoundException(e.getMessage());
+		}
+	}
+
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/activarUsuario")
+	public ResponseEntity<UsuarioAutorTB> activarUsuario(@RequestBody UsuarioAutorTB usuarioAutor) {
+		try {
+			UsuarioAutorTB usuarioActivado = null;
+			if (usuarioAutor != null && !StringUtils.isBlank(usuarioAutor.getUsuario())
+					&& !StringUtils.isBlank(usuarioAutor.getPassword())) {
+				usuarioAutor.setEstado((short) EEstado.INACTIVO.ordinal());
+				List<UsuarioAutorTB> usuariosEncontrados = eutanasiaService.consultarUsuarios();
+				if (usuariosEncontrados != null && !usuariosEncontrados.isEmpty()) {
+					for (UsuarioAutorTB user : usuariosEncontrados) {
+						String passwordEncrypt = Util.encriptarPassword(user.getUsuario() + "|" + user.getPassword());
+						if (passwordEncrypt.equals(usuarioAutor.getPassword())) {
+							usuarioActivado = user;
+							break;
+						}
+					}
+
+					if (usuarioActivado != null) {
+						usuarioActivado.setEstado((short) EEstado.ACTIVO.ordinal());
+						usuarioActivado = eutanasiaService.modificarUsuario(usuarioActivado);
+						if (usuarioActivado == null) {
+							throw new ModelNotFoundException(
+									ConstantesValidaciones.ERROR_LOGIN_DATOS_INCORRECTOS_INACTIVOS.toString());
+						}
+					} else {
+						throw new ModelNotFoundException(
+								ConstantesValidaciones.ERROR_LOGIN_DATOS_INCORRECTOS_INACTIVOS.toString());
+					}
+				} else {
+					throw new ModelNotFoundException(
+							ConstantesValidaciones.ERROR_LOGIN_DATOS_INCORRECTOS_INACTIVOS.toString());
+				}
+			} else {
+				throw new ModelNotFoundException(ConstantesValidaciones.ERROR_LOGIN_DATOS_INSUFICIENTES);
+			}
+
+			return new ResponseEntity<UsuarioAutorTB>(usuarioActivado, HttpStatus.OK);
+		} catch (JSONException e) {
+			throw new ModelNotFoundException(e.getMessage());
+		}
+	}
+
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/consultarUsuarioEncriptado")
+	public ResponseEntity<UsuarioAutorTB> consultarUsuarioEncriptado(@RequestBody UsuarioAutorTB usuarioAutor) {
+		try {
+			UsuarioAutorTB usuarioActivado = null;
+			if (usuarioAutor != null && !StringUtils.isBlank(usuarioAutor.getUsuario())) {
+				usuarioAutor.setEstado((short) EEstado.INACTIVO.ordinal());
+				List<UsuarioAutorTB> usuariosEncontrados = eutanasiaService.consultarUsuarios();
+				if (usuariosEncontrados != null && !usuariosEncontrados.isEmpty()) {
+					for (UsuarioAutorTB user : usuariosEncontrados) {
+						String usuarioEncrypt = Util.encriptarPassword(user.getUsuario());
+						if (usuarioEncrypt.equals(usuarioAutor.getUsuario())) {
+							usuarioActivado = user;
+							break;
+						}
+					}
+
+					if (usuarioActivado != null) {
+						usuarioActivado.setPassword("");
+					} else {
+						throw new ModelNotFoundException(ConstantesValidaciones.ERROR_RESTAURAR_CLAVE.toString());
+					}
+				} else {
+					throw new ModelNotFoundException(ConstantesValidaciones.ERROR_RESTAURAR_CLAVE.toString());
+				}
+			} else {
+				throw new ModelNotFoundException(ConstantesValidaciones.ERROR_RESTAURAR_CLAVE);
+			}
+
+			return new ResponseEntity<UsuarioAutorTB>(usuarioActivado, HttpStatus.OK);
+		} catch (JSONException e) {
+			throw new ModelNotFoundException(e.getMessage());
+		}
+	}
+
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/restaurarClave")
+	public ResponseEntity<UsuarioAutorTB> restaurarClave(@RequestBody UsuarioAutorTB usuarioAutor) {
+		try {
+			UsuarioAutorTB usuarioActivado = null;
+			if (usuarioAutor != null && !StringUtils.isBlank(usuarioAutor.getUsuario())) {
+				usuarioAutor.setEstado((short) EEstado.INACTIVO.ordinal());
+				List<UsuarioAutorTB> usuariosEncontrados = eutanasiaService.consultarUsuarios();
+				if (usuariosEncontrados != null && !usuariosEncontrados.isEmpty()) {
+					for (UsuarioAutorTB user : usuariosEncontrados) {
+						String usuarioEncrypt = Util.encriptarPassword(user.getUsuario());
+						if (usuarioEncrypt.equals(Util.encriptarPassword(usuarioAutor.getUsuario()))) {
+							usuarioActivado = user;
+							break;
+						}
+					}
+
+					if (usuarioActivado != null) {
+						MailDTO mailDto = new MailDTO();
+						mailDto.setFrom(EMAIL_SERVIDOR);
+						mailDto.setTo(usuarioActivado.getCorreo());
+						mailDto.setSubject("RESTAURAR CLAVE - EUTANASIA WEB PAGE");
+
+						Map<String, Object> model = new HashMap<>();
+						model.put("user", usuarioActivado.getUsuario());
+						model.put("nombreCompleto",
+								usuarioActivado.getNombres() + " " + usuarioActivado.getApellidos());
+						model.put("email", usuarioActivado.getCorreo());
+						String urlRuta = URL_RECORDAR_CLAVE + Util.encriptarPassword(usuarioActivado.getUsuario());
+						try {
+							model.put("resetUrl", new URL(urlRuta).toURI().toASCIIString());
+						} catch (Exception e) {
+							throw new ModelNotFoundException(e.getMessage());
+						}
+						mailDto.setModel(model);
+
+						mailUtil.sendMail(mailDto, ConstantesValidaciones.TEMPLATE_MAIL_RECORDAR_CLAVE);
+					} else {
+						throw new ModelNotFoundException(ConstantesValidaciones.ERROR_RESTAURAR_CLAVE.toString());
+					}
+				} else {
+					throw new ModelNotFoundException(ConstantesValidaciones.ERROR_RESTAURAR_CLAVE.toString());
+				}
+			} else {
+				throw new ModelNotFoundException(ConstantesValidaciones.ERROR_RESTAURAR_CLAVE);
+			}
+
+			return new ResponseEntity<UsuarioAutorTB>(usuarioActivado, HttpStatus.OK);
 		} catch (JSONException e) {
 			throw new ModelNotFoundException(e.getMessage());
 		}
@@ -105,7 +265,13 @@ public class ControladorRestUsuarios {
 					model.put("user", newUsuario.getUsuario());
 					model.put("nombreCompleto", newUsuario.getNombres() + " " + newUsuario.getApellidos());
 					model.put("email", newUsuario.getCorreo());
-					model.put("resetUrl", URL_VERIFICAR_CUENTA_NUEVA + newUsuario.getUsuario());
+					String urlRuta = URL_VERIFICAR_CUENTA_NUEVA
+							+ Util.encriptarPassword(newUsuario.getUsuario() + "|" + newUsuario.getPassword());
+					try {
+						model.put("resetUrl", new URL(urlRuta).toURI().toASCIIString());
+					} catch (Exception e) {
+						throw new ModelNotFoundException(e.getMessage());
+					}
 					mailDto.setModel(model);
 
 					mailUtil.sendMail(mailDto, ConstantesValidaciones.TEMPLATE_MAIL_ACTIVATE_USER);
@@ -138,7 +304,8 @@ public class ControladorRestUsuarios {
 			filtroUsuario.setUsuario(usuarioAutor.getUsuario());
 			filtroUsuario.setId(usuarioAutor.getId());
 			List<UsuarioAutorTB> listaPorUsuario = eutanasiaService.consultarUsuariosPorFiltros(filtroUsuario);
-			if (listaPorUsuario != null && !listaPorUsuario.isEmpty()) {
+			if (listaPorUsuario != null && !listaPorUsuario.isEmpty()
+					&& listaPorUsuario.get(0).getId() != usuarioAutor.getId()) {
 				errores.add(ConstantesValidaciones.MSG_USUARIO_REPETIDO);
 			}
 
@@ -147,13 +314,14 @@ public class ControladorRestUsuarios {
 			filtroCorreo.setCorreo(usuarioAutor.getCorreo());
 			filtroCorreo.setId(usuarioAutor.getId());
 			List<UsuarioAutorTB> listaPorCorreo = eutanasiaService.consultarUsuariosPorFiltros(filtroCorreo);
-			if (listaPorCorreo != null && !listaPorCorreo.isEmpty()) {
+			if (listaPorCorreo != null && !listaPorCorreo.isEmpty()
+					&& listaPorUsuario.get(0).getId() != usuarioAutor.getId()) {
 				errores.add(ConstantesValidaciones.MSG_CORREO_REPETIDO);
 			}
 
 			UsuarioAutorTB newUsuario = new UsuarioAutorTB();
 			if (errores.isEmpty()) {
-				usuarioAutor.setEstado((short) EEstado.ACTIVO.ordinal());
+				usuarioAutor.setPassword(Util.encriptarPassword(usuarioAutor.getPassword()));
 				newUsuario = eutanasiaService.modificarUsuario(usuarioAutor);
 			} else {
 				StringBuilder mensajeErrores = new StringBuilder();

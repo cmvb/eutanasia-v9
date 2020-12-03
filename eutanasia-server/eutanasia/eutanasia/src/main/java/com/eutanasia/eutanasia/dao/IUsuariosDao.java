@@ -34,4 +34,9 @@ public interface IUsuariosDao {
 	 */
 	void eliminarUsuario(long idUsuario);
 
+	/*
+	 * Método para consultar usuarios
+	 */
+	List<UsuarioAutorTB> consultarUsuarios();
+
 }

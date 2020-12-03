@@ -6,7 +6,6 @@ export interface ComentarioModel {
     usuarioAutorTB: UsuarioAutorModel;
     postTB: PostModel;
     idComentarioRespuesta;
-    correoAutor;
     comentario;
 
     estado;

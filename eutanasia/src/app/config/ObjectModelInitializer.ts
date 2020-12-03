@@ -54,9 +54,15 @@ export class ObjectModelInitializer {
       urlConsultarPostsPorFiltros: `${HOST}/eutanasia/paratodos/consultarPostsPorFiltros`,
       urlConsultarTags: `${HOST}/eutanasia/paratodos/consultarTags`,
       urlSubirImagen: `${HOST}/eutanasia/paratodos/subirImagen`,
+      urlConsultarUsuarios: `${HOST}/eutanasia/paratodos/consultarUsuarios`,
+      urlConsultarUsuariosPorFiltros: `${HOST}/eutanasia/paratodos/consultarUsuariosPorFiltros`,
+      urlConsultarUsuarioEncriptado: `${HOST}/eutanasia/paratodos/consultarUsuarioEncriptado`,      
       urlCrearUsuario: `${HOST}/eutanasia/paratodos/crearUsuario`,
       urlModificarUsuario: `${HOST}/eutanasia/paratodos/modificarUsuario`,
+      urlActivarUsuario: `${HOST}/eutanasia/paratodos/activarUsuario`,
+      urlCrearComentario: `${HOST}/eutanasia/paratodos/crearComentario`,
       urlLogin: `${HOST}/eutanasia/paratodos/loginUsuario`,
+      urlRestaurarClave: `${HOST}/eutanasia/paratodos/restaurarClave`,
       tokenUsernameAUTH: 'EutanasiaApp',
       tokenPasswordAUTH: 'Eutanasia2019codex',
       tokenNameAUTH: 'access_token',
@@ -230,9 +236,9 @@ export class ObjectModelInitializer {
       id: 0,
       usuarioAutorTB: this.getDataUsuarioAutorModel(),
       postTB: this.getDataPostModel(),
-      comentarioRespuestaTB: this.getDataComentarioModel(),
-      correoAutor: '',
+      idComentarioRespuesta: 0,
       comentario: '',
+
       // Auditoria
       estado: 1,
       fechaCreacion: '',
@@ -273,6 +279,13 @@ export class ObjectModelInitializer {
       nombreArchivo: '',
       archivo: '',
       rutaArchivo: ''
+    }
+  };
+
+  getDataPorcentajeURIWeb(code: String, symbol: String) {
+    return {
+      codigo: code,
+      simbolo: symbol
     }
   };
 

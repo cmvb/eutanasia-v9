@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 import org.apache.commons.lang3.StringUtils;
 
 import com.eutanasia.eutanasia.dto.ArchivoDTO;
+import com.eutanasia.eutanasia.model.ComentarioTB;
 import com.eutanasia.eutanasia.model.UsuarioAutorTB;
 
 public abstract class Util {
@@ -34,6 +35,7 @@ public abstract class Util {
 			case ConstantesTablasNombre.MRA_TOQUE_TB:
 				break;
 			case ConstantesTablasNombre.MRA_COMENTARIO_TB:
+				errores = validarComentario((ComentarioTB) entidadTB);
 				break;
 			case ConstantesTablasNombre.MRA_POST_TB:
 				break;
@@ -43,6 +45,22 @@ public abstract class Util {
 			}
 		} else {
 			errores.add(ConstantesValidaciones.TABLA_NO_ESTABLECIDA_VALIDACIONES);
+		}
+
+		return errores;
+	}
+
+	public static List<String> validarComentario(ComentarioTB comentarioTB) {
+		List<String> errores = new ArrayList<>();
+
+		if (StringUtils.isBlank(comentarioTB.getComentario())) {
+			errores.add(ConstantesValidaciones.COMENTARIO + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (comentarioTB.getUsuarioAutorTB() == null) {
+			errores.add(ConstantesValidaciones.USUARIO_AUTOR_COMENTARIO + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (comentarioTB.getPostTB() == null) {
+			errores.add(ConstantesValidaciones.POST_COMENTARIO + ConstantesValidaciones.VALOR_VACIO);
 		}
 
 		return errores;

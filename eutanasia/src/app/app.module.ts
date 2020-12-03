@@ -11,6 +11,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { ButtonModule } from 'primeng/button';
 import { SliderModule } from 'primeng/slider';
 import { FieldsetModule } from 'primeng/fieldset';
+import { TableModule } from 'primeng/table';
 
 // Imports Utilidades
 import { TextProperties } from './config/TextProperties';
@@ -38,6 +39,10 @@ import { Guardian } from './config/Guardian';
 import { HomeComponent } from './components/home/home.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { AsideComponent } from './components/aside/aside.component';
+import { ConsultaComponent } from './components/consulta/consulta.component';
+import { ActivateUserComponent } from './components/activate-user/activate-user.component';
+import { RecordarClaveComponent } from './components/recordar-clave/recordar-clave.component';
+import { PostComponent } from './components/post/post.component';
 
 // Imports Componentes Internos
 import { HeaderComponent } from './components/header/header.component';
@@ -83,7 +88,11 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HeaderComponent,
     FooterComponent,
     BlogComponent,
-    AsideComponent
+    AsideComponent,
+    ActivateUserComponent,
+    RecordarClaveComponent,
+    PostComponent,
+    ConsultaComponent
   ],
   imports: [
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyBaNBQN5zBRz7h5lUKB4GGZQHhakKrajSA' }),
@@ -111,7 +120,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FieldsetModule,
     DialogModule,
     CalendarModule,
-    FileUploadModule
+    FileUploadModule,
+    TableModule
   ],
   providers: [TextProperties, Enumerados, ObjectModelInitializer, Guardian, Util, Functions, MessageService, SesionService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

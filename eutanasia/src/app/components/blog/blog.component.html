@@ -156,7 +156,12 @@
                 <li><i class="fa fa-clock-o"></i>{{convertirFechaBlog(post.fechaCreacion)}}</li>
                 <li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
                 <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})</li>
-                <li><div class="fb-share-button" data-href="http://localhost:4200/#/home" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4200%2F%23%2Fhome&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div></li>
+                <li>
+                  <div class="fb-share-button" data-href="http://localhost:4200/#/home" data-layout="button_count"
+                    data-size="large"><a target="_blank"
+                      href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4200%2F%23%2Fhome&amp;src=sdkpreparse"
+                      class="fb-xfbml-parse-ignore">Compartir</a></div>
+                </li>
               </ul>
 
               <h3>{{post.titulo}}</h3>
@@ -200,38 +205,52 @@
               <h3 class="title">({{post.cantidadComentarios}}) Comentarios</h3>
 
               <!-- comment -->
-              <div *ngIf="listaComentarios.length > 0; else sinResultadosComment" class="service-grids">
-                <div *ngFor="let comentario of listaComentarios" class="media">
-                  <div class="media-left">
-                    <img class="media-object" src="assets/images/perso1.jpg" alt="">
-                  </div>
-                  <div class="media-body">
-                    <h4 class="media-heading">{{comentario.usuarioAutorTB.nombres}}
-                      {{comentario.usuarioAutorTB.apellidos}}<span
-                        class="time">{{convertirFechaBlog(comentario.fechaCreacion)}}</span><a
-                        class="reply">{{sesionService.msg.lbl_responder}}
-                        <i class="fa fa-reply"></i></a></h4>
-                    <p>{{comentario.comentario}}</p>
-                  </div>
+              <div *ngIf="listaComentarios.length > 0; else sinResultadosComment"
+                style="max-height: 700px;overflow-y: auto;overflow-x: hidden;" class="service-grids">
+                <p-scrollPanel #scrollBlogComentarios [style]="{width: '100%', height: '100vh'}" styleClass="custom">
+                  <div *ngFor="let comentario of listaComentarios" class="media">
+                    <div class="media-left">
+                      <img class="media-object" src="assets/images/perso1.jpg" alt="">
+                    </div>
+                    <div class="media-body">
+                      <h4 class="media-heading">
+                        {{comentario.usuarioAutorTB.nombres}}
+                        {{comentario.usuarioAutorTB.apellidos}}
+                        <span class="time">{{convertirFechaBlog(comentario.fechaCreacion)}}</span>
+                        <a (click)="toggleRespuesta(comentario.id)"
+                          class="reply cursorPointer">{{sesionService.msg.lbl_responder}}
+                          <i class="fa fa-reply"></i>
+                        </a>
+                      </h4>
+                      <p>{{comentario.comentario}}</p>
 
-                  <!-- author reply comment -->
-                  <div *ngIf="obtenerRespuestas(comentario).length > 0" class="service-grids margin-verticals-10px">
-                    <div *ngFor="let respuesta of obtenerRespuestas(comentario)" class="media author">
-                      <div class="media-left">
-                        <img class="media-object" src="assets/images/perso2.jpg" alt="">
-                      </div>
-                      <div class="media-body">
-                        <h4 class="media-heading">{{respuesta.usuarioAutorTB.nombres}}
-                          {{respuesta.usuarioAutorTB.apellidos}}<span
-                            class="time">{{convertirFechaBlog(respuesta.fechaCreacion)}}</span><a
-                            class="reply">{{sesionService.msg.lbl_responder}}
-                            <i class="fa fa-reply"></i></a></h4>
-                        <p>{{respuesta.comentario}}</p>
+                      <div id="comment{{comentario.id}}" class="reply-form displayNone">
+                        <textarea pInputTextarea [(ngModel)]="respuestaNueva" size="1000"
+                          placeholder="{{sesionService.msg.lbl_mensaje_agrega_comentario}}"></textarea>
+                        <button (click)="responderComentario(comentario.id)" type="submit"
+                          class="main-btn">{{sesionService.msg.lbl_responder}}</button>
                       </div>
                     </div>
+
+                    <!-- author reply comment -->
+                    <div *ngIf="obtenerRespuestas(comentario).length > 0" class="service-grids margin-verticals-10px">
+                      <div *ngFor="let respuesta of obtenerRespuestas(comentario)" class="media author">
+                        <div class="media-left">
+                          <img class="media-object" src="assets/images/perso2.jpg" alt="">
+                        </div>
+                        <div class="media-body">
+                          <h4 class="media-heading">
+                            {{respuesta.usuarioAutorTB.nombres}}
+                            {{respuesta.usuarioAutorTB.apellidos}}
+                            <span class="time">{{convertirFechaBlog(respuesta.fechaCreacion)}}</span>
+                          </h4>
+                          <p>{{respuesta.comentario}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /comment -->
                   </div>
-                  <!-- /comment -->
-                </div>
+                </p-scrollPanel>
               </div>
               <ng-template #sinResultadosComment>
                 <div class="service-grids">
@@ -249,7 +268,8 @@
               <h3 class="title">{{sesionService.msg.lbl_mtto_generico_opinion}}</h3>
               <textarea pInputTextarea [(ngModel)]="comentarioNuevo" size="1000"
                 placeholder="{{sesionService.msg.lbl_mensaje_agrega_comentario}}"></textarea>
-              <button type="submit" class="main-btn">{{sesionService.msg.lbl_btn_comentar}}</button>
+              <button (click)="crearComentario()" type="submit"
+                class="main-btn">{{sesionService.msg.lbl_btn_comentar}}</button>
             </div>
             <!-- /reply form -->
           </div>
