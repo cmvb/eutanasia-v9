@@ -270,9 +270,9 @@ a[x-apple-data-detectors=true] {
 													<p
 														style="line-height: 40px; text-align: center; font-size: 12px; margin: 0;">
 														<span
-															style="font-size: 20px; text-shadow: 0px 3px 15px black;">Hemos
-															recibido una solicitud para la restauración de la clave
-															de su cuenta</span>
+															style="font-size: 20px; text-shadow: 0px 3px 15px black;">Han
+															realizado un comentario sobre el post con el que
+															interactuaste</span>
 													</p>
 												</div>
 											</div>
@@ -356,15 +356,6 @@ a[x-apple-data-detectors=true] {
 									<div style="width: 100% !important;">
 										<div
 											style="border-top: 14px solid #e8e8e8; border-left: 14px solid #e8e8e8; border-bottom: 14px solid #e8e8e8; border-right: 14px solid #e8e8e8; padding-top: 0px; padding-bottom: 5px; padding-right: 0px; padding-left: 0px;">
-											<div align="center" class="img-container center autowidth"
-												style="padding-right: 0px; padding-left: 0px;">
-												<div style="font-size: 1px; line-height: 30px"> </div>
-												<img align="center" alt="Image" border="0"
-													class="center autowidth"
-													src="https://raw.githubusercontent.com/cmvb/eutanasia-v9/master/eutanasia/src/assets/images/emailTemplate/man1.png"
-													style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; border: 0; height: auto; float: none; width: 100%; max-width: 150px; display: block;"
-													title="Image" width="150" />
-											</div>
 											<div
 												style="color: #555555; font-family: 'Varela Round', 'Trebuchet MS', Helvetica, sans-serif; line-height: 120%; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
 												<div
@@ -372,12 +363,25 @@ a[x-apple-data-detectors=true] {
 													<p
 														style="font-size: 14px; line-height: 28px; text-align: center; margin: 0;">
 														<span style="font-size: 24px;"><strong
-															th:text="${nombreCompleto}">@nombreCompleto</strong></span>
+															th:text="${nombrePost}">@nombrePost</strong></span>
 													</p>
 													<p
 														style="font-size: 14px; line-height: 28px; text-align: center; margin: 0;">
 														<span style="font-size: 24px;"><strong
-															th:text="${user}">@user</strong></span>
+															th:text="${usuarioComentario}">"@usuarioComentario
+																: </strong></span> <span style="font-size: 24px;padding 10px;border: 1px solid red"><strong
+															th:text="${comentario}">"@comentario"</strong></span>
+													</p>
+													<p>
+														<div align="center" class="img-container center autowidth"
+															style="padding-right: 0px; padding-left: 0px;">
+															<div style="font-size: 1px; line-height: 30px"> </div>
+															<img align="center" alt="Image" border="0"
+																class="center autowidth"
+																src="C:/Users/veracm/Documents/ProjectsCB/EUTANASIA-V9/eutanasia/src/assets/images/mancharoja.png"
+																style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; border: 0; height: auto; float: none; width: 100%; max-width: 150px; display: block;"
+																title="Image" width="150" />
+														</div>
 													</p>
 												</div>
 											</div>
@@ -388,8 +392,7 @@ a[x-apple-data-detectors=true] {
 													<p
 														style="font-size: 14px; line-height: 28px; text-align: center; margin: 0;">
 														<span style="font-size: 16px;">Ve al enlace del
-															siguiente botón para reestablecer tu clave de acceso y seguir
-															recibiendo contenido exclusivo de la banda.</span>
+															siguiente botón para comentar sobre el post.</span>
 													</p>
 												</div>
 											</div>

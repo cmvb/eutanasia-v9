@@ -270,9 +270,7 @@ a[x-apple-data-detectors=true] {
 													<p
 														style="line-height: 40px; text-align: center; font-size: 12px; margin: 0;">
 														<span
-															style="font-size: 20px; text-shadow: 0px 3px 15px black;">Hemos
-															recibido una solicitud para la restauración de la clave
-															de su cuenta</span>
+															style="font-size: 20px; text-shadow: 0px 3px 15px black;">Han realizado un comentario sobre el post con el que interactuaste</span>
 													</p>
 												</div>
 											</div>
@@ -361,7 +359,7 @@ a[x-apple-data-detectors=true] {
 												<div style="font-size: 1px; line-height: 30px"> </div>
 												<img align="center" alt="Image" border="0"
 													class="center autowidth"
-													src="https://raw.githubusercontent.com/cmvb/eutanasia-v9/master/eutanasia/src/assets/images/emailTemplate/man1.png"
+													src="C:/Users/veracm/Documents/ProjectsCB/EUTANASIA-V9/eutanasia/src/assets/images/mancharoja.png"
 													style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; border: 0; height: auto; float: none; width: 100%; max-width: 150px; display: block;"
 													title="Image" width="150" />
 											</div>
@@ -388,8 +386,7 @@ a[x-apple-data-detectors=true] {
 													<p
 														style="font-size: 14px; line-height: 28px; text-align: center; margin: 0;">
 														<span style="font-size: 16px;">Ve al enlace del
-															siguiente botón para reestablecer tu clave de acceso y seguir
-															recibiendo contenido exclusivo de la banda.</span>
+															siguiente botón para comentar sobre el post.</span>
 													</p>
 												</div>
 											</div>
