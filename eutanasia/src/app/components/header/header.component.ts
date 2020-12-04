@@ -56,6 +56,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     console.clear();
     this.mapaArchivosUser = new Map();
+    this.obtenerArchivos();
     this.archivosTemporales = [];
     this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
@@ -281,7 +282,6 @@ export class HeaderComponent implements OnInit {
             sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
-            this.obtenerArchivos();
           }
         },
           error => {
