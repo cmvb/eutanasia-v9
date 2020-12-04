@@ -136,7 +136,7 @@ a {
     transition: 0.2s opacity;
 }
 
-.contadorPost{
+.contadorPost {
     position: absolute;
     right: 60px;
     bottom: 56px;
@@ -395,7 +395,21 @@ textarea:focus {
 }
 
 #nav.nav-transparent {
-    background: transparent;
+    position: fixed;
+    background: #00000070;
+    width: 100%;
+}
+
+.fondoBanner {
+    background: url(assets/images/banner.jpg);
+    height: 72px;
+}
+
+.listaReprod {
+    width: 100%;
+    position: absolute;
+    top: 30px;
+    left: 15px;
 }
 
 /* -- default nav -- */
@@ -975,6 +989,25 @@ header {
     padding: 0 !important;
 }
 
+.displayFlex {
+    display: flex !important;
+}
+
+.imagePerfil {
+    cursor: pointer;
+    -webkit-background-size: 32px 32px;
+    background-size: 32px 32px;
+    border: 0;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    display: block;
+    margin: 10px 0;
+    position: relative;
+    height: 32px;
+    width: 32px;
+    z-index: 0;
+}
+
 .p-scrollpanel .p-scrollpanel-bar {
     background: #7e1e18 !important;
 }
@@ -1275,6 +1308,7 @@ header {
 }
 
 .blog-tags a {
+    cursor: pointer;
     display: inline-block;
     padding: 6px 13px;
     font-size: 18px;
@@ -2096,7 +2130,7 @@ h4 {
 
 .body-cover img {
     width: 100%;
-    height: 400px;
+    height: 372px;
 }
 
 .list {
@@ -2135,7 +2169,6 @@ h4 {
 }
 
 .list--cover {
-    position: absolute;
     top: 0.5rem;
     width: 100%;
     background: #ffffff5c;
@@ -2145,9 +2178,6 @@ h4 {
     background: #ffffff82;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
-}
-.list--cover li:first-of-type {
-    margin-left: 0.75rem;
 }
 .list--cover li:last-of-type {
     margin-right: 0.75rem;
@@ -2356,4 +2386,10 @@ h4 {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23efefef' points='800 100 0 200 0 800 1600 800 1600 200'/%3E%3Cpolygon fill='%23f1f1f1' points='800 200 0 400 0 800 1600 800 1600 400'/%3E%3Cpolygon fill='%23f4f4f4' points='800 300 0 600 0 800 1600 800 1600 600'/%3E%3Cpolygon fill='%23f7f7f7' points='1600 800 800 400 0 800'/%3E%3Cpolygon fill='%23fafafa' points='1280 800 800 500 320 800'/%3E%3Cpolygon fill='%23fcfcfc' points='533.3 800 1066.7 800 800 600'/%3E%3Cpolygon fill='%23ffffff' points='684.1 800 914.3 800 800 700'/%3E%3C/g%3E%3C/svg%3E");
     background-attachment: fixed;
     background-size: cover;
+}
+
+button[disabled],
+html input[disabled] {
+    cursor: no-drop !important;
+    filter: opacity(0.5) !important;
 }

@@ -186,8 +186,9 @@
 							<div class="body-cover">
 								<ul class="list list--cover">
 									<li>
-										<a class="list-link"><i class="fa fa-ellipsis-h"></i></a>
-									</li>´
+										<a (click)="toggleListaRepMusica()" class="list-link"><i
+												class="fa fa-ellipsis-h"></i></a>
+									</li>
 									<li>
 										<a class="list-link"></a>
 									</li>
@@ -197,7 +198,60 @@
 											- {{cancionSeleccionada}}</a>
 									</li>
 								</ul>
+
+								<div *ngIf="disModLisReprod" class="row justify-content-center listaReprod">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+										<div class="player-container">
+											<div class="player-body">
+												<div class="body-cover">
+													<ul class="list list--cover"
+														style="display: grid;text-align: left;">
+														<li (click)="playSongList(1)">
+															<a class="list-link"><i style="padding-right: 5px;"
+																	class="fa fa-music"></i>{{sesionService.msg.lbl_banda_frenetico_rock_and_roll}}
+																- {{sesionService.msg.lbl_banda_demo_2}}</a>
+														</li>
+													</ul>
+													<ul class="list list--cover"
+														style="display: grid;text-align: left;">
+														<li (click)="playSongList(2)">
+															<a class="list-link"><i style="padding-right: 5px;"
+																	class="fa fa-music"></i>{{sesionService.msg.lbl_banda_frenetico_rock_and_roll}}
+																- {{sesionService.msg.lbl_banda_demo_1}}</a>
+														</li>
+													</ul>
+													<ul class="list list--cover"
+														style="display: grid;text-align: left;">
+														<li (click)="playSongList(3)">
+															<a class="list-link"><i style="padding-right: 5px;"
+																	class="fa fa-music"></i>{{sesionService.msg.lbl_banda_frenetico_rock_and_roll}}
+																- {{sesionService.msg.lbl_banda_demo_4}}</a>
+														</li>
+													</ul>
+													<ul class="list list--cover"
+														style="display: grid;text-align: left;">
+														<li (click)="playSongList(4)">
+															<a class="list-link"><i style="padding-right: 5px;"
+																	class="fa fa-music"></i>{{sesionService.msg.lbl_banda_frenetico_rock_and_roll}}
+																- {{sesionService.msg.lbl_banda_demo_3}}</a>
+														</li>
+													</ul>
+													<ul class="list list--cover"
+														style="display: grid;text-align: left;">
+														<li (click)="playSongList(5)">
+															<a class="list-link"><i style="padding-right: 5px;"
+																	class="fa fa-music"></i>{{sesionService.msg.lbl_banda_frenetico_rock_and_roll}}
+																- {{sesionService.msg.lbl_banda_demo_5}}</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
 								<img src="assets/images/fondo.jpg" alt="Album cover" />
+
 
 								<div class="slider-range">
 									<p-slider [(ngModel)]="songPosition" [disabled]="true" [min]="0"
@@ -520,7 +574,7 @@
 						</div>
 					</div>
 				</ng-template>
-				<!-- /blog -->				
+				<!-- /blog -->
 				<p class="contadorPost">(3/{{listaPosts.length}})</p>
 			</div>
 			<!-- /Row -->

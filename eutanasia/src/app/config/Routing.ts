@@ -11,7 +11,7 @@ import { PostComponent } from '../components/post/post.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [Guardian] },
-  { path: 'blog', component: BlogComponent, canActivate: [Guardian] },
+  { path: 'blog/:idPost', component: BlogComponent, canActivate: [Guardian] },
   { path: 'post', component: PostComponent, canActivate: [Guardian] },
   { path: 'recordarClave/:tokenUsuario', component: RecordarClaveComponent, canActivate: [Guardian] },  {
     path: 'activateUser/:tokenActivar', component: ActivateUserComponent, canActivate: [Guardian]

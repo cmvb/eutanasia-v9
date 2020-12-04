@@ -40,14 +40,9 @@
                         </ul>
                     </li>
                     <li><a href="#home">{{sesionService.msg.lbl_inicio}}</a></li>
-                    <li><a href="#about">{{sesionService.msg.lbl_bio}}</a></li>
-                    <li><a href="#team">{{sesionService.msg.lbl_banda}}</a></li>
-                    <li><a href="#portfolio">{{sesionService.msg.lbl_galeria_media}}</a></li>
-                    <li><a href="#service">{{sesionService.msg.lbl_participaciones}}</a></li>
-                    <li><a href="#pricing">{{sesionService.msg.lbl_comparte}}</a></li>
-                    <li><a href="#publicaciones">{{sesionService.msg.lbl_ultimas_publicaciones}}</a></li>
                     <li><a (click)="redirigirBlogsPost()">{{sesionService.msg.lbl_blog}}</a></li>
-                    <li *ngIf="esUsuarioLogueadoActivoPost()" class="has-dropdown">
+                    <li *ngIf="esUsuarioLogueadoActivoPost()" class="has-dropdown displayFlex">
+                        <img class="imagePerfil" src="assets/images/emailTemplate/man1.png" />
                         <a>{{postTB.usuarioAutorTB.usuario}}</a>
                         <ul class="dropdown">
                             <li><a (click)="cerrarSesionPost()">{{sesionService.msg.lbl_tip_cerrar_sesion}}</a></li>
@@ -66,7 +61,12 @@
         <!-- /Nav -->
 
         <!-- header wrapper -->
-        <div class="header-wrapper sm-padding bg-grey">
+        <div class="header-wrapper sm-padding fondoBanner">
+            <div class="container">
+                <h2></h2>
+            </div>
+        </div>
+        <div *ngIf="postTB !== undefined && postTB !== null" class="header-wrapper sm-padding bg-grey">
             <div class="container">
                 <h2>{{postTB.titulo}}</h2>
                 <ul class="breadcrumb">
@@ -174,13 +174,11 @@
                         <div class="reply-form">
                             <div class="row justify-content-center">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                                    <input class="input" type="text" pInputText
-                                        [(ngModel)]="postTB.titulo"
+                                    <input class="input" type="text" pInputText [(ngModel)]="postTB.titulo"
                                         placeholder="{{sesionService.msg.lbl_header_usuario}}" />
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                                    <input class="input" type="password" pInputText
-                                        [(ngModel)]="postTB.subtitulo"
+                                    <input class="input" type="password" pInputText [(ngModel)]="postTB.subtitulo"
                                         placeholder="{{sesionService.msg.lbl_header_clave}}" />
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">

@@ -2,6 +2,7 @@ package com.eutanasia.eutanasia.service.impl;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -10,8 +11,11 @@ import java.util.List;
 import java.util.Properties;
 import java.util.function.Predicate;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import com.eutanasia.eutanasia.dto.ArchivoDTO;
 import com.eutanasia.eutanasia.dto.DirectorioDTO;
 import com.eutanasia.eutanasia.enums.ETipoDirectorio;
 import com.eutanasia.eutanasia.service.ISFTPServicio;
@@ -190,6 +194,46 @@ public class SFTPServicio implements ISFTPServicio {
 	}
 
 	@Override
+	public List<ArchivoDTO> obtenerArchivos(String rutaSFTP, String nombreArchivo) {
+		List<ArchivoDTO> listaArchivos = new ArrayList<>();
+		try {
+			if (this.channelSftp != null) {
+				if (!StringUtils.isBlank(nombreArchivo)) {
+					InputStream resultado = this.channelSftp.get(rutaSFTP + nombreArchivo);
+					byte[] fileArrayBytes = new byte[resultado.available()];
+					resultado.read(fileArrayBytes);
+
+					ArchivoDTO archivoDTO = new ArchivoDTO();
+					archivoDTO.setArchivo(fileArrayBytes);
+					archivoDTO.setNombreArchivo(nombreArchivo);
+					archivoDTO.setRutaArchivo(rutaSFTP);
+
+					listaArchivos.add(archivoDTO);
+				} else {
+					List<String> nombresArchivos = this.listarArchivosFiltrados(rutaSFTP, null);
+					for (String nombreFile : nombresArchivos) {
+						if (!nombreFile.equalsIgnoreCase(".") && !nombreFile.equalsIgnoreCase("..")) {
+							InputStream resultado = this.channelSftp.get(rutaSFTP + nombreFile);
+							byte[] bytes = IOUtils.toByteArray(resultado);
+
+							ArchivoDTO archivoDTO = new ArchivoDTO();
+							archivoDTO.setArchivo(bytes);
+							archivoDTO.setNombreArchivo(nombreFile);
+							archivoDTO.setRutaArchivo(rutaSFTP);
+
+							listaArchivos.add(archivoDTO);
+						}
+					}
+				}
+			}
+		} catch (SftpException | IOException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return listaArchivos;
+	}
+
+	@Override
 	public boolean esValidaRuta(String rutaSFTP) {
 		boolean resultado = false;
 		try {
@@ -270,8 +314,12 @@ public class SFTPServicio implements ISFTPServicio {
 		try {
 			List<LsEntry> carpetasInternas = this.channelSftp.ls(rutaSFTP);
 
-			Predicate<LsEntry> f = g -> g.getFilename().matches(nombre + "-[0-9]{1,2}");
-			carpetasInternas.stream().filter(f).forEach(e -> resultado.add(e.getFilename()));
+			if (!StringUtils.isBlank(nombre)) {
+				Predicate<LsEntry> f = g -> g.getFilename().matches(nombre + "-[0-9]{1,2}");
+				carpetasInternas.stream().filter(f).forEach(e -> resultado.add(e.getFilename()));
+			} else {
+				carpetasInternas.stream().forEach(e -> resultado.add(e.getFilename()));
+			}
 		} catch (SftpException ex) {
 			System.out.println(ex.getMessage());
 		}

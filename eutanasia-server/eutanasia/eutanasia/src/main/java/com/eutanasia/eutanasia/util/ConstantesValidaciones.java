@@ -19,6 +19,8 @@ public final class ConstantesValidaciones {
 			.getProperty("eutanasia.template.mail.activateUser");
 	public static final String TEMPLATE_MAIL_RECORDAR_CLAVE = PropertiesUtil
 			.getProperty("eutanasia.template.mail.recordarClave");
+	public static final String TEMPLATE_MAIL_RESPONDER_COMENTARIO = PropertiesUtil
+			.getProperty("eutanasia.template.mail.comentario");
 
 	// Simbolos y constantes
 	public static final String COMODIN_BD = "%";

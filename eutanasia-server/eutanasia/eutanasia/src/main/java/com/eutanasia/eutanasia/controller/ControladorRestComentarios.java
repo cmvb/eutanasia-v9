@@ -1,7 +1,10 @@
 package com.eutanasia.eutanasia.controller;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +18,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.eutanasia.eutanasia.dto.MailDTO;
 import com.eutanasia.eutanasia.exception.ModelNotFoundException;
 import com.eutanasia.eutanasia.model.ComentarioTB;
 import com.eutanasia.eutanasia.model.PostTB;
+import com.eutanasia.eutanasia.model.UsuarioAutorTB;
 import com.eutanasia.eutanasia.service.IEutanasiaService;
 import com.eutanasia.eutanasia.util.ConstantesTablasNombre;
 import com.eutanasia.eutanasia.util.ConstantesValidaciones;
 import com.eutanasia.eutanasia.util.PropertiesUtil;
 import com.eutanasia.eutanasia.util.Util;
+import com.eutanasia.eutanasia.util.UtilMail;
 
 @RestController
 @RequestMapping("/eutanasia/paratodos")
@@ -31,8 +37,11 @@ public class ControladorRestComentarios {
 	@Value("${email.servidor}")
 	private String EMAIL_SERVIDOR;
 
-	@Value("${ruta.verificar.cuenta.nueva}")
-	private String URL_VERIFICAR_CUENTA_NUEVA;
+	@Value("${ruta.responder.comentario}")
+	private String URL_RESPONDER_COMENTARIO;
+
+	@Autowired
+	private UtilMail mailUtil;
 
 	@Autowired
 	private IEutanasiaService eutanasiaService;
@@ -57,7 +66,7 @@ public class ControladorRestComentarios {
 				listaComentarios = eutanasiaService.consultarComentariosPorIdPost(post.getId());
 				for (ComentarioTB comentario : listaComentarios) {
 					comentario.setPostTB(post);
-					comentario.setUsuarioAutorTB(post.getUsuarioAutorTB());
+					comentario.setUsuarioAutorTB(comentario.getUsuarioAutorTB());
 				}
 			}
 
@@ -77,6 +86,41 @@ public class ControladorRestComentarios {
 			ComentarioTB newComentario = new ComentarioTB();
 			if (errores.isEmpty()) {
 				newComentario = eutanasiaService.crearComentario(comentario);
+				if (newComentario != null) {
+					Map<String, UsuarioAutorTB> mapaCorreosEnviar = new HashMap<>();
+					List<ComentarioTB> listaComentarios = eutanasiaService
+							.consultarComentariosPorIdPost(comentario.getPostTB().getId());
+					if (listaComentarios != null && !listaComentarios.isEmpty()) {
+						for (ComentarioTB comentarioEnc : listaComentarios) {
+							if (!mapaCorreosEnviar.containsKey(comentarioEnc.getUsuarioAutorTB().getCorreo())) {
+								mapaCorreosEnviar.put(comentarioEnc.getUsuarioAutorTB().getCorreo(),
+										comentarioEnc.getUsuarioAutorTB());
+							}
+						}
+
+						for (String correoEnviar : mapaCorreosEnviar.keySet()) {
+							MailDTO mailDto = new MailDTO();
+							mailDto.setFrom(EMAIL_SERVIDOR);
+							mailDto.setTo(correoEnviar);
+							mailDto.setSubject("COMENTARIO - EUTANASIA WEB PAGE");
+
+							Map<String, Object> model = new HashMap<>();
+							model.put("nombrePost", comentario.getPostTB().getTitulo());
+							model.put("usuarioComentario", mapaCorreosEnviar.get(correoEnviar).getNombres() + " "
+									+ mapaCorreosEnviar.get(correoEnviar).getApellidos());
+							model.put("comentario", comentario.getComentario());
+							String urlRuta = URL_RESPONDER_COMENTARIO + comentario.getPostTB().getId();
+							try {
+								model.put("resetUrl", new URL(urlRuta).toURI().toASCIIString());
+							} catch (Exception e) {
+								throw new ModelNotFoundException(e.getMessage());
+							}
+							mailDto.setModel(model);
+
+							mailUtil.sendMail(mailDto, ConstantesValidaciones.TEMPLATE_MAIL_RESPONDER_COMENTARIO);
+						}
+					}
+				}
 			} else {
 				StringBuilder mensajeErrores = new StringBuilder();
 

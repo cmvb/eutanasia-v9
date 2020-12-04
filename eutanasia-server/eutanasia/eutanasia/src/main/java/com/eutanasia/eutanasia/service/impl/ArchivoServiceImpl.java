@@ -2,6 +2,8 @@ package com.eutanasia.eutanasia.service.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -78,6 +80,40 @@ public class ArchivoServiceImpl implements IArchivoService {
 		}
 
 		return archivoRespuesta;
+	}
+
+	@Transactional
+	@Override
+	public List<ArchivoDTO> obtenerArchivos(String rutaCarpetaSFTP, String nombreArchivo) {
+		List<ArchivoDTO> listaArchivosRespuesta = new ArrayList<>();
+		boolean sftpConectado = false;
+
+		try {
+			// Abrir conexion a servidor sftp
+			sftpConectado = SFTPServicio.conectarServidor(SERVIDOR_SFTP, Integer.parseInt(PUERTO_SFTP), USUARIO_SFTP,
+					CLAVE_SFTP);
+
+			// validar conexion a servidor
+			if (sftpConectado) {
+				boolean rutaExiste = false;
+
+				// validar que la ruta no este vacia
+				if (!StringUtils.isBlank(rutaCarpetaSFTP)) {
+					// validar que la ruta exista en el servidor
+					rutaExiste = SFTPServicio.esValidaRuta(rutaCarpetaSFTP);
+					if (rutaExiste) {
+						listaArchivosRespuesta = SFTPServicio.obtenerArchivos(rutaCarpetaSFTP, nombreArchivo);
+					}
+				}
+			}
+
+			// cerrar conexion con servidor SFTP
+			SFTPServicio.cerrarConexion();
+		} catch (Exception ex) {
+			SFTPServicio.cerrarConexion();
+		}
+
+		return listaArchivosRespuesta;
 	}
 
 }
