@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.eutanasia.eutanasia.dto.CategoriasDTO;
 import com.eutanasia.eutanasia.exception.ModelNotFoundException;
-import com.eutanasia.eutanasia.model.ComentarioTB;
 import com.eutanasia.eutanasia.model.PostTB;
 import com.eutanasia.eutanasia.service.IEutanasiaService;
 import com.eutanasia.eutanasia.util.ConstantesTablasNombre;
@@ -57,7 +56,7 @@ public class ControladorRestPosts {
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@RequestMapping("/consultarPostsPorFiltros")
-	public ResponseEntity<List<PostTB>> consultarPostsPorFiltros(PostTB filtroPost) {
+	public ResponseEntity<List<PostTB>> consultarPostsPorFiltros(@RequestBody PostTB filtroPost) {
 		try {
 			List<PostTB> listaPosts = eutanasiaService.consultarPostsPorFiltros(filtroPost);
 			return new ResponseEntity<List<PostTB>>(listaPosts, HttpStatus.OK);

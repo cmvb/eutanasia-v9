@@ -40,6 +40,8 @@ export class HeaderComponent implements OnInit {
   srcImagenRegister: any;
   showMenuMovil: boolean;
   loginRestaurar: boolean;
+  esRegistro: boolean;
+  mapaArchivosUser: any;
 
   // Objetos de Animaciones
   fadeIn: any;
@@ -53,6 +55,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     console.clear();
+    this.mapaArchivosUser = new Map();
     this.archivosTemporales = [];
     this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
@@ -101,11 +104,20 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  limpiarAdjuntos() {
+  limpiarAdjuntos(event) {
     this.mostrarImagenRegister = false;
     this.fileInputRegister.clear();
     this.archivoImagenRegister = this.objectModelInitializer.getDataArchivoDtoModel();
     this.archivosTemporales = [];
+  }
+
+  sanitizarUrlImgCargada(bytesArray: any, tipoArchivo) {
+    if (tipoArchivo === 'svg') {
+      this.srcImagenRegister = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + bytesArray);
+    } else {
+      tipoArchivo = tipoArchivo + ';base64,';
+      this.srcImagenRegister = 'data:image/' + tipoArchivo + bytesArray;
+    }
   }
 
   simularClickPorId(id) {
@@ -133,18 +145,15 @@ export class HeaderComponent implements OnInit {
     return result;
   }
 
-  sanitizarUrlImgCargada(bytesArray: any, tipoArchivo) {
-    if (tipoArchivo === 'svg') {
-      this.srcImagenRegister = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + bytesArray);
-    } else {
-      tipoArchivo = tipoArchivo + ';base64,';
-      this.srcImagenRegister = 'data:image/' + tipoArchivo + bytesArray;
-    }
-  }
-
   cerrarSesion() {
+    this.limpiarModales(null);
     this.sesionService.cerrarSession();
     this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
+  }
+
+  limpiarModales(event) {
+    this.disModLogin = false;
+    this.disModRegistrar = false;
   }
 
   // Modales
@@ -159,13 +168,22 @@ export class HeaderComponent implements OnInit {
   }
 
   abrirModalRegister() {
+    this.esRegistro = true;
     this.messageService.clear();
+    this.srcImagenRegister = '';
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
     this.disModRegistrar = true;
   }
 
   abrirModalUpdateUser() {
-    //this.disModUpdateUser = true;
+    this.esRegistro = false;
+    this.messageService.clear();
+    this.srcImagenRegister = '';
+    this.usuarioAutorTBRegister = this.usuarioAutorTBLogin;
+    this.usuarioAutorTBRegister.password = '';
+    this.usuarioAutorTBRegister.fechaNacimiento = new Date(this.usuarioAutorTBRegister.fechaNacimiento);
+    this.disModRegistrar = true;
+    this.mostrarImagenRegister = true;
   }
 
   mostrarOcultarMenu() {
@@ -175,7 +193,7 @@ export class HeaderComponent implements OnInit {
   // Servicios Web
   subirImagen(fileGuardar: ArchivoModel) {
     try {
-      this.limpiarAdjuntos();
+      this.limpiarAdjuntos(null);
       this.restService.postREST(this.const.urlSubirImagen, fileGuardar)
         .subscribe(resp => {
           let respuesta: ArchivoModel = JSON.parse(JSON.stringify(resp));
@@ -202,7 +220,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  crearUsuarioEutanasico() {
+  crearActualizarUsuarioEutanasico(crear: boolean) {
     sessionStorage.clear();
     try {
       if (this.repeatPassword === undefined || this.repeatPassword === null) {
@@ -213,18 +231,21 @@ export class HeaderComponent implements OnInit {
         this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mensaje_password_no_coincide });
       } else {
         this.usuarioAutorTBRegister.urlImagen = this.archivoImagenRegister.rutaArchivo;
-        this.restService.postREST(this.const.urlCrearUsuario, this.usuarioAutorTBRegister)
+        this.restService.postREST(crear ? this.const.urlCrearUsuario : this.const.urlModificarUsuario, this.usuarioAutorTBRegister)
           .subscribe(resp => {
             let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
             if (respuesta !== null) {
               // Ocultar modal de registro y llenar en memoria el usuario en sesion
               this.disModRegistrar = false;
-              this.srcImagenRegister = undefined;
               this.mostrarImagenRegister = false;
               this.repeatPassword = '';
               this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
               this.sesionService.objServiceSesion.usuarioSesion = respuesta;
               this.usuarioAutorTBLogin = respuesta;
+              if (crear) {
+                this.usuarioAutorTBLogin.urlImagen = this.srcImagenRegister;
+                this.usuarioAutorTBRegister.urlImagen = this.srcImagenRegister;
+              }
               sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
               this.messageService.clear();
               this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
@@ -256,9 +277,11 @@ export class HeaderComponent implements OnInit {
             this.disModLogin = false;
             this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
             this.sesionService.objServiceSesion.usuarioSesion = respuesta;
+            this.usuarioAutorTBLogin = respuesta;
             sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
+            this.obtenerArchivos();
           }
         },
           error => {
@@ -300,6 +323,54 @@ export class HeaderComponent implements OnInit {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  obtenerArchivos() {
+    try {
+      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
+      archivo.rutaArchivo = '/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/';
+      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
+        .subscribe(resp => {
+          this.mapaArchivosUser = new Map();
+          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
+          if (listaTemporal !== undefined && listaTemporal !== null) {
+            listaTemporal.forEach(archivo => {
+              if (!this.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
+                this.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
+              }
+            });
+          }
+        },
+          error => {
+            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
+            this.messageService.clear();
+            listaMensajes.forEach(mensaje => {
+              this.messageService.add(mensaje);
+            });
+
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  obtenerArchivoSanitizadoDeMapa(llaveRuta) {
+    let srcResponse = null;
+    if (llaveRuta !== undefined && llaveRuta !== null && this.mapaArchivosUser !== undefined && this.mapaArchivosUser !== null) {
+      let archivo = this.mapaArchivosUser.get(llaveRuta);
+      if (archivo !== undefined && archivo !== null) {
+        let tipoArchivo = archivo.nombreArchivo.split(".")[1];
+        if (tipoArchivo === 'svg') {
+          srcResponse = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + archivo.archivo);
+        } else {
+          tipoArchivo = tipoArchivo + ';base64,';
+          srcResponse = 'data:image/' + tipoArchivo + archivo.archivo;
+        }
+      }
+    }
+
+    return srcResponse;
   }
 
 }

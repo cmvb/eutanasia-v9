@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.eutanasia.eutanasia.dto.ArchivoDTO;
 import com.eutanasia.eutanasia.dto.DirectorioDTO;
 
 @Service
@@ -75,5 +76,10 @@ public interface ISFTPServicio {
 	 * desde un Servidor SFTP
 	 */
 	public List<String> listarArchivosFiltrados(String rutaSFTP, String nombre);
+
+	/**
+	 * Método para obtener archivos filtrado por un nombre desde un Servidor SFTP
+	 */
+	public List<ArchivoDTO> obtenerArchivos(String rutaSFTP, String nombreArchivo);
 
 }

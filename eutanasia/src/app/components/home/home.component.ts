@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   // Objetos de datos
   listaEventos: ToqueModel[];
   listaPosts: PostModel[];
+  disModLisReprod: boolean;
 
   // Carousels
   customOptions: OwlOptions = {
@@ -89,6 +90,7 @@ export class HomeComponent implements OnInit {
   duracionMaxima: any;
   cancionSeleccionada: String;
   subscribeSong: any;
+  mapaAudios: any;
 
   // Utilidades
   const: any;
@@ -102,6 +104,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     console.clear();
+    this.mapaAudios = new Map();
+    this.llenarListaCanciones();
+    this.disModLisReprod = false;
     this.songPosition = 0;
     this.duracionMaxima = 0;
     this.songTime = '00:00';
@@ -114,90 +119,110 @@ export class HomeComponent implements OnInit {
     this.bindDocumentListeners();
   }
 
+  toggleListaRepMusica() {
+    this.disModLisReprod = !this.disModLisReprod;
+  }
+
   playSongSlider() {
-    $('audio').each(function () {
-      this.pause(); // Stop playing
-      this.currentTime = 0; // Reset time
-    });
-    $('#playSong').hide();
-    $('#stopSong').fadeIn('slow');
-    // Cargamos el archivo y la duración
-    switch (this.cancionActual.toString()) {
-      case '1':
-        this.audioObj.src = "assets/audio/demo/1-BUSCANDO-IDENTIDAD.mp3";
-        this.cancionSeleccionada = "Buscando identidad";
-        this.duracionMaxima = 240;
-        break;
-      case '2':
-        this.audioObj.src = "assets/audio/demo/2-YA-ES-TARDE.mp3";
-        this.cancionSeleccionada = "Ya es tarde";
-        this.duracionMaxima = 215;
-        break;
-      case '3':
-        this.audioObj.src = "assets/audio/demo/3-DE-VUELTA-AL-INFIERNO.mp3";
-        this.cancionSeleccionada = "De vuelta al infierno";
-        this.duracionMaxima = 269;
-        break;
-      case '4':
-        this.audioObj.src = "assets/audio/demo/4-PRESTIGIO-FATAL.mp3";
-        this.cancionSeleccionada = "Prestigio fatal";
-        this.duracionMaxima = 200;
-        break;
-      case '5':
-        this.audioObj.src = "assets/audio/demo/5-NO-MORIRE.mp3";
-        this.cancionSeleccionada = "No moriré";
-        this.duracionMaxima = 286;
-        break;
-    }
-    let fechaMaxima = new Date(this.duracionMaxima * 1000);
-    var minutoMax: any = (fechaMaxima.getMinutes() < 9) ? "0" + fechaMaxima.getMinutes() : fechaMaxima.getMinutes();
-    var segundoMax: any = (fechaMaxima.getSeconds() < 9) ? "0" + fechaMaxima.getSeconds() : fechaMaxima.getSeconds();
-
-    this.songTimeMax = minutoMax + ":" + segundoMax;
-
-    this.audioObj.preload = 'metadata';
-    this.audioObj.load();
-    this.audioObj.play();
-
-    const secondsCounter = interval(1000);
-    this.subscribeSong = secondsCounter.subscribe(i => {
-      this.songPosition = i;
-
-      let fecha = new Date(this.songPosition * 1000);
-      var minuto: any = (fecha.getMinutes() < 9) ? "0" + fecha.getMinutes() : fecha.getMinutes();
-      var segundo: any = (fecha.getSeconds() < 9) ? "0" + fecha.getSeconds() : fecha.getSeconds();
-
-      this.songTime = minuto + ":" + segundo;
-    },
-      error => {
-        this.songPosition = 0;
-        this.songTime = '00:00';
-        this.songTimeMax = '00:00';
-        console.log(error, "error");
+    try {
+      $('audio').each(function () {
+        this.pause(); // Stop playing
+        this.currentTime = 0; // Reset time
       });
-    setTimeout(function () {
-      this.subscribeSong.unsubscribe();
-      if (this.cancionActual < 5) {
-        this.nextSongSlider();
+      $('#playSong').hide();
+      $('#stopSong').fadeIn('slow');
+      // Cargamos el archivo y la duración
+      let audioObj = this.mapaAudios.get(this.cancionActual);
+      this.audioObj.src = audioObj.audioObj;
+      this.cancionSeleccionada = audioObj.cancionSeleccionada;
+      this.duracionMaxima = audioObj.duracionMaxima;
+
+      let fechaMaxima = new Date(this.duracionMaxima * 1000);
+      var minutoMax: any = (fechaMaxima.getMinutes() < 9) ? "0" + fechaMaxima.getMinutes() : fechaMaxima.getMinutes();
+      var segundoMax: any = (fechaMaxima.getSeconds() < 9) ? "0" + fechaMaxima.getSeconds() : fechaMaxima.getSeconds();
+
+      this.songTimeMax = minutoMax + ":" + segundoMax;
+
+      this.audioObj.preload = 'metadata';
+      this.audioObj.load();
+      this.audioObj.play();
+
+      const secondsCounter = interval(1000);
+      this.subscribeSong = secondsCounter.subscribe(i => {
+        this.songPosition = i;
+
+        let fecha = new Date(this.songPosition * 1000);
+        var minuto: any = (fecha.getMinutes() < 9) ? "0" + fecha.getMinutes() : fecha.getMinutes();
+        var segundo: any = (fecha.getSeconds() < 9) ? "0" + fecha.getSeconds() : fecha.getSeconds();
+
+        this.songTime = minuto + ":" + segundo;
+      },
+        error => {
+          this.songPosition = 0;
+          this.songTime = '00:00';
+          this.songTimeMax = '00:00';
+          console.log(error, "error");
+        });
+      setTimeout(function () {
+        this.subscribeSong.unsubscribe();
+        if (this.cancionActual < 5) {
+          this.nextSongSlider();
+        }
+      }, this.duracionMaxima * 1000);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  llenarListaCanciones() {
+    let audioObj1 = { audioObj: 'assets/audio/demo/1-BUSCANDO-IDENTIDAD.mp3', cancionSeleccionada: 'Buscando identidad', duracionMaxima: 240 };
+    let audioObj2 = { audioObj: 'assets/audio/demo/2-YA-ES-TARDE.mp3', cancionSeleccionada: 'Ya es tarde', duracionMaxima: 215 };
+    let audioObj3 = { audioObj: 'assets/audio/demo/3-DE-VUELTA-AL-INFIERNO.mp3', cancionSeleccionada: 'De vuelta al infierno', duracionMaxima: 269 };
+    let audioObj4 = { audioObj: 'assets/audio/demo/4-PRESTIGIO-FATAL.mp3', cancionSeleccionada: 'Prestigio fatal', duracionMaxima: 200 };
+    let audioObj5 = { audioObj: 'assets/audio/demo/5-NO-MORIRE.mp3', cancionSeleccionada: 'No moriré', duracionMaxima: 286 };
+    this.mapaAudios = new Map();
+    let listaAudios = [];
+    listaAudios.push(audioObj1);
+    listaAudios.push(audioObj2);
+    listaAudios.push(audioObj3);
+    listaAudios.push(audioObj4);
+    listaAudios.push(audioObj5);
+
+    let i = 1;
+    listaAudios.forEach(audioObj => {
+      if (!this.mapaAudios.has(audioObj.cancionSeleccionada)) {
+        this.mapaAudios.set(i, audioObj);
+        i++;
       }
-    }, this.duracionMaxima * 1000);
+    });
   }
 
   stopSongSlider() {
-    $('audio').each(function () {
-      this.pause(); // Stop playing
-      this.currentTime = 0; // Reset time
-    });
-    $('#stopSong').hide();
-    $('#playSong').fadeIn('slow');
-    this.subscribeSong.unsubscribe();
-    this.audioObj.pause(); // Stop playing
-    this.audioObj.currentTime = 0; // Reset time
-    this.audioObj = new Audio();
-    this.duracionMaxima = 0;
-    this.songPosition = 0;
-    this.songTime = '00:00';
-    this.songTimeMax = '00:00';
+    try {
+      $('audio').each(function () {
+        this.pause(); // Stop playing
+        this.currentTime = 0; // Reset time
+      });
+      $('#stopSong').hide();
+      $('#playSong').fadeIn('slow');
+      this.subscribeSong.unsubscribe();
+      this.audioObj.pause(); // Stop playing
+      this.audioObj.currentTime = 0; // Reset time
+      this.audioObj = new Audio();
+      this.duracionMaxima = 0;
+      this.songPosition = 0;
+      this.songTime = '00:00';
+      this.songTimeMax = '00:00';
+    }
+    catch (e) {
+      console.log(e);
+    }
+  }
+
+  playSongList(item: number) {
+    this.stopSongSlider();
+    this.cancionActual = item;
+    this.playSongSlider();
   }
 
   nextSongSlider() {
@@ -341,8 +366,7 @@ export class HomeComponent implements OnInit {
   verPost(post: PostModel) {
     if (this.esUsuarioLogueadoActivoHome()) {
       this.eutanasiaService.post = post;
-      sessionStorage.setItem('post', JSON.stringify(post));
-      this.router.navigate(['blog']);
+      this.router.navigate(['blog/' + post.id]);
     } else {
       this.messageService.clear();
       this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mensaje_debe_ser_usuario_logueado });
