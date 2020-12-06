@@ -10,7 +10,7 @@
     <p-tabView styleClass="tabview-custom container" style="margin: 10px" [(activeIndex)]="activeIndex">
         <p-tabPanel>
             <ng-template pTemplate="header">
-                <i class="pi pi-search"></i>
+                <i class="pi pi-search" style="padding: 5px;"></i>
                 <span>{{sesionService.msg.lbl_btn_consultar}}
                     -
                     {{sesionService.msg.lbl_mtto_post}}</span>
@@ -65,9 +65,9 @@
             </div>
             <!-- /SELECT Post -->
         </p-tabPanel>
-        <p-tabPanel [disabled]="onlyConsulta" >
+        <p-tabPanel [disabled]="onlyConsulta">
             <ng-template pTemplate="header">
-                <i class="{{crearPost ? 'pi pi-plus' : 'pi pi-pencil'}}"></i>
+                <i class="{{crearPost ? 'pi pi-plus' : 'pi pi-pencil'}}" style="padding: 5px;"></i>
                 <span>{{crearPost ? sesionService.msg.lbl_btn_crear : sesionService.msg.lbl_btn_actualizar}}
                     -
                     {{sesionService.msg.lbl_mtto_post}}</span>
