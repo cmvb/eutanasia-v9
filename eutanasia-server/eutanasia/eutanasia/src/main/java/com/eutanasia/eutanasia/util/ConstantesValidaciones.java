@@ -76,4 +76,12 @@ public final class ConstantesValidaciones {
 	public static final String USUARIO_AUTOR_COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.autor");
 	public static final String POST_COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.post");
 
+	public static final String TITULO_POST = PropertiesUtil.getProperty("lbl.post.titulo");
+	public static final String SUBTITULO_POST = PropertiesUtil.getProperty("lbl.post.subtitulo");
+	public static final String ARTICULO_POST = PropertiesUtil.getProperty("lbl.post.articulo");
+	public static final String TAGS_POST = PropertiesUtil.getProperty("lbl.post.tags");
+	public static final String IMAGEN_POST = PropertiesUtil.getProperty("lbl.post.imagen");
+	public static final String CATEGORIA_POST = PropertiesUtil.getProperty("lbl.post.categoria");
+	public static final String USUARIO_AUTOR_POST = PropertiesUtil.getProperty("lbl.post.usuario");
+
 }

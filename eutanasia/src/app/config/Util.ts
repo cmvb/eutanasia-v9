@@ -266,7 +266,7 @@ export class Util {
   armarTabla(cabeceras, lista) {
     let cols = [];
 
-    if (lista !== null && lista.length > 0) {
+    if (lista !== undefined && lista !== null && lista.length > 0) {
       let rows = Object.keys(lista[0]);
       for (let j in rows) {
         for (let c in cabeceras) {

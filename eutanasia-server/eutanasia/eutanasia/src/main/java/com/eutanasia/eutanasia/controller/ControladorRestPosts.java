@@ -114,12 +114,13 @@ public class ControladorRestPosts {
 				newPost = eutanasiaService.crearPost(post);
 			} else {
 				StringBuilder mensajeErrores = new StringBuilder();
+				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
 
 				for (String error : errores) {
-					mensajeErrores.append(error);
+					mensajeErrores.append(error + "|");
 				}
 
-				throw new ModelNotFoundException(mensajeErrores.toString());
+				throw new ModelNotFoundException(erroresTitle + mensajeErrores);
 			}
 
 			return new ResponseEntity<PostTB>(newPost, HttpStatus.OK);
@@ -144,7 +145,7 @@ public class ControladorRestPosts {
 				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
 
 				for (String error : errores) {
-					mensajeErrores.append(error);
+					mensajeErrores.append(error + "|");
 				}
 
 				throw new ModelNotFoundException(erroresTitle + mensajeErrores);

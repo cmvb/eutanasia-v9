@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="net.bytebuddy.asm.Advice.This"/>
-    <fullyQualifiedTypeName name="org.apache.commons.lang3.StringUtils"/>
     <fullyQualifiedTypeName name="java.util.Base64"/>
     <fullyQualifiedTypeName name="com.jcraft.jsch.Cipher"/>
     <fullyQualifiedTypeName name="java.security.InvalidKeyException"/>
@@ -17,4 +16,7 @@
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.Util"/>
     <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
     <fullyQualifiedTypeName name="java.net.URL"/>
+    <fullyQualifiedTypeName name="org.apache.commons.lang3.StringUtils"/>
+    <fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.IOUtils"/>
+    <fullyQualifiedTypeName name="org.apache.commons.io.IOUtils"/>
 </qualifiedTypeNameHistroy>

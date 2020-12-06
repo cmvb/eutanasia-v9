@@ -12,6 +12,7 @@ export class SesionService {
   // Fases
   objServiceSesion: ObjServiceSessionDTOModel;
   msg: any;
+  mapaArchivosUser: any;
 
   constructor(public textProperties: TextProperties, public objectModelInitializer: ObjectModelInitializer) {
     this.inicializar();

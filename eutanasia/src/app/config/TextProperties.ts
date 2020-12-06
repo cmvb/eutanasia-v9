@@ -157,6 +157,7 @@ export class TextProperties {
       lbl_menu_prestamo: idioma === constant.idiomaEs ? 'Alquiler' : 'Rental',
 
       // Acciones
+      lbl_btn_nuevo: idioma === constant.idiomaEs ? 'Nuevo' : 'New',
       lbl_btn_ingresar: idioma === constant.idiomaEs ? 'Ingresar' : 'Sign In',
       lbl_btn_registrarse: idioma === constant.idiomaEs ? 'Registrarse' : 'Register',
       lbl_btn_inicio: idioma === constant.idiomaEs ? 'Inicio' : 'Login',
@@ -244,6 +245,14 @@ export class TextProperties {
       lbl_mtto_generico_step_registrar_usuario_error: idioma === constant.idiomaEs ? 'Los datos suministrados en este Paso son incorrectos. Verifique la información.' : 'The data provided in this step is incorrect. Check the information.',
       lbl_mtto_generico_codigo_verificaicion_enviado_ok: idioma === constant.idiomaEs ? 'Se ha enviado el Código de Verificación de Cuenta correctamente.' : 'The Account Verification Code has been sent correctly.',
       lbl_mtto_generico_opinion: idioma === constant.idiomaEs ? 'Tu opinión es importante para nosotros' : 'Your opinion is important to us',
+
+      // Módulos Posts
+      lbl_mtto_post: idioma === constant.idiomaEs ? 'Posts' : 'Posts',
+      lbl_mtto_post_titulo: idioma === constant.idiomaEs ? 'Título' : 'Title',
+      lbl_mtto_post_subtitulo: idioma === constant.idiomaEs ? 'Subtítulo' : 'Subtitle',
+      lbl_mtto_post_articulo: idioma === constant.idiomaEs ? 'Artículo' : 'Arrticle',
+      lbl_mtto_post_tags: idioma === constant.idiomaEs ? 'Tags' : 'Tags',
+      lbl_mtto_post_categoria: idioma === constant.idiomaEs ? 'Categoría' : 'Category',
 
     }
   };

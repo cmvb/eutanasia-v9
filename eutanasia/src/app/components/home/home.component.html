@@ -409,7 +409,9 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="number">
 						<i class="fa fa-trophy"></i>
-						<h3 class="white-text"><span class="counter">25</span></h3>
+						<h3 class="white-text"><span
+								class="counter">{{listaEventos !== undefined && listaEventos !== null ? listaEventos.length : 0}}</span>
+						</h3>
 						<span class="white-text">{{sesionService.msg.lbl_participaciones}}</span>
 					</div>
 				</div>
@@ -429,7 +431,9 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="number">
 						<i class="fa fa-file"></i>
-						<h3 class="white-text"><span class="counter">150000</span></h3>
+						<h3 class="white-text"><span
+								class="counter">{{listadoPostsCompleto !== undefined && listadoPostsCompleto !== null ? listaPosts : 0}}</span>
+						</h3>
 						<span class="white-text">{{sesionService.msg.lbl_posts}}</span>
 					</div>
 				</div>
@@ -551,7 +555,8 @@
 					<div *ngFor="let post of listaPosts" class="col-md-4">
 						<div class="blog">
 							<div class="blog-img">
-								<img class="img-responsive" [src]="post.urlImagen" alt="">
+								<img class="img-responsive" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
+									alt="">
 							</div>
 							<div class="blog-content">
 								<ul class="blog-meta">
@@ -575,7 +580,7 @@
 					</div>
 				</ng-template>
 				<!-- /blog -->
-				<p class="contadorPost">(3/{{listaPosts.length}})</p>
+				<p class="contadorPost">(3/{{listadoPostsCompleto}})</p>
 			</div>
 			<!-- /Row -->
 		</div>

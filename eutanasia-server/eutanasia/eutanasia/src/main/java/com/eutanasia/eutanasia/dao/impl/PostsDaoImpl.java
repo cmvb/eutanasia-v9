@@ -64,6 +64,11 @@ public class PostsDaoImpl extends AbstractDao<PostTB> implements IPostsDao {
 			pamameters.put("TITULO_POST", ConstantesValidaciones.COMODIN_BD + filtroPost.getTitulo().toUpperCase()
 					+ ConstantesValidaciones.COMODIN_BD);
 		}
+		if (!StringUtils.isBlank(filtroPost.getSubtitulo())) {
+			JPQL.append(" AND UPPER(t.titulo) LIKE :SUBTITULO_POST ");
+			pamameters.put("SUBTITULO_POST", ConstantesValidaciones.COMODIN_BD + filtroPost.getSubtitulo().toUpperCase()
+					+ ConstantesValidaciones.COMODIN_BD);
+		}
 		if (filtroPost.getCategoria() > 0) {
 			JPQL.append(" AND t.categoria = :CATEGORIA_POST ");
 			pamameters.put("CATEGORIA_POST", filtroPost.getCategoria());

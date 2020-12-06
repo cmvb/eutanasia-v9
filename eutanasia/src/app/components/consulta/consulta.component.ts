@@ -54,8 +54,6 @@ export class ConsultaComponent implements OnInit {
 
   // Enumerados
   enums: any;
-  enumIdioma = [];
-  idiomaSeleccionado: any;
 
   constructor(private router: Router, private route: ActivatedRoute, public restService: RestService, enums: Enumerados, textProperties: TextProperties, objectModelInitializer: ObjectModelInitializer, util: Util, private messageService: MessageService, private sanitization: DomSanitizer, public sesionService: SesionService) {
     // Objetos inmutables
@@ -71,9 +69,6 @@ export class ConsultaComponent implements OnInit {
     // Objetos mutables
     this.sesion = this.objectModelInitializer.getDataServiceSesion();
     this.locale = this.sesionService.objServiceSesion.idioma === this.objectModelInitializer.getConst().idiomaEs ? this.objectModelInitializer.getLocaleESForCalendar() : this.objectModelInitializer.getLocaleENForCalendar();
-    this.idiomaSeleccionado = this.objectModelInitializer.getDataEnumerado();
-    this.idiomaSeleccionado.label = this.sesionService.msg.lbl_idioma_es;
-    this.idiomaSeleccionado.value = 1;
   }
 
   ngOnInit() {

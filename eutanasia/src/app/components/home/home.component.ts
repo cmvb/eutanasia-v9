@@ -14,6 +14,8 @@ import { ToqueModel } from 'src/app/model/toque-model';
 import { PostModel } from 'src/app/model/post-model';
 import { EutanasiaService } from 'src/app/services/eutanasiaService/eutanasia.service';
 import { UsuarioAutorModel } from 'src/app/model/usuarioAutor-model';
+import { ArchivoModel } from 'src/app/model/archivo-model';
+import { DomSanitizer } from '@angular/platform-browser';
 
 declare var $: any;
 
@@ -32,6 +34,7 @@ export class HomeComponent implements OnInit {
   listaEventos: ToqueModel[];
   listaPosts: PostModel[];
   disModLisReprod: boolean;
+  listadoPostsCompleto: any;
 
   // Carousels
   customOptions: OwlOptions = {
@@ -96,7 +99,7 @@ export class HomeComponent implements OnInit {
   const: any;
   enums: any;
 
-  constructor(private router: Router, private route: ActivatedRoute, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enumerados: Enumerados, public sesionService: SesionService, private messageService: MessageService, public eutanasiaService: EutanasiaService) {
+  constructor(private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enumerados: Enumerados, public sesionService: SesionService, private messageService: MessageService, public eutanasiaService: EutanasiaService) {
     this.sesion = this.objectModelInitializer.getDataServiceSesion();
     this.const = this.objectModelInitializer.getConst();
     this.enums = enumerados.getEnumerados();
@@ -104,6 +107,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     console.clear();
+    if (this.sesionService.mapaArchivosUser === undefined || this.sesionService.mapaArchivosUser === null || this.sesionService.mapaArchivosUser.size === 0) {
+      this.sesionService.mapaArchivosUser = new Map();
+      this.obtenerArchivos();
+    }
     this.mapaAudios = new Map();
     this.llenarListaCanciones();
     this.disModLisReprod = false;
@@ -340,6 +347,7 @@ export class HomeComponent implements OnInit {
   }
 
   cargarPost() {
+    this.listadoPostsCompleto = 0;
     this.listaPosts = [];
     let obj = this.objectModelInitializer.getDataPostModel();
     try {
@@ -347,6 +355,7 @@ export class HomeComponent implements OnInit {
         .subscribe(resp => {
           let listaTemporal: PostModel[] = JSON.parse(JSON.stringify(resp));
           if (listaTemporal !== undefined && listaTemporal !== null) {
+            this.listadoPostsCompleto = listaTemporal.length;
             this.listaPosts = listaTemporal.length > 3 ? listaTemporal.slice(listaTemporal.length - 3) : listaTemporal;
           }
         },
@@ -366,6 +375,7 @@ export class HomeComponent implements OnInit {
   verPost(post: PostModel) {
     if (this.esUsuarioLogueadoActivoHome()) {
       this.eutanasiaService.post = post;
+      
       this.router.navigate(['blog/' + post.id]);
     } else {
       this.messageService.clear();
@@ -396,6 +406,54 @@ export class HomeComponent implements OnInit {
 
   simularClickPorId(id) {
     $('#' + id)[0].click();
+  }
+
+  obtenerArchivos() {
+    try {
+      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
+      archivo.rutaArchivo = '/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/';
+      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
+        .subscribe(resp => {
+          this.sesionService.mapaArchivosUser = new Map();
+          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
+          if (listaTemporal !== undefined && listaTemporal !== null) {
+            listaTemporal.forEach(archivo => {
+              if (!this.sesionService.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
+                this.sesionService.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
+              }
+            });
+          }
+        },
+          error => {
+            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
+            this.messageService.clear();
+            listaMensajes.forEach(mensaje => {
+              this.messageService.add(mensaje);
+            });
+
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  obtenerArchivoSanitizadoDeMapa(llaveRuta) {
+    let srcResponse = null;
+    if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
+      let archivo = this.sesionService.mapaArchivosUser.get(llaveRuta);
+      if (archivo !== undefined && archivo !== null) {
+        let tipoArchivo = archivo.nombreArchivo.split(".")[1];
+        if (tipoArchivo === 'svg') {
+          srcResponse = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + archivo.archivo);
+        } else {
+          tipoArchivo = tipoArchivo + ';base64,';
+          srcResponse = 'data:image/' + tipoArchivo + archivo.archivo;
+        }
+      }
+    }
+
+    return srcResponse;
   }
 
 }

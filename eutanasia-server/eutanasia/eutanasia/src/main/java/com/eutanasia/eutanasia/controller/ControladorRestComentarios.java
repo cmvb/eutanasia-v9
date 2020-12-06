@@ -87,48 +87,57 @@ public class ControladorRestComentarios {
 			if (errores.isEmpty()) {
 				newComentario = eutanasiaService.crearComentario(comentario);
 				if (newComentario != null) {
-					Map<String, UsuarioAutorTB> mapaCorreosEnviar = new HashMap<>();
-					List<ComentarioTB> listaComentarios = eutanasiaService
-							.consultarComentariosPorIdPost(comentario.getPostTB().getId());
-					if (listaComentarios != null && !listaComentarios.isEmpty()) {
-						for (ComentarioTB comentarioEnc : listaComentarios) {
-							if (!mapaCorreosEnviar.containsKey(comentarioEnc.getUsuarioAutorTB().getCorreo())) {
-								mapaCorreosEnviar.put(comentarioEnc.getUsuarioAutorTB().getCorreo(),
-										comentarioEnc.getUsuarioAutorTB());
+					// Actualizar post con contador de comentarios
+					PostTB postComentario = comentario.getPostTB();
+					postComentario.setCantidadComentarios(postComentario.getCantidadComentarios() + 1);
+					PostTB newPost = eutanasiaService.modificarPost(postComentario);
+					if (newPost != null) {
+						Map<String, UsuarioAutorTB> mapaCorreosEnviar = new HashMap<>();
+						mapaCorreosEnviar.put(comentario.getPostTB().getUsuarioAutorTB().getCorreo(),
+								comentario.getPostTB().getUsuarioAutorTB());
+						List<ComentarioTB> listaComentarios = eutanasiaService
+								.consultarComentariosPorIdPost(comentario.getPostTB().getId());
+						if (listaComentarios != null && !listaComentarios.isEmpty()) {
+							for (ComentarioTB comentarioEnc : listaComentarios) {
+								if (!mapaCorreosEnviar.containsKey(comentarioEnc.getUsuarioAutorTB().getCorreo())) {
+									mapaCorreosEnviar.put(comentarioEnc.getUsuarioAutorTB().getCorreo(),
+											comentarioEnc.getUsuarioAutorTB());
+								}
 							}
-						}
 
-						for (String correoEnviar : mapaCorreosEnviar.keySet()) {
-							MailDTO mailDto = new MailDTO();
-							mailDto.setFrom(EMAIL_SERVIDOR);
-							mailDto.setTo(correoEnviar);
-							mailDto.setSubject("COMENTARIO - EUTANASIA WEB PAGE");
+							for (String correoEnviar : mapaCorreosEnviar.keySet()) {
+								MailDTO mailDto = new MailDTO();
+								mailDto.setFrom(EMAIL_SERVIDOR);
+								mailDto.setTo(correoEnviar);
+								mailDto.setSubject("COMENTARIO - EUTANASIA WEB PAGE");
 
-							Map<String, Object> model = new HashMap<>();
-							model.put("nombrePost", comentario.getPostTB().getTitulo());
-							model.put("usuarioComentario", mapaCorreosEnviar.get(correoEnviar).getNombres() + " "
-									+ mapaCorreosEnviar.get(correoEnviar).getApellidos());
-							model.put("comentario", comentario.getComentario());
-							String urlRuta = URL_RESPONDER_COMENTARIO + comentario.getPostTB().getId();
-							try {
-								model.put("resetUrl", new URL(urlRuta).toURI().toASCIIString());
-							} catch (Exception e) {
-								throw new ModelNotFoundException(e.getMessage());
+								Map<String, Object> model = new HashMap<>();
+								model.put("nombrePost", comentario.getPostTB().getTitulo());
+								model.put("usuarioComentario", mapaCorreosEnviar.get(correoEnviar).getNombres() + " "
+										+ mapaCorreosEnviar.get(correoEnviar).getApellidos());
+								model.put("comentario", comentario.getComentario());
+								String urlRuta = URL_RESPONDER_COMENTARIO + comentario.getPostTB().getId();
+								try {
+									model.put("resetUrl", new URL(urlRuta).toURI().toASCIIString());
+								} catch (Exception e) {
+									throw new ModelNotFoundException(e.getMessage());
+								}
+								mailDto.setModel(model);
+
+								mailUtil.sendMail(mailDto, ConstantesValidaciones.TEMPLATE_MAIL_RESPONDER_COMENTARIO);
 							}
-							mailDto.setModel(model);
-
-							mailUtil.sendMail(mailDto, ConstantesValidaciones.TEMPLATE_MAIL_RESPONDER_COMENTARIO);
 						}
 					}
 				}
 			} else {
 				StringBuilder mensajeErrores = new StringBuilder();
+				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
 
 				for (String error : errores) {
-					mensajeErrores.append(error);
+					mensajeErrores.append(error + "|");
 				}
 
-				throw new ModelNotFoundException(mensajeErrores.toString());
+				throw new ModelNotFoundException(erroresTitle + mensajeErrores);
 			}
 
 			return new ResponseEntity<ComentarioTB>(newComentario, HttpStatus.OK);
@@ -153,7 +162,7 @@ public class ControladorRestComentarios {
 				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
 
 				for (String error : errores) {
-					mensajeErrores.append(error);
+					mensajeErrores.append(error + "|");
 				}
 
 				throw new ModelNotFoundException(erroresTitle + mensajeErrores);

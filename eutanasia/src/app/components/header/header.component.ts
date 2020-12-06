@@ -80,7 +80,8 @@ export class HeaderComponent implements OnInit {
   }
 
   redirigirBlogs() {
-    this.router.navigate(['blogs']);
+    
+    this.router.navigate(['timeline']);
   }
 
   startUpload() {
@@ -231,7 +232,11 @@ export class HeaderComponent implements OnInit {
         this.messageService.clear();
         this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mensaje_password_no_coincide });
       } else {
-        this.usuarioAutorTBRegister.urlImagen = this.archivoImagenRegister.rutaArchivo;
+        if (this.archivoImagenRegister !== undefined && this.archivoImagenRegister !== null && this.archivoImagenRegister.rutaArchivo !== undefined && this.archivoImagenRegister.rutaArchivo !== null) {
+          this.usuarioAutorTBRegister.urlImagen = this.archivoImagenRegister.rutaArchivo;
+        } else {
+          this.usuarioAutorTBRegister.urlImagen = '';
+        }
         this.restService.postREST(crear ? this.const.urlCrearUsuario : this.const.urlModificarUsuario, this.usuarioAutorTBRegister)
           .subscribe(resp => {
             let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));

@@ -12,6 +12,7 @@ import { PostModel } from 'src/app/model/post-model';
 import { EutanasiaService } from 'src/app/services/eutanasiaService/eutanasia.service';
 import { ComentarioModel } from 'src/app/model/comentario-model';
 import { CategoriasDTOModel } from 'src/app/model/dto/categorias-dto';
+import { ArchivoModel } from 'src/app/model/archivo-model';
 
 declare var $: any;
 
@@ -50,6 +51,12 @@ export class AsideComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.clear();
+    if (this.sesionService.mapaArchivosUser === undefined || this.sesionService.mapaArchivosUser === null || this.sesionService.mapaArchivosUser.size === 0) {
+      this.sesionService.mapaArchivosUser = new Map();
+      this.obtenerArchivos();
+    }
+    this.obtenerArchivos();
     this.listaPostsPopulares = [];
     this.postFiltro = this.objectModelInitializer.getDataPostModel();
     this.cargarContadoresCategorias();
@@ -88,7 +95,7 @@ export class AsideComponent implements OnInit {
       this.restService.postREST(this.const.urlConsultarPostsPorFiltros, this.postFiltro)
         .subscribe(resp => {
           this.eutanasiaService.listaPost = JSON.parse(JSON.stringify(resp));
-          this.router.navigate(['publicaciones']);
+          this.router.navigate(['timeline']);
         },
           error => {
             console.log(error, "error");
@@ -114,6 +121,54 @@ export class AsideComponent implements OnInit {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  obtenerArchivos() {
+    try {
+      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
+      archivo.rutaArchivo = '/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/';
+      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
+        .subscribe(resp => {
+          this.sesionService.mapaArchivosUser = new Map();
+          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
+          if (listaTemporal !== undefined && listaTemporal !== null) {
+            listaTemporal.forEach(archivo => {
+              if (!this.sesionService.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
+                this.sesionService.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
+              }
+            });
+          }
+        },
+          error => {
+            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
+            this.messageService.clear();
+            listaMensajes.forEach(mensaje => {
+              this.messageService.add(mensaje);
+            });
+
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  obtenerArchivoSanitizadoDeMapa(llaveRuta) {
+    let srcResponse = null;
+    if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
+      let archivo = this.sesionService.mapaArchivosUser.get(llaveRuta);
+      if (archivo !== undefined && archivo !== null) {
+        let tipoArchivo = archivo.nombreArchivo.split(".")[1];
+        if (tipoArchivo === 'svg') {
+          srcResponse = this.sanitization.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + archivo.archivo);
+        } else {
+          tipoArchivo = tipoArchivo + ';base64,';
+          srcResponse = 'data:image/' + tipoArchivo + archivo.archivo;
+        }
+      }
+    }
+
+    return srcResponse;
   }
 
   cargarTags() {

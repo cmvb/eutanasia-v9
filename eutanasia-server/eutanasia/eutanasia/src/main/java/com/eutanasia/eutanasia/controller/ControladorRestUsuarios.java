@@ -278,12 +278,13 @@ public class ControladorRestUsuarios {
 				}
 			} else {
 				StringBuilder mensajeErrores = new StringBuilder();
+				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
 
 				for (String error : errores) {
 					mensajeErrores.append(error + "|");
 				}
 
-				throw new ModelNotFoundException(mensajeErrores.toString());
+				throw new ModelNotFoundException(erroresTitle + mensajeErrores);
 			}
 
 			return new ResponseEntity<UsuarioAutorTB>(newUsuario, HttpStatus.OK);
@@ -328,7 +329,7 @@ public class ControladorRestUsuarios {
 				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
 
 				for (String error : errores) {
-					mensajeErrores.append(error);
+					mensajeErrores.append(error + "|");
 				}
 
 				throw new ModelNotFoundException(erroresTitle + mensajeErrores);

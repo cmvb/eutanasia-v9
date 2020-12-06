@@ -12,6 +12,8 @@ import { ButtonModule } from 'primeng/button';
 import { SliderModule } from 'primeng/slider';
 import { FieldsetModule } from 'primeng/fieldset';
 import { TableModule } from 'primeng/table';
+import { ChipsModule } from 'primeng/chips';
+import { TabViewModule } from 'primeng/tabview';
 
 // Imports Utilidades
 import { TextProperties } from './config/TextProperties';
@@ -56,6 +58,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { HeaderOComponent } from './components/header-o/header-o.component';
 
 // Constantes
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -97,7 +100,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ActivateUserComponent,
     RecordarClaveComponent,
     PostComponent,
-    ConsultaComponent
+    ConsultaComponent,
+    HeaderOComponent
   ],
   imports: [
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyBaNBQN5zBRz7h5lUKB4GGZQHhakKrajSA' }),
@@ -127,9 +131,11 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     CalendarModule,
     FileUploadModule,
     TableModule,
+    ChipsModule,
+    TabViewModule,
 
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule, 
+    AngularFireAuthModule,
     AngularFirestoreModule
   ],
   providers: [TextProperties, Enumerados, ObjectModelInitializer, Guardian, Util, Functions, MessageService, SesionService, { provide: LocationStrategy, useClass: HashLocationStrategy }],

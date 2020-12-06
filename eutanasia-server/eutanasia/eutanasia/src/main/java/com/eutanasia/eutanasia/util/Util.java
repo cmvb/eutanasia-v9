@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.eutanasia.eutanasia.dto.ArchivoDTO;
 import com.eutanasia.eutanasia.model.ComentarioTB;
+import com.eutanasia.eutanasia.model.PostTB;
 import com.eutanasia.eutanasia.model.UsuarioAutorTB;
 
 public abstract class Util {
@@ -38,6 +39,7 @@ public abstract class Util {
 				errores = validarComentario((ComentarioTB) entidadTB);
 				break;
 			case ConstantesTablasNombre.MRA_POST_TB:
+				errores = validarPost((PostTB) entidadTB);
 				break;
 			case ConstantesTablasNombre.MRA_USUARIO_AUTOR_TB:
 				errores = validarUsuarioAutor((UsuarioAutorTB) entidadTB);
@@ -45,6 +47,34 @@ public abstract class Util {
 			}
 		} else {
 			errores.add(ConstantesValidaciones.TABLA_NO_ESTABLECIDA_VALIDACIONES);
+		}
+
+		return errores;
+	}
+
+	public static List<String> validarPost(PostTB postTB) {
+		List<String> errores = new ArrayList<>();
+
+		if (StringUtils.isBlank(postTB.getTitulo())) {
+			errores.add(ConstantesValidaciones.TITULO_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (StringUtils.isBlank(postTB.getSubtitulo())) {
+			errores.add(ConstantesValidaciones.SUBTITULO_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (StringUtils.isBlank(postTB.getArticulo())) {
+			errores.add(ConstantesValidaciones.ARTICULO_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (StringUtils.isBlank(postTB.getTags())) {
+			errores.add(ConstantesValidaciones.TAGS_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (StringUtils.isBlank(postTB.getUrlImagen())) {
+			errores.add(ConstantesValidaciones.IMAGEN_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (postTB.getCategoria() <= 0) {
+			errores.add(ConstantesValidaciones.CATEGORIA_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (postTB.getUsuarioAutorTB() == null) {
+			errores.add(ConstantesValidaciones.USUARIO_AUTOR_POST + ConstantesValidaciones.VALOR_VACIO);
 		}
 
 		return errores;

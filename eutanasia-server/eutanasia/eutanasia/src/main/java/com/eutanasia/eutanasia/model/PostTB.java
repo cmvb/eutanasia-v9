@@ -47,10 +47,6 @@ public class PostTB extends BaseEntidadTB implements Serializable {
 	private String urlImagen;
 
 	@NotNull
-	@Column(name = "epo_correo_autor", nullable = false, length = 100)
-	private String correoAutor;
-
-	@NotNull
 	@Column(name = "epo_tags", nullable = false, length = 100)
 	private String tags;
 
@@ -108,14 +104,6 @@ public class PostTB extends BaseEntidadTB implements Serializable {
 
 	public void setUsuarioAutorTB(UsuarioAutorTB usuarioAutorTB) {
 		this.usuarioAutorTB = usuarioAutorTB;
-	}
-
-	public String getCorreoAutor() {
-		return correoAutor;
-	}
-
-	public void setCorreoAutor(String correoAutor) {
-		this.correoAutor = correoAutor;
 	}
 
 	public String getTags() {
