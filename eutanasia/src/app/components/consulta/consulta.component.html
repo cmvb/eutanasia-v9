@@ -1,10 +1,11 @@
-<p-table #dt *ngIf="lista.length > 0; else sinResultados" styleClass="mdl-data-table mdl-js-data-table"
-	[responsive]="true" [paginator]="true" [rows]="rows" [columns]="cols" [value]="lista">
+<p-table #dt *ngIf="lista !== undefined && lista !== null && lista.length > 0; else sinResultados"
+	styleClass="mdl-data-table mdl-js-data-table" [responsive]="true" [paginator]="true" [rows]="rows" [columns]="cols"
+	[value]="lista">
 	<ng-template pTemplate="header" let-columns>
 		<tr>
-			<th *ngIf="btnEditar" class="back-red text-center mdl-data-table__cell--non-numeric">
+			<th *ngIf="btnEditar" class="textCenter back-red text-center mdl-data-table__cell--non-numeric">
 				{{sesionService.msg.lbl_btn_actualizar}}</th>
-			<th class="back-red text-center mdl-data-table__cell--non-numeric" *ngFor="let col of cols">
+			<th class="textCenter back-red text-center mdl-data-table__cell--non-numeric" *ngFor="let col of cols">
 				{{col.header}}
 			</th>
 		</tr>
@@ -13,11 +14,10 @@
 	<ng-template pTemplate="body" let-rowData let-columns="cols">
 		<tr
 			*ngIf="rowData[cols[0].field] !== 'id' && rowData[cols[0].field] !== 'region' && rowData[cols[1].field] !== ' '">
-			<td *ngIf="btnEditar" class="btnActions ajustarBtnTable">
-				<button (click)="editar(rowData)" type="button"
-					class="hoverEdit shiny mdl-button mdl-js-button mdl-button--icon minWidth32">
-					<i class="material-icons">edit</i>
-				</button>
+			<td *ngIf="btnEditar" class="textCenter btnActions ajustarBtnTable">
+				<p-button label="{{sesionService.msg.lbl_btn_actualizar}}" (click)="editar(rowData)" icon="pi pi-pencil"
+					styleClass="main-btn font-20px">
+				</p-button>
 			</td>
 			<td style="padding-left: 5px !important;" class="mdl-data-table__cell--non-numeric text-center"
 				*ngFor="let col of cols">

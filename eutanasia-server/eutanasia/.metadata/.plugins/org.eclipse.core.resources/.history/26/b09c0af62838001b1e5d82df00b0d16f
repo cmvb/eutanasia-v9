@@ -1,0 +1,61 @@
+package com.eutanasia.eutanasia.dto;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
+
+public class ResponseSendEMailDTO implements Serializable {
+
+	private static final long serialVersionUID = -7979403290212524827L;
+
+	private String desde;
+
+	private List<String> para;
+
+	private String asunto;
+
+	private Map<String, Object> parametros;
+
+	private short plantillaCorreo;
+
+	public String getDesde() {
+		return desde;
+	}
+
+	public void setDesde(String desde) {
+		this.desde = desde;
+	}
+
+	public List<String> getPara() {
+		return para;
+	}
+
+	public void setPara(List<String> para) {
+		this.para = para;
+	}
+
+	public String getAsunto() {
+		return asunto;
+	}
+
+	public void setAsunto(String asunto) {
+		this.asunto = asunto;
+	}
+
+	public Map<String, Object> getParametros() {
+		return parametros;
+	}
+
+	public void setParametros(Map<String, Object> parametros) {
+		this.parametros = parametros;
+	}
+
+	public short getPlantillaCorreo() {
+		return plantillaCorreo;
+	}
+
+	public void setPlantillaCorreo(short plantillaCorreo) {
+		this.plantillaCorreo = plantillaCorreo;
+	}
+
+}

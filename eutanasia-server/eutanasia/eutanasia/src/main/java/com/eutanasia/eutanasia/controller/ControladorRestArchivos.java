@@ -1,11 +1,13 @@
 package com.eutanasia.eutanasia.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eutanasia.eutanasia.dto.ArchivoDTO;
+import com.eutanasia.eutanasia.dto.MailDTO;
+import com.eutanasia.eutanasia.dto.RequestSendEMailDTO;
+import com.eutanasia.eutanasia.dto.ResponseSendEMailDTO;
 import com.eutanasia.eutanasia.exception.ModelNotFoundException;
 import com.eutanasia.eutanasia.service.IArchivoService;
 import com.eutanasia.eutanasia.util.ConstantesValidaciones;
 import com.eutanasia.eutanasia.util.PropertiesUtil;
 import com.eutanasia.eutanasia.util.Util;
+import com.eutanasia.eutanasia.util.UtilMail;
 
 @RestController
 @RequestMapping("/eutanasia/paratodos")
@@ -28,10 +34,16 @@ public class ControladorRestArchivos {
 	public static final String RUTA_RAIZ_ARCHIVOS_SFTP = PropertiesUtil.getProperty("eutanasia.ruta.sftp.archivos");
 	public static final String URL_IMAGENES_USUARIO = PropertiesUtil.getProperty("eutanasia.ruta.images.user");
 
+	@Value("${ruta.responder.comentario}")
+	private String URL_RESPONDER_COMENTARIO;
+
+	@Autowired
+	private UtilMail mailUtil;
+
 	@Autowired
 	IArchivoService archivoService;
 
-	// Guardar y transferir archivos
+	// Guardar y transferir archivos SFTP
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@RequestMapping("/subirImagen")
 	public ResponseEntity<ArchivoDTO> subirImagen(@RequestBody ArchivoDTO archivoDto) {
@@ -43,11 +55,13 @@ public class ControladorRestArchivos {
 				archivoResponseDto = archivoService.subirImagen(archivoDto);
 			} else {
 				StringBuilder mensajeErrores = new StringBuilder();
+				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
+
 				for (String error : errores) {
-					mensajeErrores.append(error);
+					mensajeErrores.append(error + "|");
 				}
 
-				throw new ModelNotFoundException(mensajeErrores.toString());
+				throw new ModelNotFoundException(erroresTitle + mensajeErrores);
 			}
 
 			return new ResponseEntity<ArchivoDTO>(archivoResponseDto, HttpStatus.OK);
@@ -56,6 +70,7 @@ public class ControladorRestArchivos {
 		}
 	}
 
+	// Obtener archivos SFTP
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@RequestMapping("/obtenerArchivos")
 	public ResponseEntity<List<ArchivoDTO>> obtenerArchivos(@RequestBody ArchivoDTO archivoDto) {
@@ -71,11 +86,13 @@ public class ControladorRestArchivos {
 						archivoDto.getNombreArchivo());
 			} else {
 				StringBuilder mensajeErrores = new StringBuilder();
+				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
+
 				for (String error : errores) {
-					mensajeErrores.append(error);
+					mensajeErrores.append(error + "|");
 				}
 
-				throw new ModelNotFoundException(mensajeErrores.toString());
+				throw new ModelNotFoundException(erroresTitle + mensajeErrores);
 			}
 
 			return new ResponseEntity<List<ArchivoDTO>>(listaArchivosResponseDto, HttpStatus.OK);
@@ -84,4 +101,64 @@ public class ControladorRestArchivos {
 		}
 	}
 
+	// Enviar email con plantilla
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/enviarEmail")
+	public ResponseEntity<ResponseSendEMailDTO> enviarEmail(@RequestBody RequestSendEMailDTO sendEMailDto) {
+		try {
+			ResponseSendEMailDTO responseEmail = new ResponseSendEMailDTO();
+			responseEmail.setCorreosEnviados(new ArrayList<>());
+			responseEmail.setCorreosNoEnviados(new ArrayList<>());
+
+			if (sendEMailDto.getParametros() == null) {
+				sendEMailDto.setParametros(new HashMap<>());
+			}
+
+			List<String> errores = Util.validarMail(sendEMailDto);
+			if (errores.isEmpty()) {
+				for (String correoDestino : sendEMailDto.getPara()) {
+					MailDTO mailDto = new MailDTO();
+					mailDto.setFrom(sendEMailDto.getDesde());
+					mailDto.setTo(correoDestino);
+					mailDto.setSubject(sendEMailDto.getAsunto() + " - EUTANASIA WEB PAGE");
+					mailDto.setModel(new HashMap<>());
+					for (String keyPar : sendEMailDto.getParametros().keySet()) {
+						if (!mailDto.getModel().containsKey(keyPar)) {
+							mailDto.getModel().put(keyPar, sendEMailDto.getParametros().get(keyPar));
+						}
+					}
+
+					try {
+						mailUtil.sendMail(mailDto, ConstantesValidaciones.TEMPLATE_MAIL_CONTACTO_BANDA);
+						responseEmail.getCorreosEnviados().add(correoDestino);
+					} catch (Exception e) {
+						responseEmail.getCorreosNoEnviados().add(correoDestino);
+					}
+				}
+
+				if (!responseEmail.getCorreosEnviados().isEmpty()) {
+					responseEmail.setExitoso(true);
+				}
+				if (responseEmail.getCorreosNoEnviados().isEmpty()) {
+					responseEmail.setMensaje(ConstantesValidaciones.MSG_ENVIO_EMAIL_EXITOSO);
+				} else {
+					responseEmail.setMensaje(ConstantesValidaciones.MSG_ENVIO_EMAIL_EXITOSO_CON_EXCEPCIONES
+							+ responseEmail.getCorreosNoEnviados().toString());
+				}
+			} else {
+				StringBuilder mensajeErrores = new StringBuilder();
+				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
+
+				for (String error : errores) {
+					mensajeErrores.append(error + "|");
+				}
+
+				throw new ModelNotFoundException(erroresTitle + mensajeErrores);
+			}
+
+			return new ResponseEntity<ResponseSendEMailDTO>(responseEmail, HttpStatus.OK);
+		} catch (JSONException e) {
+			throw new ModelNotFoundException(e.getMessage());
+		}
+	}
 }

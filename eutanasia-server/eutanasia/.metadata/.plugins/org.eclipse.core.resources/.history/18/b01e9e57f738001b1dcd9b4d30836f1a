@@ -1,0 +1,16 @@
+package com.eutanasia.eutanasia.dao;
+
+import java.util.List;
+
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import com.eutanasia.eutanasia.model.PostTB;
+
+@EnableTransactionManagement
+public interface IMeGustaDao {
+
+	/*
+	 * Método para consultar posts en orden de cantidad de me gusta
+	 */
+	List<PostTB> consultarPostsPopulares();
+
+}

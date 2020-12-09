@@ -7,6 +7,11 @@ export interface UsuarioAutorModel {
     usuario;
     password;
     rol;
+    genero;
+    linkFbook;
+	linkInstagram;
+	linkGoogle;
+	linkTwitter;
     correo;
     fechaNacimiento;
     urlImagen;

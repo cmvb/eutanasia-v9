@@ -1,5 +1,5 @@
 <!-- Aside -->
-<aside id="aside" class="col-md-3">
+<aside id="aside" class="col-md-3 hidden-sm hidden-xs">
   <!-- Search -->
   <div class="widget">
     <div class="widget-search">
@@ -30,7 +30,7 @@
     <div *ngIf="listaPostsPopulares.length > 0; else sinResultadosPostsPopulares" class="service-grids">
       <div *ngFor="let popularPost of listaPostsPopulares" class="widget-post">
         <a class="cursorPointer" (click)="verPost(popularPost)">
-          <img [src]="popularPost.urlImagen" alt="">{{popularPost.titulo}}
+          <img [src]="obtenerArchivoSanitizadoDeMapa(popularPost.urlImagen)" alt="">{{popularPost.titulo}}
         </a>
         <ul class="blog-meta">
           <li>{{convertirFechaBlog(popularPost.fechaCreacion)}}</li>
@@ -50,7 +50,7 @@
 
   <!-- Tags -->
   <div class="widget">
-    <h3 class="title">{{sesionService.msg.lbl_tags}}</h3>
+    <h3 class="title">{{sesionService.msg.lbl_mtto_post_tags}}</h3>
     <div class="widget-tags">
       <a *ngFor="let tag of listaTags">
         {{tag}}

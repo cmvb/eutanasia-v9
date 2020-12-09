@@ -7,14 +7,16 @@ import org.springframework.stereotype.Service;
 
 import com.eutanasia.eutanasia.dto.ArchivoDTO;
 import com.eutanasia.eutanasia.dto.DirectorioDTO;
+import com.jcraft.jsch.JSchException;
 
 @Service
 public interface ISFTPServicio {
 
 	/**
 	 * Método para abrir la conexión con el Servidor SFTP
+	 * @throws JSchException 
 	 */
-	public boolean conectarServidor(String Servidor, int puerto, String usuario, String clave);
+	public boolean conectarServidor(String Servidor, int puerto, String usuario, String clave) throws JSchException;
 
 	/**
 	 * Metodo para cerrar la conexión con el Servidor SFTP

@@ -42,6 +42,9 @@ export class ObjectModelInitializer {
 
   getConst() {
     return {
+      nombreBanda: 'Eutanasia',
+      generoBanda: 'Frenético Rock and Roll',
+
       // URL'S + Info del Sistema
       urlDomain: `${SYSTEM}/`,
       urlRestService: `${HOST}/`,
@@ -49,9 +52,13 @@ export class ObjectModelInitializer {
       urlVCode: `${SYSTEM}/vCode/`,
       urlConsultarToques: `${HOST}/eutanasia/paratodos/consultarToques`,
       urlConsultarPosts: `${HOST}/eutanasia/paratodos/consultarPosts`,
+      urlModificarPosts: `${HOST}/eutanasia/paratodos/modificarPost`,
+      urlCrearPosts: `${HOST}/eutanasia/paratodos/crearPost`,
       urlConsultarComentariosPorIdPost: `${HOST}/eutanasia/paratodos/consultarComentariosPorIdPost`,
       urlConsultarContadorCategoriasPosts: `${HOST}/eutanasia/paratodos/consultarContadorCategoriasPosts`,
       urlConsultarPostsPorFiltros: `${HOST}/eutanasia/paratodos/consultarPostsPorFiltros`,
+      urlConsultarPostsPopulares: `${HOST}/eutanasia/paratodos/consultarPostsPopulares`,
+      urlConsultarCalificacionMG: `${HOST}/eutanasia/paratodos/consultarCalificacionMG`,
       urlConsultarTags: `${HOST}/eutanasia/paratodos/consultarTags`,
       urlSubirImagen: `${HOST}/eutanasia/paratodos/subirImagen`,
       urlConsultarUsuarios: `${HOST}/eutanasia/paratodos/consultarUsuarios`,
@@ -64,7 +71,15 @@ export class ObjectModelInitializer {
       urlLogin: `${HOST}/eutanasia/paratodos/loginUsuario`,
       urlRestaurarClave: `${HOST}/eutanasia/paratodos/restaurarClave`,
       urlObtenerArchivos: `${HOST}/eutanasia/paratodos/obtenerArchivos`,
+      urlEnviarEmail: `${HOST}/eutanasia/paratodos/enviarEmail`,
+      urlCrearMeGusta: `${HOST}/eutanasia/paratodos/crearMeGusta`,
+      urlModificarMeGusta: `${HOST}/eutanasia/paratodos/modificarMeGusta`,
 
+      //SFTP
+      urlSFTPArchivosUser: `/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/`,
+
+      correoRemitente: 'eutanasiarockandroll@gmail.com',
+      correoRemitenteServer: 'cmverab@ufpso.edu.co',
       tokenUsernameAUTH: 'EutanasiaApp',
       tokenPasswordAUTH: 'Eutanasia2019codex',
       tokenNameAUTH: 'access_token',
@@ -199,10 +214,16 @@ export class ObjectModelInitializer {
       usuario: '',
       password: '',
       rol: '',
+      genero: 0,
+      linkFbook: '',
+      linkInstagram: '',
+      linkGoogle: '',
+      linkTwitter: '',
       correo: '',
       fechaNacimiento: '',
       urlImagen: '',
       resena: '',
+      
       // Auditoria
       estado: 1,
       fechaCreacion: '',
@@ -220,7 +241,6 @@ export class ObjectModelInitializer {
       subtitulo: '',
       articulo: '',
       urlImagen: '',
-      correoAutor: '',
       tags: '',
       categoria: 0,
       cantidadComentarios: 0,
@@ -255,6 +275,8 @@ export class ObjectModelInitializer {
       id: 0,
       usuarioAutorTB: this.getDataUsuarioAutorModel(),
       postTB: this.getDataPostModel(),
+      calificacion: 0,
+
       // Auditoria
       estado: 1,
       fechaCreacion: '',
@@ -288,6 +310,32 @@ export class ObjectModelInitializer {
     return {
       codigo: code,
       simbolo: symbol
+    }
+  };
+
+  getDataRequestEmailDtoModel() {
+    return {
+      desde: '',
+      para: [''],
+      asunto: '',
+      parametros: new Map<string, string>()
+    }
+  };
+
+  getDataResponseEmailDtoModel() {
+    return {
+      exitoso: false,
+      mensaje: '',
+      correosEnviados: [],
+      correosNoEnviados: []
+    }
+  };
+
+  getDataPostMeGustaDtoModel() {
+    return {
+      promedioCalificacion: 0,
+      postTB: this.getDataPostModel(),
+      listaMeGusta: []
     }
   };
 

@@ -12,6 +12,9 @@ import { ButtonModule } from 'primeng/button';
 import { SliderModule } from 'primeng/slider';
 import { FieldsetModule } from 'primeng/fieldset';
 import { TableModule } from 'primeng/table';
+import { ChipsModule } from 'primeng/chips';
+import { TabViewModule } from 'primeng/tabview';
+import { RatingModule } from 'primeng/rating';
 
 // Imports Utilidades
 import { TextProperties } from './config/TextProperties';
@@ -28,6 +31,7 @@ import { RouterModule } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -52,10 +56,8 @@ import { ObjectModelInitializer } from './config/ObjectModelInitializer';
 import { MessageService } from 'primeng/api';
 import { SesionService } from './services/sesionService/sesion.service';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
+import { HeaderOComponent } from './components/header-o/header-o.component';
+import { EnviarMailComponent } from './components/enviar-mail/enviar-mail.component';
 
 // Constantes
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -97,7 +99,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ActivateUserComponent,
     RecordarClaveComponent,
     PostComponent,
-    ConsultaComponent
+    ConsultaComponent,
+    HeaderOComponent,
+    EnviarMailComponent
   ],
   imports: [
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyBaNBQN5zBRz7h5lUKB4GGZQHhakKrajSA' }),
@@ -108,6 +112,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     GoogleMapsModule,
     HttpModule,
     HttpClientModule,
+    NgSelectModule,
     RouterModule,
 
     CarouselModule,
@@ -127,10 +132,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     CalendarModule,
     FileUploadModule,
     TableModule,
-
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule, 
-    AngularFirestoreModule
+    ChipsModule,
+    TabViewModule,
+    RatingModule,
   ],
   providers: [TextProperties, Enumerados, ObjectModelInitializer, Guardian, Util, Functions, MessageService, SesionService, { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

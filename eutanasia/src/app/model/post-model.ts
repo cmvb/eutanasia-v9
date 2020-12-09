@@ -7,7 +7,6 @@ export interface PostModel {
     subtitulo;
     articulo;
     urlImagen;
-    correoAutor;
     tags;
     categoria;
     cantidadComentarios;

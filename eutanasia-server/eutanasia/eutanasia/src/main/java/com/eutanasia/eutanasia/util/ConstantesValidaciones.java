@@ -21,6 +21,8 @@ public final class ConstantesValidaciones {
 			.getProperty("eutanasia.template.mail.recordarClave");
 	public static final String TEMPLATE_MAIL_RESPONDER_COMENTARIO = PropertiesUtil
 			.getProperty("eutanasia.template.mail.comentario");
+	public static final String TEMPLATE_MAIL_CONTACTO_BANDA = PropertiesUtil
+			.getProperty("eutanasia.template.mail.contacto");
 
 	// Simbolos y constantes
 	public static final String COMODIN_BD = "%";
@@ -57,6 +59,9 @@ public final class ConstantesValidaciones {
 	public static final String MSG_CORREO_REPETIDO = PropertiesUtil
 			.getProperty("eutanasia.msg.validate.correoRepetido");
 	public static final String MSG_NO_POSTS = PropertiesUtil.getProperty("eutanasia.msg.validate.no.posts");
+	public static final String MSG_ENVIO_EMAIL_EXITOSO = PropertiesUtil.getProperty("eutanasia.msg.email.exitoso");
+	public static final String MSG_ENVIO_EMAIL_EXITOSO_CON_EXCEPCIONES = PropertiesUtil
+			.getProperty("eutanasia.msg.email.exitoso.con.excepciones");
 
 	// Labels
 	public static final String ARCHIVO = PropertiesUtil.getProperty("lbl.archivo.archivo");
@@ -75,5 +80,23 @@ public final class ConstantesValidaciones {
 	public static final String COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.comentario");
 	public static final String USUARIO_AUTOR_COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.autor");
 	public static final String POST_COMENTARIO = PropertiesUtil.getProperty("lbl.comentario.post");
+
+	public static final String TITULO_POST = PropertiesUtil.getProperty("lbl.post.titulo");
+	public static final String SUBTITULO_POST = PropertiesUtil.getProperty("lbl.post.subtitulo");
+	public static final String ARTICULO_POST = PropertiesUtil.getProperty("lbl.post.articulo");
+	public static final String TAGS_POST = PropertiesUtil.getProperty("lbl.post.tags");
+	public static final String IMAGEN_POST = PropertiesUtil.getProperty("lbl.post.imagen");
+	public static final String CATEGORIA_POST = PropertiesUtil.getProperty("lbl.post.categoria");
+	public static final String USUARIO_AUTOR_POST = PropertiesUtil.getProperty("lbl.post.usuario");
+	public static final String GENERO_POST = PropertiesUtil.getProperty("lbl.post.genero");
+
+	public static final String ASUNTO_MAIL = PropertiesUtil.getProperty("lbl.mail.asunto");
+	public static final String DESTINATARIOS_MAIL = PropertiesUtil.getProperty("lbl.mail.destinatarios");
+	public static final String CORREO_DESTINO_MAIL = PropertiesUtil.getProperty("lbl.mail.correo.destino");
+	public static final String REMITE_MAIL = PropertiesUtil.getProperty("lbl.mail.correo.remitente");
+
+	public static final String CALIFICACION_ME_GUSTA_ = PropertiesUtil.getProperty("lbl.like.calificacion");
+	public static final String USUARIO_AUTOR_ME_GUSTA = PropertiesUtil.getProperty("lbl.like.autor");
+	public static final String POST_ME_GUSTA = PropertiesUtil.getProperty("lbl.like.post");
 
 }

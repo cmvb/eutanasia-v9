@@ -1,271 +1,24 @@
 <p-scrollPanel #scrollBlog [style]="{width: '100%', height: '100vh'}" styleClass="custom">
 
   <!-- Header -->
-  <header style="background-image: url('assets/images/banner.jpg');">
-    <!-- Nav -->
-    <nav id="nav" class="navbar nav-transparent">
-      <div class="container">
-        <div class="navbar-header">
-          <!-- Logo -->
-          <div class="navbar-brand">
-            <a href="index.html">
-              <img class="logo" src="assets/images/logo.png" alt="logo">
-              <img class="logo-alt" src="assets/images/logo.png" alt="logo">
-            </a>
-          </div>
-          <!-- /Logo -->
-          <!-- Collapse nav button -->
-          <div (click)="mostrarOcultarMenuBlog()" class="nav-collapse textHoverRed menu">
-            <i class="list--buttons pi pi-ellipsis-v font-20px"></i>
-          </div>
-          <!-- /Collapse nav button -->
-        </div>
-
-        <!--  Main navigation  -->
-        <ul class="main-nav nav navbar-nav navbar-right">
-          <li class="has-dropdown"><a>{{sesionService.msg.lbl_idioma}}</a>
-            <ul class="dropdown" style="width: 50px;">
-              <li>
-                <a (click)="sesionService.cambiarIdioma(0)">
-                  <img class="w100 cursorPointer" src="assets/images/idiomaEspanol.png" style="height: 20px;" />
-                </a>
-              </li>
-              <li>
-                <a (click)="sesionService.cambiarIdioma(1)">
-                  <img class="w100 cursorPointer" src="assets/images/idiomaIngles.png" style="height: 20px;" />
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li><a href="#home">{{sesionService.msg.lbl_inicio}}</a></li>
-          <li><a (click)="redirigirBlogsBlog()">{{sesionService.msg.lbl_blog}}</a></li>
-          <li *ngIf="esUsuarioLogueadoActivoBlog()" class="has-dropdown displayFlex">
-            <img class="imagePerfil" [src]="obtenerArchivoSanitizadoDeMapa(usuarioAutorTBLogin.urlImagen)" />
-            <a>{{usuarioAutorTBLogin.usuario}}</a>
-            <ul class="dropdown">
-              <li><a (click)="cerrarSesionBlog()">{{sesionService.msg.lbl_tip_cerrar_sesion}}</a></li>
-              <li><a (click)="abrirModalUpdateUserBlog()">{{sesionService.msg.lbl_actualizar_usuario}}</a></li>
-            </ul>
-          </li>
-          <li *ngIf="!esUsuarioLogueadoActivoBlog()"><a id="loginBlog"
-              (click)="abrirModalLogin()">{{sesionService.msg.lbl_login}}</a>
-          </li>
-          <li *ngIf="!esUsuarioLogueadoActivoBlog()"><a id="registerBlog"
-              (click)="abrirModalRegister()">{{sesionService.msg.lbl_btn_registrarse}}</a>
-          </li>
-        </ul>
-        <!-- /Main navigation -->
-
-        <!-- Modals Login/Register -->
-        <p-dialog [showHeader]="true" (onHide)="limpiarModales($event)" header="{{sesionService.msg.lbl_login}}"
-          [(visible)]="disModLogin" [modal]="true" [style]="{width: '60vw'}" [baseZIndex]="10000" [draggable]="false"
-          [resizable]="false" [closable]="true">
-          <div class="reply-form">
-            <div *ngIf="!loginRestaurar" class="row justify-content-center">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBLogin.usuario"
-                  placeholder="{{sesionService.msg.lbl_header_usuario}}" />
-              </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <input class="input" type="password" pInputText [(ngModel)]="usuarioAutorTBLogin.password"
-                  placeholder="{{sesionService.msg.lbl_header_clave}}" />
-              </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <p-button label="{{sesionService.msg.lbl_btn_ingresar}}" (click)="login()" icon="pi pi-key"
-                  styleClass="main-btn font-20px">
-                </p-button>
-              </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <label class="textPlata">{{sesionService.msg.lbl_btn_olvidaste_tu_clave}}
-                  <span (click)="toggleRestaurarLogin()"
-                    class="cursorPointer textWhite textHoverRed">{{sesionService.msg.lbl_btn_restaurar_clave}}</span>
-                </label>
-              </div>
-
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <p-messages></p-messages>
-              </div>
-            </div>
-
-            <div *ngIf="loginRestaurar" class="row justify-content-center">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBLogin.usuario"
-                  placeholder="{{sesionService.msg.lbl_header_usuario}}" />
-              </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <p-button label="{{sesionService.msg.lbl_btn_restaurar_clave}}" (click)="restaurarClave()"
-                  icon="pi pi-key" styleClass="main-btn font-20px">
-                </p-button>
-              </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <label class="textPlata">{{sesionService.msg.lbl_btn_olvidaste_tu_clave}}
-                  <span (click)="toggleRestaurarLogin()"
-                    class="cursorPointer textWhite textHoverRed">{{sesionService.msg.lbl_login}}</span>
-                </label>
-              </div>
-
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <p-messages></p-messages>
-              </div>
-            </div>
-          </div>
-        </p-dialog>
-
-        <p-dialog [showHeader]="true" (onHide)="limpiarModales($event)"
-          header="{{esRegistro ? sesionService.msg.lbl_register : sesionService.msg.lbl_actualizar_usuario}}"
-          [(visible)]="disModRegistrar" [modal]="true" [style]="{width: '60vw'}" [baseZIndex]="10000"
-          [draggable]="false" [resizable]="false" [closable]="true">
-          <div class="reply-form">
-            <div class="row justify-content-center">
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
-                <div *ngIf="!mostrarImagenRegister" class="choose-files" (click)="startUpload()">
-                  <i class="pi pi-plus-circle font-40px"></i>
-                </div>
-                <div *ngIf="mostrarImagenRegister" class="choose-files no-padding">
-                  <img *ngIf="srcImagenRegister !== undefined && srcImagenRegister !== null" class="w100"
-                    [src]="esRegistro ? srcImagenRegister : obtenerArchivoSanitizadoDeMapa(usuarioAutorTBRegister.urlImagen)"
-                    style="height: 196px;" />
-                  <i class="pi pi-times font-20px cerrarImagen" (click)="limpiarAdjuntos($event)"></i>
-                </div>
-                <p-fileUpload #fileInputRegister mode="basic" name="archivosTemporales[]" customUpload="true"
-                  (uploadHandler)="handlerUpload($event)" accept="image/*" maxFileSize="10000000"
-                  (onClear)="limpiarAdjuntos($event)" chooseLabel="{{sesionService.msg.lbl_btn_escoger_archivo}}"
-                  uploadLabel="{{sesionService.msg.lbl_btn_subir_archivos}}"
-                  cancelLabel="{{sesionService.msg.lbl_btn_cancelar}}"
-                  invalidFileSizeMessageSummary="{{sesionService.msg.lbl_summary_danger}}"
-                  invalidFileSizeMessageDetail="{{sesionService.msg.lbl_mensaje_file_detail_size}}"
-                  invalidFileTypeMessageSummary="{{sesionService.msg.lbl_summary_danger}}"
-                  invalidFileTypeMessageDetail="{{sesionService.msg.lbl_mensaje_file_detail_type}}">
-                </p-fileUpload>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login"
-                style="padding-bottom: 0 !important">
-                <textarea pInputTextarea [(ngModel)]="usuarioAutorTBRegister.resena"
-                  placeholder="{{sesionService.msg.lbl_header_resena}}"></textarea>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
-                <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBRegister.nombres"
-                  placeholder="{{sesionService.msg.lbl_header_nombre}}">
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
-                <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBRegister.apellidos"
-                  placeholder="{{sesionService.msg.lbl_header_apellido}}">
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
-                <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBRegister.usuario"
-                  placeholder="{{sesionService.msg.lbl_header_usuario}}">
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
-                <input class="input" type="email" pInputText [(ngModel)]="usuarioAutorTBRegister.correo"
-                  placeholder="{{sesionService.msg.lbl_header_correo}}">
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
-                <p-calendar placeholder="{{sesionService.msg.lbl_header_fecha_nacimiento}}"
-                  [(ngModel)]="usuarioAutorTBRegister.fechaNacimiento"></p-calendar>
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
-                <input class="input" type="password" pInputText [(ngModel)]="usuarioAutorTBRegister.password"
-                  placeholder="{{sesionService.msg.lbl_header_clave}}">
-              </div>
-              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
-                <input class="input" type="password" pInputText [(ngModel)]="repeatPassword"
-                  placeholder="{{sesionService.msg.lbl_header_repetir_clave}}">
-              </div>
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <p-button
-                  label="{{esRegistro ? sesionService.msg.lbl_btn_registrarse : sesionService.msg.lbl_btn_actualizar}}"
-                  (click)="crearActualizarUsuarioEutanasico(esRegistro)" icon="pi pi-user-plus"
-                  styleClass="main-btn font-20px"></p-button>
-              </div>
-
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                <p-messages></p-messages>
-              </div>
-            </div>
-          </div>
-        </p-dialog>
-        <!-- /Modals Login/Register -->
-      </div>
-    </nav>
-    <!-- /Nav -->
-
-    <!-- header wrapper -->
-    <div class="header-wrapper sm-padding fondoBanner">
-      <div class="container">
-        <h2></h2>
-      </div>
-    </div>
-    <div *ngIf="post !== undefined && post !== null" class="header-wrapper sm-padding bg-grey">
-      <div class="container">
-        <h2>{{post.titulo}}</h2>
-        <ul class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">{{sesionService.msg.lbl_blog}}</a></li>
-          <li class="breadcrumb-item"><a href="index.html#blog">{{sesionService.msg.lbl_posts}}</a></li>
-          <li class="breadcrumb-item active">{{post.titulo}}</li>
-        </ul>
-      </div>
-    </div>
-    <!-- /header wrapper -->
-
-    <!-- Menú Responsive -->
-    <div id="accordian" *ngIf="showMenuMovil">
-      <ul style="background-color:#ffffffd9">
-        <li>
-          <ul>
-            <li><a href="#home"><i class="pi pi-home font-12px iconMovilPad"></i>{{sesionService.msg.lbl_inicio}}</a>
-            </li>
-            <li><a href="#about"><i
-                  class="pi pi-info-circle font-12px iconMovilPad"></i>{{sesionService.msg.lbl_bio}}</a></li>
-            <li><a href="#team"><i class="pi pi-star font-12px iconMovilPad"></i>{{sesionService.msg.lbl_banda}}</a>
-            </li>
-            <li><a href="#portfolio"><i
-                  class="pi pi-images font-12px iconMovilPad"></i>{{sesionService.msg.lbl_galeria_media}}</a>
-            </li>
-            <li><a href="#service"><i
-                  class="pi pi-sliders-v font-12px iconMovilPad"></i>{{sesionService.msg.lbl_participaciones}}</a>
-            </li>
-            <li><a href="#pricing"><i
-                  class="pi pi-share-alt font-12px iconMovilPad"></i>{{sesionService.msg.lbl_comparte}}</a></li>
-            <li>
-              <a href="#publicaciones">
-                <i class="pi pi-clone font-12px iconMovilPad"></i>
-                {{sesionService.msg.lbl_ultimas_publicaciones}}
-              </a>
-            </li>
-            <li>
-              <a (click)="redirigirBlogsBlog()">
-                <i class="pi pi-comments font-12px iconMovilPad"></i>
-                {{sesionService.msg.lbl_blog}}
-              </a>
-            </li>
-            <li *ngIf="esUsuarioLogueadoActivoBlog()">
-              <a>
-                <i class="pi pi-users font-12px iconMovilPad"></i>
-                {{usuarioAutorTBLogin.usuario}}
-              </a>
-            </li>
-            <li *ngIf="esUsuarioLogueadoActivoBlog()">
-              <a (click)="abrirModalUpdateUserBlog()">
-                <i class="pi pi-user-edit font-12px iconMovilPad"></i>
-                {{sesionService.msg.lbl_actualizar_usuario}}
-              </a>
-            </li>
-            <li *ngIf="esUsuarioLogueadoActivoBlog()">
-              <a (click)="cerrarSesionBlog()">
-                <i class="pi pi-power-off font-12px iconMovilPad"></i>
-                {{sesionService.msg.lbl_tip_cerrar_sesion}}
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <!-- /Menú Responsive -->
-  </header>
+  <app-header-o></app-header-o>
   <!-- /Header -->
 
   <!-- Notificaciones -->
   <p-toast></p-toast>
+
+  <!-- header wrapper -->
+  <div class="header-wrapper sm-padding bg-grey">
+    <div class="container">
+      <h2>{{post.titulo}}</h2>
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">{{sesionService.msg.lbl_blog}}</a></li>
+        <li class="breadcrumb-item"><a href="index.html#blog">{{sesionService.msg.lbl_posts}}</a></li>
+        <li class="breadcrumb-item active">{{post.titulo}}</li>
+      </ul>
+    </div>
+  </div>
+  <!-- /header wrapper -->
 
   <!-- Blog -->
   <div id="blog" class="section md-padding" *ngIf="post !== undefined">
@@ -281,23 +34,35 @@
         <main id="main" class="col-md-9">
           <div class="blog">
             <div class="blog-img">
-              <img class="img-responsive" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)" alt="">
-            </div>
-            <div class="blog-content">
-              <ul class="blog-meta">
-                <li><i class="fa fa-user"></i>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</li>
-                <li><i class="fa fa-clock-o"></i>{{post.fechaCreacion | date:'dd/MM/yyyy'}}</li>
-                <li><i class="fa fa-clock-o"></i>{{convertirFechaBlog(post.fechaCreacion)}}</li>
-                <li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
-                <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})</li>
-                <li>
+              <ul class="bannerImgBlog blog-meta displayFlex">
+                <li style="margin-top: 10px;" *ngIf="postMeGustaDTO !== undefined && postMeGustaDTO !== null">
+                  <span class="p-overlay-badge p-mr-5">
+                    <i class="pi pi-star starCalMG"></i>
+                    <span class="p-badge p-badge-xl p-badge-danger"
+                      style="font-size: 18px;">{{postMeGustaDTO.promedioCalificacion}}</span>
+                  </span>
+                </li>
+                <li style="margin-top: -2px;">
                   <div class="fb-share-button" data-href="http://localhost:4200/#/home" data-layout="button_count"
                     data-size="large"><a target="_blank"
                       href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4200%2F%23%2Fhome&amp;src=sdkpreparse"
                       class="fb-xfbml-parse-ignore">Compartir</a></div>
                 </li>
               </ul>
-
+              <img class="img-responsive w100" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)" alt="">
+            </div>
+            <div class="blog-content">
+              <ul class="blog-meta">
+                <li>
+                  <p-rating [(ngModel)]="meGustaTB.calificacion" (onRate)="calificarMG($event)" [cancel]="false">
+                  </p-rating>
+                </li>
+                <li><i class="fa fa-user"></i>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</li>
+                <li><i class="fa fa-calendar"></i>{{post.fechaCreacion | date:'dd/MM/yyyy'}}</li>
+                <li><i class="fa fa-clock-o"></i>{{convertirFechaBlog(post.fechaCreacion)}}</li>
+                <li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
+                <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})</li>
+              </ul>
               <h3>{{post.titulo}}</h3>
               <h5>{{post.subtitulo}}</h5>
               <p>{{post.articulo}}</p>
@@ -305,7 +70,7 @@
 
             <!-- blog tags -->
             <div class="blog-tags">
-              <h5>{{sesionService.msg.lbl_tags}}</h5>
+              <h5>{{sesionService.msg.lbl_mtto_post_tags}}</h5>
               <a *ngFor="let tag of listaTags">
                 <i class="fa fa-tag"></i>{{tag}}
               </a>
@@ -314,19 +79,26 @@
 
             <!-- blog author -->
             <div class="blog-author">
+              <h3 class="title">{{sesionService.msg.lbl_autor}}</h3>
+
               <div class="media">
                 <div class="media-left">
                   <img class="media-object imagePerfil" style="height: 100px;width: 100px;"
                     [src]="obtenerArchivoSanitizadoDeMapa(post.usuarioAutorTB.urlImagen)" alt="">
                 </div>
+
                 <div class="media-body">
                   <div class="media-heading">
                     <h3>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</h3>
                     <div class="author-social">
-                      <a><i class="fa fa-facebook"></i></a>
-                      <a><i class="fa fa-twitter"></i></a>
-                      <a><i class="fa fa-google-plus"></i></a>
-                      <a><i class="fa fa-instagram"></i></a>
+                      <a *ngIf="post.usuarioAutorTB.linkFbook !== undefined && post.usuarioAutorTB.linkFbook !== null"
+                        href="{{post.usuarioAutorTB.linkFbook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                      <a *ngIf="post.usuarioAutorTB.linkTwitter !== undefined && post.usuarioAutorTB.linkTwitter !== null"
+                        href="{{post.usuarioAutorTB.linkTwitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                      <a *ngIf="post.usuarioAutorTB.linkGoogle !== undefined && post.usuarioAutorTB.linkGoogle !== null"
+                        href="{{post.usuarioAutorTB.linkGoogle}}" target="_blank"><i class="fa fa-google-plus"></i></a>
+                      <a *ngIf="post.usuarioAutorTB.linkInstagram !== undefined && post.usuarioAutorTB.linkInstagram !== null"
+                        href="{{post.usuarioAutorTB.linkInstagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
                     </div>
                   </div>
                   <p>{{post.usuarioAutorTB.resena}}</p>
@@ -337,7 +109,7 @@
 
             <!-- blog comments -->
             <div class="blog-comments">
-              <h3 class="title">({{post.cantidadComentarios}}) Comentarios</h3>
+              <h3 class="title">({{post.cantidadComentarios}}) {{sesionService.msg.lbl_comentarios}}</h3>
 
               <!-- comment -->
               <div *ngIf="listaComentarios.length > 0; else sinResultadosComment"

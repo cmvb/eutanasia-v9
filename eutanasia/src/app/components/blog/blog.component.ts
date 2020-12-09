@@ -11,9 +11,10 @@ import { SesionService } from 'src/app/services/sesionService/sesion.service';
 import { PostModel } from 'src/app/model/post-model';
 import { EutanasiaService } from 'src/app/services/eutanasiaService/eutanasia.service';
 import { ComentarioModel } from 'src/app/model/comentario-model';
-import { ArchivoModel } from 'src/app/model/archivo-model';
 import { UsuarioAutorModel } from 'src/app/model/usuarioAutor-model';
 import { FileUpload } from 'primeng/fileupload';
+import { PostMeGustaDTOModel } from 'src/app/model/dto/postMeGusta-dto';
+import { MeGustaModel } from 'src/app/model/meGusta-model';
 
 declare var $: any;
 
@@ -37,18 +38,8 @@ export class BlogComponent implements OnInit {
   comentarioNuevo: any;
   respuestaNueva: any;
   usuarioAutorTBLogin: UsuarioAutorModel;
-  usuarioAutorTBRegister: UsuarioAutorModel;
-  archivosTemporales: any[];
-  archivoImagenRegister: ArchivoModel;
-  showMenuMovil: boolean;
-  disModLogin: boolean;
-  disModRegistrar: boolean;
-  repeatPassword: any;
-  mostrarImagenRegister: boolean;
-  srcImagenRegister: any;
-  loginRestaurar: boolean;
-  mapaArchivosUser: any;
-  esRegistro: boolean;
+  postMeGustaDTO: PostMeGustaDTOModel;
+  meGustaTB: MeGustaModel;
 
   // Utilidades
   const: any;
@@ -65,10 +56,6 @@ export class BlogComponent implements OnInit {
 
   ngOnInit() {
     console.clear();
-    this.mapaArchivosUser = new Map();
-    this.obtenerArchivos();
-    this.archivosTemporales = [];
-    this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
     if (this.sesionService.existeSession()) {
       this.usuarioAutorTBLogin = this.sesionService.getUsuarioSesionActual();
     } else {
@@ -78,15 +65,13 @@ export class BlogComponent implements OnInit {
         this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
       }
     }
-    console.log("ESTO: " + JSON.stringify(this.usuarioAutorTBLogin));
-    if (!this.esUsuarioLogueadoActivoBlog()) {
-      this.abrirModalLogin();
-    }
+    this.meGustaTB = this.objectModelInitializer.getDataMeGustaModel();
     this.post = this.objectModelInitializer.getDataPostModel();
     this.comentarioNuevo = '';
     this.respuestaNueva = '';
     this.listaComentarios = [];
     this.cargarPost();
+    this.cargarCalificacionMG();
   }
 
   // Otras Funciones
@@ -106,10 +91,6 @@ export class BlogComponent implements OnInit {
     }, 600);
   }
 
-  redirigirBlogsBlog() {
-    this.router.navigate(['blogs']);
-  }
-
   obtenerRespuestas(comentario: ComentarioModel) {
     return this.mapaComentarios.get(comentario.id);
   }
@@ -122,34 +103,6 @@ export class BlogComponent implements OnInit {
     }
   }
 
-  mostrarOcultarMenuBlog() {
-    this.showMenuMovil = !this.showMenuMovil;
-  }
-
-  esUsuarioLogueadoActivoBlog() {
-    let result = false;
-    let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
-    let valorEstadoActivo = this.util.getValorEnumerado(this.enums.estadoUsuario.valores, 1);
-    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value) {
-      result = true;
-    }
-
-    return result;
-  }
-
-  cerrarSesionBlog() {
-    this.limpiarModales(null);
-    this.sesionService.cerrarSession();
-    this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
-    this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
-    this.router.navigate(['home']);
-  }
-
-  limpiarModales(event) {
-    this.disModLogin = false;
-    this.disModRegistrar = false;
-  }
-
   toggleRespuesta(idComentario) {
     $('#comment' + idComentario).toggleClass('displayNone');
   }
@@ -158,77 +111,33 @@ export class BlogComponent implements OnInit {
     $('#' + id)[0].click();
   }
 
-  startUpload() {
-    $('input[type=file]').click();
-  }
-
-  handlerUpload(event) {
-    //event.files == files to upload
-    for (let file of event.files) {
-      this.archivosTemporales.push(file);
+  obtenerArchivoSanitizadoDeMapa(llaveRuta) {
+    let srcResponse = null;
+    if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
+      let archivo = this.sesionService.mapaArchivosUser.get(llaveRuta);
+      if (archivo !== undefined && archivo !== null) {
+        let tipoArchivo = archivo.nombreArchivo.split(".")[1];
+        if (tipoArchivo === 'svg') {
+          srcResponse = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + archivo.archivo);
+        } else {
+          tipoArchivo = tipoArchivo + ';base64,';
+          srcResponse = 'data:image/' + tipoArchivo + archivo.archivo;
+        }
+      }
     }
 
-    let archivoTemp = this.archivosTemporales[0];
-    this.archivoImagenRegister = this.objectModelInitializer.getDataArchivoDtoModel();
-    let reader = new FileReader();
-    reader.readAsDataURL(archivoTemp);
-    reader.onloadend = () => {
-      // base64data      
-      this.archivoImagenRegister.archivo = reader.result.toString().split('base64,')[1];
-      this.archivoImagenRegister.nombreArchivo = archivoTemp.name;
-      this.subirImagen(this.archivoImagenRegister);
-    }
+    return srcResponse;
   }
 
-  limpiarAdjuntos(event) {
-    this.mostrarImagenRegister = false;
-    this.fileInputRegister.clear();
-    this.archivoImagenRegister = this.objectModelInitializer.getDataArchivoDtoModel();
-    this.archivosTemporales = [];
-  }
-
-  sanitizarUrlImgCargada(bytesArray: any, tipoArchivo) {
-    if (tipoArchivo === 'svg') {
-      this.srcImagenRegister = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + bytesArray);
-    } else {
-      tipoArchivo = tipoArchivo + ';base64,';
-      this.srcImagenRegister = 'data:image/' + tipoArchivo + bytesArray;
-    }
+  seleccionarMeGusta() {
+    this.postMeGustaDTO.listaMeGusta.forEach(meGusta => {
+      if (meGusta.usuarioAutorTB.id === this.usuarioAutorTBLogin.id) {
+        this.meGustaTB = meGusta;
+      }
+    });
   }
 
   // Modales
-
-  abrirModalUpdateUserBlog() {
-    //this.disModUpdateUser = true;
-  }
-
-  abrirModalLogin() {
-    this.messageService.clear();
-    this.disModLogin = true;
-  }
-
-  toggleRestaurarLogin() {
-    this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
-    this.loginRestaurar = !this.loginRestaurar;
-  }
-
-  abrirModalRegister() {
-    this.esRegistro = true;
-    this.messageService.clear();
-    this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
-    this.disModRegistrar = true;
-  }
-
-  abrirModalUpdateUser() {
-    this.esRegistro = false;
-    this.messageService.clear();
-    this.srcImagenRegister = '';
-    this.usuarioAutorTBRegister = this.usuarioAutorTBLogin;
-    this.usuarioAutorTBRegister.password = '';
-    this.usuarioAutorTBRegister.fechaNacimiento = new Date(this.usuarioAutorTBRegister.fechaNacimiento);
-    this.disModRegistrar = true;
-    this.mostrarImagenRegister = true;
-  }
 
   // Servicios Web
 
@@ -275,9 +184,10 @@ export class BlogComponent implements OnInit {
           if (respuesta !== null) {
             // Mostrar mensaje exitoso y consultar comentarios de nuevo
             this.comentarioNuevo = '';
-            this.cargarComentarios();
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
+
+            this.ngOnInit();
           }
         },
           error => {
@@ -307,9 +217,10 @@ export class BlogComponent implements OnInit {
           if (respuesta !== null) {
             // Mostrar mensaje exitoso y consultar comentarios de nuevo
             this.respuestaNueva = '';
-            this.cargarComentarios();
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
+
+            this.ngOnInit();
           }
         },
           error => {
@@ -327,7 +238,6 @@ export class BlogComponent implements OnInit {
   }
 
   cargarPost() {
-    let listaPosts = [];
     let urlSeg = location.href.split("/");
     let urlIdPost = urlSeg[urlSeg.length - 1];
     let idPostDES = this.util.transformarSimboloUri(urlIdPost, this.util.cargarMatrizPorcentajeUri());
@@ -345,12 +255,39 @@ export class BlogComponent implements OnInit {
             this.posicionarArriba();
           }
           else {
-            // TODO: redirección a timeline
+
+            this.router.navigate(['timeline']);
+          }
+        },
+          error => {
+            console.log(error, "error");
+
             this.router.navigate(['home']);
+          })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  cargarCalificacionMG() {
+    let urlSeg = location.href.split("/");
+    let urlIdPost = urlSeg[urlSeg.length - 1];
+    let idPostDES = this.util.transformarSimboloUri(urlIdPost, this.util.cargarMatrizPorcentajeUri());
+    let obj = this.objectModelInitializer.getDataPostModel();
+    obj.id = idPostDES;
+    try {
+      this.restService.postREST(this.const.urlConsultarCalificacionMG, obj)
+        .subscribe(resp => {
+          let respuesta: PostMeGustaDTOModel = JSON.parse(JSON.stringify(resp));
+          if (respuesta !== undefined && respuesta !== null) {
+            this.postMeGustaDTO = respuesta;
+            this.seleccionarMeGusta();
+            this.posicionarArriba();
           }
         },
           error => {
             console.log(error, "error");
+
             this.router.navigate(['home']);
           })
     } catch (e) {
@@ -358,185 +295,26 @@ export class BlogComponent implements OnInit {
     }
   }
 
-  subirImagen(fileGuardar: ArchivoModel) {
+  calificarMG(event) {
+    let flagCrear = this.meGustaTB.id === 0;
+    if (flagCrear) {
+      this.meGustaTB.postTB = this.post
+      this.meGustaTB.usuarioAutorTB = this.usuarioAutorTBLogin;
+    }
     try {
-      this.limpiarAdjuntos(null);
-      this.restService.postREST(this.const.urlSubirImagen, fileGuardar)
+      this.restService.postREST(flagCrear ? this.const.urlCrearMeGusta : this.const.urlModificarMeGusta, this.meGustaTB)
         .subscribe(resp => {
-          let respuesta: ArchivoModel = JSON.parse(JSON.stringify(resp));
-          if (respuesta !== null) {
-            // Cargar Modal exitoso
-            this.mostrarImagenRegister = true;
-            this.messageService.clear();
-            this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_mensaje_archivo_subido });
-            this.archivoImagenRegister = respuesta;
-            this.sanitizarUrlImgCargada(this.archivoImagenRegister.archivo, this.archivoImagenRegister.nombreArchivo.split(".")[1]);
+          let respuesta: MeGustaModel = JSON.parse(JSON.stringify(resp));
+          if (respuesta !== undefined && respuesta !== null) {
+            this.ngOnInit();
           }
         },
           error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
-
             console.log(error, "error");
           })
     } catch (e) {
       console.log(e);
     }
-  }
-
-  crearActualizarUsuarioEutanasico(crear: boolean) {
-    sessionStorage.clear();
-    try {
-      if (this.repeatPassword === undefined || this.repeatPassword === null) {
-        this.messageService.clear();
-        this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mensaje_password_confirmar });
-      } else if (this.repeatPassword !== this.usuarioAutorTBRegister.password) {
-        this.messageService.clear();
-        this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mensaje_password_no_coincide });
-      } else {
-        this.usuarioAutorTBRegister.urlImagen = this.archivoImagenRegister.rutaArchivo;
-        this.restService.postREST(crear ? this.const.urlCrearUsuario : this.const.urlModificarUsuario, this.usuarioAutorTBRegister)
-          .subscribe(resp => {
-            let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
-            if (respuesta !== null) {
-              // Ocultar modal de registro y llenar en memoria el usuario en sesion
-              this.disModRegistrar = false;
-              this.mostrarImagenRegister = false;
-              this.repeatPassword = '';
-              this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
-              this.sesionService.objServiceSesion.usuarioSesion = respuesta;
-              this.usuarioAutorTBLogin = respuesta;
-              if (crear) {
-                this.usuarioAutorTBLogin.urlImagen = this.srcImagenRegister;
-                this.usuarioAutorTBRegister.urlImagen = this.srcImagenRegister;
-              }
-              sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
-              this.messageService.clear();
-              this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
-            }
-          },
-            error => {
-              let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-              this.messageService.clear();
-              listaMensajes.forEach(mensaje => {
-                this.messageService.add(mensaje);
-              });
-
-              console.log(error, "error");
-            })
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  login() {
-    sessionStorage.clear();
-    try {
-      this.restService.postREST(this.const.urlLogin, this.usuarioAutorTBLogin)
-        .subscribe(resp => {
-          let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
-          if (respuesta !== null) {
-            // Ocultar modal de login y llenar en memoria el usuario en sesion protegiendo la clave
-            this.disModLogin = false;
-            this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
-            this.sesionService.objServiceSesion.usuarioSesion = respuesta;
-            this.usuarioAutorTBLogin = respuesta;
-            sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
-            this.messageService.clear();
-            this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
-          }
-        },
-          error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
-
-            console.log(error, "error");
-          })
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  restaurarClave() {
-    sessionStorage.clear();
-    try {
-      this.restService.postREST(this.const.urlRestaurarClave, this.usuarioAutorTBLogin)
-        .subscribe(resp => {
-          let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
-          if (respuesta !== null) {
-            // Ocultar modal de login y llenar en memoria el usuario en sesion protegiendo la clave
-            this.disModLogin = false;
-            this.messageService.clear();
-            this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
-          }
-        },
-          error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
-
-            console.log(error, "error");
-          })
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  obtenerArchivos() {
-    try {
-      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
-      archivo.rutaArchivo = '/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/';
-      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
-        .subscribe(resp => {
-          this.mapaArchivosUser = new Map();
-          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
-          if (listaTemporal !== undefined && listaTemporal !== null) {
-            listaTemporal.forEach(archivo => {
-              if (!this.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
-                this.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
-              }
-            });
-          }
-        },
-          error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
-
-            console.log(error, "error");
-          })
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  obtenerArchivoSanitizadoDeMapa(llaveRuta) {
-    let srcResponse = null;
-    if (llaveRuta !== undefined && llaveRuta !== null && this.mapaArchivosUser !== undefined && this.mapaArchivosUser !== null) {
-      let archivo = this.mapaArchivosUser.get(llaveRuta);
-      if (archivo !== undefined && archivo !== null) {
-        let tipoArchivo = archivo.nombreArchivo.split(".")[1];
-        if (tipoArchivo === 'svg') {
-          srcResponse = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + archivo.archivo);
-        } else {
-          tipoArchivo = tipoArchivo + ';base64,';
-          srcResponse = 'data:image/' + tipoArchivo + archivo.archivo;
-        }
-      }
-    }
-
-    return srcResponse;
   }
 
 }

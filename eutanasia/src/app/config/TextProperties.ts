@@ -79,7 +79,13 @@ export class TextProperties {
       lbl_leer_mas: idioma === constant.idiomaEs ? 'Leer Más...' : 'Read more...',
       lbl_disenador_grafico: idioma === constant.idiomaEs ? 'Diseñador Gráfico' : 'Graphic Designer',
       lbl_estudio_grabacion: idioma === constant.idiomaEs ? 'Estudio de Grabación' : 'Recording Studio',
-      lbl_mensaje_agrega_comentario: idioma === constant.idiomaEs ? 'Agrega tu comentario (máximo 1000 caracteres)' : 'Add your comment (max 1000 chars)',
+      lbl_mensaje_agrega_comentario: idioma === constant.idiomaEs ? 'Agrega tu comentario (máximo 500 caracteres)' : 'Add your comment (max 500 chars)',
+      lbl_comentarios: idioma === constant.idiomaEs ? 'Comentarios' : 'Comments',
+      lbl_autor: idioma === constant.idiomaEs ? 'Autor' : 'Author',
+      lbl_link_f: idioma === constant.idiomaEs ? 'Enlace Facebook' : 'Link Facebook',
+      lbl_link_i: idioma === constant.idiomaEs ? 'Enlace Instagram' : 'Link Instagram',
+      lbl_link_g: idioma === constant.idiomaEs ? 'Enlace Google' : 'Link Google',
+      lbl_link_t: idioma === constant.idiomaEs ? 'Enlace Twitter' : 'Link Twitter',
 
       // Banda
       lbl_banda: idioma === constant.idiomaEs ? 'Banda' : 'Band',
@@ -102,6 +108,10 @@ export class TextProperties {
       lbl_banda_guardia_estudio: idioma === constant.idiomaEs ? 'La Guardia Estudio' : 'La Guardia Estudio',
       lbl_banda_resena_carlos_jacome: idioma === constant.idiomaEs ? 'Apasionado por la música, el arte y el diseño, me he desempeñado profesionalmente en Agencias de Publicidad & Diseño y en la parte académica como docente, trabajos de ilustración para portadas de cds, libros, revistas, proyectos de identidad gráfica corporativa y diseño editorial.' : 'Passionate about music, art and design, I have worked professionally in Advertising & Design Agencies and in the academic part as a teacher, illustration work for CD covers, books, magazines, corporate graphic identity projects and editorial design.',
       lbl_banda_ayuda_compartir: idioma === constant.idiomaEs ? 'Ayúdanos a compartir nuestra música a todo el mundo' : 'Help us share our music with everyone',
+      lbl_banda_resena_bajista: idioma === constant.idiomaEs ? 'Es un bajista de rock/metal Colombiano nacido en Bucaramanga, el segundo y actual bajista de la banda, conocido por la energía que desborda al tocar en vivo y la técnica musical en las canciones, muchos consideran importante este gesto, ya que motiva al público y no es común en bajistas la movilidad en el escenario.' : 'He is a Colombian rock/metal bassist born in Bucaramanga, the second and current bassist of the band, known for the energy that overflows when playing live and the musical technique in the songs, many consider this gesture important, since it motivates the public and not mobility on stage is common for bass players.',
+      lbl_banda_resena_baterista: idioma === constant.idiomaEs ? 'Es un baterista de rock Colombiano nacido en Ocaña, el segundo y actual baterista de la banda, conocido por la alegría que expresa, siempre intentando proyectar espiritualmente la banda. Musicalmente sus ritmos son influenciados por muchos géneros incluso fuera del rock lo que amplía la posibilidad de crear sets con autenticidad.' : 'He is a Colombian rock drummer born in Ocaña, the second and current drummer of the band, known for the joy he expresses, always trying to spiritually project the band. Musically their rhythms are influenced by many genres even outside of rock, which broadens the possibility of creating sets with authenticity.',
+      lbl_banda_resena_guitarrista: idioma === constant.idiomaEs ? 'Es un guitarrista de rock/metal Colombiano nacido en Ocaña, el guitarrista principal y cofundador de la banda, conocido por su humildad y su locura, es la persona que tiene más conocimiento de historia musical del rock en la banda lo cuál permite enseñanzas constantes para todos. Su papel es crucial para encontrar un sonido con identidad propia.' : 'He is a Colombian rock / metal guitarist born in Ocaña, the main guitarist and co-founder of the band, known for his humility and his madness, he is the person who has more knowledge of the musical history of rock in the band which allows constant teachings to everybody. Its role is crucial to find a sound with its own identity.',
+      lbl_banda_resena_vocalista: idioma === constant.idiomaEs ? 'Es un vocalista de rock/punk/metal Colombiano nacido en Ocaña, el único vocalista en la historia de la banda, conocido por su agresividad en las voces y la unión con el público en los eventos. Su puesta en escena da vida a Eutanasia quién se encarga de romper la barrera entre el público y la banda. Si no lo ven en tarima, seguro está pogueando con la gente.' : 'He is a Colombian rock / punk / metal vocalist born in Ocaña, the only vocalist in the history of the band, known for his aggressive vocals and the union with the public at events. His staging gives life to Euthanasia who is responsible for breaking the barrier between the public and the band. If you dont see him on stage, he is sure in a mosh pit with people.',
 
       // Mensajes
       lbl_mensaje_archivo_subido: idioma === constant.idiomaEs ? 'Archivo(s) subido correctamente.' : 'File(s) uploaded successfully.',
@@ -130,6 +140,9 @@ export class TextProperties {
       lbl_mensaje_password_no_coincide: idioma == constant.idiomaEs ? 'Las claves no coinciden' : 'The password no match',
       lbl_mensaje_password_confirmar: idioma == constant.idiomaEs ? 'Debe confirmar la clave' : 'You must confirm password',
       lbl_mensaje_debe_ser_usuario_logueado: idioma == constant.idiomaEs ? 'Debe ser usuario logueado para acceder al contenido.' : 'You must be a logged in user to access the content.',
+      lbl_mensaje_vacio: idioma == constant.idiomaEs ? 'Valor Vacío.' : 'Empty Value.',
+      lbl_mensaje_incorrecto: idioma == constant.idiomaEs ? 'Valor Incorrecto.' : 'Incorrect Value.',
+      lbl_mensaje_no_info_select: idioma == constant.idiomaEs ? 'No hay información para mostrar' : 'No info to show',
 
       // Modales
       lbl_info_titulo_modal_error: idioma === constant.idiomaEs ? 'ERROR' : 'ERROR',
@@ -157,6 +170,7 @@ export class TextProperties {
       lbl_menu_prestamo: idioma === constant.idiomaEs ? 'Alquiler' : 'Rental',
 
       // Acciones
+      lbl_btn_nuevo: idioma === constant.idiomaEs ? 'Nuevo' : 'New',
       lbl_btn_ingresar: idioma === constant.idiomaEs ? 'Ingresar' : 'Sign In',
       lbl_btn_registrarse: idioma === constant.idiomaEs ? 'Registrarse' : 'Register',
       lbl_btn_inicio: idioma === constant.idiomaEs ? 'Inicio' : 'Login',
@@ -181,6 +195,7 @@ export class TextProperties {
       lbl_btn_escoger_archivo: idioma === constant.idiomaEs ? 'Escoger Archivo' : 'Choose File',
       lbl_subir_archivos: idioma === constant.idiomaEs ? 'Subir Archivos' : 'Upload Files',
       lbl_btn_subir_archivos: idioma == constant.idiomaEs ? 'Subir Archivos' : 'Upload Files',
+      lbl_btn_enviar_email: idioma == constant.idiomaEs ? 'Enviar E-Mail' : 'Send E-Mail',
 
       // Header
       lbl_header_usuario: idioma === constant.idiomaEs ? 'Usuario' : 'User',
@@ -244,6 +259,21 @@ export class TextProperties {
       lbl_mtto_generico_step_registrar_usuario_error: idioma === constant.idiomaEs ? 'Los datos suministrados en este Paso son incorrectos. Verifique la información.' : 'The data provided in this step is incorrect. Check the information.',
       lbl_mtto_generico_codigo_verificaicion_enviado_ok: idioma === constant.idiomaEs ? 'Se ha enviado el Código de Verificación de Cuenta correctamente.' : 'The Account Verification Code has been sent correctly.',
       lbl_mtto_generico_opinion: idioma === constant.idiomaEs ? 'Tu opinión es importante para nosotros' : 'Your opinion is important to us',
+
+      // Módulos Posts
+      lbl_mtto_post: idioma === constant.idiomaEs ? 'Posts' : 'Posts',
+      lbl_mtto_post_titulo: idioma === constant.idiomaEs ? 'Título' : 'Title',
+      lbl_mtto_post_subtitulo: idioma === constant.idiomaEs ? 'Subtítulo' : 'Subtitle',
+      lbl_mtto_post_articulo: idioma === constant.idiomaEs ? 'Artículo' : 'Arrticle',
+      lbl_mtto_post_tags: idioma === constant.idiomaEs ? 'Tags' : 'Tags',
+      lbl_mtto_post_categoria: idioma === constant.idiomaEs ? 'Categoría' : 'Category',
+
+      // Módulos Enviar EMail
+      lbl_mtto_email_mensaje: idioma === constant.idiomaEs ? 'Mensaje' : 'Message',
+      lbl_mtto_email_para: idioma === constant.idiomaEs ? 'Destinatarios' : 'Receivers',
+      lbl_mtto_email_correo_remite: idioma === constant.idiomaEs ? 'Correo Remitente' : 'Sender Email',
+      lbl_mtto_email_nombre_remite: idioma === constant.idiomaEs ? 'Nombre Remitente' : 'Sender Name',
+      lbl_mtto_email_asunto: idioma === constant.idiomaEs ? 'Asunto' : 'Subject',
 
     }
   };

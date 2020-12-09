@@ -5,7 +5,6 @@ import { ObjectModelInitializer } from './ObjectModelInitializer';
 import { Enumerados } from './Enumerados';
 import { SesionService } from '../services/sesionService/sesion.service';
 import { MessageService } from 'primeng/api';
-import * as CryptoJS from 'crypto-js';
 
 declare var $: any;
 
@@ -266,7 +265,7 @@ export class Util {
   armarTabla(cabeceras, lista) {
     let cols = [];
 
-    if (lista !== null && lista.length > 0) {
+    if (lista !== undefined && lista !== null && lista.length > 0) {
       let rows = Object.keys(lista[0]);
       for (let j in rows) {
         for (let c in cabeceras) {
@@ -503,29 +502,6 @@ export class Util {
       this.playError();
     }
     return listaMensajes;
-  }
-
-  //encriptado AES
-  encriptarAES(texto, llave) {
-    const iv = CryptoJS.enc.Hex.parse(llave);
-    const key = CryptoJS.enc.Utf8.parse(llave);
-    var textoEncriptado = CryptoJS.AES.encrypt(texto, key, { iv, mode: CryptoJS.mode.ECB });
-    //console.log("encriptado: " + textoEncriptado.toString());
-    return textoEncriptado.toString();
-  }
-
-  //desencriptado AES
-  desencriptarAES(textoEncriptado, llave) {
-    const iv = CryptoJS.enc.Hex.parse(llave);
-    const key = CryptoJS.enc.Utf8.parse(llave);
-    const textoDesencriptado = CryptoJS.AES.decrypt(textoEncriptado, key,
-      {
-        iv,
-        mode: CryptoJS.mode.ECB,
-      }
-    )
-    //console.log('Desencriptado: ' + textoDesencriptado.toString(CryptoJS.enc.Utf8));
-    return textoDesencriptado.toString(CryptoJS.enc);
   }
 
   cargarMatrizPorcentajeUri() {

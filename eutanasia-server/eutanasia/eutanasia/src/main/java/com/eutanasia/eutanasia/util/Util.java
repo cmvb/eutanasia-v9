@@ -9,7 +9,10 @@ import java.util.regex.Matcher;
 import org.apache.commons.lang3.StringUtils;
 
 import com.eutanasia.eutanasia.dto.ArchivoDTO;
+import com.eutanasia.eutanasia.dto.RequestSendEMailDTO;
 import com.eutanasia.eutanasia.model.ComentarioTB;
+import com.eutanasia.eutanasia.model.MeGustaTB;
+import com.eutanasia.eutanasia.model.PostTB;
 import com.eutanasia.eutanasia.model.UsuarioAutorTB;
 
 public abstract class Util {
@@ -29,7 +32,6 @@ public abstract class Util {
 
 	public static List<String> validaDatos(String tabla, Object entidadTB) {
 		List<String> errores = new ArrayList<>();
-		// TODO CREAR VALIDACIONES FALTANTES
 		if (!StringUtils.isBlank(tabla)) {
 			switch (tabla) {
 			case ConstantesTablasNombre.MRA_TOQUE_TB:
@@ -38,6 +40,10 @@ public abstract class Util {
 				errores = validarComentario((ComentarioTB) entidadTB);
 				break;
 			case ConstantesTablasNombre.MRA_POST_TB:
+				errores = validarPost((PostTB) entidadTB);
+				break;
+			case ConstantesTablasNombre.MRA_ME_GUSTA_TB:
+				errores = validarMeGusta((MeGustaTB) entidadTB);
 				break;
 			case ConstantesTablasNombre.MRA_USUARIO_AUTOR_TB:
 				errores = validarUsuarioAutor((UsuarioAutorTB) entidadTB);
@@ -45,6 +51,50 @@ public abstract class Util {
 			}
 		} else {
 			errores.add(ConstantesValidaciones.TABLA_NO_ESTABLECIDA_VALIDACIONES);
+		}
+
+		return errores;
+	}
+
+	public static List<String> validarMeGusta(MeGustaTB meGustaTB) {
+		List<String> errores = new ArrayList<>();
+
+		if (meGustaTB.getCalificacion() <= 0) {
+			errores.add(ConstantesValidaciones.CALIFICACION_ME_GUSTA_ + ConstantesValidaciones.VALOR_INCORRECTO);
+		}
+		if (meGustaTB.getUsuarioAutorTB() == null) {
+			errores.add(ConstantesValidaciones.USUARIO_AUTOR_ME_GUSTA + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (meGustaTB.getPostTB() == null) {
+			errores.add(ConstantesValidaciones.POST_ME_GUSTA + ConstantesValidaciones.VALOR_VACIO);
+		}
+
+		return errores;
+	}
+
+	public static List<String> validarPost(PostTB postTB) {
+		List<String> errores = new ArrayList<>();
+
+		if (StringUtils.isBlank(postTB.getTitulo())) {
+			errores.add(ConstantesValidaciones.TITULO_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (StringUtils.isBlank(postTB.getSubtitulo())) {
+			errores.add(ConstantesValidaciones.SUBTITULO_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (StringUtils.isBlank(postTB.getArticulo())) {
+			errores.add(ConstantesValidaciones.ARTICULO_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (StringUtils.isBlank(postTB.getTags())) {
+			errores.add(ConstantesValidaciones.TAGS_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (StringUtils.isBlank(postTB.getUrlImagen())) {
+			errores.add(ConstantesValidaciones.IMAGEN_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (postTB.getCategoria() <= 0) {
+			errores.add(ConstantesValidaciones.CATEGORIA_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
+		if (postTB.getUsuarioAutorTB() == null) {
+			errores.add(ConstantesValidaciones.USUARIO_AUTOR_POST + ConstantesValidaciones.VALOR_VACIO);
 		}
 
 		return errores;
@@ -81,6 +131,9 @@ public abstract class Util {
 		if (StringUtils.isBlank(usuarioAutorTB.getUsuario())) {
 			errores.add(ConstantesValidaciones.USUARIO + ConstantesValidaciones.VALOR_VACIO);
 		}
+		if (usuarioAutorTB.getGenero() <= 0) {
+			errores.add(ConstantesValidaciones.GENERO_POST + ConstantesValidaciones.VALOR_VACIO);
+		}
 		if (StringUtils.isBlank(usuarioAutorTB.getCorreo())) {
 			errores.add(ConstantesValidaciones.CORREO_USUARIO + ConstantesValidaciones.VALOR_VACIO);
 		} else if (!Util.esCorreoValido(usuarioAutorTB.getCorreo())) {
@@ -113,6 +166,33 @@ public abstract class Util {
 			}
 			if (StringUtils.isBlank(archivoDto.getRutaArchivo())) {
 				errores.add(ConstantesValidaciones.RUTA_ARCHIVO + ConstantesValidaciones.VALOR_VACIO);
+			}
+		} else {
+			errores.add(ConstantesValidaciones.VALOR_NULL_OBJETO);
+		}
+
+		return errores;
+	}
+
+	public static List<String> validarMail(RequestSendEMailDTO mailDto) {
+		List<String> errores = new ArrayList<>();
+
+		if (mailDto != null) {
+			if (StringUtils.isBlank(mailDto.getAsunto())) {
+				errores.add(ConstantesValidaciones.ASUNTO_MAIL + ConstantesValidaciones.VALOR_VACIO);
+			}
+			if (StringUtils.isBlank(mailDto.getDesde())) {
+				errores.add(ConstantesValidaciones.REMITE_MAIL + ConstantesValidaciones.VALOR_VACIO);
+			}
+			if (mailDto.getPara() == null || mailDto.getPara().isEmpty()) {
+				errores.add(ConstantesValidaciones.DESTINATARIOS_MAIL + ConstantesValidaciones.VALOR_VACIO);
+			} else {
+				for (String correoDestino : mailDto.getPara()) {
+					if (!Util.esCorreoValido(correoDestino)) {
+						errores.add(
+								ConstantesValidaciones.CORREO_DESTINO_MAIL + ConstantesValidaciones.VALOR_INCORRECTO);
+					}
+				}
 			}
 		} else {
 			errores.add(ConstantesValidaciones.VALOR_NULL_OBJETO);

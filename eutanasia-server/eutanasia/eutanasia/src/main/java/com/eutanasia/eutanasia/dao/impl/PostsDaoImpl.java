@@ -1,5 +1,6 @@
 package com.eutanasia.eutanasia.dao.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang3.StringUtils;
@@ -41,6 +43,26 @@ public class PostsDaoImpl extends AbstractDao<PostTB> implements IPostsDao {
 		return query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PostTB> consultarPostsPopulares() {
+		List<PostTB> result = new ArrayList<>();
+
+		// PARAMETROS
+		Map<String, Object> pamameters = new HashMap<>();
+		// QUERY
+		StringBuilder SQL = new StringBuilder(
+				"SELECT post.* from eutanasia.eu_post_tb post LEFT JOIN eutanasia.eu_me_gusta_tb emgt ON emgt.epo_id = post.epo_id GROUP BY post.epo_id, emgt.epo_id ORDER BY COUNT(emgt.epo_id) DESC");
+		// END QUERY
+
+		Query query = em.createNativeQuery(SQL.toString(), PostTB.class);
+		pamameters.forEach((k, v) -> query.setParameter(k, v));
+
+		result = query.getResultList();
+
+		return result;
+	}
+
 	@Override
 	public List<PostTB> consultarPostsPorFiltros(PostTB filtroPost) {
 		// PARAMETROS
@@ -62,6 +84,11 @@ public class PostsDaoImpl extends AbstractDao<PostTB> implements IPostsDao {
 		if (!StringUtils.isBlank(filtroPost.getTitulo())) {
 			JPQL.append(" AND UPPER(t.titulo) LIKE :TITULO_POST ");
 			pamameters.put("TITULO_POST", ConstantesValidaciones.COMODIN_BD + filtroPost.getTitulo().toUpperCase()
+					+ ConstantesValidaciones.COMODIN_BD);
+		}
+		if (!StringUtils.isBlank(filtroPost.getSubtitulo())) {
+			JPQL.append(" AND UPPER(t.titulo) LIKE :SUBTITULO_POST ");
+			pamameters.put("SUBTITULO_POST", ConstantesValidaciones.COMODIN_BD + filtroPost.getSubtitulo().toUpperCase()
 					+ ConstantesValidaciones.COMODIN_BD);
 		}
 		if (filtroPost.getCategoria() > 0) {

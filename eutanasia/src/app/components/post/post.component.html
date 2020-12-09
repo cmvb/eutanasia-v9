@@ -1,213 +1,185 @@
 <p-scrollPanel #scrollBlog [style]="{width: '100%', height: '100vh'}" styleClass="custom">
 
     <!-- Header -->
-    <header style="background-image: url('assets/images/banner.jpg');">
-        <!-- Nav -->
-        <nav id="nav" class="navbar nav-transparent">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- Logo -->
-                    <div class="navbar-brand">
-                        <a href="index.html">
-                            <img class="logo" src="assets/images/logo.png" alt="logo">
-                            <img class="logo-alt" src="assets/images/logo.png" alt="logo">
-                        </a>
-                    </div>
-                    <!-- /Logo -->
-                    <!-- Collapse nav button -->
-                    <div (click)="mostrarOcultarMenuPost()" class="nav-collapse textHoverRed menu">
-                        <i class="list--buttons pi pi-ellipsis-v font-20px"></i>
-                    </div>
-                    <!-- /Collapse nav button -->
-                </div>
-
-                <!--  Main navigation  -->
-                <ul class="main-nav nav navbar-nav navbar-right">
-                    <li class="has-dropdown"><a>{{sesionService.msg.lbl_idioma}}</a>
-                        <ul class="dropdown" style="width: 50px;">
-                            <li>
-                                <a (click)="sesionService.cambiarIdioma(0)">
-                                    <img class="w100 cursorPointer" src="assets/images/idiomaEspanol.png"
-                                        style="height: 20px;" />
-                                </a>
-                            </li>
-                            <li>
-                                <a (click)="sesionService.cambiarIdioma(1)">
-                                    <img class="w100 cursorPointer" src="assets/images/idiomaIngles.png"
-                                        style="height: 20px;" />
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="#home">{{sesionService.msg.lbl_inicio}}</a></li>
-                    <li><a (click)="redirigirBlogsPost()">{{sesionService.msg.lbl_blog}}</a></li>
-                    <li *ngIf="esUsuarioLogueadoActivoPost()" class="has-dropdown displayFlex">
-                        <img class="imagePerfil" src="assets/images/emailTemplate/man1.png" />
-                        <a>{{postTB.usuarioAutorTB.usuario}}</a>
-                        <ul class="dropdown">
-                            <li><a (click)="cerrarSesionPost()">{{sesionService.msg.lbl_tip_cerrar_sesion}}</a></li>
-                            <li><a (click)="abrirModalUpdateUserPost()">{{sesionService.msg.lbl_actualizar_usuario}}</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <!-- /Main navigation -->
-
-                <!-- Modals UpdateUser -->
-
-                <!-- /Modals UpdateUser -->
-            </div>
-        </nav>
-        <!-- /Nav -->
-
-        <!-- header wrapper -->
-        <div class="header-wrapper sm-padding fondoBanner">
-            <div class="container">
-                <h2></h2>
-            </div>
-        </div>
-        <div *ngIf="postTB !== undefined && postTB !== null" class="header-wrapper sm-padding bg-grey">
-            <div class="container">
-                <h2>{{postTB.titulo}}</h2>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">{{sesionService.msg.lbl_blog}}</a></li>
-                    <li class="breadcrumb-item"><a href="index.html#blog">{{sesionService.msg.lbl_posts}}</a></li>
-                    <li class="breadcrumb-item active">{{postTB.titulo}}</li>
-                </ul>
-            </div>
-        </div>
-        <!-- /header wrapper -->
-
-        <!-- Menú Responsive -->
-        <div id="accordian" *ngIf="showMenuMovil">
-            <ul style="background-color:#ffffffd9">
-                <li>
-                    <ul>
-                        <li><a href="#home"><i
-                                    class="pi pi-home font-12px iconMovilPad"></i>{{sesionService.msg.lbl_inicio}}</a>
-                        </li>
-                        <li><a href="#about"><i
-                                    class="pi pi-info-circle font-12px iconMovilPad"></i>{{sesionService.msg.lbl_bio}}</a>
-                        </li>
-                        <li><a href="#team"><i
-                                    class="pi pi-star font-12px iconMovilPad"></i>{{sesionService.msg.lbl_banda}}</a>
-                        </li>
-                        <li><a href="#portfolio"><i
-                                    class="pi pi-images font-12px iconMovilPad"></i>{{sesionService.msg.lbl_galeria_media}}</a>
-                        </li>
-                        <li><a href="#service"><i
-                                    class="pi pi-sliders-v font-12px iconMovilPad"></i>{{sesionService.msg.lbl_participaciones}}</a>
-                        </li>
-                        <li><a href="#pricing"><i
-                                    class="pi pi-share-alt font-12px iconMovilPad"></i>{{sesionService.msg.lbl_comparte}}</a>
-                        </li>
-                        <li>
-                            <a href="#publicaciones">
-                                <i class="pi pi-clone font-12px iconMovilPad"></i>
-                                {{sesionService.msg.lbl_ultimas_publicaciones}}
-                            </a>
-                        </li>
-                        <li>
-                            <a (click)="redirigirBlogsPost()">
-                                <i class="pi pi-comments font-12px iconMovilPad"></i>
-                                {{sesionService.msg.lbl_blog}}
-                            </a>
-                        </li>
-                        <li *ngIf="esUsuarioLogueadoActivoPost()">
-                            <a>
-                                <i class="pi pi-users font-12px iconMovilPad"></i>
-                                {{postTB.usuarioAutorTB.usuario}}
-                            </a>
-                        </li>
-                        <li *ngIf="esUsuarioLogueadoActivoPost()">
-                            <a (click)="abrirModalUpdateUserPost()">
-                                <i class="pi pi-user-edit font-12px iconMovilPad"></i>
-                                {{sesionService.msg.lbl_actualizar_usuario}}
-                            </a>
-                        </li>
-                        <li *ngIf="esUsuarioLogueadoActivoPost()">
-                            <a (click)="cerrarSesionPost()">
-                                <i class="pi pi-power-off font-12px iconMovilPad"></i>
-                                {{sesionService.msg.lbl_tip_cerrar_sesion}}
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- /Menú Responsive -->
-    </header>
+    <app-header-o></app-header-o>
     <!-- /Header -->
 
     <!-- Notificaciones -->
     <p-toast></p-toast>
 
-    <!-- Post -->
-    <div id="post" class="section md-padding" *ngIf="postTB !== undefined">
-        <!-- Container -->
-        <div class="container">
-            <!-- Row -->
-            <div class="row">
-                <!-- ASIDE -->
-                <app-aside></app-aside>
-                <!-- ASIDE -->
+    <p-tabView styleClass="tabview-custom container" [(activeIndex)]="activeIndex">
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <i class="pi pi-search" style="padding: 5px;"></i>
+                <span>{{sesionService.msg.lbl_btn_consultar}}
+                    -
+                    {{sesionService.msg.lbl_mtto_post}}</span>
+            </ng-template>
 
-                <!-- Main -->
-                <main id="main" class="col-md-9">
-                    <div class="blog">
-                        <div class="blog-img">
-                            <img class="img-responsive" [src]="postTB.urlImagen" alt="">
-                        </div>
-                        <div class="blog-content">
-                            <ul class="blog-meta">
-                                <li><i class="fa fa-user"></i>{{postTB.usuarioAutorTB.nombres}}
-                                    {{postTB.usuarioAutorTB.apellidos}}</li>
-                                <li><i class="fa fa-comments"></i>{{postTB.cantidadComentarios}}</li>
-                            </ul>
-
-                            <h3>{{postTB.titulo}}</h3>
-                            <h5>{{postTB.subtitulo}}</h5>
-                            <p>{{postTB.articulo}}</p>
-                        </div>
-
-                        <!-- reply form -->
-                        <div class="reply-form">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                                    <input class="input" type="text" pInputText [(ngModel)]="postTB.titulo"
-                                        placeholder="{{sesionService.msg.lbl_header_usuario}}" />
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                                    <input class="input" type="password" pInputText [(ngModel)]="postTB.subtitulo"
-                                        placeholder="{{sesionService.msg.lbl_header_clave}}" />
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                                    <textarea pInputTextarea [(ngModel)]="postTB.articulo" size="1000"
-                                        placeholder="{{sesionService.msg.lbl_mensaje_agrega_comentario}}"></textarea>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                                    <p-button label="{{sesionService.msg.lbl_btn_ingresar}}" icon="pi pi-key"
-                                        styleClass="main-btn font-20px">
-                                    </p-button>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                                    <p-messages></p-messages>
+            <!-- SELECT Post -->
+            <div id="consultaPost" class="section">
+                <!-- Container -->
+                <div class="containerBorder">
+                    <!-- Row -->
+                    <div class="row">
+                        <!-- Main -->
+                        <main id="main" class="col-md-12 mdl-grid">
+                            <div class="blog w100">
+                                <div class="blog-img">
+                                    <div class="card">
+                                        <h5 class="font-40px">{{sesionService.msg.lbl_btn_consultar}} -
+                                            {{sesionService.msg.lbl_mtto_post}}</h5>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label>{{sesionService.msg.lbl_mtto_post_titulo}}</label>
+                                                <input type="text" pInputText [(ngModel)]="postFiltroTB.titulo">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label>{{sesionService.msg.lbl_mtto_post_subtitulo}}</label>
+                                                <input type="text" pInputText [(ngModel)]="postFiltroTB.subtitulo">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-
-                        </div>
-                        <!-- /reply form -->
+                            <div
+                                class="noMargin mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
+                                <div class="section-header text-center">
+                                    <p-button label="{{sesionService.msg.lbl_btn_consultar}}" (click)="cargarPost()"
+                                        icon="pi pi-search" styleClass="main-btn font-20px">
+                                    </p-button>
+                                    <p-button label="{{sesionService.msg.lbl_btn_nuevo}}" (click)="irCrear()"
+                                        icon="pi pi-plus" styleClass="main-btn font-20px">
+                                    </p-button>
+                                </div>
+                            </div>
+                            <div
+                                class="noMargin mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
+                                <app-consulta [cabeceras]="listaCabeceras" [lista]="listPostTB" [btnEditar]="true"
+                                    (enviarObjetoEditar)="editar($event)">
+                                </app-consulta>
+                            </div>
+                        </main>
                     </div>
-                </main>
-                <!-- /Main -->
+                </div>
             </div>
-            <!-- /Row -->
-        </div>
-        <!-- /Container -->
-    </div>
-    <!-- /Post -->
+            <!-- /SELECT Post -->
+        </p-tabPanel>
+        <p-tabPanel [disabled]="onlyConsulta">
+            <ng-template pTemplate="header">
+                <i class="{{crearPost ? 'pi pi-plus' : 'pi pi-pencil'}}" style="padding: 5px;"></i>
+                <span>{{crearPost ? sesionService.msg.lbl_btn_crear : sesionService.msg.lbl_btn_actualizar}}
+                    -
+                    {{sesionService.msg.lbl_mtto_post}}</span>
+            </ng-template>
+
+            <!-- CREATE/EDIT Post -->
+            <div id="gestionPost" class="section" *ngIf="postTB !== undefined && postTB !== null">
+                <!-- Container -->
+                <div class="containerBorder">
+                    <!-- Row -->
+                    <div class="row">
+                        <!-- Main -->
+                        <main id="main" class="col-md-12">
+                            <div class="blog">
+                                <div class="blog-img">
+                                    <div class="card">
+                                        <h5 class="font-40px">
+                                            {{crearPost ? sesionService.msg.lbl_btn_crear : sesionService.msg.lbl_btn_actualizar}}
+                                            -
+                                            {{sesionService.msg.lbl_mtto_post}}</h5>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                                                <div *ngIf="!mostrarImagenPost" class="choose-files"
+                                                    (click)="startUpload()">
+                                                    <i class="pi pi-plus-circle font-40px"></i>
+                                                </div>
+                                                <div *ngIf="mostrarImagenPost" class="choose-files no-padding">
+                                                    <img *ngIf="srcImagenPost !== undefined && srcImagenPost !== null"
+                                                        class="w100"
+                                                        [src]="crearPost ? srcImagenPost : obtenerArchivoSanitizadoDeMapa(postTB.urlImagen)"
+                                                        style="height: 196px;" />
+                                                    <i class="pi pi-times font-20px cerrarImagen"
+                                                        (click)="limpiarAdjuntos($event)"></i>
+                                                </div>
+                                                <p-fileUpload #fileInputPost mode="basic" name="archivosTemporales[]"
+                                                    customUpload="true" (uploadHandler)="handlerUpload($event)"
+                                                    accept="image/*" maxFileSize="10000000"
+                                                    (onClear)="limpiarAdjuntos($event)"
+                                                    chooseLabel="{{sesionService.msg.lbl_btn_escoger_archivo}}"
+                                                    uploadLabel="{{sesionService.msg.lbl_btn_subir_archivos}}"
+                                                    cancelLabel="{{sesionService.msg.lbl_btn_cancelar}}"
+                                                    invalidFileSizeMessageSummary="{{sesionService.msg.lbl_summary_danger}}"
+                                                    invalidFileSizeMessageDetail="{{sesionService.msg.lbl_mensaje_file_detail_size}}"
+                                                    invalidFileTypeMessageSummary="{{sesionService.msg.lbl_summary_danger}}"
+                                                    invalidFileTypeMessageDetail="{{sesionService.msg.lbl_mensaje_file_detail_type}}">
+                                                </p-fileUpload>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label>{{sesionService.msg.lbl_mtto_post_titulo}}</label>
+                                                <input type="text" pInputText [(ngModel)]="postTB.titulo">
+
+                                                <label>{{sesionService.msg.lbl_mtto_post_articulo}}</label>
+                                                <textarea type="text" rows="10" pInputTextarea
+                                                    [(ngModel)]="postTB.articulo"></textarea>
+
+                                                <ul class="blog-meta">
+                                                    <li><i class="fa fa-user"></i>{{postTB.usuarioAutorTB.nombres}}
+                                                        {{postTB.usuarioAutorTB.apellidos}}</li>
+                                                    <li><i class="fa fa-comments"></i>{{postTB.cantidadComentarios}}
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label>{{sesionService.msg.lbl_mtto_post_subtitulo}}</label>
+                                                <input type="text" pInputText [(ngModel)]="postTB.subtitulo">
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                <label>{{sesionService.msg.lbl_mtto_post_tags}}</label>
+                                                <p-chips [(ngModel)]="tagsEdicion" separator=";"></p-chips>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                <label>{{sesionService.msg.lbl_mtto_post_categoria}}</label>
+                                                <div class="bgReg">
+                                                    <ng-select
+                                                        notFoundText="{{sesionService.msg.lbl_mensaje_no_info_select}}"
+                                                        [(ngModel)]="postTB.categoria" [items]="enumCategoria">
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <div
+                                        class="noMargin mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
+                                        <div class="section-header text-center">
+                                            <p-button
+                                                label="{{crearPost ? sesionService.msg.lbl_btn_crear : sesionService.msg.lbl_btn_actualizar}}"
+                                                (click)="crearActualizarPost(crearPost)"
+                                                icon="{{crearPost ? 'pi pi-plus' : 'pi pi-pencil'}}"
+                                                styleClass="main-btn font-20px">
+                                            </p-button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="noMargin mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
+                                        <p-messages></p-messages>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                        <!-- /Main -->
+                    </div>
+                    <!-- /Row -->
+                </div>
+                <!-- /Container -->
+            </div>
+            <!-- /CREATE/EDIT Post -->
+        </p-tabPanel>
+    </p-tabView>
 
     <!-- FOOTER -->
     <app-footer></app-footer>

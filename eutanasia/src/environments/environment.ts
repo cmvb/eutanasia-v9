@@ -3,15 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  firebase: {
-    apiKey: 'AIzaSyBT1Nwm2dWmt5fOp6ZH5lfmPBO3KUi-ThY',
-    authDomain: 'authsocialcb.firebaseapp.com',
-    databaseURL: 'https://authsocialcb-default-rtdb.firebaseio.com/',
-    projectId: 'authsocialcb',
-    storageBucket: 'authsocialcb.appspot.com',
-    messagingSenderId: '340006867788'
-  }
+  production: false
 };
 
 /*

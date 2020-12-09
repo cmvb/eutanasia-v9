@@ -50,6 +50,7 @@ export class AsideComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.clear();
     this.listaPostsPopulares = [];
     this.postFiltro = this.objectModelInitializer.getDataPostModel();
     this.cargarContadoresCategorias();
@@ -88,7 +89,7 @@ export class AsideComponent implements OnInit {
       this.restService.postREST(this.const.urlConsultarPostsPorFiltros, this.postFiltro)
         .subscribe(resp => {
           this.eutanasiaService.listaPost = JSON.parse(JSON.stringify(resp));
-          this.router.navigate(['publicaciones']);
+          this.router.navigate(['timeline']);
         },
           error => {
             console.log(error, "error");
@@ -100,8 +101,7 @@ export class AsideComponent implements OnInit {
 
   buscarPostsMasPopulares() {
     try {
-      let obj = this.objectModelInitializer.getDataPostModel();
-      this.restService.postREST(this.const.urlConsultarPostsPorFiltros, obj)
+      this.restService.getREST(this.const.urlConsultarPostsPopulares)
         .subscribe(resp => {
           let listaTemporal = JSON.parse(JSON.stringify(resp));
           if (listaTemporal !== undefined && listaTemporal !== null) {
@@ -114,6 +114,24 @@ export class AsideComponent implements OnInit {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  obtenerArchivoSanitizadoDeMapa(llaveRuta) {
+    let srcResponse = null;
+    if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
+      let archivo = this.sesionService.mapaArchivosUser.get(llaveRuta);
+      if (archivo !== undefined && archivo !== null) {
+        let tipoArchivo = archivo.nombreArchivo.split(".")[1];
+        if (tipoArchivo === 'svg') {
+          srcResponse = this.sanitization.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + archivo.archivo);
+        } else {
+          tipoArchivo = tipoArchivo + ';base64,';
+          srcResponse = 'data:image/' + tipoArchivo + archivo.archivo;
+        }
+      }
+    }
+
+    return srcResponse;
   }
 
   cargarTags() {

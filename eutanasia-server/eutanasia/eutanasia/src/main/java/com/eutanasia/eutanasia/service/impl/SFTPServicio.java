@@ -37,23 +37,27 @@ public class SFTPServicio implements ISFTPServicio {
 	private static final String SEPARADOR = "/";
 
 	@Override
-	public boolean conectarServidor(String Servidor, int puerto, String usuario, String clave) {
+	public boolean conectarServidor(String servidor, int puerto, String usuario, String clave) throws JSchException {
 		boolean resultado = false;
 		try {
 			this.config = new Properties();
 			this.jsch = new JSch();
-			this.session = this.jsch.getSession(usuario, Servidor, puerto);
-			this.session.setPassword(clave);
-			this.config.put("StrictHostKeyChecking", "no");
-			JSch.setConfig(config);
-			this.session.connect();
-			this.channelSftp = (ChannelSftp) this.session.openChannel("sftp");
-			this.channelSftp.connect();
-			if (this.channelSftp != null) {
-				resultado = true;
+			this.session = this.jsch.getSession(usuario, servidor, puerto);
+			if (!this.session.isConnected()) {
+				this.session.setPassword(clave);
+				this.session.connect();
+				this.config.put("StrictHostKeyChecking", "no");
+				JSch.setConfig(config);
+				this.channelSftp = (ChannelSftp) this.session.openChannel("sftp");
+				this.channelSftp.connect();
+				if (this.channelSftp != null) {
+					resultado = true;
+				}
 			}
 		} catch (JSchException e) {
-			System.out.println(e.getMessage());
+			if (this.session != null) {
+				this.session.disconnect();
+			}
 		}
 
 		return resultado;
@@ -63,11 +67,14 @@ public class SFTPServicio implements ISFTPServicio {
 	public void cerrarConexion() {
 		if (this.channelSftp != null) {
 			this.channelSftp.disconnect();
-			this.session.disconnect();
-			this.channelSftp = null;
-			this.session = null;
-			this.jsch = null;
+			this.channelSftp.exit();
 		}
+		if (this.session != null) {
+			this.session.disconnect();
+		}
+		this.channelSftp = null;
+		this.session = null;
+		this.jsch = null;
 	}
 
 	@Override
@@ -215,6 +222,7 @@ public class SFTPServicio implements ISFTPServicio {
 						if (!nombreFile.equalsIgnoreCase(".") && !nombreFile.equalsIgnoreCase("..")) {
 							InputStream resultado = this.channelSftp.get(rutaSFTP + nombreFile);
 							byte[] bytes = IOUtils.toByteArray(resultado);
+							resultado.close();
 
 							ArchivoDTO archivoDTO = new ArchivoDTO();
 							archivoDTO.setArchivo(bytes);

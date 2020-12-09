@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.eutanasia.eutanasia.dto.MailDTO;
 import com.eutanasia.eutanasia.enums.EEstado;
+import com.eutanasia.eutanasia.enums.EGenero;
 import com.eutanasia.eutanasia.exception.ModelNotFoundException;
 import com.eutanasia.eutanasia.model.UsuarioAutorTB;
 import com.eutanasia.eutanasia.service.IEutanasiaService;
@@ -265,6 +266,9 @@ public class ControladorRestUsuarios {
 					model.put("user", newUsuario.getUsuario());
 					model.put("nombreCompleto", newUsuario.getNombres() + " " + newUsuario.getApellidos());
 					model.put("email", newUsuario.getCorreo());
+					model.put("imageUser", newUsuario.getGenero() == EGenero.FEMENINO.ordinal()
+							? "https://raw.githubusercontent.com/cmvb/eutanasia-v9/master/eutanasia/src/assets/images/emailTemplate/woman1.png"
+							: "https://raw.githubusercontent.com/cmvb/eutanasia-v9/master/eutanasia/src/assets/images/emailTemplate/man1.png");
 					String urlRuta = URL_VERIFICAR_CUENTA_NUEVA
 							+ Util.encriptarPassword(newUsuario.getUsuario() + "|" + newUsuario.getPassword());
 					try {
@@ -278,12 +282,13 @@ public class ControladorRestUsuarios {
 				}
 			} else {
 				StringBuilder mensajeErrores = new StringBuilder();
+				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
 
 				for (String error : errores) {
 					mensajeErrores.append(error + "|");
 				}
 
-				throw new ModelNotFoundException(mensajeErrores.toString());
+				throw new ModelNotFoundException(erroresTitle + mensajeErrores);
 			}
 
 			return new ResponseEntity<UsuarioAutorTB>(newUsuario, HttpStatus.OK);
@@ -328,7 +333,7 @@ public class ControladorRestUsuarios {
 				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
 
 				for (String error : errores) {
-					mensajeErrores.append(error);
+					mensajeErrores.append(error + "|");
 				}
 
 				throw new ModelNotFoundException(erroresTitle + mensajeErrores);

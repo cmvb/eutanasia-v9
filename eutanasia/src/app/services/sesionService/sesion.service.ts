@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { ObjectModelInitializer } from 'src/app/config/ObjectModelInitializer';
 import { TextProperties } from 'src/app/config/TextProperties';
+import { Util } from 'src/app/config/Util';
+import { ArchivoModel } from 'src/app/model/archivo-model';
 import { ObjServiceSessionDTOModel } from 'src/app/model/dto/objServiceSession-dto';
+import { RestService } from '../rest.service';
 
 declare var $: any;
 
@@ -12,8 +16,11 @@ export class SesionService {
   // Fases
   objServiceSesion: ObjServiceSessionDTOModel;
   msg: any;
+  mapaArchivosUser: any;
+  const: any;
 
-  constructor(public textProperties: TextProperties, public objectModelInitializer: ObjectModelInitializer) {
+  constructor(public textProperties: TextProperties, private messageService: MessageService, public objectModelInitializer: ObjectModelInitializer, public restService: RestService) {
+    this.const = this.objectModelInitializer.getConst();
     this.inicializar();
     if (!this.existeSession()) {
       this.tomarSessionDeStorage();
@@ -21,6 +28,8 @@ export class SesionService {
   }
 
   inicializar() {
+    this.mapaArchivosUser = new Map();
+    this.obtenerArchivos();
     this.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
     this.objServiceSesion.phase = undefined;
     this.objServiceSesion.usuarioSesion = undefined;
@@ -86,4 +95,62 @@ export class SesionService {
 
     return resultTienePermisos;
   }
+
+  obtenerArchivos() {
+    try {
+      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
+      archivo.rutaArchivo = this.const.urlSFTPArchivosUser;
+      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
+        .subscribe(resp => {
+          this.mapaArchivosUser = new Map();
+          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
+          if (listaTemporal !== undefined && listaTemporal !== null) {
+            listaTemporal.forEach(archivo => {
+              if (!this.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
+                this.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
+              }
+            });
+          }
+        },
+          error => {
+            let listaMensajes = this.construirMensajeExcepcion(error.error, this.msg.lbl_summary_danger);
+            this.messageService.clear();
+            listaMensajes.forEach(mensaje => {
+              this.messageService.add(mensaje);
+            });
+
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  construirMensajeExcepcion(error, summary) {
+    let listaMensajes = [];
+
+    if (error !== undefined && error !== null && error.mensaje !== undefined && error.mensaje !== null) {
+      // Extraemos por el split de mensajes |
+      let listaErrores = error.mensaje.split('|');
+      listaErrores.forEach(errorMSG => {
+        let mensaje = { severity: '', summary: '', detail: '' };
+        Object.assign(this.objectModelInitializer.getDataMessage(), mensaje);
+        mensaje.severity = this.const.severity[3];
+        mensaje.summary = summary;
+        mensaje.detail = errorMSG;
+        if (errorMSG.length > 0) {
+          listaMensajes.push(mensaje);
+        }
+      });
+    } else {
+      let mensaje = { severity: '', summary: '', detail: '' };
+      mensaje.severity = this.const.severity[3];
+      mensaje.summary = summary;
+      mensaje.detail = this.msg.lbl_mensaje_sin_detalles_error;
+      listaMensajes.push(mensaje);
+    }
+
+    return listaMensajes;
+  }
+
 }

@@ -183,14 +183,38 @@
                             <p-calendar placeholder="{{sesionService.msg.lbl_header_fecha_nacimiento}}"
                                 [(ngModel)]="usuarioAutorTBRegister.fechaNacimiento"></p-calendar>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 padding-form-login">
+                            <div class="bgReg">
+                                <ng-select notFoundText="{{sesionService.msg.lbl_mensaje_no_info_select}}"
+                                    [(ngModel)]="usuarioAutorTBRegister.genero" [items]="enumGenero">
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 padding-form-login">
                             <input class="input" type="password" pInputText
                                 [(ngModel)]="usuarioAutorTBRegister.password"
                                 placeholder="{{sesionService.msg.lbl_header_clave}}">
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 padding-form-login">
                             <input class="input" type="password" pInputText [(ngModel)]="repeatPassword"
                                 placeholder="{{sesionService.msg.lbl_header_repetir_clave}}">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBRegister.linkFbook"
+                                placeholder="{{sesionService.msg.lbl_link_f}}">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="text" pInputText
+                                [(ngModel)]="usuarioAutorTBRegister.linkInstagram"
+                                placeholder="{{sesionService.msg.lbl_link_i}}">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBRegister.linkGoogle"
+                                placeholder="{{sesionService.msg.lbl_link_g}}">
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+                            <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBRegister.linkTwitter"
+                                placeholder="{{sesionService.msg.lbl_link_t}}">
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
                             <p-button
