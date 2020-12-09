@@ -14,8 +14,9 @@ import { ToqueModel } from 'src/app/model/toque-model';
 import { PostModel } from 'src/app/model/post-model';
 import { EutanasiaService } from 'src/app/services/eutanasiaService/eutanasia.service';
 import { UsuarioAutorModel } from 'src/app/model/usuarioAutor-model';
-import { ArchivoModel } from 'src/app/model/archivo-model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ResponseEMailDTOModel } from 'src/app/model/dto/responseEmail-dto';
+import { RequestEMailDTOModel } from 'src/app/model/dto/requestEmail-dto';
 
 declare var $: any;
 
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit {
   listaPosts: PostModel[];
   disModLisReprod: boolean;
   listadoPostsCompleto: any;
+  disModContacto: boolean;
 
   // Carousels
   customOptions: OwlOptions = {
@@ -53,10 +55,10 @@ export class HomeComponent implements OnInit {
         items: 1
       },
       740: {
-        items: 3
+        items: 2
       },
       940: {
-        items: 4
+        items: 2
       }
     },
     nav: true
@@ -95,6 +97,13 @@ export class HomeComponent implements OnInit {
   subscribeSong: any;
   mapaAudios: any;
 
+  // Mail
+  mailDTO: RequestEMailDTOModel;
+  mailResponseDTO: ResponseEMailDTOModel;
+  remite: any;
+  mensaje: any;
+  emailRemite: any;
+
   // Utilidades
   const: any;
   enums: any;
@@ -107,10 +116,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     console.clear();
-    if (this.sesionService.mapaArchivosUser === undefined || this.sesionService.mapaArchivosUser === null || this.sesionService.mapaArchivosUser.size === 0) {
-      this.sesionService.mapaArchivosUser = new Map();
-      this.obtenerArchivos();
-    }
+    this.disModContacto = false;
+    this.mailDTO = this.objectModelInitializer.getDataRequestEmailDtoModel();
     this.mapaAudios = new Map();
     this.llenarListaCanciones();
     this.disModLisReprod = false;
@@ -375,7 +382,7 @@ export class HomeComponent implements OnInit {
   verPost(post: PostModel) {
     if (this.esUsuarioLogueadoActivoHome()) {
       this.eutanasiaService.post = post;
-      
+
       this.router.navigate(['blog/' + post.id]);
     } else {
       this.messageService.clear();
@@ -408,36 +415,6 @@ export class HomeComponent implements OnInit {
     $('#' + id)[0].click();
   }
 
-  obtenerArchivos() {
-    try {
-      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
-      archivo.rutaArchivo = '/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/';
-      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
-        .subscribe(resp => {
-          this.sesionService.mapaArchivosUser = new Map();
-          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
-          if (listaTemporal !== undefined && listaTemporal !== null) {
-            listaTemporal.forEach(archivo => {
-              if (!this.sesionService.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
-                this.sesionService.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
-              }
-            });
-          }
-        },
-          error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
-
-            console.log(error, "error");
-          })
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   obtenerArchivoSanitizadoDeMapa(llaveRuta) {
     let srcResponse = null;
     if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
@@ -454,6 +431,71 @@ export class HomeComponent implements OnInit {
     }
 
     return srcResponse;
+  }
+
+  limpiarModales(event) {
+    this.disModContacto = false;
+  }
+
+  abrirModalEnviarEmail() {
+    this.disModContacto = true;
+  }
+
+  enviarEmail() {
+    try {
+      let flagError = false;
+      if (this.emailRemite === undefined || this.emailRemite === null || this.emailRemite === '') {
+        flagError = true;
+        this.messageService.clear();
+        this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mtto_email_correo_remite + ": " + this.sesionService.msg.lbl_mensaje_vacio });
+      } else if (!this.util.validarEstructuraEmail(this.emailRemite)) {
+        flagError = true;
+        this.messageService.clear();
+        this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mtto_email_correo_remite + ": " + this.sesionService.msg.lbl_mensaje_incorrecto });
+      }
+      if (this.remite === undefined || this.remite === null || this.remite === '') {
+        flagError = true;
+        this.messageService.clear();
+        this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mtto_email_nombre_remite + ": " + this.sesionService.msg.lbl_mensaje_vacio });
+      }
+      if (this.mensaje === undefined || this.mensaje === null || this.mensaje === '') {
+        flagError = true;
+        this.messageService.clear();
+        this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mtto_email_mensaje + ": " + this.sesionService.msg.lbl_mensaje_vacio });
+      }
+
+      if (!flagError) {
+        // Conversiones de datos
+        this.mailDTO.desde = this.const.correoRemitenteServer;
+        this.mailDTO.para = [this.const.correoRemitente];
+        this.mailDTO.parametros = new Map();
+        this.mailDTO.parametros.set('asunto', this.mailDTO.asunto);
+        this.mailDTO.parametros.set('emailRemite', this.emailRemite);
+        this.mailDTO.parametros.set('remite', this.remite);
+        this.mailDTO.parametros.set('mensaje', this.mensaje);
+
+        this.restService.postREST(this.const.urlEnviarEmail, this.mailDTO)
+          .subscribe(resp => {
+            let respuesta: ResponseEMailDTOModel = JSON.parse(JSON.stringify(resp));
+            if (respuesta !== null) {
+              // Mostrar mensaje de envios de correos exitoso o no
+              this.messageService.clear();
+              this.messageService.add({ severity: respuesta.exitoso ? this.const.severity[1] : this.const.severity[3], summary: respuesta.exitoso ? this.sesionService.msg.lbl_summary_succes : this.sesionService.msg.lbl_summary_danger, detail: respuesta.mensaje });
+            }
+          },
+            error => {
+              let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
+              this.messageService.clear();
+              listaMensajes.forEach(mensaje => {
+                this.messageService.add(mensaje);
+              });
+
+              console.log(error, "error");
+            })
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
 
 }

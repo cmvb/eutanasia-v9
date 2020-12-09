@@ -39,31 +39,28 @@ export class HeaderOComponent implements OnInit {
   mostrarImagenRegister: boolean;
   srcImagenRegister: any;
   loginRestaurar: boolean;
-  mapaArchivosUser: any;
   esRegistro: boolean;
 
   // Utilidades
   const: any;
   locale: any;
   maxDate = new Date();
-  enums: any;
+  enumGenero: any[];
 
-  constructor(private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enumerados: Enumerados, public sesionService: SesionService, private messageService: MessageService, public eutanasiaService: EutanasiaService) {
+  constructor(private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enums: Enumerados, public sesionService: SesionService, private messageService: MessageService, public eutanasiaService: EutanasiaService) {
     this.sesion = this.objectModelInitializer.getDataServiceSesion();
     this.const = this.objectModelInitializer.getConst();
     this.locale = this.sesionService.objServiceSesion.idioma === this.objectModelInitializer.getConst().idiomaEs ? this.objectModelInitializer.getLocaleESForCalendar() : this.objectModelInitializer.getLocaleENForCalendar();
-    this.enums = enumerados.getEnumerados();
   }
 
   ngOnInit() {
     console.clear();
-    this.mapaArchivosUser = new Map();
-    this.obtenerArchivos();
+    this.cargarEnumerados();
     this.archivosTemporales = [];
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
     if (this.sesionService.existeSession()) {
       this.usuarioAutorTBLogin = this.sesionService.getUsuarioSesionActual();
-      
+
     } else {
       this.sesionService.tomarSessionDeStorage();
       this.usuarioAutorTBLogin = this.sesionService.getUsuarioSesionActual();
@@ -76,7 +73,11 @@ export class HeaderOComponent implements OnInit {
     }
   }
 
-  // Otras Funciones
+  // Otras Funciones  
+  cargarEnumerados() {
+    let enums = this.enums.getEnumerados();
+    this.enumGenero = enums.sexo.valores;
+  }
 
   posicionarArriba() {
     $('body,html').animate({
@@ -85,7 +86,7 @@ export class HeaderOComponent implements OnInit {
   }
 
   redirigirBlogsBlog() {
-    
+
     this.router.navigate(['timeline']);
   }
 
@@ -96,7 +97,7 @@ export class HeaderOComponent implements OnInit {
   esUsuarioLogueadoActivoBlog() {
     let result = false;
     let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
-    let valorEstadoActivo = this.util.getValorEnumerado(this.enums.estadoUsuario.valores, 1);
+    let valorEstadoActivo = this.util.getValorEnumerado(this.enums.getEnumerados().estadoUsuario.valores, 1);
     if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value) {
       result = true;
     }
@@ -109,7 +110,7 @@ export class HeaderOComponent implements OnInit {
     this.sesionService.cerrarSession();
     this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
     this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
-    
+
     this.router.navigate(['home']);
   }
 
@@ -169,6 +170,7 @@ export class HeaderOComponent implements OnInit {
     this.usuarioAutorTBRegister = this.usuarioAutorTBLogin;
     this.usuarioAutorTBRegister.password = '';
     this.usuarioAutorTBRegister.fechaNacimiento = new Date(this.usuarioAutorTBRegister.fechaNacimiento);
+    this.usuarioAutorTBRegister.genero = this.util.getValorEnumerado(this.enumGenero, this.usuarioAutorTBRegister.genero);
     this.disModRegistrar = true;
     this.mostrarImagenRegister = true;
   }
@@ -187,6 +189,7 @@ export class HeaderOComponent implements OnInit {
     this.esRegistro = true;
     this.messageService.clear();
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
+    this.usuarioAutorTBRegister.genero = { value: 0, label: this.sesionService.msg.lbl_enum_generico_valor_vacio };
     this.disModRegistrar = true;
   }
 
@@ -205,6 +208,9 @@ export class HeaderOComponent implements OnInit {
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_mensaje_archivo_subido });
             this.archivoImagenRegister = respuesta;
             this.sanitizarUrlImgCargada(this.archivoImagenRegister.archivo, this.archivoImagenRegister.nombreArchivo.split(".")[1]);
+            
+            // Volver a cargar mapa de imágenes
+            this.sesionService.obtenerArchivos();
           }
         },
           error => {
@@ -231,7 +237,12 @@ export class HeaderOComponent implements OnInit {
         this.messageService.clear();
         this.messageService.add({ severity: this.const.severity[3], summary: this.sesionService.msg.lbl_summary_danger, detail: this.sesionService.msg.lbl_mensaje_password_no_coincide });
       } else {
-        this.usuarioAutorTBRegister.urlImagen = this.archivoImagenRegister.rutaArchivo;
+        if (this.archivoImagenRegister !== undefined && this.archivoImagenRegister !== null && this.archivoImagenRegister.rutaArchivo !== undefined && this.archivoImagenRegister.rutaArchivo !== null) {
+          this.usuarioAutorTBRegister.urlImagen = this.archivoImagenRegister.rutaArchivo;
+        } else {
+          this.usuarioAutorTBRegister.urlImagen = '';
+        }
+        this.usuarioAutorTBRegister.genero = this.usuarioAutorTBRegister.genero.value;
         this.restService.postREST(crear ? this.const.urlCrearUsuario : this.const.urlModificarUsuario, this.usuarioAutorTBRegister)
           .subscribe(resp => {
             let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
@@ -253,6 +264,7 @@ export class HeaderOComponent implements OnInit {
             }
           },
             error => {
+              this.usuarioAutorTBRegister.genero = this.util.getValorEnumerado(this.enumGenero, this.usuarioAutorTBRegister.genero);
               let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
               this.messageService.clear();
               listaMensajes.forEach(mensaje => {
@@ -325,40 +337,10 @@ export class HeaderOComponent implements OnInit {
     }
   }
 
-  obtenerArchivos() {
-    try {
-      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
-      archivo.rutaArchivo = '/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/';
-      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
-        .subscribe(resp => {
-          this.mapaArchivosUser = new Map();
-          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
-          if (listaTemporal !== undefined && listaTemporal !== null) {
-            listaTemporal.forEach(archivo => {
-              if (!this.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
-                this.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
-              }
-            });
-          }
-        },
-          error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
-
-            console.log(error, "error");
-          })
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   obtenerArchivoSanitizadoDeMapa(llaveRuta) {
     let srcResponse = null;
-    if (llaveRuta !== undefined && llaveRuta !== null && this.mapaArchivosUser !== undefined && this.mapaArchivosUser !== null) {
-      let archivo = this.mapaArchivosUser.get(llaveRuta);
+    if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
+      let archivo = this.sesionService.mapaArchivosUser.get(llaveRuta);
       if (archivo !== undefined && archivo !== null) {
         let tipoArchivo = archivo.nombreArchivo.split(".")[1];
         if (tipoArchivo === 'svg') {

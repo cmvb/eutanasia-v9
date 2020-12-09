@@ -1,0 +1,79 @@
+<p-scrollPanel #scrollBlog [style]="{width: '100%', height: '100vh'}" styleClass="custom">
+
+    <!-- Header -->
+    <app-header-o></app-header-o>
+    <!-- /Header -->
+
+    <!-- Notificaciones -->
+    <p-toast></p-toast>
+
+    <p-tabView styleClass="tabview-custom container" style="margin: 10px" [(activeIndex)]="activeIndex">
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <i class="pi pi-send" style="padding: 5px;"></i>
+                <span>{{sesionService.msg.lbl_btn_enviar_email}}</span>
+            </ng-template>
+
+            <!-- CREATE/EDIT mail -->
+            <div id="gestionMail" class="section">
+                <!-- Container -->
+                <div class="containerBorder">
+                    <!-- Row -->
+                    <div class="row">
+                        <!-- Main -->
+                        <main id="main" class="col-md-12">
+                            <div class="blog">
+                                <div class="blog-img">
+                                    <div class="card">
+                                        <h5 class="font-40px">{{sesionService.msg.lbl_btn_enviar_email}}</h5>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label>{{sesionService.msg.lbl_mtto_email_asunto}}</label>
+                                                <input type="text" pInputText [(ngModel)]="mailDTO.asunto">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                <label>{{sesionService.msg.lbl_mtto_email_para}}</label>
+                                                <p-chips [(ngModel)]="mailDTO.para" separator=";"></p-chips>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <label>{{sesionService.msg.lbl_mtto_email_mensaje}}</label>
+                                                <textarea type="text" rows="10" pInputTextarea
+                                                    [(ngModel)]="mensaje"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <div
+                                        class="noMargin mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
+                                        <div class="section-header text-center">
+                                            <p-button label="{{sesionService.msg.lbl_btn_enviar_email}}"
+                                                (click)="enviarEmail()" icon="pi pi-send"
+                                                styleClass="main-btn font-20px">
+                                            </p-button>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="noMargin mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--8-col-phone">
+                                        <p-messages></p-messages>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                        <!-- /Main -->
+                    </div>
+                    <!-- /Row -->
+                </div>
+                <!-- /Container -->
+            </div>
+            <!-- /CREATE/EDIT Post -->
+        </p-tabPanel>
+    </p-tabView>
+
+    <!-- FOOTER -->
+    <app-footer></app-footer>
+    <!-- FOOTER -->
+
+</p-scrollPanel>

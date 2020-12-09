@@ -16,10 +16,15 @@ public interface IPostsDao {
 	List<PostTB> consultarPosts();
 
 	/*
+	 * Método para consultar posts en orden de cantidad de me gusta
+	 */
+	List<PostTB> consultarPostsPopulares();
+
+	/*
 	 * Método para consultar posts
 	 */
 	CategoriasDTO consultarContadorCategoriasPosts();
-	
+
 	/*
 	 * Método para consultar los posts por filtros ordenados por más recientes
 	 */

@@ -19,7 +19,8 @@ declare var $: any;
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss']
+  styleUrls: ['./post.component.scss'],
+  providers: [RestService, MessageService]
 })
 export class PostComponent implements OnInit {
   @ViewChild('fileInputPost') fileInputPost: FileUpload;
@@ -37,7 +38,6 @@ export class PostComponent implements OnInit {
   mostrarImagenPost: boolean;
   srcImagenPost: any;
   crearPost: boolean;
-  mapaArchivosUser: any;
   activeIndex: number;
   onlyConsulta: boolean;
 
@@ -45,31 +45,25 @@ export class PostComponent implements OnInit {
   const: any;
   locale: any;
   maxDate = new Date();
-  enums: any;
-  selectedState: any;
+  enumCategoria: any[];
   listaCabeceras = [
     { 'campoLista': 'titulo', 'nombreCabecera': 'Nombre Post' },
     { 'campoLista': 'subtitulo', 'nombreCabecera': 'Subtítulo Post' }
   ];
 
-  constructor(private router: Router, private route: ActivatedRoute, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enumerados: Enumerados, public sesionService: SesionService, private messageService: MessageService, private sanitizer: DomSanitizer, public eutanasiaService: EutanasiaService) {
+  constructor(private router: Router, private route: ActivatedRoute, public restService: RestService, public textProperties: TextProperties, public util: Util, public objectModelInitializer: ObjectModelInitializer, public enums: Enumerados, public sesionService: SesionService, private messageService: MessageService, private sanitizer: DomSanitizer, public eutanasiaService: EutanasiaService) {
     this.sesion = this.objectModelInitializer.getDataServiceSesion();
     this.const = this.objectModelInitializer.getConst();
     this.locale = this.sesionService.objServiceSesion.idioma === this.objectModelInitializer.getConst().idiomaEs ? this.objectModelInitializer.getLocaleESForCalendar() : this.objectModelInitializer.getLocaleENForCalendar();
-    this.enums = enumerados.getEnumerados();
   }
 
   ngOnInit() {
     console.clear();
+    this.cargarEnumerados();
     this.activeIndex = 0;
     this.onlyConsulta = true;
     if (!this.esUsuarioLogueadoActivo()) {
-      
       this.router.navigate(['home/']);
-    }
-    if (this.sesionService.mapaArchivosUser === undefined || this.sesionService.mapaArchivosUser === null || this.sesionService.mapaArchivosUser.size === 0) {
-      this.sesionService.mapaArchivosUser = new Map();
-      this.obtenerArchivos();
     }
     this.archivosTemporales = [];
     this.crearPost = true;
@@ -79,19 +73,31 @@ export class PostComponent implements OnInit {
   }
 
   // Otras Funciones
+  cargarEnumerados() {
+    let enums = this.enums.getEnumerados();
+    this.enumCategoria = enums.categoriaPost.valores;
+  }
+
+  posicionarArriba() {
+    $('body,html').animate({
+      scrollTop: 0
+    }, 600);
+  }
+
   irCrear() {
     this.onlyConsulta = false;
     this.activeIndex = 1;
     this.mostrarImagenPost = false;
     this.postTB = this.objectModelInitializer.getDataPostModel();
     this.postTB.usuarioAutorTB = this.sesionService.getUsuarioSesionActual();
+    this.postTB.categoria = { value: 0, label: this.sesionService.msg.lbl_enum_generico_valor_vacio };
     this.crearPost = true;
   }
 
   esUsuarioLogueadoActivo() {
     let result = false;
     let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
-    let valorEstadoActivo = this.util.getValorEnumerado(this.enums.estadoUsuario.valores, 1);
+    let valorEstadoActivo = this.util.getValorEnumerado(this.enums.getEnumerados().estadoUsuario.valores, 1);
     if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value) {
       result = true;
     }
@@ -103,8 +109,10 @@ export class PostComponent implements OnInit {
     this.onlyConsulta = false;
     this.activeIndex = 1;
     this.mostrarImagenPost = true;
+    this.srcImagenPost = '';
     this.crearPost = false;
     this.postTB = postTB;
+    this.postTB.categoria = this.util.getValorEnumerado(this.enumCategoria, this.postTB.categoria);
     this.tagsEdicion = this.postTB.tags.split(";");
   }
 
@@ -146,11 +154,10 @@ export class PostComponent implements OnInit {
     }
   }
 
-
   obtenerArchivoSanitizadoDeMapa(llaveRuta) {
     let srcResponse = null;
-    if (llaveRuta !== undefined && llaveRuta !== null && this.mapaArchivosUser !== undefined && this.mapaArchivosUser !== null) {
-      let archivo = this.mapaArchivosUser.get(llaveRuta);
+    if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
+      let archivo = this.sesionService.mapaArchivosUser.get(llaveRuta);
       if (archivo !== undefined && archivo !== null) {
         let tipoArchivo = archivo.nombreArchivo.split(".")[1];
         if (tipoArchivo === 'svg') {
@@ -195,6 +202,9 @@ export class PostComponent implements OnInit {
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_mensaje_archivo_subido });
             this.archivoImagenPost = respuesta;
             this.sanitizarUrlImgCargada(this.archivoImagenPost.archivo, this.archivoImagenPost.nombreArchivo.split(".")[1]);
+
+            // Volver a cargar mapa de imágenes
+            this.sesionService.obtenerArchivos();
           }
         },
           error => {
@@ -224,49 +234,22 @@ export class PostComponent implements OnInit {
       } else {
         this.postTB.urlImagen = '';
       }
-
+      this.postTB.categoria = this.postTB.categoria.value;
       this.restService.postREST(crear ? this.const.urlCrearPosts : this.const.urlModificarPosts, this.postTB)
         .subscribe(resp => {
           let respuesta: PostModel = JSON.parse(JSON.stringify(resp));
           if (respuesta !== null) {
-            // Ocultar modal de registro y llenar en memoria el usuario en sesion
+            // Recargar página y enviar a crear post
             this.mostrarImagenPost = true;
             this.cargarPost();
+            this.irCrear();
+            this.posicionarArriba();
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
           }
         },
           error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
-
-            console.log(error, "error");
-          })
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  obtenerArchivos() {
-    try {
-      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
-      archivo.rutaArchivo = '/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/';
-      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
-        .subscribe(resp => {
-          this.mapaArchivosUser = new Map();
-          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
-          if (listaTemporal !== undefined && listaTemporal !== null) {
-            listaTemporal.forEach(archivo => {
-              if (!this.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
-                this.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
-              }
-            });
-          }
-        },
-          error => {
+            this.postTB.categoria = this.util.getValorEnumerado(this.enumCategoria, this.postTB.categoria);
             let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
             this.messageService.clear();
             listaMensajes.forEach(mensaje => {

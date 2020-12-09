@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="consultarCome"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="filtros"/>
+			<item value="post"/>
+			<item value="valor.objeto"/>
+			<item value="crearcom"/>
+			<item value="eutanasia.msg.validate.erroresEncontrados"/>
+			<item value="crearu"/>
+			<item value="lbl.comentario"/>
 			<item value="consultarcome"/>
 			<item value="id"/>
 			<item value="urlConsultarComentariosPorIdPost"/>
 			<item value="crearcomen"/>
-			<item value="crearcom"/>
 			<item value="common"/>
 			<item value="modificar"/>
 			<item value="modifi"/>
 			<item value="catego"/>
-			<item value="mancha"/>
-			<item value="Mail"/>
-			<item value="mail"/>
-			<item value="manc|"/>
-			<item value="manc"/>
-			<item value="restaur"/>
 		</list>
 		<list key="replacehistory">
+			<item value="meGusta"/>
+			<item value="lbl.post"/>
 			<item value="/"/>
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/master/eutanasia/src/assets/images/emailTemplate/barra2.png"/>
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/master/eutanasia/src/assets/images/emailTemplate/logo2020.png"/>
@@ -38,13 +40,11 @@
 			<item value="filtroUsuario"/>
 			<item value="https://github.com/cmvb/eutanasia-v9/blob/master/eutanasia/src/assets/images/logo2020.svg"/>
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
-			<item value="rgb(10, 22, 20)"/>
-			<item value="encriptarPassword"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="381"/>
-		<item key="DIALOG_Y_ORIGIN" value="315"/>
+		<item key="DIALOG_X_ORIGIN" value="143"/>
+		<item key="DIALOG_Y_ORIGIN" value="216"/>
 		<item key="DIALOG_WIDTH" value="284"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

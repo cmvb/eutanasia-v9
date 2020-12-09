@@ -1,0 +1,156 @@
+package com.eutanasia.eutanasia.dao.impl;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.eutanasia.eutanasia.dao.AbstractDao;
+import com.eutanasia.eutanasia.dao.IMeGustaDao;
+import com.eutanasia.eutanasia.dao.IPostsDao;
+import com.eutanasia.eutanasia.dto.PostMeGustaDTO;
+import com.eutanasia.eutanasia.model.MeGustaTB;
+import com.eutanasia.eutanasia.model.PostTB;
+import com.eutanasia.eutanasia.util.ConstantesValidaciones;
+
+@Repository
+public class MeGustaDaoImpl extends AbstractDao<MeGustaTB> implements IMeGustaDao {
+
+	@PersistenceContext(unitName = "default")
+	private EntityManager em;
+
+	@Autowired
+	private IPostsDao iPostDao;
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PostTB> consultarPostsPopulares() {
+		List<PostTB> result = new ArrayList<>();
+
+		// PARAMETROS
+		Map<String, Object> pamameters = new HashMap<>();
+		// QUERY
+		StringBuilder SQL = new StringBuilder(
+				"SELECT post.* from eu_post_tb post LEFT JOIN eu_me_gusta_tb emgt ON emgt.epo_id = post.epo_id GROUP BY post.epo_id, emgt.epo_id ORDER BY COUNT(emgt.epo_id) DESC");
+		// END QUERY
+
+		Query query = em.createNativeQuery(SQL.toString(), PostTB.class);
+		pamameters.forEach((k, v) -> query.setParameter(k, v));
+
+		List<PostTB> listaPost = query.getResultList();
+
+		Map<Long, List<MeGustaTB>> mapaPostMeGusta = new HashMap<>();
+		for (MeGustaTB meGusta : listaMeGusta) {
+			if (mapaPostMeGusta.isEmpty()) {
+				List<MeGustaTB> listaTempMG = new ArrayList<>();
+				listaTempMG.add(meGusta);
+				mapaPostMeGusta.put(meGusta.getPostTB().getId(), listaTempMG);
+			} else {
+				if (mapaPostMeGusta.containsKey(meGusta.getPostTB().getId())) {
+					mapaPostMeGusta.get(meGusta.getPostTB().getId()).add(meGusta);
+				} else {
+					List<MeGustaTB> listaTempMG = new ArrayList<>();
+					listaTempMG.add(meGusta);
+					mapaPostMeGusta.put(meGusta.getPostTB().getId(), listaTempMG);
+				}
+			}
+		}
+
+		for (long idPost : mapaPostMeGusta.keySet()) {
+			PostTB postMG = mapaPostMeGusta.get(idPost).get(0).getPostTB();
+			if (result.isEmpty()) {
+				// result.add();
+			} else {
+				if (true) {
+					result.add(mapaPostMeGusta.get(idPost).get(0).getPostTB());
+				} else {
+
+				}
+			}
+		}
+
+		// Agregar otros post sin puntuaciones
+		List<PostTB> listaTempPost = iPostDao.consultarPosts();
+		for (PostTB postTemp : listaTempPost) {
+			if (!mapaPostMeGusta.containsKey(postTemp.getId())) {
+
+			}
+		}
+
+		return result;
+	}
+
+	@Override
+	public PostMeGustaDTO consultarCalificacionMG(PostTB filtroPost) {
+		PostMeGustaDTO result = new PostMeGustaDTO();
+
+		// PARAMETROS
+		Map<String, Object> pamameters = new HashMap<>();
+
+		// QUERY
+		StringBuilder JPQL = new StringBuilder("SELECT t FROM MeGustaTB t WHERE 1 = 1 ");
+		// WHERE
+		if (filtroPost.getId() > 0) {
+			JPQL.append(" AND t.postTB.id = :ID_POST ");
+			pamameters.put("ID_POST", filtroPost.getId());
+		}
+		// Q. Order By
+		JPQL.append(" ORDER BY t.id DESC");
+		// END QUERY
+
+		TypedQuery<MeGustaTB> query = em.createQuery(JPQL.toString(), MeGustaTB.class);
+		pamameters.forEach((k, v) -> query.setParameter(k, v));
+		List<MeGustaTB> listaMeGusta = query.getResultList();
+
+		if (listaMeGusta != null && !listaMeGusta.isEmpty()) {
+			int sumatoria = 0;
+			for (MeGustaTB meGusta : listaMeGusta) {
+				sumatoria = sumatoria + meGusta.getCalificacion();
+			}
+			result.setPromedioCalificacion(sumatoria / listaMeGusta.size());
+			result.setListaMeGusta(listaMeGusta);
+			result.setPostTB(listaMeGusta.get(0).getPostTB());
+		}
+
+		return result;
+	}
+
+	@Override
+	public MeGustaTB crearMeGusta(MeGustaTB meGusta) {
+		meGusta = colocarValoresDefecto(meGusta, ConstantesValidaciones.PHASE_CREATE);
+		super.create(meGusta);
+		return meGusta;
+	}
+
+	@Override
+	public MeGustaTB modificarMeGusta(MeGustaTB meGusta) {
+		meGusta = colocarValoresDefecto(meGusta, ConstantesValidaciones.PHASE_UPDATE);
+		super.update(meGusta);
+		return meGusta;
+	}
+
+	@Override
+	public void eliminarMeGusta(long idMeGusta) {
+		super.deleteById(idMeGusta);
+	}
+
+	private MeGustaTB colocarValoresDefecto(MeGustaTB meGusta, String fase) {
+		if (ConstantesValidaciones.PHASE_CREATE.equalsIgnoreCase(fase)) {
+			meGusta.setFechaCreacion(new Date());
+			meGusta.setUsuarioCreacion("SYSTEM");
+		}
+		meGusta.setFechaActualizacion(new Date());
+		meGusta.setUsuarioActualizacion("SYSTEM");
+		return meGusta;
+	}
+
+}

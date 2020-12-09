@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./src/assets/scss/ngselect.scss",
               "./src/assets/scss/bootstrap.scss",
               "./src/assets/scss/primeicons/primeicons.scss",
               "./src/assets/scss/primeng/primeng.scss",
@@ -110,6 +111,7 @@
               "src/assets"
             ],
             "styles": [
+              "./src/assets/scss/ngselect.scss",
               "./src/assets/scss/bootstrap.scss",
               "./src/assets/scss/primeicons/primeicons.scss",
               "./src/assets/scss/primeng/primeng.scss",

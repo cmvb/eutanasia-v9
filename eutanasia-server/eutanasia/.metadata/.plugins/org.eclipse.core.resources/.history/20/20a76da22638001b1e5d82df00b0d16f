@@ -1,0 +1,16 @@
+package com.eutanasia.eutanasia.enums;
+
+public enum EPlantillaCorreo {
+	NO("NO"), SI("SI");
+
+	private final String nombre;
+
+	private EPlantillaCorreo(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+}

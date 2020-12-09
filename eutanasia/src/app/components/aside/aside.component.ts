@@ -12,7 +12,6 @@ import { PostModel } from 'src/app/model/post-model';
 import { EutanasiaService } from 'src/app/services/eutanasiaService/eutanasia.service';
 import { ComentarioModel } from 'src/app/model/comentario-model';
 import { CategoriasDTOModel } from 'src/app/model/dto/categorias-dto';
-import { ArchivoModel } from 'src/app/model/archivo-model';
 
 declare var $: any;
 
@@ -52,11 +51,6 @@ export class AsideComponent implements OnInit {
 
   ngOnInit() {
     console.clear();
-    if (this.sesionService.mapaArchivosUser === undefined || this.sesionService.mapaArchivosUser === null || this.sesionService.mapaArchivosUser.size === 0) {
-      this.sesionService.mapaArchivosUser = new Map();
-      this.obtenerArchivos();
-    }
-    this.obtenerArchivos();
     this.listaPostsPopulares = [];
     this.postFiltro = this.objectModelInitializer.getDataPostModel();
     this.cargarContadoresCategorias();
@@ -107,8 +101,7 @@ export class AsideComponent implements OnInit {
 
   buscarPostsMasPopulares() {
     try {
-      let obj = this.objectModelInitializer.getDataPostModel();
-      this.restService.postREST(this.const.urlConsultarPostsPorFiltros, obj)
+      this.restService.getREST(this.const.urlConsultarPostsPopulares)
         .subscribe(resp => {
           let listaTemporal = JSON.parse(JSON.stringify(resp));
           if (listaTemporal !== undefined && listaTemporal !== null) {
@@ -116,36 +109,6 @@ export class AsideComponent implements OnInit {
           }
         },
           error => {
-            console.log(error, "error");
-          })
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  obtenerArchivos() {
-    try {
-      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
-      archivo.rutaArchivo = '/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/';
-      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
-        .subscribe(resp => {
-          this.sesionService.mapaArchivosUser = new Map();
-          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
-          if (listaTemporal !== undefined && listaTemporal !== null) {
-            listaTemporal.forEach(archivo => {
-              if (!this.sesionService.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
-                this.sesionService.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
-              }
-            });
-          }
-        },
-          error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
-
             console.log(error, "error");
           })
     } catch (e) {

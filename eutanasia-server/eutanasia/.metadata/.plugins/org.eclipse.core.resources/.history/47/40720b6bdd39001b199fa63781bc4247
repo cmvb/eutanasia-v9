@@ -1,0 +1,42 @@
+package com.eutanasia.eutanasia.dto;
+
+import java.io.Serializable;
+import java.util.List;
+
+import com.eutanasia.eutanasia.model.MeGustaTB;
+import com.eutanasia.eutanasia.model.PostTB;
+
+public class PostMeGustaDTO implements Serializable {
+	private static final long serialVersionUID = 742510619481773806L;
+
+	private int promedioCalificacion;
+
+	private PostTB postTB;
+
+	private List<MeGustaTB> listaMeGusta;
+
+	public int getPromedioCalificacion() {
+		return promedioCalificacion;
+	}
+
+	public void setPromedioCalificacion(int promedioCalificacion) {
+		this.promedioCalificacion = promedioCalificacion;
+	}
+
+	public List<MeGustaTB> getListaMeGusta() {
+		return listaMeGusta;
+	}
+
+	public void setListaMeGusta(List<MeGustaTB> listaMeGusta) {
+		this.listaMeGusta = listaMeGusta;
+	}
+
+	public PostTB getPostTB() {
+		return postTB;
+	}
+
+	public void setPostTB(PostTB postTB) {
+		this.postTB = postTB;
+	}
+
+}

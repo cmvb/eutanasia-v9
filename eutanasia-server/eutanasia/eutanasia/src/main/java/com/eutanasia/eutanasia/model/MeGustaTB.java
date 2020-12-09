@@ -35,6 +35,10 @@ public class MeGustaTB extends BaseEntidadTB implements Serializable {
 	@JoinColumn(name = "epo_id")
 	private PostTB postTB;
 
+	@NotNull
+	@Column(name = "emg_calificacion", nullable = false)
+	private short calificacion;
+
 	public long getId() {
 		return id;
 	}
@@ -57,6 +61,14 @@ public class MeGustaTB extends BaseEntidadTB implements Serializable {
 
 	public void setPostTB(PostTB postTB) {
 		this.postTB = postTB;
+	}
+
+	public short getCalificacion() {
+		return calificacion;
+	}
+
+	public void setCalificacion(short calificacion) {
+		this.calificacion = calificacion;
 	}
 
 }

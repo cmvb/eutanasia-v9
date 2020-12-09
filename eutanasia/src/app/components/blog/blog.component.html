@@ -7,6 +7,19 @@
   <!-- Notificaciones -->
   <p-toast></p-toast>
 
+  <!-- header wrapper -->
+  <div class="header-wrapper sm-padding bg-grey">
+    <div class="container">
+      <h2>{{post.titulo}}</h2>
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">{{sesionService.msg.lbl_blog}}</a></li>
+        <li class="breadcrumb-item"><a href="index.html#blog">{{sesionService.msg.lbl_posts}}</a></li>
+        <li class="breadcrumb-item active">{{post.titulo}}</li>
+      </ul>
+    </div>
+  </div>
+  <!-- /header wrapper -->
+
   <!-- Blog -->
   <div id="blog" class="section md-padding" *ngIf="post !== undefined">
     <!-- Container -->
@@ -21,23 +34,35 @@
         <main id="main" class="col-md-9">
           <div class="blog">
             <div class="blog-img">
-              <img class="img-responsive" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)" alt="">
-            </div>
-            <div class="blog-content">
-              <ul class="blog-meta">
-                <li><i class="fa fa-user"></i>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</li>
-                <li><i class="fa fa-clock-o"></i>{{post.fechaCreacion | date:'dd/MM/yyyy'}}</li>
-                <li><i class="fa fa-clock-o"></i>{{convertirFechaBlog(post.fechaCreacion)}}</li>
-                <li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
-                <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})</li>
-                <li>
+              <ul class="bannerImgBlog blog-meta displayFlex">
+                <li style="margin-top: 10px;" *ngIf="postMeGustaDTO !== undefined && postMeGustaDTO !== null">
+                  <span class="p-overlay-badge p-mr-5">
+                    <i class="pi pi-star starCalMG"></i>
+                    <span class="p-badge p-badge-xl p-badge-danger"
+                      style="font-size: 18px;">{{postMeGustaDTO.promedioCalificacion}}</span>
+                  </span>
+                </li>
+                <li style="margin-top: -2px;">
                   <div class="fb-share-button" data-href="http://localhost:4200/#/home" data-layout="button_count"
                     data-size="large"><a target="_blank"
                       href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4200%2F%23%2Fhome&amp;src=sdkpreparse"
                       class="fb-xfbml-parse-ignore">Compartir</a></div>
                 </li>
               </ul>
-
+              <img class="img-responsive w100" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)" alt="">
+            </div>
+            <div class="blog-content">
+              <ul class="blog-meta">
+                <li>
+                  <p-rating [(ngModel)]="meGustaTB.calificacion" (onRate)="calificarMG($event)" [cancel]="false">
+                  </p-rating>
+                </li>
+                <li><i class="fa fa-user"></i>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</li>
+                <li><i class="fa fa-calendar"></i>{{post.fechaCreacion | date:'dd/MM/yyyy'}}</li>
+                <li><i class="fa fa-clock-o"></i>{{convertirFechaBlog(post.fechaCreacion)}}</li>
+                <li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
+                <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})</li>
+              </ul>
               <h3>{{post.titulo}}</h3>
               <h5>{{post.subtitulo}}</h5>
               <p>{{post.articulo}}</p>
@@ -54,19 +79,26 @@
 
             <!-- blog author -->
             <div class="blog-author">
+              <h3 class="title">{{sesionService.msg.lbl_autor}}</h3>
+
               <div class="media">
                 <div class="media-left">
                   <img class="media-object imagePerfil" style="height: 100px;width: 100px;"
                     [src]="obtenerArchivoSanitizadoDeMapa(post.usuarioAutorTB.urlImagen)" alt="">
                 </div>
+
                 <div class="media-body">
                   <div class="media-heading">
                     <h3>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</h3>
                     <div class="author-social">
-                      <a><i class="fa fa-facebook"></i></a>
-                      <a><i class="fa fa-twitter"></i></a>
-                      <a><i class="fa fa-google-plus"></i></a>
-                      <a><i class="fa fa-instagram"></i></a>
+                      <a *ngIf="post.usuarioAutorTB.linkFbook !== undefined && post.usuarioAutorTB.linkFbook !== null"
+                        href="{{post.usuarioAutorTB.linkFbook}}" target="_blank"><i class="fa fa-facebook"></i></a>
+                      <a *ngIf="post.usuarioAutorTB.linkTwitter !== undefined && post.usuarioAutorTB.linkTwitter !== null"
+                        href="{{post.usuarioAutorTB.linkTwitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
+                      <a *ngIf="post.usuarioAutorTB.linkGoogle !== undefined && post.usuarioAutorTB.linkGoogle !== null"
+                        href="{{post.usuarioAutorTB.linkGoogle}}" target="_blank"><i class="fa fa-google-plus"></i></a>
+                      <a *ngIf="post.usuarioAutorTB.linkInstagram !== undefined && post.usuarioAutorTB.linkInstagram !== null"
+                        href="{{post.usuarioAutorTB.linkInstagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
                     </div>
                   </div>
                   <p>{{post.usuarioAutorTB.resena}}</p>
@@ -77,7 +109,7 @@
 
             <!-- blog comments -->
             <div class="blog-comments">
-              <h3 class="title">({{post.cantidadComentarios}}) Comentarios</h3>
+              <h3 class="title">({{post.cantidadComentarios}}) {{sesionService.msg.lbl_comentarios}}</h3>
 
               <!-- comment -->
               <div *ngIf="listaComentarios.length > 0; else sinResultadosComment"

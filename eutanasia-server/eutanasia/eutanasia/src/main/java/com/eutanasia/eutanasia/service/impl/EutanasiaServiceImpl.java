@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.eutanasia.eutanasia.dao.IComentariosDao;
+import com.eutanasia.eutanasia.dao.IMeGustaDao;
 import com.eutanasia.eutanasia.dao.IPostsDao;
 import com.eutanasia.eutanasia.dao.IToquesDao;
 import com.eutanasia.eutanasia.dao.IUsuariosDao;
 import com.eutanasia.eutanasia.dto.CategoriasDTO;
+import com.eutanasia.eutanasia.dto.PostMeGustaDTO;
 import com.eutanasia.eutanasia.enums.EEstado;
 import com.eutanasia.eutanasia.model.ComentarioTB;
+import com.eutanasia.eutanasia.model.MeGustaTB;
 import com.eutanasia.eutanasia.model.PostTB;
 import com.eutanasia.eutanasia.model.ToqueTB;
 import com.eutanasia.eutanasia.model.UsuarioAutorTB;
@@ -30,6 +33,9 @@ public class EutanasiaServiceImpl implements IEutanasiaService {
 
 	@Autowired
 	private IPostsDao postsDAO;
+
+	@Autowired
+	private IMeGustaDao meGustaDAO;
 
 	@Autowired
 	private IComentariosDao comentariosDAO;
@@ -50,6 +56,16 @@ public class EutanasiaServiceImpl implements IEutanasiaService {
 	@Override
 	public List<PostTB> consultarPosts() {
 		return postsDAO.consultarPosts();
+	}
+
+	@Override
+	public List<PostTB> consultarPostsPopulares() {
+		return postsDAO.consultarPostsPopulares();
+	}
+
+	@Override
+	public PostMeGustaDTO consultarCalificacionMG(PostTB filtroPost) {
+		return meGustaDAO.consultarCalificacionMG(filtroPost);
 	}
 
 	@Override
@@ -80,6 +96,12 @@ public class EutanasiaServiceImpl implements IEutanasiaService {
 
 	@Transactional
 	@Override
+	public MeGustaTB crearMeGusta(MeGustaTB meGusta) {
+		return meGustaDAO.crearMeGusta(meGusta);
+	}
+
+	@Transactional
+	@Override
 	public ComentarioTB crearComentario(ComentarioTB comentario) {
 		return comentariosDAO.crearComentario(comentario);
 	}
@@ -96,6 +118,12 @@ public class EutanasiaServiceImpl implements IEutanasiaService {
 	@Override
 	public PostTB modificarPost(PostTB post) {
 		return postsDAO.modificarPost(post);
+	}
+
+	@Transactional
+	@Override
+	public MeGustaTB modificarMeGusta(MeGustaTB meGusta) {
+		return meGustaDAO.modificarMeGusta(meGusta);
 	}
 
 	@Transactional

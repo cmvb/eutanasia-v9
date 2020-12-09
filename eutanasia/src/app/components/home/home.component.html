@@ -90,8 +90,7 @@
 					<div class="boxGallery">
 						<div class="box-legend">
 							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_pedro}}</h1>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
-								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
+							<p class="textoResena">{{sesionService.msg.lbl_banda_resena_vocalista}}</p>
 						</div>
 						<img src="assets/images/band/pedro.jpg">
 						<span>{{sesionService.msg.lbl_banda_vocalista}}</span>
@@ -99,8 +98,7 @@
 					<div class="boxGallery">
 						<div class="box-legend">
 							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_pipe}}</h1>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
-								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
+							<p class="textoResena">{{sesionService.msg.lbl_banda_resena_guitarrista}}</p>
 						</div>
 						<img src="assets/images/band/pipe.jpg">
 						<span>{{sesionService.msg.lbl_banda_guitarrista}}</span>
@@ -108,8 +106,7 @@
 					<div class="boxGallery">
 						<div class="box-legend">
 							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_carlos}}</h1>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
-								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
+							<p class="textoResena">{{sesionService.msg.lbl_banda_resena_bajista}}</p>
 						</div>
 						<img src="assets/images/band/carlos.jpg">
 						<span>{{sesionService.msg.lbl_banda_bajista}}</span>
@@ -117,8 +114,7 @@
 					<div class="boxGallery">
 						<div class="box-legend">
 							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_leo}}</h1>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Necessitatibus
-								magnam recusandae facilis vel illo natus eligendi quod officiis vitae totam!</p>
+							<p class="textoResena">{{sesionService.msg.lbl_banda_resena_baterista}}</p>
 						</div>
 						<img src="assets/images/band/leo.jpg">
 						<span>{{sesionService.msg.lbl_banda_baterista}}</span>
@@ -594,14 +590,58 @@
 		<div class="container">
 			<!-- Row -->
 			<div class="row">
-				<!-- Section-header -->
-				<div class="section-header text-center">
-					<h2 class="title">{{sesionService.msg.lbl_contacto}}</h2>
+				<h2 class="title textCenter">{{sesionService.msg.lbl_contacto}}</h2>
+				<div class="section-header text-center col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<input *ngIf="!esUsuarioLogueadoHome()" (click)="simularClickPorId('registerUser')" type="submit"
-						class="main-btn" value="Registrar Eutanásico" />
+						class="main-btn"
+						value="{{sesionService.msg.lbl_register + ' ' + sesionService.msg.lbl_eutanasicos}}" />
+					<input (click)="abrirModalEnviarEmail()" type="submit" class="main-btn"
+						value="{{sesionService.msg.lbl_btn_enviar_email}}" />
 				</div>
-				<!-- /Section-header -->
 
+				<p-dialog [showHeader]="true" (onHide)="limpiarModales($event)"
+					header="{{sesionService.msg.lbl_btn_enviar_email}}" [(visible)]="disModContacto" [modal]="true"
+					[style]="{width: '60vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false"
+					[closable]="true">
+					<div class="reply-form">
+						<div class="row justify-content-center">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+								<input placeholder="{{sesionService.msg.lbl_mtto_email_asunto}}" class="input"
+									type="text" pInputText [(ngModel)]="mailDTO.asunto">
+							</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+								<input placeholder="{{sesionService.msg.lbl_mtto_email_nombre_remite}}" class="input"
+									type="text" pInputText [(ngModel)]="remite">
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
+								<input placeholder="{{sesionService.msg.lbl_mtto_email_correo_remite}}" class="input"
+									type="text" pInputText [(ngModel)]="emailRemite">
+							</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+								<textarea placeholder="{{sesionService.msg.lbl_mtto_email_mensaje}}" type="text"
+									rows="10" pInputTextarea [(ngModel)]="mensaje"></textarea>
+							</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+								<p-button label="{{sesionService.msg.lbl_btn_enviar_email}}" (click)="enviarEmail()"
+									icon="pi pi-send" styleClass="main-btn font-20px">
+								</p-button>
+							</div>
+						</div>
+						<div class="row justify-content-center">
+							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+								<p-messages></p-messages>
+							</div>
+						</div>
+					</div>
+				</p-dialog>
+			</div>
+			<div class="row">
 				<div class="map">
 					<iframe
 						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d830.1069021886983!2d-73.3544373416631!3d8.235285134887176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x119b8b5e31460d67!2sColumna+de+la+Libertad+de+los+Esclavos!5e0!3m2!1ses!2sco!4v1487799660955"

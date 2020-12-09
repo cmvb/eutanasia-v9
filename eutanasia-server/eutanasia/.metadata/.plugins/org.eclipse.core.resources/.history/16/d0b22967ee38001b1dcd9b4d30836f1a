@@ -1,0 +1,72 @@
+package com.eutanasia.eutanasia.dao.impl;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+
+import com.eutanasia.eutanasia.dao.AbstractDao;
+import com.eutanasia.eutanasia.dao.IPostsDao;
+import com.eutanasia.eutanasia.model.MeGustaTB;
+import com.eutanasia.eutanasia.model.PostTB;
+import com.eutanasia.eutanasia.util.ConstantesValidaciones;
+
+@Repository
+public class MeGustaDaoImpl extends AbstractDao<MeGustaTB> implements IPostsDao {
+
+	@PersistenceContext(unitName = "default")
+	private EntityManager em;
+
+	@Override
+	List<PostTB> consultarPostsPopulares(PostTB filtroPost);
+		// PARAMETROS
+		Map<String, Object> pamameters = new HashMap<>();
+
+		// QUERY
+		StringBuilder JPQL = new StringBuilder("SELECT t FROM MeGustaTB t WHERE 1 = 1 ");
+		// Q. Order By
+		JPQL.append(" ORDER BY t.id");
+		// END QUERY
+
+		TypedQuery<MeGustaTB> query = em.createQuery(JPQL.toString(), PostTB.class);
+		pamameters.forEach((k, v) -> query.setParameter(k, v));
+
+		return query.getResultList();
+	}
+
+	@Override
+	public PostTB crearPost(PostTB post) {
+		post = colocarValoresDefecto(post, ConstantesValidaciones.PHASE_CREATE);
+		super.create(post);
+		return post;
+	}
+
+	@Override
+	public PostTB modificarPost(PostTB post) {
+		post = colocarValoresDefecto(post, ConstantesValidaciones.PHASE_UPDATE);
+		super.update(post);
+		return post;
+	}
+
+	@Override
+	public void eliminarPost(long idPost) {
+		super.deleteById(idPost);
+	}
+
+	private PostTB colocarValoresDefecto(PostTB post, String fase) {
+		if (ConstantesValidaciones.PHASE_CREATE.equalsIgnoreCase(fase)) {
+			post.setFechaCreacion(new Date());
+			post.setUsuarioCreacion("SYSTEM");
+		}
+		post.setFechaActualizacion(new Date());
+		post.setUsuarioActualizacion("SYSTEM");
+		return post;
+	}
+
+}

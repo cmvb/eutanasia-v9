@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.eutanasia.eutanasia.dto.CategoriasDTO;
+import com.eutanasia.eutanasia.dto.PostMeGustaDTO;
 import com.eutanasia.eutanasia.exception.ModelNotFoundException;
+import com.eutanasia.eutanasia.model.MeGustaTB;
 import com.eutanasia.eutanasia.model.PostTB;
 import com.eutanasia.eutanasia.service.IEutanasiaService;
 import com.eutanasia.eutanasia.util.ConstantesTablasNombre;
@@ -54,12 +56,32 @@ public class ControladorRestPosts {
 		}
 	}
 
-	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/consultarPostsPopulares")
+	public ResponseEntity<List<PostTB>> consultarPostsPopulares() {
+		try {
+			List<PostTB> listaPosts = eutanasiaService.consultarPostsPopulares();
+			return new ResponseEntity<List<PostTB>>(listaPosts, HttpStatus.OK);
+		} catch (JSONException e) {
+			throw new ModelNotFoundException(e.getMessage());
+		}
+	}
+
 	@RequestMapping("/consultarPostsPorFiltros")
 	public ResponseEntity<List<PostTB>> consultarPostsPorFiltros(@RequestBody PostTB filtroPost) {
 		try {
 			List<PostTB> listaPosts = eutanasiaService.consultarPostsPorFiltros(filtroPost);
 			return new ResponseEntity<List<PostTB>>(listaPosts, HttpStatus.OK);
+		} catch (JSONException e) {
+			throw new ModelNotFoundException(e.getMessage());
+		}
+	}
+
+	@RequestMapping("/consultarCalificacionMG")
+	public ResponseEntity<PostMeGustaDTO> consultarCalificacionMG(@RequestBody PostTB filtroPost) {
+		try {
+			PostMeGustaDTO result = eutanasiaService.consultarCalificacionMG(filtroPost);
+			return new ResponseEntity<PostMeGustaDTO>(result, HttpStatus.OK);
 		} catch (JSONException e) {
 			throw new ModelNotFoundException(e.getMessage());
 		}
@@ -129,6 +151,31 @@ public class ControladorRestPosts {
 		}
 	}
 
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/crearMeGusta")
+	public ResponseEntity<MeGustaTB> crearMeGusta(@RequestBody MeGustaTB meGusta) {
+		try {
+			List<String> errores = Util.validaDatos(ConstantesTablasNombre.MRA_ME_GUSTA_TB, meGusta);
+			MeGustaTB newMeGusta = new MeGustaTB();
+			if (errores.isEmpty()) {
+				newMeGusta = eutanasiaService.crearMeGusta(meGusta);
+			} else {
+				StringBuilder mensajeErrores = new StringBuilder();
+				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
+
+				for (String error : errores) {
+					mensajeErrores.append(error + "|");
+				}
+
+				throw new ModelNotFoundException(erroresTitle + mensajeErrores);
+			}
+
+			return new ResponseEntity<MeGustaTB>(newMeGusta, HttpStatus.OK);
+		} catch (JSONException e) {
+			throw new ModelNotFoundException(e.getMessage());
+		}
+	}
+
 	// UPDATE
 
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -152,6 +199,32 @@ public class ControladorRestPosts {
 			}
 
 			return new ResponseEntity<PostTB>(postNuevo, HttpStatus.OK);
+		} catch (JSONException e) {
+			throw new ModelNotFoundException(e.getMessage());
+		}
+	}
+
+	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping("/modificarMeGusta")
+	public ResponseEntity<MeGustaTB> modificarMeGusta(@RequestBody MeGustaTB meGusta) {
+		try {
+			List<String> errores = Util.validaDatos(ConstantesTablasNombre.MRA_ME_GUSTA_TB, meGusta);
+			MeGustaTB meGustaNuevo = new MeGustaTB();
+			if (errores.isEmpty()) {
+				meGustaNuevo = new MeGustaTB();
+				meGustaNuevo = eutanasiaService.modificarMeGusta(meGusta);
+			} else {
+				StringBuilder mensajeErrores = new StringBuilder();
+				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");
+
+				for (String error : errores) {
+					mensajeErrores.append(error + "|");
+				}
+
+				throw new ModelNotFoundException(erroresTitle + mensajeErrores);
+			}
+
+			return new ResponseEntity<MeGustaTB>(meGustaNuevo, HttpStatus.OK);
 		} catch (JSONException e) {
 			throw new ModelNotFoundException(e.getMessage());
 		}

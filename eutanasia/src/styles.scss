@@ -997,6 +997,50 @@ header {
 .containerBorder {
     border: 1px solid #c8c8c8;
     padding: 20px;
+    background: url("assets/images/fondoCRUD.jpg");
+}
+
+.p-chips .p-chips-multiple-container .p-chips-input-token input {
+    font-family: inherit !important;
+    font-size: inherit !important;
+}
+
+.p-rating .p-rating-icon {
+    font-size: 14px !important;
+}
+
+.starCalMG {
+    font-size: 20px;
+    color: white !important;
+    text-shadow: 3px 1px 2px #761e0e;
+}
+
+.bgReg {
+    background: #ffffff66;
+}
+
+.textoResena {
+    font-size: 22px;
+    line-height: 30px;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    background: #0000005c;
+    border: 1px solid #020202;
+}
+
+.bannerImgBlog {
+    position: absolute;
+    top: 10px;
+    height: 43px;
+    background: #00000077;
+    text-align: right;
+    padding: 10px;
+}
+
+.p-rating .p-rating-icon:hover {
+    color: #ca1111;
+    font-weight: bold;
 }
 
 .textCenter {
@@ -1270,7 +1314,6 @@ header {
 \*------------------------------------*/
 
 .blog {
-    background-color: #fff;
     margin: 15px 0px;
 }
 
@@ -3225,6 +3268,17 @@ html input[disabled] {
 
 .p-chips-multiple-container {
     background: transparent;
-    border: none;    
+    border: none;
     width: 100%;
+}
+
+.ng-select div,
+.ng-select input,
+.ng-select span {
+    color: #403f41;
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container,
+.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-value {
+    padding: 3px;
 }

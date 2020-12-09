@@ -3,7 +3,9 @@ package com.eutanasia.eutanasia.service;
 import java.util.List;
 
 import com.eutanasia.eutanasia.dto.CategoriasDTO;
+import com.eutanasia.eutanasia.dto.PostMeGustaDTO;
 import com.eutanasia.eutanasia.model.ComentarioTB;
+import com.eutanasia.eutanasia.model.MeGustaTB;
 import com.eutanasia.eutanasia.model.PostTB;
 import com.eutanasia.eutanasia.model.ToqueTB;
 import com.eutanasia.eutanasia.model.UsuarioAutorTB;
@@ -29,7 +31,7 @@ public interface IEutanasiaService {
 	 * Método para consultar posts
 	 */
 	public List<PostTB> consultarPosts();
-	
+
 	/*
 	 * Método para consultar usuarios
 	 */
@@ -56,6 +58,11 @@ public interface IEutanasiaService {
 	public ComentarioTB crearComentario(ComentarioTB comentario);
 
 	/*
+	 * Método para crear me gusta
+	 */
+	public MeGustaTB crearMeGusta(MeGustaTB meGusta);
+
+	/*
 	 * Método para crear usuario
 	 */
 	public UsuarioAutorTB crearUsuario(UsuarioAutorTB usuarioAutor);
@@ -69,6 +76,11 @@ public interface IEutanasiaService {
 	 * Método para modificar comentario
 	 */
 	public ComentarioTB modificarComentario(ComentarioTB comentario);
+
+	/*
+	 * Método para modificar me gusta
+	 */
+	public MeGustaTB modificarMeGusta(MeGustaTB meGusta);
 
 	/*
 	 * Método para eliminar post
@@ -89,5 +101,15 @@ public interface IEutanasiaService {
 	 * Método para modificar usuario
 	 */
 	public UsuarioAutorTB modificarUsuario(UsuarioAutorTB usuarioAutor);
+
+	/*
+	 * Método para consultar posts en orden de cantidad de me gusta
+	 */
+	public List<PostTB> consultarPostsPopulares();
+
+	/*
+	 * Método para consultar puntaje me gusta con toda la información
+	 */
+	public PostMeGustaDTO consultarCalificacionMG(PostTB filtroPost);
 
 }

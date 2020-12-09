@@ -11,9 +11,10 @@ import { SesionService } from 'src/app/services/sesionService/sesion.service';
 import { PostModel } from 'src/app/model/post-model';
 import { EutanasiaService } from 'src/app/services/eutanasiaService/eutanasia.service';
 import { ComentarioModel } from 'src/app/model/comentario-model';
-import { ArchivoModel } from 'src/app/model/archivo-model';
 import { UsuarioAutorModel } from 'src/app/model/usuarioAutor-model';
 import { FileUpload } from 'primeng/fileupload';
+import { PostMeGustaDTOModel } from 'src/app/model/dto/postMeGusta-dto';
+import { MeGustaModel } from 'src/app/model/meGusta-model';
 
 declare var $: any;
 
@@ -37,6 +38,8 @@ export class BlogComponent implements OnInit {
   comentarioNuevo: any;
   respuestaNueva: any;
   usuarioAutorTBLogin: UsuarioAutorModel;
+  postMeGustaDTO: PostMeGustaDTOModel;
+  meGustaTB: MeGustaModel;
 
   // Utilidades
   const: any;
@@ -53,10 +56,6 @@ export class BlogComponent implements OnInit {
 
   ngOnInit() {
     console.clear();
-    if (this.sesionService.mapaArchivosUser === undefined || this.sesionService.mapaArchivosUser === null || this.sesionService.mapaArchivosUser.size === 0) {
-      this.sesionService.mapaArchivosUser = new Map();
-      this.obtenerArchivos();
-    }
     if (this.sesionService.existeSession()) {
       this.usuarioAutorTBLogin = this.sesionService.getUsuarioSesionActual();
     } else {
@@ -66,11 +65,13 @@ export class BlogComponent implements OnInit {
         this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
       }
     }
+    this.meGustaTB = this.objectModelInitializer.getDataMeGustaModel();
     this.post = this.objectModelInitializer.getDataPostModel();
     this.comentarioNuevo = '';
     this.respuestaNueva = '';
     this.listaComentarios = [];
     this.cargarPost();
+    this.cargarCalificacionMG();
   }
 
   // Otras Funciones
@@ -108,6 +109,32 @@ export class BlogComponent implements OnInit {
 
   simularClickPorId(id) {
     $('#' + id)[0].click();
+  }
+
+  obtenerArchivoSanitizadoDeMapa(llaveRuta) {
+    let srcResponse = null;
+    if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
+      let archivo = this.sesionService.mapaArchivosUser.get(llaveRuta);
+      if (archivo !== undefined && archivo !== null) {
+        let tipoArchivo = archivo.nombreArchivo.split(".")[1];
+        if (tipoArchivo === 'svg') {
+          srcResponse = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + archivo.archivo);
+        } else {
+          tipoArchivo = tipoArchivo + ';base64,';
+          srcResponse = 'data:image/' + tipoArchivo + archivo.archivo;
+        }
+      }
+    }
+
+    return srcResponse;
+  }
+
+  seleccionarMeGusta() {
+    this.postMeGustaDTO.listaMeGusta.forEach(meGusta => {
+      if (meGusta.usuarioAutorTB.id === this.usuarioAutorTBLogin.id) {
+        this.meGustaTB = meGusta;
+      }
+    });
   }
 
   // Modales
@@ -159,7 +186,7 @@ export class BlogComponent implements OnInit {
             this.comentarioNuevo = '';
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
-            
+
             this.ngOnInit();
           }
         },
@@ -192,7 +219,7 @@ export class BlogComponent implements OnInit {
             this.respuestaNueva = '';
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
-            
+
             this.ngOnInit();
           }
         },
@@ -228,13 +255,13 @@ export class BlogComponent implements OnInit {
             this.posicionarArriba();
           }
           else {
-            
+
             this.router.navigate(['timeline']);
           }
         },
           error => {
             console.log(error, "error");
-            
+
             this.router.navigate(['home']);
           })
     } catch (e) {
@@ -242,52 +269,52 @@ export class BlogComponent implements OnInit {
     }
   }
 
-  obtenerArchivos() {
+  cargarCalificacionMG() {
+    let urlSeg = location.href.split("/");
+    let urlIdPost = urlSeg[urlSeg.length - 1];
+    let idPostDES = this.util.transformarSimboloUri(urlIdPost, this.util.cargarMatrizPorcentajeUri());
+    let obj = this.objectModelInitializer.getDataPostModel();
+    obj.id = idPostDES;
     try {
-      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
-      archivo.rutaArchivo = '/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/';
-      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
+      this.restService.postREST(this.const.urlConsultarCalificacionMG, obj)
         .subscribe(resp => {
-          this.sesionService.mapaArchivosUser = new Map();
-          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
-          if (listaTemporal !== undefined && listaTemporal !== null) {
-            listaTemporal.forEach(archivo => {
-              if (!this.sesionService.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
-                this.sesionService.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
-              }
-            });
+          let respuesta: PostMeGustaDTOModel = JSON.parse(JSON.stringify(resp));
+          if (respuesta !== undefined && respuesta !== null) {
+            this.postMeGustaDTO = respuesta;
+            this.seleccionarMeGusta();
+            this.posicionarArriba();
           }
         },
           error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
-
             console.log(error, "error");
+
+            this.router.navigate(['home']);
           })
     } catch (e) {
       console.log(e);
     }
   }
 
-  obtenerArchivoSanitizadoDeMapa(llaveRuta) {
-    let srcResponse = null;
-    if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
-      let archivo = this.sesionService.mapaArchivosUser.get(llaveRuta);
-      if (archivo !== undefined && archivo !== null) {
-        let tipoArchivo = archivo.nombreArchivo.split(".")[1];
-        if (tipoArchivo === 'svg') {
-          srcResponse = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + archivo.archivo);
-        } else {
-          tipoArchivo = tipoArchivo + ';base64,';
-          srcResponse = 'data:image/' + tipoArchivo + archivo.archivo;
-        }
-      }
+  calificarMG(event) {
+    let flagCrear = this.meGustaTB.id === 0;
+    if (flagCrear) {
+      this.meGustaTB.postTB = this.post
+      this.meGustaTB.usuarioAutorTB = this.usuarioAutorTBLogin;
     }
-
-    return srcResponse;
+    try {
+      this.restService.postREST(flagCrear ? this.const.urlCrearMeGusta : this.const.urlModificarMeGusta, this.meGustaTB)
+        .subscribe(resp => {
+          let respuesta: MeGustaModel = JSON.parse(JSON.stringify(resp));
+          if (respuesta !== undefined && respuesta !== null) {
+            this.ngOnInit();
+          }
+        },
+          error => {
+            console.log(error, "error");
+          })
+    } catch (e) {
+      console.log(e);
+    }
   }
 
 }

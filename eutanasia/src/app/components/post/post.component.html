@@ -7,7 +7,7 @@
     <!-- Notificaciones -->
     <p-toast></p-toast>
 
-    <p-tabView styleClass="tabview-custom container" style="margin: 10px" [(activeIndex)]="activeIndex">
+    <p-tabView styleClass="tabview-custom container" [(activeIndex)]="activeIndex">
         <p-tabPanel>
             <ng-template pTemplate="header">
                 <i class="pi pi-search" style="padding: 5px;"></i>
@@ -142,7 +142,12 @@
                                             </div>
                                             <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                                 <label>{{sesionService.msg.lbl_mtto_post_categoria}}</label>
-                                                <input type="text" pInputText [(ngModel)]="postTB.categoria">
+                                                <div class="bgReg">
+                                                    <ng-select
+                                                        notFoundText="{{sesionService.msg.lbl_mensaje_no_info_select}}"
+                                                        [(ngModel)]="postTB.categoria" [items]="enumCategoria">
+                                                    </ng-select>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -1,5 +1,6 @@
 package com.eutanasia.eutanasia.dao.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.apache.commons.lang3.StringUtils;
@@ -39,6 +41,26 @@ public class PostsDaoImpl extends AbstractDao<PostTB> implements IPostsDao {
 		pamameters.forEach((k, v) -> query.setParameter(k, v));
 
 		return query.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PostTB> consultarPostsPopulares() {
+		List<PostTB> result = new ArrayList<>();
+
+		// PARAMETROS
+		Map<String, Object> pamameters = new HashMap<>();
+		// QUERY
+		StringBuilder SQL = new StringBuilder(
+				"SELECT post.* from eutanasia.eu_post_tb post LEFT JOIN eutanasia.eu_me_gusta_tb emgt ON emgt.epo_id = post.epo_id GROUP BY post.epo_id, emgt.epo_id ORDER BY COUNT(emgt.epo_id) DESC");
+		// END QUERY
+
+		Query query = em.createNativeQuery(SQL.toString(), PostTB.class);
+		pamameters.forEach((k, v) -> query.setParameter(k, v));
+
+		result = query.getResultList();
+
+		return result;
 	}
 
 	@Override

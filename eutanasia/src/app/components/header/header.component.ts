@@ -41,13 +41,13 @@ export class HeaderComponent implements OnInit {
   showMenuMovil: boolean;
   loginRestaurar: boolean;
   esRegistro: boolean;
-  mapaArchivosUser: any;
 
   // Objetos de Animaciones
   fadeIn: any;
 
   // Utilidades
   const: any;
+  enumGenero: any[];
 
   constructor(private router: Router, private route: ActivatedRoute, private sanitizer: DomSanitizer, private enums: Enumerados, private messageService: MessageService, public restService: RestService, public textProperties: TextProperties, public objectModelInitializer: ObjectModelInitializer, public sesionService: SesionService, public util: Util) {
     this.const = this.objectModelInitializer.getConst();
@@ -55,8 +55,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     console.clear();
-    this.mapaArchivosUser = new Map();
-    this.obtenerArchivos();
+    this.cargarEnumerados();
     this.archivosTemporales = [];
     this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
@@ -73,6 +72,11 @@ export class HeaderComponent implements OnInit {
   }
 
   // Otras Funciones
+  cargarEnumerados() {
+    let enums = this.enums.getEnumerados();
+    this.enumGenero = enums.sexo.valores;
+  }
+
   mostrarTextoHeader(event) {
     setTimeout(() => {
       $('#mostrarTextHeader').fadeIn('slow');
@@ -80,7 +84,6 @@ export class HeaderComponent implements OnInit {
   }
 
   redirigirBlogs() {
-    
     this.router.navigate(['timeline']);
   }
 
@@ -174,6 +177,7 @@ export class HeaderComponent implements OnInit {
     this.messageService.clear();
     this.srcImagenRegister = '';
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
+    this.usuarioAutorTBRegister.genero = { value: 0, label: this.sesionService.msg.lbl_enum_generico_valor_vacio };
     this.disModRegistrar = true;
   }
 
@@ -184,12 +188,31 @@ export class HeaderComponent implements OnInit {
     this.usuarioAutorTBRegister = this.usuarioAutorTBLogin;
     this.usuarioAutorTBRegister.password = '';
     this.usuarioAutorTBRegister.fechaNacimiento = new Date(this.usuarioAutorTBRegister.fechaNacimiento);
+    this.usuarioAutorTBRegister.genero = this.util.getValorEnumerado(this.enumGenero, this.usuarioAutorTBRegister.genero);
     this.disModRegistrar = true;
     this.mostrarImagenRegister = true;
   }
 
   mostrarOcultarMenu() {
     this.showMenuMovil = !this.showMenuMovil;
+  }
+  
+  obtenerArchivoSanitizadoDeMapa(llaveRuta) {
+    let srcResponse = null;
+    if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
+      let archivo = this.sesionService.mapaArchivosUser.get(llaveRuta);
+      if (archivo !== undefined && archivo !== null) {
+        let tipoArchivo = archivo.nombreArchivo.split(".")[1];
+        if (tipoArchivo === 'svg') {
+          srcResponse = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + archivo.archivo);
+        } else {
+          tipoArchivo = tipoArchivo + ';base64,';
+          srcResponse = 'data:image/' + tipoArchivo + archivo.archivo;
+        }
+      }
+    }
+
+    return srcResponse;
   }
 
   // Servicios Web
@@ -206,6 +229,9 @@ export class HeaderComponent implements OnInit {
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_mensaje_archivo_subido });
             this.archivoImagenRegister = respuesta;
             this.sanitizarUrlImgCargada(this.archivoImagenRegister.archivo, this.archivoImagenRegister.nombreArchivo.split(".")[1]);
+            
+            // Volver a cargar mapa de imágenes
+            this.sesionService.obtenerArchivos();
           }
         },
           error => {
@@ -237,6 +263,7 @@ export class HeaderComponent implements OnInit {
         } else {
           this.usuarioAutorTBRegister.urlImagen = '';
         }
+        this.usuarioAutorTBRegister.genero = this.usuarioAutorTBRegister.genero.value;
         this.restService.postREST(crear ? this.const.urlCrearUsuario : this.const.urlModificarUsuario, this.usuarioAutorTBRegister)
           .subscribe(resp => {
             let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
@@ -258,6 +285,7 @@ export class HeaderComponent implements OnInit {
             }
           },
             error => {
+              this.usuarioAutorTBRegister.genero = this.util.getValorEnumerado(this.enumGenero, this.usuarioAutorTBRegister.genero);
               let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
               this.messageService.clear();
               listaMensajes.forEach(mensaje => {
@@ -328,54 +356,6 @@ export class HeaderComponent implements OnInit {
     } catch (e) {
       console.log(e);
     }
-  }
-
-  obtenerArchivos() {
-    try {
-      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
-      archivo.rutaArchivo = '/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/';
-      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
-        .subscribe(resp => {
-          this.mapaArchivosUser = new Map();
-          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
-          if (listaTemporal !== undefined && listaTemporal !== null) {
-            listaTemporal.forEach(archivo => {
-              if (!this.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
-                this.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
-              }
-            });
-          }
-        },
-          error => {
-            let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
-
-            console.log(error, "error");
-          })
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  obtenerArchivoSanitizadoDeMapa(llaveRuta) {
-    let srcResponse = null;
-    if (llaveRuta !== undefined && llaveRuta !== null && this.mapaArchivosUser !== undefined && this.mapaArchivosUser !== null) {
-      let archivo = this.mapaArchivosUser.get(llaveRuta);
-      if (archivo !== undefined && archivo !== null) {
-        let tipoArchivo = archivo.nombreArchivo.split(".")[1];
-        if (tipoArchivo === 'svg') {
-          srcResponse = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/svg+xml;base64,' + archivo.archivo);
-        } else {
-          tipoArchivo = tipoArchivo + ';base64,';
-          srcResponse = 'data:image/' + tipoArchivo + archivo.archivo;
-        }
-      }
-    }
-
-    return srcResponse;
   }
 
 }

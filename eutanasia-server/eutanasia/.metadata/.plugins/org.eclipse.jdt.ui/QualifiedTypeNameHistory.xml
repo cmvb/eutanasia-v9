@@ -11,7 +11,6 @@
     <fullyQualifiedTypeName name="org.thymeleaf.context.Context"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.ConstantesTablasNombre"/>
-    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.ConstantesValidaciones"/>
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.enums.EEstado"/>
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.Util"/>
     <fullyQualifiedTypeName name="javax.print.DocFlavor.URL"/>
@@ -19,4 +18,7 @@
     <fullyQualifiedTypeName name="org.apache.commons.lang3.StringUtils"/>
     <fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.IOUtils"/>
     <fullyQualifiedTypeName name="org.apache.commons.io.IOUtils"/>
+    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.enums.EPlantillaCorreo"/>
+    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.util.ConstantesValidaciones"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

@@ -5,6 +5,7 @@ export interface MeGustaModel {
     id;
     usuarioAutorTB: UsuarioAutorModel;
     postTB: PostModel;
+    calificacion;
 
     estado;
     fechaCreacion;

@@ -1,0 +1,69 @@
+# EUTANASIA WEBPAGE
+eutanasia.app												= Eutanasia 2020
+eutanasia.key.encrypt										= EuTaNaSiA2020
+
+# Mensajes de Validaciones - Genéricos
+eutanasia.msg.validate.erroresEncontrados					= Errores Encontrados: 
+eutanasia.msg.validate.valor.objeto							= El objeto no cumple con la estructura esperada o no hay información en él.
+eutanasia.msg.login.datos.incorrectos						= No se puede ingresar. Verifique que los datos suministrados para Usuario y Clave son correctos y que el Usuario esté ACTIVO.
+eutanasia.msg.restaurar.clave								= Error al restaurar clave del usuario. El usuario no existe.
+eutanasia.msg.login.datos.insuficientes						= No se han proporcionado los datos necesarios para realizar el ingreso.
+eutanasia.msg.validate.tabla.no.establecida					= No se han definido validaciones para el objeto seleccionado.
+eutanasia.msg.validate.valor.incorrecto						= Valor Incorrecto.
+eutanasia.msg.validate.valor.vacio							= Valor Vacío.
+eutanasia.msg.validate.correoInvalido						= La estructura del Correo es inválida.
+eutanasia.msg.validate.valor.superaLongitud					= El valor digitado supera la longitud permitida.
+eutanasia.msg.validate.usuarioRepetido						= Ya existe un usuario activo con el usuario digitado.
+eutanasia.msg.validate.correoRepetido						= Ya existe un usuario activo con el correo digitado.
+eutanasia.msg.validate.no.posts								= No se ha encontrado post con los datos proporcionados.
+eutanasia.msg.email.exitoso									= Se ha enviado correo exitosamente a los destinatarios
+eutanasia.msg.email.exitoso.con.excepciones					= No se ha enviado correo a los siguientes destinatarios: 
+
+# Rutas
+eutanasia.ruta.sftp.archivos								= /data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/
+eutanasia.ruta.jasper.reports								= /reports/
+eutanasia.template.mail.activateUser						= nuevoUsuario.html
+eutanasia.template.mail.recordarClave						= restaurarClave.html
+eutanasia.template.mail.comentario							= comentarioRespuesta.html
+eutanasia.template.mail.contacto							= contacto.html
+ 
+# Labels Usuario
+lbl.usuario.usuario											= Usuario: 
+lbl.usuario.nombres											= Nombres: 
+lbl.usuario.apellidos										= Apellidos: 
+lbl.usuario.correo											= Correo: 
+lbl.usuario.fecha.nacimiento								= Fecha Nacimiento: 
+lbl.usuario.resena											= Reseña: 
+lbl.usuario.clave											= Clave: 
+lbl.usuario.imagen											= Imágen: 
+
+# Labels Archivo
+lbl.archivo.archivo											= Archivo: 
+lbl.archivo.nombre											= Nombre Archivo: 
+lbl.archivo.ruta											= Ruta Archivo: 
+
+# Labels Comentario
+lbl.comentario.comentario									= Comentario: 
+lbl.comentario.autor										= Autor: 
+lbl.comentario.post											= Post: 
+
+# Labels Post
+lbl.post.titulo												= Título: 
+lbl.post.subtitulo											= Subtítulo: 
+lbl.post.articulo											= Artículo: 
+lbl.post.tags												= Tags: 
+lbl.post.imagen												= Imágen: 
+lbl.post.categoria											= Categoría: 
+lbl.post.usuario											= Usuario/Autor: 
+lbl.post.genero												= Género: 
+
+# Labels EMail
+lbl.mail.asunto												= Asunto: 
+lbl.mail.destinatarios										= Destinatarios: 
+lbl.mail.correo.destino										= Correo Destino: 
+lbl.mail.correo.remitente									= Remitente: 
+
+# Labels Me Gusta
+lbl.like.calificacion										= Calificación: 
+lbl.like.autor												= Usuario/Autor: 
+lbl.like.post												= Post: 
