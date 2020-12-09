@@ -74,6 +74,19 @@ export class BlogComponent implements OnInit {
     this.cargarCalificacionMG();
   }
 
+  ngDoCheck(): void {
+    if (this.post.id !== this.eutanasiaService.post.id) {
+      this.post = this.eutanasiaService.post;
+      this.meGustaTB = this.objectModelInitializer.getDataMeGustaModel();
+      this.post = this.objectModelInitializer.getDataPostModel();
+      this.comentarioNuevo = '';
+      this.respuestaNueva = '';
+      this.listaComentarios = [];
+      this.cargarPost();
+      this.cargarCalificacionMG();
+    }
+  }
+
   // Otras Funciones
   convertirFechaBlog(fechaString) {
     let fechaFormateada = '';

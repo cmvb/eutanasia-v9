@@ -53,8 +53,8 @@ public class RequestSendEMailDTO implements Serializable {
 		Map<String, Object> result = new HashMap<>();
 		if(this.parametros != null && !this.parametros.isEmpty()) {
 			for (String keyPar : this.parametros) {
-				String key = keyPar.split("\\|")[0];
-				String value = keyPar.split("\\|")[1];
+				String key = keyPar.split("|")[0];
+				String value = keyPar.split("|")[1];
 				if (!result.containsKey(key)) {
 					result.put(key, value);
 				}

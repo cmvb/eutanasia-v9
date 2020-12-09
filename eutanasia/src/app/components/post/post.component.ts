@@ -64,6 +64,8 @@ export class PostComponent implements OnInit {
     this.onlyConsulta = true;
     if (!this.esUsuarioLogueadoActivo()) {
       this.router.navigate(['home/']);
+    } else if (this.sesionService.getUsuarioSesionActual().rol !== 1) {
+      this.router.navigate(['home/']);
     }
     this.archivosTemporales = [];
     this.crearPost = true;

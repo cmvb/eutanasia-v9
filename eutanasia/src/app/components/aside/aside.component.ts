@@ -22,9 +22,6 @@ declare var $: any;
   providers: [RestService, MessageService]
 })
 export class AsideComponent implements OnInit {
-  // EventsEmmiter
-  @Output() verPostEM: EventEmitter<any> = new EventEmitter();
-
   // Objetos de Sesion
   sesion: any;
 
@@ -150,10 +147,8 @@ export class AsideComponent implements OnInit {
   }
 
   verPost(post: PostModel) {
-    this.verPostEM.emit(post);
     this.eutanasiaService.post = post;
-    this.posicionarArriba();
-    return true;
+    this.router.navigate(['blog/' + post.id]);
   }
 
   posicionarArriba() {

@@ -45,7 +45,7 @@ public class SFTPServicio implements ISFTPServicio {
 			this.session = this.jsch.getSession(usuario, servidor, puerto);
 			if (!this.session.isConnected()) {
 				this.session.setPassword(clave);
-				this.session.connect();
+				//this.session.connect();
 				this.config.put("StrictHostKeyChecking", "no");
 				JSch.setConfig(config);
 				this.channelSftp = (ChannelSftp) this.session.openChannel("sftp");
@@ -56,7 +56,6 @@ public class SFTPServicio implements ISFTPServicio {
 			}
 		} catch (JSchException e) {
 			if (this.session != null) {
-				this.session.connect();
 				this.session.disconnect();
 			}
 		}

@@ -1,6 +1,7 @@
 package com.eutanasia.eutanasia.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
@@ -109,6 +110,10 @@ public class ControladorRestArchivos {
 			responseEmail.setCorreosEnviados(new ArrayList<>());
 			responseEmail.setCorreosNoEnviados(new ArrayList<>());
 
+			if (sendEMailDto.getParametros() == null) {
+				sendEMailDto.setParametros(new HashMap<>());
+			}
+
 			List<String> errores = Util.validarMail(sendEMailDto);
 			if (errores.isEmpty()) {
 				for (String correoDestino : sendEMailDto.getPara()) {
@@ -116,7 +121,12 @@ public class ControladorRestArchivos {
 					mailDto.setFrom(sendEMailDto.getDesde());
 					mailDto.setTo(correoDestino);
 					mailDto.setSubject(sendEMailDto.getAsunto() + " - EUTANASIA WEB PAGE");
-					mailDto.setModel(sendEMailDto.getMapaDeLista());
+					mailDto.setModel(new HashMap<>());
+					for (String keyPar : sendEMailDto.getParametros().keySet()) {
+						if (!mailDto.getModel().containsKey(keyPar)) {
+							mailDto.getModel().put(keyPar, sendEMailDto.getParametros().get(keyPar));
+						}
+					}
 
 					try {
 						mailUtil.sendMail(mailDto, ConstantesValidaciones.TEMPLATE_MAIL_CONTACTO_BANDA);

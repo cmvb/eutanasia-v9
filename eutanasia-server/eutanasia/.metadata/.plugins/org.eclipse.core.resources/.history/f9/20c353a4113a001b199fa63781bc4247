@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.eutanasia.eutanasia.dto.MailDTO;
 import com.eutanasia.eutanasia.enums.EEstado;
 import com.eutanasia.eutanasia.enums.EGenero;
-import com.eutanasia.eutanasia.enums.ERolUsuario;
 import com.eutanasia.eutanasia.exception.ModelNotFoundException;
 import com.eutanasia.eutanasia.model.UsuarioAutorTB;
 import com.eutanasia.eutanasia.service.IEutanasiaService;
@@ -256,7 +255,6 @@ public class ControladorRestUsuarios {
 			UsuarioAutorTB newUsuario = new UsuarioAutorTB();
 			if (errores.isEmpty()) {
 				usuarioAutor.setEstado((short) EEstado.INACTIVO.ordinal());
-				usuarioAutor.setRol(ERolUsuario.FAN.ordinal());
 				newUsuario = eutanasiaService.crearUsuario(usuarioAutor);
 				if (newUsuario != null) {
 					MailDTO mailDto = new MailDTO();

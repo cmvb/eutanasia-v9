@@ -316,9 +316,9 @@ export class ObjectModelInitializer {
   getDataRequestEmailDtoModel() {
     return {
       desde: '',
-      para: [''],
+      para: [],
       asunto: '',
-      parametros: new Map<string, string>()
+      parametros: []
     }
   };
 

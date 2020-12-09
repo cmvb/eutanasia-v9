@@ -33,7 +33,7 @@ public class PasswordUtil {
 		byte[] securePassword = hash(password.toCharArray(), salt.getBytes());
 		returnValue = Base64.getEncoder().encodeToString(securePassword);
 
-		return returnValue.replaceAll("/", "c");
+		return returnValue.replace("/", "c");
 	}
 
 	public static boolean verifyUserPassword(String providedPassword, String securedPassword, String salt) {

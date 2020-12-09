@@ -56,7 +56,6 @@ public class SFTPServicio implements ISFTPServicio {
 			}
 		} catch (JSchException e) {
 			if (this.session != null) {
-				this.session.connect();
 				this.session.disconnect();
 			}
 		}
