@@ -382,7 +382,6 @@ export class HomeComponent implements OnInit {
   verPost(post: PostModel) {
     if (this.esUsuarioLogueadoActivoHome()) {
       this.eutanasiaService.post = post;
-
       this.router.navigate(['blog/' + post.id]);
     } else {
       this.messageService.clear();
@@ -468,11 +467,11 @@ export class HomeComponent implements OnInit {
         // Conversiones de datos
         this.mailDTO.desde = this.const.correoRemitenteServer;
         this.mailDTO.para = [this.const.correoRemitente];
-        this.mailDTO.parametros = new Map();
-        this.mailDTO.parametros.set('asunto', this.mailDTO.asunto);
-        this.mailDTO.parametros.set('emailRemite', this.emailRemite);
-        this.mailDTO.parametros.set('remite', this.remite);
-        this.mailDTO.parametros.set('mensaje', this.mensaje);
+        this.mailDTO.parametros = [];
+        this.mailDTO.parametros.push('asunto|' + this.mailDTO.asunto);
+        this.mailDTO.parametros.push('remite|' + this.remite);
+        this.mailDTO.parametros.push('emailRemite|' + this.emailRemite);
+        this.mailDTO.parametros.push('mensaje|' + this.mensaje);
 
         this.restService.postREST(this.const.urlEnviarEmail, this.mailDTO)
           .subscribe(resp => {

@@ -1,7 +1,6 @@
 package com.eutanasia.eutanasia.dto;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +14,7 @@ public class RequestSendEMailDTO implements Serializable {
 
 	private String asunto;
 
-	private List<String> parametros;
+	private Map<String, String> parametros;
 
 	public String getDesde() {
 		return desde;
@@ -41,27 +40,11 @@ public class RequestSendEMailDTO implements Serializable {
 		this.asunto = asunto;
 	}
 
-	public List<String> getParametros() {
+	public Map<String, String> getParametros() {
 		return parametros;
 	}
 
-	public void setParametros(List<String> parametros) {
+	public void setParametros(Map<String, String> parametros) {
 		this.parametros = parametros;
 	}
-
-	public Map<String, Object> getMapaDeLista() {
-		Map<String, Object> result = new HashMap<>();
-		if(this.parametros != null && !this.parametros.isEmpty()) {
-			for (String keyPar : this.parametros) {
-				String key = keyPar.split("\\|")[0];
-				String value = keyPar.split("\\|")[1];
-				if (!result.containsKey(key)) {
-					result.put(key, value);
-				}
-			}	
-		}
-
-		return result;
-	}
-
 }

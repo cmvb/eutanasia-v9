@@ -360,7 +360,8 @@ a[x-apple-data-detectors=true] {
 												style="padding-right: 0px; padding-left: 0px;">
 												<div style="font-size: 1px; line-height: 30px"> </div>
 												<img align="center" alt="Image" border="0"
-													class="center autowidth" src="@imageUser"
+													class="center autowidth" th:text="${imageUser}"
+													src="@imageUser"
 													style="outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; clear: both; border: 0; height: auto; float: none; width: 100%; max-width: 150px; display: block;"
 													title="Image" width="150" />
 											</div>

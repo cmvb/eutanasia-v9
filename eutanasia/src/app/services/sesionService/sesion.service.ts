@@ -5,6 +5,7 @@ import { TextProperties } from 'src/app/config/TextProperties';
 import { Util } from 'src/app/config/Util';
 import { ArchivoModel } from 'src/app/model/archivo-model';
 import { ObjServiceSessionDTOModel } from 'src/app/model/dto/objServiceSession-dto';
+import { UsuarioAutorModel } from 'src/app/model/usuarioAutor-model';
 import { RestService } from '../rest.service';
 
 declare var $: any;
@@ -67,7 +68,7 @@ export class SesionService {
   }
 
   getUsuarioSesionActual() {
-    let result = null;
+    let result: UsuarioAutorModel = null;
     if (this.objServiceSesion !== undefined && this.objServiceSesion !== null && this.objServiceSesion.usuarioSesion !== undefined && this.objServiceSesion.usuarioSesion !== null) {
       result = this.objServiceSesion.usuarioSesion;
     }

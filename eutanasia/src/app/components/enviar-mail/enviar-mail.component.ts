@@ -53,6 +53,8 @@ export class EnviarMailComponent implements OnInit {
     this.activeIndex = 0;
     if (!this.esUsuarioLogueadoActivo()) {
       this.router.navigate(['home/']);
+    } else if (this.sesionService.getUsuarioSesionActual().rol !== 1) {
+      this.router.navigate(['home/']);
     }
   }
 
@@ -87,11 +89,11 @@ export class EnviarMailComponent implements OnInit {
       if (!flagError) {
         // Conversiones de datos
         this.mailDTO.desde = this.const.correoRemitente;
-        this.mailDTO.parametros = new Map<string, string>();
-        this.mailDTO.parametros.set('asunto', this.mailDTO.asunto);
-        this.mailDTO.parametros.set('remite', this.const.nombreBanda);
-        this.mailDTO.parametros.set('emailRemite', this.const.correoRemitente);
-        this.mailDTO.parametros.set('mensaje', this.mensaje);
+        this.mailDTO.parametros = [];
+        this.mailDTO.parametros.push('asunto|' + this.mailDTO.asunto);
+        this.mailDTO.parametros.push('remite|' + this.const.nombreBanda);
+        this.mailDTO.parametros.push('emailRemite|' + this.const.correoRemitente);
+        this.mailDTO.parametros.push('mensaje|' + this.mensaje);
 
         this.restService.postREST(this.const.urlEnviarEmail, this.mailDTO)
           .subscribe(resp => {
