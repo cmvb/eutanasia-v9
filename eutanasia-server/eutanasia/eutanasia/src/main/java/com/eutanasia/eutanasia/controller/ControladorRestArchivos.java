@@ -19,6 +19,7 @@ import com.eutanasia.eutanasia.dto.ArchivoDTO;
 import com.eutanasia.eutanasia.dto.MailDTO;
 import com.eutanasia.eutanasia.dto.RequestSendEMailDTO;
 import com.eutanasia.eutanasia.dto.ResponseSendEMailDTO;
+import com.eutanasia.eutanasia.enums.EDestinoArchivo;
 import com.eutanasia.eutanasia.exception.ModelNotFoundException;
 import com.eutanasia.eutanasia.service.IArchivoService;
 import com.eutanasia.eutanasia.util.ConstantesValidaciones;
@@ -29,9 +30,6 @@ import com.eutanasia.eutanasia.util.UtilMail;
 @RestController
 @RequestMapping("/eutanasia/paratodos")
 public class ControladorRestArchivos {
-
-	public static final String RUTA_RAIZ_ARCHIVOS_SFTP = PropertiesUtil.getProperty("eutanasia.ruta.sftp.archivos");
-	public static final String URL_IMAGENES_USUARIO = PropertiesUtil.getProperty("eutanasia.ruta.images.user");
 
 	@Value("${ruta.responder.comentario}")
 	private String URL_RESPONDER_COMENTARIO;
@@ -48,7 +46,9 @@ public class ControladorRestArchivos {
 	public ResponseEntity<ArchivoDTO> subirImagen(@RequestBody ArchivoDTO archivoDto) {
 		try {
 			ArchivoDTO archivoResponseDto = new ArchivoDTO();
-			archivoDto.setRutaArchivo(RUTA_RAIZ_ARCHIVOS_SFTP);
+			archivoDto.setRutaArchivo(archivoDto.getDestinoArchivo() == EDestinoArchivo.USER.ordinal()
+					? ConstantesValidaciones.RUTA_SFTP_IMAGES_USUARIO
+					: ConstantesValidaciones.RUTA_SFTP_IMAGES_POST);
 			List<String> errores = Util.validarArchivo(archivoDto);
 			if (errores.isEmpty()) {
 				archivoResponseDto = archivoService.subirImagen(archivoDto);
@@ -81,8 +81,15 @@ public class ControladorRestArchivos {
 			}
 
 			if (errores.isEmpty()) {
-				listaArchivosResponseDto = archivoService.obtenerArchivos(archivoDto.getRutaArchivo(),
-						archivoDto.getNombreArchivo());
+				if (ConstantesValidaciones.RUTA_SFTP_IMAGES.equalsIgnoreCase(archivoDto.getRutaArchivo())) {
+					listaArchivosResponseDto.addAll(archivoService.obtenerArchivos(
+							ConstantesValidaciones.RUTA_SFTP_IMAGES_USUARIO, archivoDto.getNombreArchivo()));
+					listaArchivosResponseDto.addAll(archivoService.obtenerArchivos(
+							ConstantesValidaciones.RUTA_SFTP_IMAGES_POST, archivoDto.getNombreArchivo()));
+				} else {
+					listaArchivosResponseDto.addAll(
+							archivoService.obtenerArchivos(archivoDto.getRutaArchivo(), archivoDto.getNombreArchivo()));
+				}
 			} else {
 				StringBuilder mensajeErrores = new StringBuilder();
 				String erroresTitle = PropertiesUtil.getProperty("eutanasia.msg.validate.erroresEncontrados");

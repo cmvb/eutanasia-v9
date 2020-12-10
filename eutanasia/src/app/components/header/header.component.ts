@@ -196,7 +196,7 @@ export class HeaderComponent implements OnInit {
   mostrarOcultarMenu() {
     this.showMenuMovil = !this.showMenuMovil;
   }
-  
+
   obtenerArchivoSanitizadoDeMapa(llaveRuta) {
     let srcResponse = null;
     if (llaveRuta !== undefined && llaveRuta !== null && this.sesionService.mapaArchivosUser !== undefined && this.sesionService.mapaArchivosUser !== null) {
@@ -219,6 +219,7 @@ export class HeaderComponent implements OnInit {
   subirImagen(fileGuardar: ArchivoModel) {
     try {
       this.limpiarAdjuntos(null);
+      fileGuardar.destinoArchivo = 0;
       this.restService.postREST(this.const.urlSubirImagen, fileGuardar)
         .subscribe(resp => {
           let respuesta: ArchivoModel = JSON.parse(JSON.stringify(resp));
@@ -229,7 +230,7 @@ export class HeaderComponent implements OnInit {
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_mensaje_archivo_subido });
             this.archivoImagenRegister = respuesta;
             this.sanitizarUrlImgCargada(this.archivoImagenRegister.archivo, this.archivoImagenRegister.nombreArchivo.split(".")[1]);
-            
+
             // Volver a cargar mapa de imágenes
             this.sesionService.obtenerArchivos();
           }
@@ -275,7 +276,7 @@ export class HeaderComponent implements OnInit {
               this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
               this.sesionService.objServiceSesion.usuarioSesion = respuesta;
               this.usuarioAutorTBLogin = respuesta;
-              if (crear) {
+              if (!crear) {
                 this.usuarioAutorTBLogin.urlImagen = this.srcImagenRegister;
                 this.usuarioAutorTBRegister.urlImagen = this.srcImagenRegister;
               }

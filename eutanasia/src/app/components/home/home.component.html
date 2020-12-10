@@ -24,7 +24,7 @@
 				<!-- about -->
 				<div class="biography-grids">
 					<div class="col-md-6 biography-grid">
-						<img style="padding: 5px 0" src="assets/images/s.jpg" class="img-responsive" />
+						<img src="assets/images/s.jpg" class="img-responsive" />
 					</div>
 					<div class="col-md-6 biography-grid" style="color: #020200;">
 						<p style="padding-top: 0">{{sesionService.msg.lbl_biografia_1}}</p>
@@ -549,7 +549,7 @@
 				<!-- blog -->
 				<div *ngIf="listaPosts.length > 0; else sinResultadosPosts" class="service-grids">
 					<div *ngFor="let post of listaPosts" class="col-md-4">
-						<div class="blog">
+						<div class="blog blog-pq">
 							<div class="blog-img">
 								<img class="img-responsive" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
 									alt="">
@@ -576,7 +576,7 @@
 					</div>
 				</ng-template>
 				<!-- /blog -->
-				<p class="contadorPost">(3/{{listadoPostsCompleto}})</p>
+				<p class="contadorPost">{{sesionService.msg.lbl_mtto_post}}: {{listadoPostsCompleto}}</p>
 			</div>
 			<!-- /Row -->
 		</div>

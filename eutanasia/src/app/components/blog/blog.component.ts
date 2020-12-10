@@ -143,11 +143,13 @@ export class BlogComponent implements OnInit {
   }
 
   seleccionarMeGusta() {
-    this.postMeGustaDTO.listaMeGusta.forEach(meGusta => {
-      if (meGusta.usuarioAutorTB.id === this.usuarioAutorTBLogin.id) {
-        this.meGustaTB = meGusta;
-      }
-    });
+    if (this.postMeGustaDTO !== undefined && this.postMeGustaDTO !== null && this.postMeGustaDTO.listaMeGusta !== undefined && this.postMeGustaDTO.listaMeGusta !== null) {
+      this.postMeGustaDTO.listaMeGusta.forEach(meGusta => {
+        if (meGusta.usuarioAutorTB.id === this.usuarioAutorTBLogin.id) {
+          this.meGustaTB = meGusta;
+        }
+      });
+    }
   }
 
   // Modales

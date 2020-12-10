@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-export var HOST = 'http://localhost:9002';
-//export var HOST = 'http://10.176.56.211:9002';
+//export var HOST = 'http://localhost:9002';
+export var HOST = 'http://192.81.210.103/eutanasia';
 //export var HOST = 'http://192.168.1.15:9002';
 
 export var SYSTEM = 'http://localhost:4200';
@@ -76,7 +76,9 @@ export class ObjectModelInitializer {
       urlModificarMeGusta: `${HOST}/eutanasia/paratodos/modificarMeGusta`,
 
       //SFTP
-      urlSFTPArchivosUser: `/data/desplieguesQA/EAP-C7/dist-angular/SFTP-Archivos/users/`,
+      urlSFTPArchivos: `/data/desplieguesQA/dist-angular/SFTP-Archivos/`,
+      urlSFTPArchivosUser: `/data/desplieguesQA/dist-angular/SFTP-Archivos/users/`,
+      urlSFTPArchivosPost: `/data/desplieguesQA/dist-angular/SFTP-Archivos/posts/`,
 
       correoRemitente: 'eutanasiarockandroll@gmail.com',
       correoRemitenteServer: 'cmverab@ufpso.edu.co',
@@ -223,7 +225,7 @@ export class ObjectModelInitializer {
       fechaNacimiento: '',
       urlImagen: '',
       resena: '',
-      
+
       // Auditoria
       estado: 1,
       fechaCreacion: '',
@@ -302,7 +304,8 @@ export class ObjectModelInitializer {
     return {
       nombreArchivo: '',
       archivo: '',
-      rutaArchivo: ''
+      rutaArchivo: '',
+      destinoArchivo: 0
     }
   };
 

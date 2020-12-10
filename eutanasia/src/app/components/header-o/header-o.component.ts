@@ -197,6 +197,7 @@ export class HeaderOComponent implements OnInit {
   subirImagen(fileGuardar: ArchivoModel) {
     try {
       this.limpiarAdjuntos(null);
+      fileGuardar.destinoArchivo = 0;
       this.restService.postREST(this.const.urlSubirImagen, fileGuardar)
         .subscribe(resp => {
           let respuesta: ArchivoModel = JSON.parse(JSON.stringify(resp));

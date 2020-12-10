@@ -23,7 +23,6 @@ export class SesionService {
   constructor(public textProperties: TextProperties, private messageService: MessageService, public objectModelInitializer: ObjectModelInitializer, public restService: RestService) {
     this.const = this.objectModelInitializer.getConst();
     this.inicializar();
-    debugger;
     if (!this.existeSession()) {
       this.tomarSessionDeStorage();
     }
@@ -100,8 +99,9 @@ export class SesionService {
 
   obtenerArchivos() {
     try {
+      debugger;
       let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
-      archivo.rutaArchivo = this.const.urlSFTPArchivosUser;
+      archivo.rutaArchivo = this.const.urlSFTPArchivos;
       this.restService.postREST(this.const.urlObtenerArchivos, archivo)
         .subscribe(resp => {
           this.mapaArchivosUser = new Map();
