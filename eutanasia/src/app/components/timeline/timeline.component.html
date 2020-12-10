@@ -1,0 +1,157 @@
+<p-scrollPanel #scrollTimeline [style]="{width: '100%', height: '100vh'}" styleClass="custom">
+    <!-- HEADER -->
+    <app-header-o></app-header-o>
+    <!-- /HEADER -->
+
+    <!-- NOTY -->
+    <p-toast></p-toast>
+
+    <!-- header wrapper -->
+    <div class="header-wrapper sm-padding bg-grey">
+        <div class="container">
+            <h2>{{sesionService.msg.lbl_timeline}}</h2>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">{{sesionService.msg.lbl_blog}}</a></li>
+                <li class="breadcrumb-item"><a href="index.html#blog">{{sesionService.msg.lbl_posts}}</a></li>
+                <li class="breadcrumb-item active">{{sesionService.msg.lbl_noticias}}</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /header wrapper -->
+
+    <!-- Blog -->
+    <div class="section md-padding">
+        <!-- Container -->
+        <div class="container">
+            <!-- Row -->
+            <div class="row">
+                <!-- ASIDE -->
+                <app-aside></app-aside>
+                <!-- ASIDE -->
+
+                <!-- Main -->
+                <div *ngIf="listaPosts.length > 0; else sinResultadosTimeline" class="col-md-9">
+                    <div *ngFor="let post of listaPosts" class="blog">
+                        <!-- blog author -->
+                        <div class="blog-author">
+                            <h3 class="title">{{sesionService.msg.lbl_autor}}</h3>
+
+                            <div class="media">
+                                <div class="media-left">
+                                    <img class="media-object imagePerfil" style="height: 100px;width: 100px;"
+                                        [src]="obtenerArchivoSanitizadoDeMapa(post.usuarioAutorTB.urlImagen)" alt="">
+                                </div>
+                                <div class="media-body">
+                                    <div class="media-heading">
+                                        <h3>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</h3>
+                                        <div class="author-social">
+                                            <a *ngIf="post.usuarioAutorTB.linkFbook !== undefined && post.usuarioAutorTB.linkFbook !== null"
+                                                href="{{post.usuarioAutorTB.linkFbook}}" target="_blank"><i
+                                                    class="fa fa-facebook"></i></a>
+                                            <a *ngIf="post.usuarioAutorTB.linkTwitter !== undefined && post.usuarioAutorTB.linkTwitter !== null"
+                                                href="{{post.usuarioAutorTB.linkTwitter}}" target="_blank"><i
+                                                    class="fa fa-twitter"></i></a>
+                                            <a *ngIf="post.usuarioAutorTB.linkGoogle !== undefined && post.usuarioAutorTB.linkGoogle !== null"
+                                                href="{{post.usuarioAutorTB.linkGoogle}}" target="_blank"><i
+                                                    class="fa fa-google-plus"></i></a>
+                                            <a *ngIf="post.usuarioAutorTB.linkInstagram !== undefined && post.usuarioAutorTB.linkInstagram !== null"
+                                                href="{{post.usuarioAutorTB.linkInstagram}}" target="_blank"><i
+                                                    class="fa fa-instagram"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="blog-img">
+                                        <img class="img-responsive w100"
+                                            [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)" alt="">
+                                    </div>
+                                    <div class="blog-content">
+                                        <ul class="blog-meta">
+                                            <li><i class="fa fa-user"></i>{{post.usuarioAutorTB.nombres}}
+                                                {{post.usuarioAutorTB.apellidos}}</li>
+                                            <li><i class="fa fa-calendar"></i>{{post.fechaCreacion | date:'dd/MM/yyyy'}}
+                                            </li>
+                                            <li><i class="fa fa-clock-o"></i>{{convertirFecha(post.fechaCreacion)}}</li>
+                                            <li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
+                                            <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})
+                                            </li>
+                                        </ul>
+                                        <h3>{{post.titulo}}</h3>
+                                        <h5>{{post.subtitulo}}</h5>
+                                        <p>{{post.articulo}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /blog author -->
+                    </div>
+                </div>
+                <ng-template #sinResultadosTimeline>
+                    <div class="service-grids">
+                        <div class="col-md-12 ser-grid">
+                            <p class="sinResultados shiny">{{sesionService.msg.lbl_info_sin_resultados}}</p>
+                        </div>
+                    </div>
+                </ng-template>
+                <!-- /Main -->
+            </div>
+            <!-- /Row -->
+        </div>
+        <!-- /Container -->
+    </div>
+    <!-- /Blog -->
+
+    <!-- Blog -->
+    <div class="section md-padding bg-grey">
+        <!-- Container -->
+        <div class="container">
+            <!-- Row -->
+            <div class="row">
+                <!-- Section header -->
+                <div class="section-header text-center">
+                    <h2 class="title">{{sesionService.msg.lbl_post_interes}}</h2>
+                </div>
+                <!-- /Section header -->
+
+                <!-- Main -->
+                <div *ngIf="listaPostsMenosPopulares.length > 0; else sinResultadosPosts" class="service-grids">
+                    <div *ngFor="let post of listaPostsMenosPopulares" class="col-md-4">
+                        <div class="blog">
+                            <div class="blog-img">
+                                <img class="img-responsive" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
+                                    alt="">
+                            </div>
+                            <div class="blog-content">
+                                <ul class="blog-meta">
+                                    <li><i class="fa fa-user"></i>{{post.autor}}</li>
+                                    <li><i class="fa fa-clock-o"></i>{{convertirFecha(post.fechaCreacion)}}</li>
+                                    <li><i class="fa fa-comments"></i>{{post.cantidadComentarios}}</li>
+                                </ul>
+                                <h3>{{post.titulo}}</h3>
+                                <p>{{post.subtitulo}}</p>
+                                <a class="hoverBlack cursorPointer"
+                                    (click)="verPost(post)">{{sesionService.msg.lbl_leer_mas}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #sinResultadosPosts>
+                    <div class="service-grids">
+                        <div class="col-md-12 ser-grid">
+                            <p class="sinResultados shiny">{{sesionService.msg.lbl_info_sin_resultados}}</p>
+                        </div>
+                    </div>
+                </ng-template>
+                <!-- /Main -->
+                <p class="contadorPost">(3/{{listadoPostsCompleto}})</p>
+            </div>
+            <!-- /Row -->
+        </div>
+        <!-- /Container -->
+    </div>
+    <!-- /Blog -->
+
+    <!-- FOOTER -->
+    <app-footer></app-footer>
+    <!-- FOOTER -->
+
+</p-scrollPanel>

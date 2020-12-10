@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import com.eutanasia.eutanasia.dto.ArchivoDTO;
 import com.eutanasia.eutanasia.dto.DirectorioDTO;
 import com.eutanasia.eutanasia.enums.ETipoDirectorio;
+import com.eutanasia.eutanasia.exception.ModelNotFoundException;
 import com.eutanasia.eutanasia.service.ISFTPServicio;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.ChannelSftp.LsEntry;
@@ -42,9 +43,11 @@ public class SFTPServicio implements ISFTPServicio {
 		try {
 			this.config = new Properties();
 			this.jsch = new JSch();
+			//this.jsch.setKnownHosts("~\\.ssh\\known_hosts");
 			this.session = this.jsch.getSession(usuario, servidor, puerto);
 			if (!this.session.isConnected()) {
 				this.session.setPassword(clave);
+				//this.session.setConfig("StrictHostKeyChecking", "no");
 				this.session.connect();
 				this.config.put("StrictHostKeyChecking", "no");
 				JSch.setConfig(config);
@@ -66,16 +69,23 @@ public class SFTPServicio implements ISFTPServicio {
 
 	@Override
 	public void cerrarConexion() {
-		if (this.channelSftp != null) {
-			this.channelSftp.disconnect();
-			this.channelSftp.exit();
+		try {
+			if (this.channelSftp != null) {
+				this.channelSftp.connect();
+				this.channelSftp.disconnect();
+				this.channelSftp.exit();
+			}
+			if (this.session != null) {
+				this.session.setPassword("");
+				this.session.connect();
+				this.session.disconnect();
+			}
+			this.channelSftp = null;
+			this.session = null;
+			this.jsch = null;
+		} catch (JSchException e) {
+			throw new ModelNotFoundException(e.getMessage());
 		}
-		if (this.session != null) {
-			this.session.disconnect();
-		}
-		this.channelSftp = null;
-		this.session = null;
-		this.jsch = null;
 	}
 
 	@Override
@@ -93,7 +103,7 @@ public class SFTPServicio implements ISFTPServicio {
 				file.delete();
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new ModelNotFoundException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -108,7 +118,7 @@ public class SFTPServicio implements ISFTPServicio {
 				resultado = true;
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new ModelNotFoundException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -123,7 +133,7 @@ public class SFTPServicio implements ISFTPServicio {
 				resultado = true;
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			throw new ModelNotFoundException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -139,7 +149,7 @@ public class SFTPServicio implements ISFTPServicio {
 				}
 			}
 		} catch (SftpException e) {
-			System.out.println(e.getMessage());
+			throw new ModelNotFoundException(e.getMessage());
 		}
 
 		return resultado;
@@ -168,7 +178,7 @@ public class SFTPServicio implements ISFTPServicio {
 				}
 			}
 		} catch (SftpException e) {
-			System.out.println(e.getMessage());
+			throw new ModelNotFoundException(e.getMessage());
 		}
 	}
 
@@ -195,7 +205,7 @@ public class SFTPServicio implements ISFTPServicio {
 				resultado = this.channelSftp.get(rutaSFTP);
 			}
 		} catch (SftpException e) {
-			System.out.println(e.getMessage());
+			throw new ModelNotFoundException(e.getMessage());
 		}
 
 		return resultado;
@@ -236,7 +246,7 @@ public class SFTPServicio implements ISFTPServicio {
 				}
 			}
 		} catch (SftpException | IOException e) {
-			System.out.println(e.getMessage());
+			throw new ModelNotFoundException(e.getMessage());
 		}
 
 		return listaArchivos;
@@ -254,7 +264,7 @@ public class SFTPServicio implements ISFTPServicio {
 				}
 			}
 		} catch (SftpException e) {
-			System.out.println(e.getMessage());
+			throw new ModelNotFoundException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -268,7 +278,7 @@ public class SFTPServicio implements ISFTPServicio {
 				resultado = true;
 			}
 		} catch (SftpException e) {
-			System.out.println(e.getMessage());
+			throw new ModelNotFoundException(e.getMessage());
 		}
 		return resultado;
 	}
@@ -288,7 +298,7 @@ public class SFTPServicio implements ISFTPServicio {
 				}
 			}
 		} catch (SftpException ex) {
-			System.out.println(ex.getMessage());
+			throw new ModelNotFoundException(ex.getMessage());
 		}
 
 		return listaCarpetas;
@@ -310,7 +320,7 @@ public class SFTPServicio implements ISFTPServicio {
 				dto.setTipoDirectorio(ETipoDirectorio.ARCHIVO);
 			}
 		} catch (SftpException ex) {
-			System.out.println(ex.getMessage());
+			throw new ModelNotFoundException(ex.getMessage());
 		}
 
 		return dto;
@@ -330,7 +340,7 @@ public class SFTPServicio implements ISFTPServicio {
 				carpetasInternas.stream().forEach(e -> resultado.add(e.getFilename()));
 			}
 		} catch (SftpException ex) {
-			System.out.println(ex.getMessage());
+			throw new ModelNotFoundException(ex.getMessage());
 		}
 
 		return resultado;

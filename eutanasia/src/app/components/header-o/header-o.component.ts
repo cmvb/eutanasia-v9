@@ -86,7 +86,6 @@ export class HeaderOComponent implements OnInit {
   }
 
   redirigirBlogsBlog() {
-
     this.router.navigate(['timeline']);
   }
 
@@ -228,7 +227,7 @@ export class HeaderOComponent implements OnInit {
   }
 
   crearActualizarUsuarioEutanasico(crear: boolean) {
-    sessionStorage.clear();
+    localStorage.clear();
     try {
       if (this.repeatPassword === undefined || this.repeatPassword === null) {
         this.messageService.clear();
@@ -258,7 +257,7 @@ export class HeaderOComponent implements OnInit {
                 this.usuarioAutorTBLogin.urlImagen = this.srcImagenRegister;
                 this.usuarioAutorTBRegister.urlImagen = this.srcImagenRegister;
               }
-              sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
+              localStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
               this.messageService.clear();
               this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
             }
@@ -280,7 +279,7 @@ export class HeaderOComponent implements OnInit {
   }
 
   login() {
-    sessionStorage.clear();
+    localStorage.clear();
     try {
       this.restService.postREST(this.const.urlLogin, this.usuarioAutorTBLogin)
         .subscribe(resp => {
@@ -291,7 +290,7 @@ export class HeaderOComponent implements OnInit {
             this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
             this.sesionService.objServiceSesion.usuarioSesion = respuesta;
             this.usuarioAutorTBLogin = respuesta;
-            sessionStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
+            localStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
           }
@@ -311,7 +310,7 @@ export class HeaderOComponent implements OnInit {
   }
 
   restaurarClave() {
-    sessionStorage.clear();
+    localStorage.clear();
     try {
       this.restService.postREST(this.const.urlRestaurarClave, this.usuarioAutorTBLogin)
         .subscribe(resp => {

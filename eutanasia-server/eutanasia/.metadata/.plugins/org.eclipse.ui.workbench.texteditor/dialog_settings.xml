@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="throw new ModelNotFoundException(ex.getMessage());"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="System.out.println(ex.getMessage());"/>
+			<item value="System.out.println(e.getMessage());"/>
+			<item value="crearus"/>
+			<item value="manch|"/>
+			<item value="manch"/>
+			<item value="URL_VERIFICAR_CUENTA_NUEVA"/>
+			<item value="man"/>
+			<item value="man."/>
+			<item value="man.sv"/>
+			<item value="crear"/>
+			<item value="obtenerArchivos"/>
 			<item value="filtros"/>
 			<item value="post"/>
 			<item value="valor.objeto"/>
 			<item value="crearcom"/>
-			<item value="eutanasia.msg.validate.erroresEncontrados"/>
-			<item value="crearu"/>
-			<item value="lbl.comentario"/>
-			<item value="consultarcome"/>
-			<item value="id"/>
-			<item value="urlConsultarComentariosPorIdPost"/>
-			<item value="crearcomen"/>
-			<item value="common"/>
-			<item value="modificar"/>
-			<item value="modifi"/>
-			<item value="catego"/>
 		</list>
 		<list key="replacehistory">
+			<item value="throw new ModelNotFoundException(ex.getMessage());"/>
+			<item value="throw new ModelNotFoundException(e.getMessage());"/>
 			<item value="meGusta"/>
 			<item value="lbl.post"/>
 			<item value="/"/>
@@ -38,13 +40,11 @@
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/barra1.svg"/>
 			<item value=""/>
 			<item value="filtroUsuario"/>
-			<item value="https://github.com/cmvb/eutanasia-v9/blob/master/eutanasia/src/assets/images/logo2020.svg"/>
-			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="143"/>
-		<item key="DIALOG_Y_ORIGIN" value="216"/>
+		<item key="DIALOG_X_ORIGIN" value="84"/>
+		<item key="DIALOG_Y_ORIGIN" value="168"/>
 		<item key="DIALOG_WIDTH" value="284"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

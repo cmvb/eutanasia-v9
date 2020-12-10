@@ -72,6 +72,8 @@ export class TextProperties {
       lbl_por_definir: idioma === constant.idiomaEs ? 'Por definir' : 'To define',
       lbl_comparte: idioma === constant.idiomaEs ? 'Compartí' : 'Share',
       lbl_blog: idioma === constant.idiomaEs ? 'Blog' : 'Blog',
+      lbl_timeline: idioma === constant.idiomaEs ? 'Timeline' : 'Timeline',
+      lbl_post_interes: idioma === constant.idiomaEs ? 'Posts de interés' : 'Posts of interest',
       lbl_bio: idioma === constant.idiomaEs ? 'Biografía' : 'Biography',
       lbl_inicio: idioma === constant.idiomaEs ? 'Inicio' : 'Start',
       lbl_ultimas_publicaciones: idioma === constant.idiomaEs ? 'Últimas Publicaciones' : 'Latest Posts',
@@ -86,6 +88,7 @@ export class TextProperties {
       lbl_link_i: idioma === constant.idiomaEs ? 'Enlace Instagram' : 'Link Instagram',
       lbl_link_g: idioma === constant.idiomaEs ? 'Enlace Google' : 'Link Google',
       lbl_link_t: idioma === constant.idiomaEs ? 'Enlace Twitter' : 'Link Twitter',
+      lbl_noticias: idioma === constant.idiomaEs ? 'Noticias' : 'News',
 
       // Banda
       lbl_banda: idioma === constant.idiomaEs ? 'Banda' : 'Band',

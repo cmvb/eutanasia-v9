@@ -23,6 +23,7 @@ export class SesionService {
   constructor(public textProperties: TextProperties, private messageService: MessageService, public objectModelInitializer: ObjectModelInitializer, public restService: RestService) {
     this.const = this.objectModelInitializer.getConst();
     this.inicializar();
+    debugger;
     if (!this.existeSession()) {
       this.tomarSessionDeStorage();
     }
@@ -80,12 +81,12 @@ export class SesionService {
   }
 
   cerrarSession() {
-    sessionStorage.clear();
+    localStorage.clear();
     this.objServiceSesion = undefined;
   }
 
   tomarSessionDeStorage() {
-    let objServiceSesion = sessionStorage.getItem('objServiceSesion');
+    let objServiceSesion = localStorage.getItem('objServiceSesion');
     if (objServiceSesion !== undefined && objServiceSesion !== null) {
       this.objServiceSesion = JSON.parse(objServiceSesion);
     }
