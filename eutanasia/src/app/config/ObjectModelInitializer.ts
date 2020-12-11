@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
 export var HOST = 'http://192.81.210.103/eutanasia';
 //export var HOST = 'http://192.168.1.15:9002';
 
-export var SYSTEM = 'http://localhost:4200';
-//export var SYSTEM = 'http://10.176.56.211:7001';
+//export var SYSTEM = 'http://localhost:4200';
+export var SYSTEM = 'http://192.81.210.103/eutanasia';
 //export var SYSTEM = 'http://192.168.1.15:4200';
 
 @Injectable()
