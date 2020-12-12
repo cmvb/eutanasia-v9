@@ -45,26 +45,26 @@
                                     <div class="media-heading">
                                         <h3>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</h3>
                                         <div class="author-social">
-                                            <a *ngIf="post.usuarioAutorTB.linkFbook !== undefined && post.usuarioAutorTB.linkFbook !== null"
+                                            <a *ngIf="post.usuarioAutorTB.linkFbook !== undefined && post.usuarioAutorTB.linkFbook !== null && post.usuarioAutorTB.linkFbook.length > 0"
                                                 href="{{post.usuarioAutorTB.linkFbook}}" target="_blank"><i
                                                     class="fa fa-facebook"></i></a>
-                                            <a *ngIf="post.usuarioAutorTB.linkTwitter !== undefined && post.usuarioAutorTB.linkTwitter !== null"
+                                            <a *ngIf="post.usuarioAutorTB.linkTwitter !== undefined && post.usuarioAutorTB.linkTwitter !== null && post.usuarioAutorTB.linkTwitter.length > 0"
                                                 href="{{post.usuarioAutorTB.linkTwitter}}" target="_blank"><i
                                                     class="fa fa-twitter"></i></a>
-                                            <a *ngIf="post.usuarioAutorTB.linkGoogle !== undefined && post.usuarioAutorTB.linkGoogle !== null"
+                                            <a *ngIf="post.usuarioAutorTB.linkGoogle !== undefined && post.usuarioAutorTB.linkGoogle !== null && post.usuarioAutorTB.linkGoogle.length > 0"
                                                 href="{{post.usuarioAutorTB.linkGoogle}}" target="_blank"><i
                                                     class="fa fa-google-plus"></i></a>
-                                            <a *ngIf="post.usuarioAutorTB.linkInstagram !== undefined && post.usuarioAutorTB.linkInstagram !== null"
+                                            <a *ngIf="post.usuarioAutorTB.linkInstagram !== undefined && post.usuarioAutorTB.linkInstagram !== null && post.usuarioAutorTB.linkInstagram.length > 0"
                                                 href="{{post.usuarioAutorTB.linkInstagram}}" target="_blank"><i
                                                     class="fa fa-instagram"></i></a>
                                         </div>
                                     </div>
 
-                                    <div class="blog-img">
+                                    <div class="blog-img" (click)="verPost(post)">
                                         <img class="img-responsive w100"
                                             [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)" alt="">
                                     </div>
-                                    <div class="blog-content">
+                                    <div class="blog-content cursorPointer">
                                         <ul class="blog-meta">
                                             <li><i class="fa fa-user"></i>{{post.usuarioAutorTB.nombres}}
                                                 {{post.usuarioAutorTB.apellidos}}</li>
@@ -75,7 +75,7 @@
                                             <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})
                                             </li>
                                         </ul>
-                                        <h3>{{post.titulo}}</h3>
+                                        <h3 class="cursorPointer" (click)="verPost(post)">{{post.titulo}}</h3>
                                         <h5>{{post.subtitulo}}</h5>
                                         <p>{{post.articulo}}</p>
                                     </div>
@@ -115,7 +115,7 @@
                 <!-- Main -->
                 <div *ngIf="listaPostsMenosPopulares.length > 0; else sinResultadosPosts" class="service-grids">
                     <div *ngFor="let post of listaPostsMenosPopulares" class="col-md-4">
-                        <div class="blog">
+                        <div class="blog blog-pq">
                             <div class="blog-img">
                                 <img class="img-responsive" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
                                     alt="">
@@ -142,7 +142,7 @@
                     </div>
                 </ng-template>
                 <!-- /Main -->
-                <p class="contadorPost">{{sesionService.msg.lbl_mtto_post}}: {{listadoPostsCompleto}}</p>
+                <p class="contadorPost">{{listaPostsMenosPopulares.length}}/ {{listadoPostsCompleto}})</p>
             </div>
             <!-- /Row -->
         </div>

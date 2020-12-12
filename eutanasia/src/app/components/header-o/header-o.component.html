@@ -64,7 +64,7 @@
                     <div *ngIf="!loginRestaurar" class="row justify-content-center">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
                             <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBLogin.usuario"
-                                placeholder="{{sesionService.msg.lbl_header_usuario}}" />
+                                placeholder="{{sesionService.msg.lbl_header_usuario}}" maxlength="10" />
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
                             <input class="input" type="password" pInputText [(ngModel)]="usuarioAutorTBLogin.password"
@@ -90,7 +90,7 @@
                     <div *ngIf="loginRestaurar" class="row justify-content-center">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
                             <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBLogin.usuario"
-                                placeholder="{{sesionService.msg.lbl_header_usuario}}" />
+                                placeholder="{{sesionService.msg.lbl_header_usuario}}" maxlength="10" />
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
                             <p-button label="{{sesionService.msg.lbl_btn_restaurar_clave}}" (click)="restaurarClave()"
@@ -129,7 +129,7 @@
                             </div>
                             <p-fileUpload #fileInputRegister mode="basic" name="archivosTemporales[]"
                                 customUpload="true" (uploadHandler)="handlerUpload($event)" accept="image/*"
-                                maxFileSize="10000000" (onClear)="limpiarAdjuntos($event)"
+                                maxFileSize="750000" (onClear)="limpiarAdjuntos($event)"
                                 chooseLabel="{{sesionService.msg.lbl_btn_escoger_archivo}}"
                                 uploadLabel="{{sesionService.msg.lbl_btn_subir_archivos}}"
                                 cancelLabel="{{sesionService.msg.lbl_btn_cancelar}}"
@@ -154,7 +154,7 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
                             <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBRegister.usuario"
-                                placeholder="{{sesionService.msg.lbl_header_usuario}}">
+                                placeholder="{{sesionService.msg.lbl_header_usuario}}" maxlength="10">
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-form-login">
                             <input class="input" type="email" pInputText [(ngModel)]="usuarioAutorTBRegister.correo"
@@ -225,32 +225,11 @@
 
     <!-- Menú Responsive -->
     <div id="accordian" *ngIf="showMenuMovil">
-        <ul style="background-color:#ffffffd9">
+        <ul class="menuMovil">
             <li>
                 <ul>
                     <li><a href="#home"><i
                                 class="pi pi-home font-12px iconMovilPad"></i>{{sesionService.msg.lbl_inicio}}</a>
-                    </li>
-                    <li><a href="#about"><i
-                                class="pi pi-info-circle font-12px iconMovilPad"></i>{{sesionService.msg.lbl_bio}}</a>
-                    </li>
-                    <li><a href="#team"><i
-                                class="pi pi-star font-12px iconMovilPad"></i>{{sesionService.msg.lbl_banda}}</a>
-                    </li>
-                    <li><a href="#portfolio"><i
-                                class="pi pi-images font-12px iconMovilPad"></i>{{sesionService.msg.lbl_galeria_media}}</a>
-                    </li>
-                    <li><a href="#service"><i
-                                class="pi pi-sliders-v font-12px iconMovilPad"></i>{{sesionService.msg.lbl_participaciones}}</a>
-                    </li>
-                    <li><a href="#pricing"><i
-                                class="pi pi-share-alt font-12px iconMovilPad"></i>{{sesionService.msg.lbl_comparte}}</a>
-                    </li>
-                    <li>
-                        <a href="#publicaciones">
-                            <i class="pi pi-clone font-12px iconMovilPad"></i>
-                            {{sesionService.msg.lbl_ultimas_publicaciones}}
-                        </a>
                     </li>
                     <li>
                         <a (click)="redirigirBlogsBlog()">

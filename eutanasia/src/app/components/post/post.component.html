@@ -104,7 +104,7 @@
                                                 </div>
                                                 <p-fileUpload #fileInputPost mode="basic" name="archivosTemporales[]"
                                                     customUpload="true" (uploadHandler)="handlerUpload($event)"
-                                                    accept="image/*" maxFileSize="10000000"
+                                                    accept="image/*" maxFileSize="750000"
                                                     (onClear)="limpiarAdjuntos($event)"
                                                     chooseLabel="{{sesionService.msg.lbl_btn_escoger_archivo}}"
                                                     uploadLabel="{{sesionService.msg.lbl_btn_subir_archivos}}"

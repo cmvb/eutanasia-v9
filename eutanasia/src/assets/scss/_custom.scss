@@ -1,0 +1,14 @@
+// Imagehover.css overrides
+//
+// Copy variables from `_variables.scss` to this file to override important values without modifying source files.
+
+
+$image-bg:             #000 !important;
+$figcaption-bg:        #000 !important;
+$figcaption-padding:   30px !important;
+$text-color:           #ffffff !important;
+$border-color:         #ffffff !important;
+$border-margin:        5px !important;
+$border-width:         4px !important;
+$transition-duration:  0.35s !default;
+$shift-distance:       10px !important;

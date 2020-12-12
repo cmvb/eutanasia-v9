@@ -99,7 +99,6 @@ export class SesionService {
 
   obtenerArchivos() {
     try {
-      debugger;
       let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
       archivo.rutaArchivo = this.const.urlSFTPArchivos;
       this.restService.postREST(this.const.urlObtenerArchivos, archivo)

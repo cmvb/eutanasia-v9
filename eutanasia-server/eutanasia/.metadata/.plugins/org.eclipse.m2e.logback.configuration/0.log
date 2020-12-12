@@ -11775,3 +11775,43 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: Duplicated 
 2020-12-10 17:51:29,491 [Worker-403: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2020-12-10 17:51:29,493 [Worker-403: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2020-12-10 17:51:29,493 [Worker-403: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-10 19:52:59,104 [Worker-436: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-10 19:52:59,104 [Worker-436: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-12-10 19:52:59,106 [Worker-436: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-12-10 19:52:59,108 [Worker-436: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-10 19:52:59,108 [Worker-436: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-10 19:53:05,180 [Worker-436: Launching Executing clean in C__Users_veracm_Documents_ProjectsCB_EUTANASIA-V9_eutanasia-server_eutanasia_eutanasia] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia
+2020-12-10 19:53:05,180 [Worker-436: Launching Executing clean in C__Users_veracm_Documents_ProjectsCB_EUTANASIA-V9_eutanasia-server_eutanasia_eutanasia] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ppom.xml -B clean -Dstyle.color=always
+2020-12-10 19:53:25,895 [Worker-443: Launching Executing install in C__Users_veracm_Documents_ProjectsCB_EUTANASIA-V9_eutanasia-server_eutanasia_eutanasia] INFO  o.e.m.i.launch.MavenLaunchDelegate - C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia
+2020-12-10 19:53:25,895 [Worker-443: Launching Executing install in C__Users_veracm_Documents_ProjectsCB_EUTANASIA-V9_eutanasia-server_eutanasia_eutanasia] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn -Ppom.xml -B install -Dstyle.color=always
+2020-12-10 20:18:06,691 [Worker-451: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-10 20:18:06,692 [Worker-451: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-12-10 20:18:06,702 [Worker-451: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-12-10 20:18:06,704 [Worker-451: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-10 20:18:06,705 [Worker-451: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-10 22:22:32,649 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@1b537d6d{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2020-12-10 22:22:32,650 [Stop Help Server] INFO  org.eclipse.jetty.server.session - node0 Stopped scavenging
+2020-12-10 22:22:32,663 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@7074932c{/help,null,UNAVAILABLE}
+2020-12-12 13:55:40,166 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2020-12-12 13:55:56,180 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-12 13:55:56,185 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-12 13:55:56,205 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 7 resources
+2020-12-12 13:55:56,215 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-12 13:55:56,216 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-12 13:56:34,107 [Worker-0: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update started
+2020-12-12 13:56:35,184 [Worker-0: Updating Maven Project] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.eutanasia:eutanasia:0.0.1-SNAPSHOT @ C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\pom.xml.
+2020-12-12 13:56:38,903 [Worker-0: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /eutanasia/src/main/java
+2020-12-12 13:56:38,903 [Worker-0: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /eutanasia/src/main/resources
+2020-12-12 13:56:38,904 [Worker-0: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /eutanasia/src/main/resources
+2020-12-12 13:56:38,905 [Worker-0: Updating Maven Project] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /eutanasia/src/test/java
+2020-12-12 13:56:42,644 [Worker-0: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for eutanasia
+2020-12-12 13:56:42,655 [Worker-0: Updating Maven Project] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Update completed: 8 sec
+2020-12-12 13:56:46,551 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-12 13:56:46,553 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-12-12 13:56:46,585 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 7 resources
+2020-12-12 13:56:46,675 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-12 13:56:46,676 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\veracm\Documents\ProjectsCB\EUTANASIA-V9\eutanasia-server\eutanasia\eutanasia\src\test\resources
+2020-12-12 13:56:46,677 [Worker-0: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of eutanasia
+2020-12-12 13:56:46,681 [Worker-0: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for eutanasia
+2020-12-12 13:56:46,690 [Worker-0: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-12-12 15:12:54,738 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.

@@ -24,4 +24,6 @@
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.enums.EGenero"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="com.eutanasia.eutanasia.enums.ERolUsuario"/>
+    <fullyQualifiedTypeName name="org.springframework.boot.web.servlet.support.SpringBootServletInitializer"/>
+    <fullyQualifiedTypeName name="com.eutanasia.eutanasia.enums.EDestinoArchivo"/>
 </qualifiedTypeNameHistroy>

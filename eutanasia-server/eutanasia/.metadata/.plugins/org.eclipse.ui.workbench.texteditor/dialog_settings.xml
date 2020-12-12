@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="throw new ModelNotFoundException(ex.getMessage());"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="System.out.println(ex.getMessage());"/>
-			<item value="System.out.println(e.getMessage());"/>
-			<item value="crearus"/>
-			<item value="manch|"/>
-			<item value="manch"/>
-			<item value="URL_VERIFICAR_CUENTA_NUEVA"/>
-			<item value="man"/>
-			<item value="man."/>
-			<item value="man.sv"/>
-			<item value="crear"/>
-			<item value="obtenerArchivos"/>
-			<item value="filtros"/>
-			<item value="post"/>
-			<item value="valor.objeto"/>
-			<item value="crearcom"/>
+			<item value="frenet"/>
+			<item value="http://192.81.210.103/#/"/>
+			<item value="http://192.81.210.103/#"/>
+			<item value="thro"/>
+			<item value="throw new ModelNotFoundException(e.getMessage());"/>
+			<item value="throw new ModelNotFoundException(e.getMessage())"/>
+			<item value="thr"/>
+			<item value="borr"/>
+			<item value="borrarArchivoServidor"/>
+			<item value="this."/>
+			<item value="ch = new JSch();"/>
+			<item value="URL_IMAGENES_USUARIO"/>
+			<item value="eutanasia.ruta.images.user"/>
+			<item value="eutanasia.ruta.sftp.archivos"/>
+			<item value="packaging"/>
 		</list>
 		<list key="replacehistory">
+			<item value="http://192.81.210.103/eutanasia-eaf/#"/>
+			<item value=""/>
 			<item value="throw new ModelNotFoundException(ex.getMessage());"/>
 			<item value="throw new ModelNotFoundException(e.getMessage());"/>
 			<item value="meGusta"/>
@@ -38,8 +40,6 @@
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/barra2.svg"/>
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/barra1.svg"/>
-			<item value=""/>
-			<item value="filtroUsuario"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
