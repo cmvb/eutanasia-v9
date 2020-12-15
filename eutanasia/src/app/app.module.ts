@@ -59,6 +59,7 @@ import { SesionService } from './services/sesionService/sesion.service';
 import { HeaderOComponent } from './components/header-o/header-o.component';
 import { EnviarMailComponent } from './components/enviar-mail/enviar-mail.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { PromoComponent } from './components/promo/promo.component';
 
 // Constantes
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -103,7 +104,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ConsultaComponent,
     HeaderOComponent,
     EnviarMailComponent,
-    TimelineComponent
+    TimelineComponent,
+    PromoComponent
   ],
   imports: [
     AgmCoreModule.forRoot({ apiKey: 'AIzaSyBaNBQN5zBRz7h5lUKB4GGZQHhakKrajSA' }),

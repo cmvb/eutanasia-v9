@@ -58,15 +58,15 @@ export class RecordarClaveComponent implements OnInit {
           if (respuesta !== null) {
             this.usuarioAutorTBNuevo = respuesta;
             // Mostrar mensaje exitoso
-            this.mensajeMostrar = 'Digite la nueva clave';
+            this.mensajeMostrar = this.sesionService.msg.lbl_mensaje_digite_nueva_clave;
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
           } else {
-            this.mensajeMostrar = 'No se ha encontrado el usuario: ' + this.usuarioAutorTBNuevo.usuario;
+            this.mensajeMostrar = this.sesionService.msg.lbl_mensaje_usuario_no_encontrado;
           }
         },
           error => {
-            this.mensajeMostrar = 'No se pudo cargar el usuario: ' + this.usuarioAutorTBNuevo.usuario;
+            this.mensajeMostrar = this.sesionService.msg.lbl_mensaje_usuario_no_encontrado;
             let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
             this.messageService.clear();
             listaMensajes.forEach(mensaje => {
@@ -99,13 +99,13 @@ export class RecordarClaveComponent implements OnInit {
               this.repeatPassword = '';
 
               // Mostrar mensaje exitoso
-              this.mensajeMostrar = 'Clave actualizada con éxito';
+              this.mensajeMostrar = this.sesionService.msg.lbl_mensaje_clave_actualizada_ok;
               this.messageService.clear();
               this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
             }
           },
             error => {
-              this.mensajeMostrar = 'No se pudo cargar el usuario: ' + this.usuarioAutorTBNuevo.usuario;
+              this.mensajeMostrar = this.sesionService.msg.lbl_mensaje_usuario_no_encontrado;
               let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
               this.messageService.clear();
               listaMensajes.forEach(mensaje => {

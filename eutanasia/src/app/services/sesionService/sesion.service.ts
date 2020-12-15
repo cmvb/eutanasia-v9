@@ -99,29 +99,31 @@ export class SesionService {
 
   obtenerArchivos() {
     try {
-      let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
-      archivo.rutaArchivo = this.const.urlSFTPArchivos;
-      this.restService.postREST(this.const.urlObtenerArchivos, archivo)
-        .subscribe(resp => {
-          this.mapaArchivosUser = new Map();
-          let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
-          if (listaTemporal !== undefined && listaTemporal !== null) {
-            listaTemporal.forEach(archivo => {
-              if (!this.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
-                this.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
-              }
-            });
-          }
-        },
-          error => {
-            let listaMensajes = this.construirMensajeExcepcion(error.error, this.msg.lbl_summary_danger);
-            this.messageService.clear();
-            listaMensajes.forEach(mensaje => {
-              this.messageService.add(mensaje);
-            });
+      if (!location.href.includes('promo')) {
+        let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
+        archivo.rutaArchivo = this.const.urlSFTPArchivos;
+        this.restService.postREST(this.const.urlObtenerArchivos, archivo)
+          .subscribe(resp => {
+            this.mapaArchivosUser = new Map();
+            let listaTemporal: ArchivoModel[] = JSON.parse(JSON.stringify(resp));
+            if (listaTemporal !== undefined && listaTemporal !== null) {
+              listaTemporal.forEach(archivo => {
+                if (!this.mapaArchivosUser.has(archivo.rutaArchivo + archivo.nombreArchivo)) {
+                  this.mapaArchivosUser.set(archivo.rutaArchivo + archivo.nombreArchivo, archivo);
+                }
+              });
+            }
+          },
+            error => {
+              let listaMensajes = this.construirMensajeExcepcion(error.error, this.msg.lbl_summary_danger);
+              this.messageService.clear();
+              listaMensajes.forEach(mensaje => {
+                this.messageService.add(mensaje);
+              });
 
-            console.log(error, "error");
-          })
+              console.log(error, "error");
+            })
+      }
     } catch (e) {
       console.log(e);
     }

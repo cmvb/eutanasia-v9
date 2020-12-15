@@ -1,6 +1,6 @@
 <!-- Header -->
 <header id="home">
-    <video autoplay [muted]="true" (play)="mostrarTextoHeader($event)" id="myVideo">
+    <video controlslist="nodownload" autoplay [muted]="true" (play)="mostrarTextoHeader($event)" id="myVideo">
         <source src="assets/video/hasta-el-final.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
@@ -254,7 +254,7 @@
     </div>
     <!-- /home wrapper -->
 
-    <audio autoplay loop controls id="demoEutanasia">
+    <audio controlslist="nodownload" autoplay loop controls id="demoEutanasia">
         <source src="assets/audio/demo/1-BUSCANDO-IDENTIDAD.mp3" type="audio/mp3">
     </audio>
 

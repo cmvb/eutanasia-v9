@@ -70,6 +70,7 @@ export class BlogComponent implements OnInit {
     this.comentarioNuevo = '';
     this.respuestaNueva = '';
     this.listaComentarios = [];
+    this.mapaComentarios = new Map();
     this.cargarPost();
     this.cargarCalificacionMG();
   }
@@ -157,13 +158,13 @@ export class BlogComponent implements OnInit {
   // Servicios Web
 
   cargarComentarios() {
-    this.listaComentarios = [];
-    this.mapaComentarios = new Map();
     try {
       this.restService.postREST(this.const.urlConsultarComentariosPorIdPost, this.post)
         .subscribe(resp => {
           let listaTemporal = JSON.parse(JSON.stringify(resp));
           if (listaTemporal !== undefined && listaTemporal !== null) {
+            this.listaComentarios = [];
+            this.mapaComentarios = new Map();
             listaTemporal.forEach(comentario => {
               if (this.mapaComentarios.size === 0) {
                 this.mapaComentarios.set(comentario.id, []);

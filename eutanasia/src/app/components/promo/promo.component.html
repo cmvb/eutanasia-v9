@@ -1,0 +1,79 @@
+<p-scrollPanel #scrollRecordar [style]="{width: '100%', height: '100vh'}" styleClass="custom">
+    <!-- Notificaciones -->
+    <p-toast></p-toast>
+
+    <!-- AUser -->
+    <div class="section activateUser">
+        <!-- Container -->
+        <div class="mdl-grid row justify-content-center">
+            <!-- Main -->
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="blog-content" style="background: #ffffff3b;padding: 10px;">
+                    <!-- reply form -->
+                    <div class="reply-form">
+                        <h1 class="title textWhite font-40px">{{sesionService.msg.lbl_summary_info}}</h1>
+                        <h3 class="title textWhite font-20px">{{mensajeMostrar}}</h3>
+
+                        <!-- reply form -->
+                        <div class="reply-form">
+                            <div class="row justify-content-center">
+                                <div *ngIf="!mostrarPromo"
+                                    class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                                    <div class="coming-soon">
+                                        <div class="time-countdown">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                    <div class="count-bg">
+                                                        <span id="days" class="time-countdown-text">{{day}}</span>Dias
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                    <div class="count-bg">
+                                                        <span id="hours"
+                                                            class="time-countdown-text">{{hours}}</span>Horas
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                    <div class="count-bg">
+                                                        <span id="minutes"
+                                                            class="time-countdown-text">{{minutes}}</span>Minutos
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                    <div class="count-bg">
+                                                        <span id="seconds"
+                                                            class="time-countdown-text">{{seconds}}</span>Segundos
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div *ngIf="mostrarPromo" [@tada]="tada"
+                                    class="animate__animated animate__pulse animate__infinite col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
+                                    <video class="w100" loop controlslist="nodownload" controls autoplay id="promoVideo">
+                                        <source src="assets/video/hasta-el-final.mp4" type="video/mp4">
+                                        Your browser does not support HTML5 video.
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /reply form -->
+
+                        <p-messages></p-messages>
+                    </div>
+                    <!-- /reply form -->
+                </div>
+            </div>
+            <!-- /Main -->
+        </div>
+        <!-- /Container -->
+    </div>
+    <!-- /AUser -->
+
+    <!-- FOOTER -->
+    <app-footer></app-footer>
+    <!-- FOOTER -->
+
+</p-scrollPanel>

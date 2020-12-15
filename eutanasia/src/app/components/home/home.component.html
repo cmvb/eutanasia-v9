@@ -88,7 +88,8 @@
 				<!-- Galer -->
 				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 					<div class="demo">
-						<figure class="imghvr-blur"><img src="assets/images/band/pedro.jpg" class="example-image">
+						<figure class="imghvr-blur"><img style="height: 450px;" src="assets/images/band/pedro.jpg"
+								class="example-image">
 							<figcaption>
 								<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_pedro}}</h1>
 								<p class="textJustify">{{sesionService.msg.lbl_banda_resena_vocalista}}</p>
@@ -99,7 +100,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 					<div class="demo">
-						<figure class="imghvr-blur"><img src="assets/images/band/pipe.jpg" class="example-image">
+						<figure class="imghvr-blur"><img style="height: 450px;" src="assets/images/band/pipe.jpg"
+								class="example-image">
 							<figcaption>
 								<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_pipe}}</h1>
 								<p class="textJustify">{{sesionService.msg.lbl_banda_resena_guitarrista}}</p>
@@ -110,7 +112,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 					<div class="demo">
-						<figure class="imghvr-blur"><img src="assets/images/band/carlos.jpg" class="example-image">
+						<figure class="imghvr-blur"><img style="height: 450px;" src="assets/images/band/carlos.jpg"
+								class="example-image">
 							<figcaption>
 								<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_carlos}}</h1>
 								<p class="textJustify">{{sesionService.msg.lbl_banda_resena_bajista}}</p>
@@ -121,7 +124,8 @@
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
 					<div class="demo">
-						<figure class="imghvr-blur"><img src="assets/images/band/leo.jpg" class="example-image">
+						<figure class="imghvr-blur"><img style="height: 450px;" src="assets/images/band/leo.jpg"
+								class="example-image">
 							<figcaption>
 								<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_leo}}</h1>
 								<p class="textJustify">{{sesionService.msg.lbl_banda_resena_baterista}}</p>
@@ -541,10 +545,8 @@
 									<h3 class="white-text">{{sesionService.msg.lbl_banda_guardia_estudio}}</h3>
 									<span>{{sesionService.msg.lbl_estudio_grabacion}}</span>
 								</div>
-								<p style="padding: 5px;" class="white-text text-justify">Molestie at elementum eu
-									facilisis
-									sed odio. Scelerisque in dictum non consectetur a erat. Aliquam id diam maecenas
-									ultricies mi eget mauris.</p>
+								<p style="padding: 5px;" class="white-text text-justify">
+									{{sesionService.msg.lbl_banda_resena_guardia_fest}}</p>
 							</div>
 							<!-- /testimonial -->
 						</ng-template>
@@ -574,9 +576,15 @@
 				<div *ngIf="listaPosts.length > 0; else sinResultadosPosts" class="service-grids">
 					<div *ngFor="let post of listaPosts" class="col-md-4">
 						<div class="blog blog-pq">
-							<div class="blog-img">
-								<img class="img-responsive" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
-									alt="">
+							<div class="demo blog-img box-img-blog">
+								<figure (click)="verPost(post)" class="imghvr-shutter-in-out-diag-2"><img
+										[src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
+										class="example-image img-responsive w100" />
+									<figcaption>
+										<p class="textJustify">{{post.subtitulo}}
+										</p>
+									</figcaption>
+								</figure>
 							</div>
 							<div class="blog-content">
 								<ul class="blog-meta">

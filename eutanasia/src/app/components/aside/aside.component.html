@@ -29,9 +29,17 @@
     <!-- single post -->
     <div *ngIf="listaPostsPopulares.length > 0; else sinResultadosPostsPopulares" class="service-grids">
       <div *ngFor="let popularPost of listaPostsPopulares" class="widget-post">
-        <a class="cursorPointer" (click)="verPost(popularPost)">
-          <img [src]="obtenerArchivoSanitizadoDeMapa(popularPost.urlImagen)" alt="">{{popularPost.titulo}}
-        </a>
+        <div class="demo blog-img box-img-blog">
+          <figure (click)="verPost(popularPost)" class="imghvr-shutter-in-out-diag-2"><img
+              [src]="obtenerArchivoSanitizadoDeMapa(popularPost.urlImagen)" class="example-image img-responsive w100" />
+            <figcaption>
+              <p class="textJustify">{{popularPost.subtitulo}}
+              </p>
+            </figcaption>
+          </figure>
+          <h3 class="cursorPointer textHoverRed" (click)="verPost(popularPost)">{{popularPost.titulo}}</h3>
+        </div>
+
         <ul class="blog-meta">
           <li>{{convertirFechaBlog(popularPost.fechaCreacion)}}</li>
         </ul>

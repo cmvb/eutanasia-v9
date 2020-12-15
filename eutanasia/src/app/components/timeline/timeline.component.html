@@ -60,10 +60,20 @@
                                         </div>
                                     </div>
 
-                                    <div class="blog-img" (click)="verPost(post)">
-                                        <img class="img-responsive w100"
-                                            [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)" alt="">
+                                    <div class="demo blog-img box-img-blog">
+                                        <figure class="imghvr-shutter-in-out-diag-2"><img
+                                                [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
+                                                class="example-image img-responsive w100">
+                                            <figcaption>
+                                                <h1 class="nombreArtista">{{post.titulo}}</h1>
+                                                <p class="textJustify">{{post.subtitulo}}
+                                                </p>
+                                                <p class="textJustify">{{post.articulo}}
+                                                </p>
+                                            </figcaption>
+                                        </figure>
                                     </div>
+
                                     <div class="blog-content cursorPointer">
                                         <ul class="blog-meta">
                                             <li><i class="fa fa-user"></i>{{post.usuarioAutorTB.nombres}}
@@ -75,7 +85,8 @@
                                             <li><i class="fa fa-arrow-right"></i>({{obtenerCategoria(post.categoria)}})
                                             </li>
                                         </ul>
-                                        <h3 class="cursorPointer" (click)="verPost(post)">{{post.titulo}}</h3>
+                                        <h3 class="cursorPointer textHoverRed" (click)="verPost(post)">{{post.titulo}}
+                                        </h3>
                                         <h5>{{post.subtitulo}}</h5>
                                         <p>{{post.articulo}}</p>
                                     </div>
@@ -116,9 +127,15 @@
                 <div *ngIf="listaPostsMenosPopulares.length > 0; else sinResultadosPosts" class="service-grids">
                     <div *ngFor="let post of listaPostsMenosPopulares" class="col-md-4">
                         <div class="blog blog-pq">
-                            <div class="blog-img">
-                                <img class="img-responsive" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
-                                    alt="">
+                            <div class="demo blog-img box-img-blog" (click)="verPost(post)">
+                                <figure class="imghvr-shutter-in-out-diag-2"><img
+                                        [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
+                                        class="example-image img-responsive w100" />
+                                    <figcaption>
+                                        <p class="textJustify">{{post.subtitulo}}
+                                        </p>
+                                    </figcaption>
+                                </figure>
                             </div>
                             <div class="blog-content">
                                 <ul class="blog-meta">

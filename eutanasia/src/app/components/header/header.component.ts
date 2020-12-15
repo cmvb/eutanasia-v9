@@ -69,6 +69,10 @@ export class HeaderComponent implements OnInit {
         this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
       }
     }
+
+    if (this.sesionService.mapaArchivosUser === undefined || this.sesionService.mapaArchivosUser === null || this.sesionService.mapaArchivosUser.size === 0) {
+      this.sesionService.obtenerArchivos();
+    }
   }
 
   // Otras Funciones
