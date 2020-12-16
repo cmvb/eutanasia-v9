@@ -1,6 +1,6 @@
 $(function () {
     var idioma = 0;
-    var objServiceSesion = sessionStorage.getItem('objServiceSesion');
+    var objServiceSesion = localStorage.getItem('objServiceSesion');
     if (objServiceSesion !== undefined && objServiceSesion !== null) {
         idioma = JSON.parse(objServiceSesion).idioma;
     }

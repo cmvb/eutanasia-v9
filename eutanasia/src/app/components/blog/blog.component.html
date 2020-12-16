@@ -31,8 +31,8 @@
         <!-- ASIDE -->
 
         <!-- Main -->
-        <main id="main" class="col-md-9">
-          <div class="blog">
+        <div class="col-md-9">
+          <div class="blog no-margin">
             <div class="blog-img">
               <ul class="bannerImgBlog blog-meta displayFlex">
                 <li style="margin-top: 10px;" *ngIf="postMeGustaDTO !== undefined && postMeGustaDTO !== null">
@@ -41,12 +41,6 @@
                     <span class="p-badge p-badge-xl p-badge-danger"
                       style="font-size: 18px;">{{postMeGustaDTO.promedioCalificacion}}</span>
                   </span>
-                </li>
-                <li style="margin-top: -2px;">
-                  <div class="fb-share-button" data-href="http://localhost:4200/#/home" data-layout="button_count"
-                    data-size="large"><a target="_blank"
-                      href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4200%2F%23%2Fhome&amp;src=sdkpreparse"
-                      class="fb-xfbml-parse-ignore">Compartir</a></div>
                 </li>
               </ul>
               <img class="img-responsive w100" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)" alt="">
@@ -91,13 +85,13 @@
                   <div class="media-heading">
                     <h3>{{post.usuarioAutorTB.nombres}} {{post.usuarioAutorTB.apellidos}}</h3>
                     <div class="author-social">
-                      <a *ngIf="post.usuarioAutorTB.linkFbook !== undefined && post.usuarioAutorTB.linkFbook !== null"
+                      <a *ngIf="post.usuarioAutorTB.linkFbook !== undefined && post.usuarioAutorTB.linkFbook !== null && post.usuarioAutorTB.linkFbook.length > 0"
                         href="{{post.usuarioAutorTB.linkFbook}}" target="_blank"><i class="fa fa-facebook"></i></a>
-                      <a *ngIf="post.usuarioAutorTB.linkTwitter !== undefined && post.usuarioAutorTB.linkTwitter !== null"
+                      <a *ngIf="post.usuarioAutorTB.linkTwitter !== undefined && post.usuarioAutorTB.linkTwitter !== null && post.usuarioAutorTB.linkTwitter.length > 0"
                         href="{{post.usuarioAutorTB.linkTwitter}}" target="_blank"><i class="fa fa-twitter"></i></a>
-                      <a *ngIf="post.usuarioAutorTB.linkGoogle !== undefined && post.usuarioAutorTB.linkGoogle !== null"
+                      <a *ngIf="post.usuarioAutorTB.linkGoogle !== undefined && post.usuarioAutorTB.linkGoogle !== null && post.usuarioAutorTB.linkGoogle.length > 0"
                         href="{{post.usuarioAutorTB.linkGoogle}}" target="_blank"><i class="fa fa-google-plus"></i></a>
-                      <a *ngIf="post.usuarioAutorTB.linkInstagram !== undefined && post.usuarioAutorTB.linkInstagram !== null"
+                      <a *ngIf="post.usuarioAutorTB.linkInstagram !== undefined && post.usuarioAutorTB.linkInstagram !== null && post.usuarioAutorTB.linkInstagram.length > 0"
                         href="{{post.usuarioAutorTB.linkInstagram}}" target="_blank"><i class="fa fa-instagram"></i></a>
                     </div>
                   </div>
@@ -186,7 +180,7 @@
             </div>
             <!-- /reply form -->
           </div>
-        </main>
+        </div>
         <!-- /Main -->
       </div>
       <!-- /Row -->

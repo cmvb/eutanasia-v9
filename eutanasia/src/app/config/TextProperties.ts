@@ -72,6 +72,8 @@ export class TextProperties {
       lbl_por_definir: idioma === constant.idiomaEs ? 'Por definir' : 'To define',
       lbl_comparte: idioma === constant.idiomaEs ? 'Compartí' : 'Share',
       lbl_blog: idioma === constant.idiomaEs ? 'Blog' : 'Blog',
+      lbl_timeline: idioma === constant.idiomaEs ? 'Timeline' : 'Timeline',
+      lbl_post_interes: idioma === constant.idiomaEs ? 'Posts de interés' : 'Posts of interest',
       lbl_bio: idioma === constant.idiomaEs ? 'Biografía' : 'Biography',
       lbl_inicio: idioma === constant.idiomaEs ? 'Inicio' : 'Start',
       lbl_ultimas_publicaciones: idioma === constant.idiomaEs ? 'Últimas Publicaciones' : 'Latest Posts',
@@ -86,6 +88,7 @@ export class TextProperties {
       lbl_link_i: idioma === constant.idiomaEs ? 'Enlace Instagram' : 'Link Instagram',
       lbl_link_g: idioma === constant.idiomaEs ? 'Enlace Google' : 'Link Google',
       lbl_link_t: idioma === constant.idiomaEs ? 'Enlace Twitter' : 'Link Twitter',
+      lbl_noticias: idioma === constant.idiomaEs ? 'Noticias' : 'News',
 
       // Banda
       lbl_banda: idioma === constant.idiomaEs ? 'Banda' : 'Band',
@@ -106,6 +109,7 @@ export class TextProperties {
       lbl_banda_baterista: idioma === constant.idiomaEs ? 'Baterista' : 'Drummer',
       lbl_banda_carlos_jacome: idioma === constant.idiomaEs ? 'Carlos Jácome' : 'Carlos Jácome',
       lbl_banda_guardia_estudio: idioma === constant.idiomaEs ? 'La Guardia Estudio' : 'La Guardia Estudio',
+      lbl_banda_resena_guardia_fest: idioma === constant.idiomaEs ? 'La Guardia Estudio se desempeña en actividades de grabación de sonido y edición de música, creación musical y actividades de espectáculos musicales en vivo.' : 'La Guardia Estudio works in sound recording and music editing activities, music creation and live music entertainment activities.',
       lbl_banda_resena_carlos_jacome: idioma === constant.idiomaEs ? 'Apasionado por la música, el arte y el diseño, me he desempeñado profesionalmente en Agencias de Publicidad & Diseño y en la parte académica como docente, trabajos de ilustración para portadas de cds, libros, revistas, proyectos de identidad gráfica corporativa y diseño editorial.' : 'Passionate about music, art and design, I have worked professionally in Advertising & Design Agencies and in the academic part as a teacher, illustration work for CD covers, books, magazines, corporate graphic identity projects and editorial design.',
       lbl_banda_ayuda_compartir: idioma === constant.idiomaEs ? 'Ayúdanos a compartir nuestra música a todo el mundo' : 'Help us share our music with everyone',
       lbl_banda_resena_bajista: idioma === constant.idiomaEs ? 'Es un bajista de rock/metal Colombiano nacido en Bucaramanga, el segundo y actual bajista de la banda, conocido por la energía que desborda al tocar en vivo y la técnica musical en las canciones, muchos consideran importante este gesto, ya que motiva al público y no es común en bajistas la movilidad en el escenario.' : 'He is a Colombian rock/metal bassist born in Bucaramanga, the second and current bassist of the band, known for the energy that overflows when playing live and the musical technique in the songs, many consider this gesture important, since it motivates the public and not mobility on stage is common for bass players.',
@@ -143,6 +147,15 @@ export class TextProperties {
       lbl_mensaje_vacio: idioma == constant.idiomaEs ? 'Valor Vacío.' : 'Empty Value.',
       lbl_mensaje_incorrecto: idioma == constant.idiomaEs ? 'Valor Incorrecto.' : 'Incorrect Value.',
       lbl_mensaje_no_info_select: idioma == constant.idiomaEs ? 'No hay información para mostrar' : 'No info to show',
+      lbl_mensaje_usuario_activado: idioma === constant.idiomaEs ? 'Se ha activado exitosamente el usuario.' : 'The user has been successfully activated.',
+      lbl_mensaje_usuario_no_encontrado: idioma === constant.idiomaEs ? 'No se ha encontrado el usuario.' : 'The user was not found.',
+      lbl_mensaje_usuario_no_activado: idioma === constant.idiomaEs ? 'No se pudo activar el usuario.' : 'The user could not be activated.',
+      lbl_mensaje_clave_actualizada_ok: idioma === constant.idiomaEs ? 'Clave actualizada con éxito.' : ' Password updated succesfully.',
+      lbl_mensaje_digite_nueva_clave: idioma === constant.idiomaEs ? 'Digite la nueva Clave.' : 'Enter the new password.',
+      lbl_mensaje_nueva_promo: idioma === constant.idiomaEs ? 'Cuando el reloj llegue a cero se mostrará el nuevo contenido para usuarios registrados.' : 'When the clock reaches zero the new content will be displayed for registered users.',
+      lbl_mensaje_nueva_promo_activo: idioma === constant.idiomaEs ? 'Te presentamos lo último de Eutanasia:' : 'We present you the latest of Eutanasia:',
+      lbl_mensaje_usuario_creado: idioma === constant.idiomaEs ? 'El usuario ha sido creado con éxito. Se ha enviado a su correo electrónico el enlace de activación para que pueda disfrutar del contenido.' : 'The user has been created successfully. The activation link has been sent to your email so that you can enjoy the content.',
+      lbl_mensaje_debe_estar_logueado: idioma === constant.idiomaEs ? 'Debe ser usuario eutanásico registrado para ver el contenido.' : 'You must be a registered euthanasian user to view the content.',
 
       // Modales
       lbl_info_titulo_modal_error: idioma === constant.idiomaEs ? 'ERROR' : 'ERROR',

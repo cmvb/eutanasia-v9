@@ -80,12 +80,12 @@ export class SesionService {
   }
 
   cerrarSession() {
-    sessionStorage.clear();
+    localStorage.clear();
     this.objServiceSesion = undefined;
   }
 
   tomarSessionDeStorage() {
-    let objServiceSesion = sessionStorage.getItem('objServiceSesion');
+    let objServiceSesion = localStorage.getItem('objServiceSesion');
     if (objServiceSesion !== undefined && objServiceSesion !== null) {
       this.objServiceSesion = JSON.parse(objServiceSesion);
     }
@@ -100,7 +100,7 @@ export class SesionService {
   obtenerArchivos() {
     try {
       let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
-      archivo.rutaArchivo = this.const.urlSFTPArchivosUser;
+      archivo.rutaArchivo = this.const.urlSFTPArchivos;
       this.restService.postREST(this.const.urlObtenerArchivos, archivo)
         .subscribe(resp => {
           this.mapaArchivosUser = new Map();

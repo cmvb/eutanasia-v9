@@ -24,7 +24,7 @@
 				<!-- about -->
 				<div class="biography-grids">
 					<div class="col-md-6 biography-grid">
-						<img style="padding: 5px 0" src="assets/images/s.jpg" class="img-responsive" />
+						<img src="assets/images/s.jpg" class="img-responsive" />
 					</div>
 					<div class="col-md-6 biography-grid" style="color: #020200;">
 						<p style="padding-top: 0">{{sesionService.msg.lbl_biografia_1}}</p>
@@ -86,38 +86,52 @@
 				<!-- /Section header -->
 
 				<!-- Galer -->
-				<div class="containerGallery">
-					<div class="boxGallery">
-						<div class="box-legend">
-							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_pedro}}</h1>
-							<p class="textoResena">{{sesionService.msg.lbl_banda_resena_vocalista}}</p>
-						</div>
-						<img src="assets/images/band/pedro.jpg">
-						<span>{{sesionService.msg.lbl_banda_vocalista}}</span>
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+					<div class="demo">
+						<figure class="imghvr-blur"><img style="height: 450px;" src="assets/images/band/pedro.jpg"
+								class="example-image">
+							<figcaption>
+								<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_pedro}}</h1>
+								<p class="textJustify">{{sesionService.msg.lbl_banda_resena_vocalista}}</p>
+							</figcaption>
+							<div class="footerBand">{{sesionService.msg.lbl_banda_vocalista}}</div>
+						</figure>
 					</div>
-					<div class="boxGallery">
-						<div class="box-legend">
-							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_pipe}}</h1>
-							<p class="textoResena">{{sesionService.msg.lbl_banda_resena_guitarrista}}</p>
-						</div>
-						<img src="assets/images/band/pipe.jpg">
-						<span>{{sesionService.msg.lbl_banda_guitarrista}}</span>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+					<div class="demo">
+						<figure class="imghvr-blur"><img style="height: 450px;" src="assets/images/band/pipe.jpg"
+								class="example-image">
+							<figcaption>
+								<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_pipe}}</h1>
+								<p class="textJustify">{{sesionService.msg.lbl_banda_resena_guitarrista}}</p>
+							</figcaption>
+							<div class="footerBand">{{sesionService.msg.lbl_banda_guitarrista}}</div>
+						</figure>
 					</div>
-					<div class="boxGallery">
-						<div class="box-legend">
-							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_carlos}}</h1>
-							<p class="textoResena">{{sesionService.msg.lbl_banda_resena_bajista}}</p>
-						</div>
-						<img src="assets/images/band/carlos.jpg">
-						<span>{{sesionService.msg.lbl_banda_bajista}}</span>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+					<div class="demo">
+						<figure class="imghvr-blur"><img style="height: 450px;" src="assets/images/band/carlos.jpg"
+								class="example-image">
+							<figcaption>
+								<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_carlos}}</h1>
+								<p class="textJustify">{{sesionService.msg.lbl_banda_resena_bajista}}</p>
+							</figcaption>
+							<div class="footerBand">{{sesionService.msg.lbl_banda_bajista}}</div>
+						</figure>
 					</div>
-					<div class="boxGallery">
-						<div class="box-legend">
-							<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_leo}}</h1>
-							<p class="textoResena">{{sesionService.msg.lbl_banda_resena_baterista}}</p>
-						</div>
-						<img src="assets/images/band/leo.jpg">
-						<span>{{sesionService.msg.lbl_banda_baterista}}</span>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
+					<div class="demo">
+						<figure class="imghvr-blur"><img style="height: 450px;" src="assets/images/band/leo.jpg"
+								class="example-image">
+							<figcaption>
+								<h1 class="nombreArtista">{{sesionService.msg.lbl_banda_leo}}</h1>
+								<p class="textJustify">{{sesionService.msg.lbl_banda_resena_baterista}}</p>
+							</figcaption>
+							<div class="footerBand">{{sesionService.msg.lbl_banda_baterista}}</div>
+						</figure>
 					</div>
 				</div>
 				<!-- /Galer -->
@@ -302,7 +316,7 @@
 			</div>
 			<div class="border"></div>
 
-			<div *ngIf="listaEventos.length > 0; else sinResultados" class="service-grids">
+			<div *ngIf="listaEventos.length > 0; else sinResultados" class="service-grids hidden-sm hidden-xs">
 				<div *ngFor="let evento of listaEventos" class="col-md-3 ser-grid">
 					<div class="ser-top">
 						<div class="con hvr-shutter-in-horizontal">
@@ -313,6 +327,20 @@
 						<p>{{evento.descripcion}}</p>
 					</div>
 				</div>
+			</div>
+			<div *ngIf="listaEventos.length > 0; else sinResultados" class="service-grids hidden-lg hidden-md">
+				<owl-carousel-o [options]="customOptions">
+					<ng-template *ngFor="let evento of listaEventos" carouselSlide>
+						<div class="ser-top">
+							<div class="con hvr-shutter-in-horizontal">
+								<i class="glyphicon" aria-hidden="true"><img [src]="evento.urlPoster"
+										class="img-responsive" /></i>
+							</div>
+							<h4>{{evento.nombre}}</h4>
+							<p>{{evento.descripcion}}</p>
+						</div>
+					</ng-template>
+				</owl-carousel-o>
 				<div class="clearfix"></div>
 			</div>
 			<ng-template #sinResultados>
@@ -405,8 +433,8 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="number">
 						<i class="fa fa-trophy"></i>
-						<h3 class="white-text"><span
-								class="counter">{{listaEventos !== undefined && listaEventos !== null ? listaEventos.length : 0}}</span>
+						<h3 class="white-text"><span class="counter">{{listaEventos !== undefined && listaEventos !==
+								null ? listaEventos.length : 0}}</span>
 						</h3>
 						<span class="white-text">{{sesionService.msg.lbl_participaciones}}</span>
 					</div>
@@ -427,8 +455,8 @@
 				<div class="col-sm-3 col-xs-6">
 					<div class="number">
 						<i class="fa fa-file"></i>
-						<h3 class="white-text"><span
-								class="counter">{{listadoPostsCompleto !== undefined && listadoPostsCompleto !== null ? listadoPostsCompleto : 0}}</span>
+						<h3 class="white-text"><span class="counter">{{listadoPostsCompleto !== undefined &&
+								listadoPostsCompleto !== null ? listadoPostsCompleto : 0}}</span>
 						</h3>
 						<span class="white-text">{{sesionService.msg.lbl_posts}}</span>
 					</div>
@@ -517,10 +545,8 @@
 									<h3 class="white-text">{{sesionService.msg.lbl_banda_guardia_estudio}}</h3>
 									<span>{{sesionService.msg.lbl_estudio_grabacion}}</span>
 								</div>
-								<p style="padding: 5px;" class="white-text text-justify">Molestie at elementum eu
-									facilisis
-									sed odio. Scelerisque in dictum non consectetur a erat. Aliquam id diam maecenas
-									ultricies mi eget mauris.</p>
+								<p style="padding: 5px;" class="white-text text-justify">
+									{{sesionService.msg.lbl_banda_resena_guardia_fest}}</p>
 							</div>
 							<!-- /testimonial -->
 						</ng-template>
@@ -549,10 +575,16 @@
 				<!-- blog -->
 				<div *ngIf="listaPosts.length > 0; else sinResultadosPosts" class="service-grids">
 					<div *ngFor="let post of listaPosts" class="col-md-4">
-						<div class="blog">
-							<div class="blog-img">
-								<img class="img-responsive" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
-									alt="">
+						<div class="blog blog-pq">
+							<div class="demo blog-img box-img-blog">
+								<figure (click)="verPost(post)" class="imghvr-shutter-in-out-diag-2"><img
+										[src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
+										class="example-image img-responsive w100" />
+									<figcaption>
+										<p class="textJustify">{{post.subtitulo}}
+										</p>
+									</figcaption>
+								</figure>
 							</div>
 							<div class="blog-content">
 								<ul class="blog-meta">
@@ -576,7 +608,7 @@
 					</div>
 				</ng-template>
 				<!-- /blog -->
-				<p class="contadorPost">(3/{{listadoPostsCompleto}})</p>
+				<p class="contadorPost">({{listaPosts.length}}/{{listadoPostsCompleto}})</p>
 			</div>
 			<!-- /Row -->
 		</div>
@@ -641,6 +673,9 @@
 					</div>
 				</p-dialog>
 			</div>
+			<!-- /Row -->
+
+			<!-- Row -->
 			<div class="row">
 				<div class="map">
 					<iframe

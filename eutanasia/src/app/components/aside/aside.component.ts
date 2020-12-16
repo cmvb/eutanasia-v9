@@ -102,7 +102,7 @@ export class AsideComponent implements OnInit {
         .subscribe(resp => {
           let listaTemporal = JSON.parse(JSON.stringify(resp));
           if (listaTemporal !== undefined && listaTemporal !== null) {
-            this.listaPostsPopulares = listaTemporal.length > 3 ? listaTemporal.slice(listaTemporal.length - 3) : listaTemporal;
+            this.listaPostsPopulares = listaTemporal.length > 3 ? listaTemporal.slice(0, 3) : listaTemporal;
           }
         },
           error => {

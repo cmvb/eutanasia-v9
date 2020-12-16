@@ -39,6 +39,7 @@
               "./src/assets/scss/font-awesome.scss",
               "./src/assets/scss/animate.scss",
               "./src/assets/scss/wpp.scss",
+              "./src/assets/scss/imagehover.scss",
               "./src/assets/scss/primeng/themes/nova-light/theme.scss",
               "./src/styles.scss"
             ],
@@ -122,6 +123,7 @@
               "./src/assets/scss/font-awesome.scss",
               "./src/assets/scss/animate.scss",
               "./src/assets/scss/wpp.scss",
+              "./src/assets/scss/imagehover.scss",
               "./src/assets/scss/primeng/themes/nova-light/theme.scss",
               "./src/styles.scss"
             ],

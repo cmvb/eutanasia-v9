@@ -363,7 +363,7 @@ export class HomeComponent implements OnInit {
           let listaTemporal: PostModel[] = JSON.parse(JSON.stringify(resp));
           if (listaTemporal !== undefined && listaTemporal !== null) {
             this.listadoPostsCompleto = listaTemporal.length;
-            this.listaPosts = listaTemporal.length > 3 ? listaTemporal.slice(listaTemporal.length - 3) : listaTemporal;
+            this.listaPosts = listaTemporal.length > 3 ? listaTemporal.slice(0, 3) : listaTemporal;
           }
         },
           error => {
@@ -380,7 +380,7 @@ export class HomeComponent implements OnInit {
   }
 
   verPost(post: PostModel) {
-    if (this.esUsuarioLogueadoActivoHome()) {
+    if (this.esUsuarioLogueadoActivo()) {
       this.eutanasiaService.post = post;
       this.router.navigate(['blog/' + post.id]);
     } else {
@@ -399,11 +399,11 @@ export class HomeComponent implements OnInit {
     return result;
   }
 
-  esUsuarioLogueadoActivoHome() {
+  esUsuarioLogueadoActivo() {
     let result = false;
     let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
     let valorEstadoActivo = this.util.getValorEnumerado(this.enums.estadoUsuario.valores, 1);
-    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value) {
+    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value && usuarioSession.id > 0) {
       result = true;
     }
 

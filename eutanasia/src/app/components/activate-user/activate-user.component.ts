@@ -56,15 +56,15 @@ export class ActivateUserComponent implements OnInit {
           let respuesta: UsuarioAutorModel = JSON.parse(JSON.stringify(resp));
           if (respuesta !== null) {
             // Mostrar mensaje exitoso
-            this.mensajeMostrar = 'Se ha activado exitosamente el usuario: ' + this.usuarioAutorTBNuevo.usuario;
+            this.mensajeMostrar = this.sesionService.msg.lbl_mensaje_usuario_activado;
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
           } else {
-            this.mensajeMostrar = 'No se ha encontrado el usuario: ' + this.usuarioAutorTBNuevo.usuario;
+            this.mensajeMostrar = this.sesionService.msg.lbl_mensaje_usuario_no_encontrado;
           }
         },
           error => {
-            this.mensajeMostrar = 'No se pudo activar el usuario: ' + this.usuarioAutorTBNuevo.usuario;
+            this.mensajeMostrar = this.sesionService.msg.lbl_mensaje_usuario_no_activado;
             let listaMensajes = this.util.construirMensajeExcepcion(error.error, this.sesionService.msg.lbl_summary_danger);
             this.messageService.clear();
             listaMensajes.forEach(mensaje => {

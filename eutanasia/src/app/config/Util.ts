@@ -85,8 +85,7 @@ export class Util {
   }
 
   limpiarConsolaStorage() {
-    sessionStorage.clear();
-    sessionStorage.clear();
+    localStorage.clear();
     console.clear();
     return true;
   }

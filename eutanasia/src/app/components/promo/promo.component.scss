@@ -1,0 +1,57 @@
+//Paleta de Colores
+$color-rojo: #77110a;
+$color-gris: gray;
+$color-grisClaro: whitesmoke;
+$color-azul: #0097ab;
+$color-verde: #00ab2b;
+$color-negro: #222;
+$color-blanco: #fff;
+$color-dorado: rgb(223, 190, 46);
+$color-plata: rgb(170, 170, 170);
+$color-violeta: rgb(99, 0, 145);
+$color-rosa: rgb(253, 93, 155);
+
+//Fuentes
+$tamañoFuenteTitulo: x-large !important;
+$tamañoFuenteParrafo: 12px !important;
+$tamañoFuenteTablaHeader: 14px !important;
+$tamañoFuenteTablaBody: 12px !important;
+
+//Margen y espaciado
+$margenTitulo: 15px 0px !important;
+$paddingTitulo: 0px !important;
+$margenParrafo: 0px !important;
+$paddingParrafo: 0px !important;
+$margenTablaHeader: 0px !important;
+$paddingTablaHeader: 0px !important;
+$margenTablaBody: 0px !important;
+$paddingTablaBody: 0px !important;
+
+section {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ul {
+    display: flex;
+    justify-content: center;
+}
+.coming-soon {
+    width: 100%;
+}
+.count-bg {
+    background: $color-rojo;
+}
+.radius {
+    border-radius: 5px;
+}
+.time-countdown-text {
+    color: $color-blanco;
+    font-size: 50px;
+    line-height: 60px;
+    font-weight: 700;
+    display: block;
+}

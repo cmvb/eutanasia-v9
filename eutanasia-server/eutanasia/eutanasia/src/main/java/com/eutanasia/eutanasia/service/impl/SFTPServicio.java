@@ -40,24 +40,24 @@ public class SFTPServicio implements ISFTPServicio {
 	public boolean conectarServidor(String servidor, int puerto, String usuario, String clave) throws JSchException {
 		boolean resultado = false;
 		try {
-			this.config = new Properties();
-			this.jsch = new JSch();
-			this.session = this.jsch.getSession(usuario, servidor, puerto);
+			config = new Properties();
+			jsch = new JSch();
+			session = jsch.getSession(usuario, servidor, puerto);
 			if (!this.session.isConnected()) {
-				this.session.setPassword(clave);
-				this.session.connect();
-				this.config.put("StrictHostKeyChecking", "no");
+				session.setPassword(clave);
+				config.put("StrictHostKeyChecking", "no");
 				JSch.setConfig(config);
-				this.channelSftp = (ChannelSftp) this.session.openChannel("sftp");
-				this.channelSftp.connect();
-				if (this.channelSftp != null) {
+				session.connect();
+				channelSftp = (ChannelSftp) session.openChannel("sftp");
+				channelSftp.connect();
+				if (channelSftp != null) {
 					resultado = true;
 				}
 			}
 		} catch (JSchException e) {
-			if (this.session != null) {
-				this.session.connect();
-				this.session.disconnect();
+			if (session != null) {
+				session.connect();
+				session.disconnect();
 			}
 		}
 
@@ -66,34 +66,39 @@ public class SFTPServicio implements ISFTPServicio {
 
 	@Override
 	public void cerrarConexion() {
-		if (this.channelSftp != null) {
-			this.channelSftp.disconnect();
-			this.channelSftp.exit();
+		try {
+			if (channelSftp != null) {
+				channelSftp.connect();
+				channelSftp.disconnect();
+				channelSftp.exit();
+			}
+			if (session != null) {
+				session.setPassword("");
+				session.connect();
+				session.disconnect();
+			}
+			channelSftp = null;
+			session = null;
+			jsch = null;
+		} catch (JSchException e) {
 		}
-		if (this.session != null) {
-			this.session.disconnect();
-		}
-		this.channelSftp = null;
-		this.session = null;
-		this.jsch = null;
 	}
 
 	@Override
 	public boolean guardarArchivoServidor(byte[] bytesFile, String rutaLocal, String rutaSFTP) {
 		boolean resultado = false;
 		try {
-			if (this.channelSftp != null) {
+			if (channelSftp != null) {
 				File file = new File(rutaLocal);
 				OutputStream fos = new FileOutputStream(file);
 				fos.write(bytesFile);
-				this.borrarArchivoServidor(rutaSFTP);
-				this.channelSftp.put(rutaLocal, rutaSFTP);
+				// this.borrarArchivoServidor(rutaSFTP);
+				channelSftp.put(rutaLocal, rutaSFTP);
 				fos.close();
 				resultado = true;
 				file.delete();
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 		}
 		return resultado;
 	}
@@ -102,13 +107,13 @@ public class SFTPServicio implements ISFTPServicio {
 	public boolean guardarArchivoServidor(InputStream inputStreamFile, String rutaSFTP) {
 		boolean resultado = false;
 		try {
-			if (this.channelSftp != null) {
-				this.borrarArchivoServidor(rutaSFTP);
-				this.channelSftp.put(inputStreamFile, rutaSFTP);
+			if (channelSftp != null) {
+				// this.borrarArchivoServidor(rutaSFTP);
+				channelSftp.put(inputStreamFile, rutaSFTP);
 				resultado = true;
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+
 		}
 		return resultado;
 	}
@@ -117,13 +122,13 @@ public class SFTPServicio implements ISFTPServicio {
 	public boolean moverArchivoServidor(String rutaOrigenSFTP, String rutaDestinoSFTP) {
 		boolean resultado = false;
 		try {
-			if (this.channelSftp != null) {
-				this.channelSftp.rename(rutaOrigenSFTP, rutaDestinoSFTP);
-				this.borrarArchivoServidor(rutaOrigenSFTP);
+			if (channelSftp != null) {
+				channelSftp.rename(rutaOrigenSFTP, rutaDestinoSFTP);
+				// this.borrarArchivoServidor(rutaOrigenSFTP);
 				resultado = true;
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+
 		}
 		return resultado;
 	}
@@ -132,14 +137,13 @@ public class SFTPServicio implements ISFTPServicio {
 	public boolean borrarArchivoServidor(String rutaServidor) {
 		boolean resultado = false;
 		try {
-			if (this.channelSftp != null) {
-				if (this.channelSftp.realpath(rutaServidor) != null) {
-					this.channelSftp.rm(rutaServidor);
+			if (channelSftp != null) {
+				if (channelSftp.realpath(rutaServidor) != null) {
+					channelSftp.rm(rutaServidor);
 					resultado = true;
 				}
 			}
 		} catch (SftpException e) {
-			System.out.println(e.getMessage());
 		}
 
 		return resultado;
@@ -148,27 +152,27 @@ public class SFTPServicio implements ISFTPServicio {
 	@Override
 	public void borrarDirectorioServidor(String rutaServidor) {
 		try {
-			if (this.channelSftp != null) {
-				if (this.channelSftp.realpath(rutaServidor) != null) {
+			if (channelSftp != null) {
+				if (channelSftp.realpath(rutaServidor) != null) {
 					List<DirectorioDTO> directoriosSFTP = this.listarDirectoriosSFTP(rutaServidor);
 					if (directoriosSFTP != null && !directoriosSFTP.isEmpty()) {
 						for (DirectorioDTO dirDto : directoriosSFTP) {
 							if (dirDto.getTipoDirectorio().ordinal() == ETipoDirectorio.ARCHIVO.ordinal()) {
-								this.borrarArchivoServidor(dirDto.getRuta() + dirDto.getNombre());
+								// this.borrarArchivoServidor(dirDto.getRuta() + dirDto.getNombre());
 								if (directoriosSFTP.size() == 1) {
-									this.channelSftp.rmdir(rutaServidor);
+									channelSftp.rmdir(rutaServidor);
 								}
 							} else {
 								this.borrarDirectorioServidor(dirDto.getRuta() + dirDto.getNombre() + SEPARADOR);
 							}
 						}
 					} else {
-						this.channelSftp.rmdir(rutaServidor);
+						channelSftp.rmdir(rutaServidor);
 					}
 				}
 			}
 		} catch (SftpException e) {
-			System.out.println(e.getMessage());
+
 		}
 	}
 
@@ -176,8 +180,8 @@ public class SFTPServicio implements ISFTPServicio {
 	public boolean descargarArchivo(String rutaSFTP, String rutaLocal) {
 		boolean resultado = false;
 		try {
-			if (this.channelSftp != null) {
-				this.channelSftp.get(rutaSFTP, rutaLocal);
+			if (channelSftp != null) {
+				channelSftp.get(rutaSFTP, rutaLocal);
 				resultado = true;
 			}
 		} catch (SftpException e) {
@@ -191,11 +195,11 @@ public class SFTPServicio implements ISFTPServicio {
 	public InputStream obtenerInputStreamArchivo(String rutaSFTP) {
 		InputStream resultado = null;
 		try {
-			if (this.channelSftp != null) {
-				resultado = this.channelSftp.get(rutaSFTP);
+			if (channelSftp != null) {
+				resultado = channelSftp.get(rutaSFTP);
 			}
 		} catch (SftpException e) {
-			System.out.println(e.getMessage());
+
 		}
 
 		return resultado;
@@ -205,9 +209,9 @@ public class SFTPServicio implements ISFTPServicio {
 	public List<ArchivoDTO> obtenerArchivos(String rutaSFTP, String nombreArchivo) {
 		List<ArchivoDTO> listaArchivos = new ArrayList<>();
 		try {
-			if (this.channelSftp != null) {
+			if (channelSftp != null) {
 				if (!StringUtils.isBlank(nombreArchivo)) {
-					InputStream resultado = this.channelSftp.get(rutaSFTP + nombreArchivo);
+					InputStream resultado = channelSftp.get(rutaSFTP + nombreArchivo);
 					byte[] fileArrayBytes = new byte[resultado.available()];
 					resultado.read(fileArrayBytes);
 
@@ -221,7 +225,7 @@ public class SFTPServicio implements ISFTPServicio {
 					List<String> nombresArchivos = this.listarArchivosFiltrados(rutaSFTP, null);
 					for (String nombreFile : nombresArchivos) {
 						if (!nombreFile.equalsIgnoreCase(".") && !nombreFile.equalsIgnoreCase("..")) {
-							InputStream resultado = this.channelSftp.get(rutaSFTP + nombreFile);
+							InputStream resultado = channelSftp.get(rutaSFTP + nombreFile);
 							byte[] bytes = IOUtils.toByteArray(resultado);
 							resultado.close();
 
@@ -236,7 +240,6 @@ public class SFTPServicio implements ISFTPServicio {
 				}
 			}
 		} catch (SftpException | IOException e) {
-			System.out.println(e.getMessage());
 		}
 
 		return listaArchivos;
@@ -246,15 +249,14 @@ public class SFTPServicio implements ISFTPServicio {
 	public boolean esValidaRuta(String rutaSFTP) {
 		boolean resultado = false;
 		try {
-			if (this.channelSftp != null) {
-				SftpATTRS stat = this.channelSftp.stat(rutaSFTP);
+			if (channelSftp != null) {
+				SftpATTRS stat = channelSftp.stat(rutaSFTP);
 				if (stat != null) {
 					resultado = stat.isDir();
 					resultado = true;
 				}
 			}
 		} catch (SftpException e) {
-			System.out.println(e.getMessage());
 		}
 		return resultado;
 	}
@@ -263,12 +265,11 @@ public class SFTPServicio implements ISFTPServicio {
 	public boolean crearDirectorio(String rutaSFTP) {
 		boolean resultado = false;
 		try {
-			if (this.channelSftp != null) {
-				this.channelSftp.mkdir(rutaSFTP);
+			if (channelSftp != null) {
+				channelSftp.mkdir(rutaSFTP);
 				resultado = true;
 			}
 		} catch (SftpException e) {
-			System.out.println(e.getMessage());
 		}
 		return resultado;
 	}
@@ -278,8 +279,8 @@ public class SFTPServicio implements ISFTPServicio {
 	public List<DirectorioDTO> listarDirectoriosSFTP(String rutaSFTP) {
 		List<DirectorioDTO> listaCarpetas = new ArrayList<>();
 		try {
-			if (this.channelSftp != null) {
-				List<LsEntry> carpetas = this.channelSftp.ls(rutaSFTP);
+			if (channelSftp != null) {
+				List<LsEntry> carpetas = channelSftp.ls(rutaSFTP);
 				for (LsEntry carpeta : carpetas) {
 					if (!carpeta.getFilename().equalsIgnoreCase(".") && !carpeta.getFilename().equalsIgnoreCase("..")) {
 						DirectorioDTO dto = construirDirectorioDto(carpeta.getFilename(), rutaSFTP);
@@ -288,7 +289,6 @@ public class SFTPServicio implements ISFTPServicio {
 				}
 			}
 		} catch (SftpException ex) {
-			System.out.println(ex.getMessage());
 		}
 
 		return listaCarpetas;
@@ -303,14 +303,13 @@ public class SFTPServicio implements ISFTPServicio {
 		try {
 			dto.setNombre(nombreArchivo);
 			dto.setRuta(rutaSFTP);
-			List<LsEntry> carpetasInternas = this.channelSftp.ls(rutaSFTP + nombreArchivo);
+			List<LsEntry> carpetasInternas = channelSftp.ls(rutaSFTP + nombreArchivo);
 			if (carpetasInternas.size() > 1) {
 				dto.setTipoDirectorio(ETipoDirectorio.CARPETA);
 			} else {
 				dto.setTipoDirectorio(ETipoDirectorio.ARCHIVO);
 			}
 		} catch (SftpException ex) {
-			System.out.println(ex.getMessage());
 		}
 
 		return dto;
@@ -321,7 +320,7 @@ public class SFTPServicio implements ISFTPServicio {
 	public List<String> listarArchivosFiltrados(String rutaSFTP, String nombre) {
 		List<String> resultado = new ArrayList<>();
 		try {
-			List<LsEntry> carpetasInternas = this.channelSftp.ls(rutaSFTP);
+			List<LsEntry> carpetasInternas = channelSftp.ls(rutaSFTP);
 
 			if (!StringUtils.isBlank(nombre)) {
 				Predicate<LsEntry> f = g -> g.getFilename().matches(nombre + "-[0-9]{1,2}");
@@ -330,7 +329,7 @@ public class SFTPServicio implements ISFTPServicio {
 				carpetasInternas.stream().forEach(e -> resultado.add(e.getFilename()));
 			}
 		} catch (SftpException ex) {
-			System.out.println(ex.getMessage());
+
 		}
 
 		return resultado;

@@ -14,7 +14,11 @@ public final class ConstantesValidaciones {
 
 	// Rutas Útiles
 	public static final String RUTA_JASPER_REPORTS = PropertiesUtil.getProperty("eutanasia.ruta.jasper.reports");
-	public static final String RUTA_SFTP_IMAGES_USUARIO = PropertiesUtil.getProperty("eutanasia.ruta.images.user");
+	public static final String RUTA_SFTP_IMAGES = PropertiesUtil
+			.getProperty("eutanasia.ruta.sftp.archivos");
+	public static final String RUTA_SFTP_IMAGES_USUARIO = PropertiesUtil
+			.getProperty("eutanasia.ruta.sftp.archivos.user");
+	public static final String RUTA_SFTP_IMAGES_POST = PropertiesUtil.getProperty("eutanasia.ruta.sftp.archivos.post");
 	public static final String TEMPLATE_MAIL_ACTIVATE_USER = PropertiesUtil
 			.getProperty("eutanasia.template.mail.activateUser");
 	public static final String TEMPLATE_MAIL_RECORDAR_CLAVE = PropertiesUtil

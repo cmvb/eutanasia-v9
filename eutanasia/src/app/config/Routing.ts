@@ -9,6 +9,8 @@ import { ActivateUserComponent } from '../components/activate-user/activate-user
 import { RecordarClaveComponent } from '../components/recordar-clave/recordar-clave.component';
 import { PostComponent } from '../components/post/post.component';
 import { EnviarMailComponent } from '../components/enviar-mail/enviar-mail.component';
+import { TimelineComponent } from '../components/timeline/timeline.component';
+import { PromoComponent } from '../components/promo/promo.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, canActivate: [Guardian] },
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'recordarClave/:tokenUsuario', component: RecordarClaveComponent, canActivate: [Guardian] },
   { path: 'activateUser/:tokenActivar', component: ActivateUserComponent, canActivate: [Guardian] },
   { path: 'enviarMail', component: EnviarMailComponent, canActivate: [Guardian] },
+  { path: 'timeline', component: TimelineComponent, canActivate: [Guardian] },
+  { path: 'promo', component: PromoComponent, canActivate: [Guardian] },
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home' },

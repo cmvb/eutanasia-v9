@@ -139,19 +139,19 @@ public class PostsDaoImpl extends AbstractDao<PostTB> implements IPostsDao {
 		List<PostTB> listaPost = query.getResultList();
 		for (PostTB postTb : listaPost) {
 			switch (postTb.getCategoria()) {
-			case 0:
+			case 1:
 				invitacionesEvento++;
 				break;
-			case 1:
+			case 2:
 				agradecimientosSaludos++;
 				break;
-			case 2:
+			case 3:
 				criticas++;
 				break;
-			case 3:
+			case 4:
 				freneticoRockNRoll++;
 				break;
-			case 4:
+			case 5:
 				noticiasMundiales++;
 				break;
 			}
