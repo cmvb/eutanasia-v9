@@ -66,9 +66,10 @@ export class PromoComponent implements OnInit {
 
 
   ngOnInit() {
+    this.mostrarPromo = false;
     this.clock = this.source.subscribe(t => {
       this.now = new Date();
-      this.end = new Date('12/15/2020 15:55');
+      this.end = new Date('12/25/2020 00:00');
       //this.end = new Date('15/12/' + (this.now.getFullYear() + 1) + ' 00:00');
       this.showDate();
     });
