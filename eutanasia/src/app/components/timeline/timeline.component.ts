@@ -122,7 +122,7 @@ export class TimelineComponent implements OnInit {
     let result = false;
     let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
     let valorEstadoActivo = this.util.getValorEnumerado(this.enums.getEnumerados().estadoUsuario.valores, 1);
-    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value) {
+    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value && usuarioSession.id > 0) {
       result = true;
     }
 

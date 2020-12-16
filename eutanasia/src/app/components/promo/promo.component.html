@@ -2,6 +2,9 @@
     <!-- Notificaciones -->
     <p-toast></p-toast>
 
+    <!-- HEADER  -->
+    <app-header-o></app-header-o>
+
     <!-- AUser -->
     <div class="section activateUser">
         <!-- Container -->
@@ -12,7 +15,12 @@
                     <!-- reply form -->
                     <div class="reply-form">
                         <h1 class="title textWhite font-40px">{{sesionService.msg.lbl_summary_info}}</h1>
-                        <h3 class="title textWhite font-20px">{{mensajeMostrar}}</h3>
+                        <h3 *ngIf="!mostrarPromo" class="title textWhite font-20px">
+                            {{sesionService.msg.lbl_mensaje_nueva_promo}}</h3>
+                        <h3 *ngIf="mostrarPromo && esUsuarioLogueadoActivo()" class="title textWhite font-20px">
+                            {{sesionService.msg.lbl_mensaje_nueva_promo_activo}}</h3>
+                        <h3 *ngIf="mostrarPromo && !esUsuarioLogueadoActivo()" class="title textWhite font-20px">
+                            {{sesionService.msg.lbl_mensaje_debe_estar_logueado}}</h3>
 
                         <!-- reply form -->
                         <div class="reply-form">
@@ -50,9 +58,10 @@
                                     </div>
                                 </div>
 
-                                <div *ngIf="mostrarPromo" [@tada]="tada"
+                                <div *ngIf="mostrarPromo && esUsuarioLogueadoActivo()" [@tada]="tada"
                                     class="animate__animated animate__pulse animate__infinite col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
-                                    <video class="w100" loop controlslist="nodownload" controls autoplay id="promoVideo">
+                                    <video #videoPromocional class="w100" loop controlslist="nodownload" controls
+                                        id="promoVideo">
                                         <source src="assets/video/hasta-el-final.mp4" type="video/mp4">
                                         Your browser does not support HTML5 video.
                                     </video>
@@ -60,8 +69,6 @@
                             </div>
                         </div>
                         <!-- /reply form -->
-
-                        <p-messages></p-messages>
                     </div>
                     <!-- /reply form -->
                 </div>

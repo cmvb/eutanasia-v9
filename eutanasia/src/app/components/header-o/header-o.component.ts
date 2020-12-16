@@ -97,7 +97,7 @@ export class HeaderOComponent implements OnInit {
     let result = false;
     let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
     let valorEstadoActivo = this.util.getValorEnumerado(this.enums.getEnumerados().estadoUsuario.valores, 1);
-    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value) {
+    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value && usuarioSession.id > 0) {
       result = true;
     }
 
@@ -105,6 +105,7 @@ export class HeaderOComponent implements OnInit {
   }
 
   cerrarSesionBlog() {
+    this.messageService.clear();
     this.limpiarModales(null);
     this.sesionService.cerrarSession();
     this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
@@ -254,13 +255,14 @@ export class HeaderOComponent implements OnInit {
               this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
               this.sesionService.objServiceSesion.usuarioSesion = respuesta;
               this.usuarioAutorTBLogin = respuesta;
+              this.usuarioAutorTBRegister = respuesta;
               if (crear) {
                 this.usuarioAutorTBLogin.urlImagen = this.srcImagenRegister;
                 this.usuarioAutorTBRegister.urlImagen = this.srcImagenRegister;
               }
               localStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
               this.messageService.clear();
-              this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });
+              this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_mensaje_usuario_creado });
             }
           },
             error => {

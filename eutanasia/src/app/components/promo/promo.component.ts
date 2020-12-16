@@ -1,5 +1,5 @@
 import { trigger, transition, useAnimation } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { tada, fadeIn } from 'ng-animate';
@@ -9,6 +9,8 @@ import { Enumerados } from 'src/app/config/Enumerados';
 import { ObjectModelInitializer } from 'src/app/config/ObjectModelInitializer';
 import { TextProperties } from 'src/app/config/TextProperties';
 import { Util } from 'src/app/config/Util';
+import { ArchivoModel } from 'src/app/model/archivo-model';
+import { UsuarioAutorModel } from 'src/app/model/usuarioAutor-model';
 import { EutanasiaService } from 'src/app/services/eutanasiaService/eutanasia.service';
 import { RestService } from 'src/app/services/rest.service';
 import { SesionService } from 'src/app/services/sesionService/sesion.service';
@@ -23,6 +25,8 @@ import { SesionService } from 'src/app/services/sesionService/sesion.service';
   ]
 })
 export class PromoComponent implements OnInit {
+  @ViewChild('videoPromocional') videoPromocional: ElementRef;
+
   // Cuenta regresiva
   _second = 1000;
   _minute = this._second * 60;
@@ -45,7 +49,6 @@ export class PromoComponent implements OnInit {
   fadeIn: any;
 
   // Objetos de Datos
-  mensajeMostrar: any;
   mostrarPromo: boolean;
 
   // Utilidades
@@ -63,17 +66,14 @@ export class PromoComponent implements OnInit {
 
 
   ngOnInit() {
-    this.mostrarPromo = false;
-    this.mensajeMostrar = this.sesionService.msg.lbl_mensaje_nueva_promo;
     this.clock = this.source.subscribe(t => {
       this.now = new Date();
       this.end = new Date('12/15/2020 15:55');
       //this.end = new Date('15/12/' + (this.now.getFullYear() + 1) + ' 00:00');
       this.showDate();
     });
-
   }
-  
+
   showDate() {
     let distance = this.end - this.now;
     this.day = Math.floor(distance / this._day);
@@ -83,6 +83,17 @@ export class PromoComponent implements OnInit {
     if (distance <= 0) {
       this.mostrarPromo = true;
     }
+  }
+
+  esUsuarioLogueadoActivo() {
+    let result = false;
+    let usuarioSession: UsuarioAutorModel = this.sesionService.getUsuarioSesionActual();
+    let valorEstadoActivo = this.util.getValorEnumerado(this.enums.estadoUsuario.valores, 1);
+    if (usuarioSession !== undefined && usuarioSession !== null && usuarioSession.estado === valorEstadoActivo.value && usuarioSession.id > 0) {
+      result = true;
+    }
+
+    return result;
   }
 
 }

@@ -152,7 +152,10 @@ export class TextProperties {
       lbl_mensaje_usuario_no_activado: idioma === constant.idiomaEs ? 'No se pudo activar el usuario.' : 'The user could not be activated.',
       lbl_mensaje_clave_actualizada_ok: idioma === constant.idiomaEs ? 'Clave actualizada con éxito.' : ' Password updated succesfully.',
       lbl_mensaje_digite_nueva_clave: idioma === constant.idiomaEs ? 'Digite la nueva Clave.' : 'Enter the new password.',
-      lbl_mensaje_nueva_promo: idioma === constant.idiomaEs ? 'Cuando el reloj llegue a cero se mostrará el nuevo contenido para usuarios registrados.' : '',
+      lbl_mensaje_nueva_promo: idioma === constant.idiomaEs ? 'Cuando el reloj llegue a cero se mostrará el nuevo contenido para usuarios registrados.' : 'When the clock reaches zero the new content will be displayed for registered users.',
+      lbl_mensaje_nueva_promo_activo: idioma === constant.idiomaEs ? 'Te presentamos lo último de Eutanasia:' : 'We present you the latest of Eutanasia:',
+      lbl_mensaje_usuario_creado: idioma === constant.idiomaEs ? 'El usuario ha sido creado con éxito. Se ha enviado a su correo electrónico el enlace de activación para que pueda disfrutar del contenido.' : 'The user has been created successfully. The activation link has been sent to your email so that you can enjoy the content.',
+      lbl_mensaje_debe_estar_logueado: idioma === constant.idiomaEs ? 'Debe ser usuario eutanásico registrado para ver el contenido.' : 'You must be a registered euthanasian user to view the content.',
 
       // Modales
       lbl_info_titulo_modal_error: idioma === constant.idiomaEs ? 'ERROR' : 'ERROR',
