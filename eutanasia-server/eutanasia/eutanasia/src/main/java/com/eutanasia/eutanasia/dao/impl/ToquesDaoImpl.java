@@ -28,7 +28,7 @@ public class ToquesDaoImpl extends AbstractDao<ToqueTB> implements IToquesDao {
 		// QUERY
 		StringBuilder JPQL = new StringBuilder("SELECT t FROM ToqueTB t WHERE 1 = 1 ");
 		// Q. Order By
-		JPQL.append(" ORDER BY t.id");
+		JPQL.append(" ORDER BY t.descripcion");
 		// END QUERY
 
 		TypedQuery<ToqueTB> query = em.createQuery(JPQL.toString(), ToqueTB.class);

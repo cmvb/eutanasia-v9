@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="RECOR"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="recor"/>
+			<item value="restau|"/>
 			<item value="frenet"/>
 			<item value="http://192.81.210.103/#/"/>
 			<item value="http://192.81.210.103/#"/>
@@ -21,8 +23,6 @@
 			<item value="ch = new JSch();"/>
 			<item value="URL_IMAGENES_USUARIO"/>
 			<item value="eutanasia.ruta.images.user"/>
-			<item value="eutanasia.ruta.sftp.archivos"/>
-			<item value="packaging"/>
 		</list>
 		<list key="replacehistory">
 			<item value="http://192.81.210.103/eutanasia-eaf/#"/>

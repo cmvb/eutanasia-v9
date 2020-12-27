@@ -76,9 +76,14 @@ export class ObjectModelInitializer {
       urlModificarMeGusta: `${HOST}/eutanasia/paratodos/modificarMeGusta`,
 
       //SFTP
-      urlSFTPArchivos: `/data/desplieguesQA/dist-angular/SFTP-Archivos/`,
-      urlSFTPArchivosUser: `/data/desplieguesQA/dist-angular/SFTP-Archivos/users/`,
-      urlSFTPArchivosPost: `/data/desplieguesQA/dist-angular/SFTP-Archivos/posts/`,
+
+      urlRealPathImages: `/assets/images/`,
+      urlSFTPArchivos: `/opt/apache-tomcat-9.0.41/webapps/eutanasia-rnr/assets/images/`,
+      urlSFTPArchivosUser: `/opt/apache-tomcat-9.0.41/webapps/eutanasia-rnr/assets/images/users/`,
+      urlSFTPArchivosPost: `/opt/apache-tomcat-9.0.41/webapps/eutanasia-rnr/assets/images/posts/`,
+      //urlSFTPArchivos: `/data/desplieguesQA/dist-angular/SFTP-Archivos/`,
+      //urlSFTPArchivosUser: `/data/desplieguesQA/dist-angular/SFTP-Archivos/users/`,
+      //urlSFTPArchivosPost: `/data/desplieguesQA/dist-angular/SFTP-Archivos/posts/`,
 
       correoRemitente: 'eutanasiarockandroll@gmail.com',
       correoRemitenteServer: 'cmverab@ufpso.edu.co',

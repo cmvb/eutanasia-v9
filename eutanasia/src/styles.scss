@@ -208,6 +208,10 @@ ol {
     margin: 20px auto 0px;
 }
 
+.text-center {
+    text-align: center;
+}
+
 .title-container {
     display: flex;
 }
@@ -2164,6 +2168,12 @@ h4 {
     display: none;
 }
 
+.box-img-blog figure{
+    height: 355px;
+    width: 100%;
+    border: 2px solid #fafafa;
+}
+
 // reproductor
 .player-container {
     background: #020202;
@@ -3433,4 +3443,22 @@ html input[disabled] {
 
 .box-img-blog:hover {
     filter: brightness(0.5);
+}
+
+.pad-bio {
+    padding-top: 5px;
+}
+
+.reFoto {
+    position: absolute;
+    padding: 5px;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    bottom: 0px;
+    background: #00000054;
+    width: calc(100% - 30px);
+}
+
+.p-galleria-item img {
+    width: 100%;
 }

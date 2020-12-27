@@ -39,7 +39,7 @@
                             <div class="media">
                                 <div class="media-left">
                                     <img class="media-object imagePerfil" style="height: 100px;width: 100px;"
-                                        [src]="obtenerArchivoSanitizadoDeMapa(post.usuarioAutorTB.urlImagen)" alt="">
+                                        [src]="sesionService.realPathOf(post.usuarioAutorTB.urlImagen)" alt="">
                                 </div>
                                 <div class="media-body">
                                     <div class="media-heading">
@@ -62,7 +62,7 @@
 
                                     <div class="demo blog-img box-img-blog">
                                         <figure class="imghvr-shutter-in-out-diag-2"><img
-                                                [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
+                                                [src]="sesionService.realPathOf(post.urlImagen)"
                                                 class="example-image img-responsive w100">
                                             <figcaption>
                                                 <h1 class="nombreArtista">{{post.titulo}}</h1>
@@ -129,7 +129,7 @@
                         <div class="blog blog-pq">
                             <div class="demo blog-img box-img-blog" (click)="verPost(post)">
                                 <figure class="imghvr-shutter-in-out-diag-2"><img
-                                        [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)"
+                                        [src]="sesionService.realPathOf(post.urlImagen)"
                                         class="example-image img-responsive w100" />
                                     <figcaption>
                                         <p class="textJustify">{{post.subtitulo}}

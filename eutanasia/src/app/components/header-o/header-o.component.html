@@ -20,7 +20,7 @@
 
             <!--  Main navigation  -->
             <ul class="main-nav nav navbar-nav navbar-right">
-                <li class="has-dropdown"><a>{{sesionService.msg.lbl_idioma}}</a>
+                <li *ngIf="false" class="has-dropdown"><a>{{sesionService.msg.lbl_idioma}}</a>
                     <ul class="dropdown" style="width: 50px;">
                         <li>
                             <a (click)="sesionService.cambiarIdioma(0)">
@@ -39,7 +39,7 @@
                 <li><a href="#home">{{sesionService.msg.lbl_inicio}}</a></li>
                 <li><a (click)="redirigirBlogsBlog()">{{sesionService.msg.lbl_blog}}</a></li>
                 <li *ngIf="esUsuarioLogueadoActivoBlog()" class="has-dropdown displayFlex">
-                    <img class="imagePerfil" [src]="obtenerArchivoSanitizadoDeMapa(usuarioAutorTBLogin.urlImagen)" />
+                    <img class="imagePerfil" [src]="sesionService.realPathOf(usuarioAutorTBLogin.urlImagen)" />
                     <a>{{usuarioAutorTBLogin.usuario}}</a>
                     <ul class="dropdown">
                         <li><a (click)="cerrarSesionBlog()">{{sesionService.msg.lbl_tip_cerrar_sesion}}</a></li>
@@ -123,7 +123,7 @@
                             </div>
                             <div *ngIf="mostrarImagenRegister" class="choose-files no-padding">
                                 <img *ngIf="srcImagenRegister !== undefined && srcImagenRegister !== null" class="w100"
-                                    [src]="esRegistro ? srcImagenRegister : obtenerArchivoSanitizadoDeMapa(usuarioAutorTBRegister.urlImagen)"
+                                    [src]="sesionService.realPathOf(usuarioAutorTBRegister.urlImagen)"
                                     style="height: 196px;" />
                                 <i class="pi pi-times font-20px cerrarImagen" (click)="limpiarAdjuntos($event)"></i>
                             </div>

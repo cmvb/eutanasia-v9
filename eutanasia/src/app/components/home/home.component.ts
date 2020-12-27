@@ -55,10 +55,10 @@ export class HomeComponent implements OnInit {
         items: 1
       },
       740: {
-        items: 2
+        items: 1
       },
       940: {
-        items: 2
+        items: 1
       }
     },
     nav: true
@@ -329,7 +329,7 @@ export class HomeComponent implements OnInit {
 
   cargarGaleria() {
     this.images = [];
-    for (let index = 1; index < 58; index++) {
+    for (let index = 1; index < 73; index++) {
       let nombreImagen = 'Imagen No. ' + index;
       let rutaImagen = "assets/images/pics/" + index + '.jpg';
 
@@ -495,6 +495,13 @@ export class HomeComponent implements OnInit {
     } catch (e) {
       console.log(e);
     }
+  }
+
+  playGuitar() {
+    let audio = new Audio();
+    audio.src = "assets/audio/guitarOk.mp3";
+    audio.load();
+    audio.play();
   }
 
 }

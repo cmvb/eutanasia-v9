@@ -31,7 +31,7 @@
       <div *ngFor="let popularPost of listaPostsPopulares" class="widget-post">
         <div class="demo blog-img box-img-blog">
           <figure (click)="verPost(popularPost)" class="imghvr-shutter-in-out-diag-2"><img
-              [src]="obtenerArchivoSanitizadoDeMapa(popularPost.urlImagen)" class="example-image img-responsive w100" />
+              [src]="sesionService.realPathOf(popularPost.urlImagen)" class="example-image img-responsive w100" />
             <figcaption>
               <p class="textJustify">{{popularPost.subtitulo}}
               </p>

@@ -43,7 +43,7 @@
                   </span>
                 </li>
               </ul>
-              <img class="img-responsive w100" [src]="obtenerArchivoSanitizadoDeMapa(post.urlImagen)" alt="">
+              <img class="img-responsive w100" [src]="sesionService.realPathOf(post.urlImagen)" alt="">
             </div>
             <div class="blog-content">
               <ul class="blog-meta">
@@ -78,7 +78,7 @@
               <div class="media">
                 <div class="media-left">
                   <img class="media-object imagePerfil" style="height: 100px;width: 100px;"
-                    [src]="obtenerArchivoSanitizadoDeMapa(post.usuarioAutorTB.urlImagen)" alt="">
+                    [src]="sesionService.realPathOf(post.usuarioAutorTB.urlImagen)" alt="">
                 </div>
 
                 <div class="media-body">
@@ -112,7 +112,7 @@
                   <div *ngFor="let comentario of listaComentarios" class="media">
                     <div class="media-left">
                       <img class="media-object imagePerfil" style="height: 50px;width: 50px;"
-                        [src]="obtenerArchivoSanitizadoDeMapa(comentario.usuarioAutorTB.urlImagen)" alt="">
+                        [src]="sesionService.realPathOf(comentario.usuarioAutorTB.urlImagen)" alt="">
                     </div>
                     <div class="media-body">
                       <h4 class="media-heading">
@@ -141,7 +141,7 @@
                       <div *ngFor="let respuesta of obtenerRespuestas(comentario)" class="media author">
                         <div class="media-left">
                           <img class="media-object imagePerfil" style="height: 50px;width: 50px;"
-                            [src]="obtenerArchivoSanitizadoDeMapa(respuesta.usuarioAutorTB.urlImagen)" alt="">
+                            [src]="sesionService.realPathOf(respuesta.usuarioAutorTB.urlImagen)" alt="">
                         </div>
                         <div class="media-body">
                           <h4 class="media-heading">

@@ -32,7 +32,7 @@
 
             <!--  Main navigation  -->
             <ul class="main-nav nav navbar-nav navbar-right">
-                <li class="has-dropdown"><a>{{sesionService.msg.lbl_idioma}}</a>
+                <li *ngIf="false" class="has-dropdown"><a>{{sesionService.msg.lbl_idioma}}</a>
                     <ul class="dropdown" style="width: 50px;">
                         <li>
                             <a (click)="sesionService.cambiarIdioma(0)">
@@ -55,6 +55,7 @@
                 <li><a href="#service">{{sesionService.msg.lbl_participaciones}}</a></li>
                 <li><a href="#pricing">{{sesionService.msg.lbl_comparte}}</a></li>
                 <li><a href="#publicaciones">{{sesionService.msg.lbl_ultimas_publicaciones}}</a></li>
+                <li><a href="#contact">{{sesionService.msg.lbl_contacto}}</a></li>
                 <li><a (click)="redirigirBlogs()">{{sesionService.msg.lbl_blog}}</a></li>
                 <li *ngIf="!esUsuarioLogueado()" class="has-dropdown"><a>{{sesionService.msg.lbl_registro_ingreso}}</a>
                     <ul class="dropdown">
@@ -64,7 +65,7 @@
                     </ul>
                 </li>
                 <li *ngIf="esUsuarioLogueado()" class="has-dropdown displayFlex">
-                    <img class="imagePerfil" [src]="obtenerArchivoSanitizadoDeMapa(usuarioAutorTBLogin.urlImagen)" />
+                    <img class="imagePerfil" [src]="sesionService.realPathOf(usuarioAutorTBLogin.urlImagen)" />
                     <a>{{usuarioAutorTBLogin.usuario}}</a>
                     <ul class="dropdown">
                         <li><a (click)="cerrarSesion()">{{sesionService.msg.lbl_tip_cerrar_sesion}}</a></li>
@@ -109,7 +110,7 @@
                     <div *ngIf="loginRestaurar" class="row justify-content-center">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
                             <input class="input" type="text" pInputText [(ngModel)]="usuarioAutorTBLogin.usuario"
-                                placeholder="{{sesionService.msg.lbl_header_usuario}}" maxlength="10" />
+                                placeholder="{{sesionService.msg.lbl_header_usuario}}" maxlength="100" />
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-form-login">
                             <p-button label="{{sesionService.msg.lbl_btn_restaurar_clave}}" (click)="restaurarClave()"
@@ -142,7 +143,7 @@
                             </div>
                             <div *ngIf="mostrarImagenRegister" class="choose-files no-padding">
                                 <img *ngIf="srcImagenRegister !== undefined && srcImagenRegister !== null" class="w100"
-                                    [src]="esRegistro ? srcImagenRegister : obtenerArchivoSanitizadoDeMapa(usuarioAutorTBRegister.urlImagen)"
+                                    [src]="sesionService.realPathOf(usuarioAutorTBRegister.urlImagen)"
                                     style="height: 196px;" />
                                 <i class="pi pi-times font-20px cerrarImagen" (click)="limpiarAdjuntos($event)"></i>
                             </div>
@@ -284,6 +285,9 @@
                             <i class="pi pi-clone font-12px iconMovilPad"></i>
                             {{sesionService.msg.lbl_ultimas_publicaciones}}
                         </a>
+                    </li>
+                    <li><a href="#contact"><i
+                                class="pi pi-comment font-12px iconMovilPad"></i>{{sesionService.msg.lbl_contacto}}</a>
                     </li>
                     <li>
                         <a (click)="redirigirBlogs()">

@@ -98,7 +98,7 @@ export class SesionService {
   }
 
   obtenerArchivos() {
-    try {
+    /*try {
       let archivo = this.objectModelInitializer.getDataArchivoDtoModel();
       archivo.rutaArchivo = this.const.urlSFTPArchivos;
       this.restService.postREST(this.const.urlObtenerArchivos, archivo)
@@ -124,7 +124,7 @@ export class SesionService {
           })
     } catch (e) {
       console.log(e);
-    }
+    }*/
   }
 
   construirMensajeExcepcion(error, summary) {
@@ -152,6 +152,14 @@ export class SesionService {
     }
 
     return listaMensajes;
+  }
+
+  realPathOf(url: String) {
+    let urlTransformada = '';
+    if (url !== undefined && url !== null && url.length > 0) {
+      urlTransformada = url.replace('/opt/apache-tomcat-9.0.41/webapps/eutanasia-rnr/assets/images', 'http://192.81.210.103/eutanasia-rnr/assets/images');
+    }
+    return urlTransformada;
   }
 
 }

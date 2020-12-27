@@ -97,8 +97,8 @@
                                                 <div *ngIf="mostrarImagenPost" class="choose-files no-padding">
                                                     <img *ngIf="srcImagenPost !== undefined && srcImagenPost !== null"
                                                         class="w100"
-                                                        [src]="crearPost ? srcImagenPost : obtenerArchivoSanitizadoDeMapa(postTB.urlImagen)"
-                                                        style="height: 196px;" />
+                                                        [src]="sesionService.realPathOf(postTB.urlImagen)"
+                                                        style="height: 196px;width: auto;" />
                                                     <i class="pi pi-times font-20px cerrarImagen"
                                                         (click)="limpiarAdjuntos($event)"></i>
                                                 </div>
