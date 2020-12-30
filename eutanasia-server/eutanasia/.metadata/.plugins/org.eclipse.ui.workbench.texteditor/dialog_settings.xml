@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="RECOR"/>
+		<item key="selection" value="crearUsu"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="crearusu"/>
+			<item value="/opt/apache-tomcat-9.0.41/webapps/eutanasia-rnr/assets/images"/>
+			<item value="rnr"/>
 			<item value="recor"/>
 			<item value="restau|"/>
 			<item value="frenet"/>
@@ -20,11 +23,9 @@
 			<item value="borr"/>
 			<item value="borrarArchivoServidor"/>
 			<item value="this."/>
-			<item value="ch = new JSch();"/>
-			<item value="URL_IMAGENES_USUARIO"/>
-			<item value="eutanasia.ruta.images.user"/>
 		</list>
 		<list key="replacehistory">
+			<item value="/var/www/eutanasia.cbaeneprojects.com/html/assets/images"/>
 			<item value="http://192.81.210.103/eutanasia-eaf/#"/>
 			<item value=""/>
 			<item value="throw new ModelNotFoundException(ex.getMessage());"/>
@@ -39,12 +40,11 @@
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/man1.svg"/>
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-v9/b4acd9bcca74c2e90ed8c55d0bed09610fdc864a/eutanasia/src/assets/images/logo2020.svg"/>
 			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/barra2.svg"/>
-			<item value="https://raw.githubusercontent.com/cmvb/eutanasia-v9/8d771909027e67df158fce6eb97935767fc8c3a7/eutanasia-server/eutanasia/eutanasia/src/main/resources/images/barra1.svg"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="84"/>
-		<item key="DIALOG_Y_ORIGIN" value="168"/>
+		<item key="DIALOG_X_ORIGIN" value="696"/>
+		<item key="DIALOG_Y_ORIGIN" value="315"/>
 		<item key="DIALOG_WIDTH" value="284"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>

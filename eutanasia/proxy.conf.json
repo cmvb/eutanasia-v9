@@ -1,6 +1,6 @@
 {
   "/eutanasia/*": {
-      "target": "https://cbaeneprojects.com/",
+      "target": "http://192.81.210.103:8080",
       "secure": false,
       "changeOrigin": true
   }
