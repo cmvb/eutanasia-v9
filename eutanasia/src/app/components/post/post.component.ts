@@ -205,9 +205,6 @@ export class PostComponent implements OnInit {
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_mensaje_archivo_subido });
             this.archivoImagenPost = respuesta;
             this.sanitizarUrlImgCargada(this.archivoImagenPost.archivo, this.archivoImagenPost.nombreArchivo.split(".")[1]);
-
-            // Volver a cargar mapa de imágenes
-            this.sesionService.obtenerArchivos();
           }
         },
           error => {

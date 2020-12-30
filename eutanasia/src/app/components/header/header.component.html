@@ -143,7 +143,7 @@
                             </div>
                             <div *ngIf="mostrarImagenRegister" class="choose-files no-padding">
                                 <img *ngIf="srcImagenRegister !== undefined && srcImagenRegister !== null" class="w100"
-                                    [src]="sesionService.realPathOf(usuarioAutorTBRegister.urlImagen)"
+                                    [src]="sesionService.realPathOf(archivoImagenRegister.rutaArchivo)"
                                     style="height: 196px;" />
                                 <i class="pi pi-times font-20px cerrarImagen" (click)="limpiarAdjuntos($event)"></i>
                             </div>

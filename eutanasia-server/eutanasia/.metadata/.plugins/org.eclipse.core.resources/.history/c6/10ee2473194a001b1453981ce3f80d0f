@@ -4,17 +4,12 @@ server.port=9002
 #Correo servidor
 email.servidor=eutanasiarockandroll@gmail.com
 email.servidor.server=cmverab@ufpso.edu.co
-#ruta.verificar.cuenta.nueva=http://192.81.210.103/eutanasia-rnr/#/activateUser/
-#ruta.recordar.clave=http://192.81.210.103/eutanasia-rnr/#/recordarClave/
-#ruta.responder.comentario=http://192.81.210.103/eutanasia-rnr/#/blog/
-
+ruta.verificar.cuenta.nueva=http://192.81.210.103/eutanasia-rnr/#/activateUser/
 #ruta.verificar.cuenta.nueva=http://localhost:4200/#/activateUser/
+ruta.recordar.clave=http://192.81.210.103/eutanasia-rnr/#/recordarClave/
 #ruta.recordar.clave=http://localhost:4200/#/recordarClave/
+ruta.responder.comentario=http://192.81.210.103/eutanasia-rnr/#/blog/
 #ruta.responder.comentario=http://localhost:4200/#/blog/
-
-ruta.verificar.cuenta.nueva=https://eutanasia.cbaeneprojects.com/#/activateUser/
-ruta.recordar.clave=https://eutanasia.cbaeneprojects.com/#/recordarClave/
-ruta.responder.comentario=https://eutanasia.cbaeneprojects.com/#/blog/
 
 #Al levantar el servidor se visualizan estas firmas de texto y de imagen
 banner.location=banner.txt

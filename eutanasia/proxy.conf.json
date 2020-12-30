@@ -1,2 +1,7 @@
 {
+  "/eutanasia/*": {
+      "target": "https://cbaeneprojects.com/",
+      "secure": false,
+      "changeOrigin": true
+  }
 }

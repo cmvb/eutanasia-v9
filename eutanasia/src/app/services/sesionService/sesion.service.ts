@@ -157,7 +157,7 @@ export class SesionService {
   realPathOf(url: String) {
     let urlTransformada = '';
     if (url !== undefined && url !== null && url.length > 0) {
-      urlTransformada = url.replace('/opt/apache-tomcat-9.0.41/webapps/eutanasia-rnr/assets/images', 'http://192.81.210.103/eutanasia-rnr/assets/images');
+      urlTransformada = url.replace('/var/www/eutanasia.cbaeneprojects.com/html/assets/images', 'https://eutanasia.cbaeneprojects.com/assets/images');
     }
     return urlTransformada;
   }

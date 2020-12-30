@@ -345,7 +345,7 @@
 					</div>
 				</div>
 			</div>
-			<div *ngIf="listaEventos.length > 0; else sinResultados" class="service-grids hidden-lg hidden-md">
+			<div *ngIf="listaEventos.length > 0;" class="service-grids hidden-lg hidden-md">
 				<owl-carousel-o [options]="customOptions">
 					<ng-template *ngFor="let evento of listaEventos" carouselSlide>
 						<div class="ser-top">

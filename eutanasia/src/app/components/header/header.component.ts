@@ -59,7 +59,7 @@ export class HeaderComponent implements OnInit {
     this.archivosTemporales = [];
     this.usuarioAutorTBLogin = this.objectModelInitializer.getDataUsuarioAutorModel();
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
-
+    this.archivoImagenRegister = this.objectModelInitializer.getDataArchivoDtoModel();
     if (this.sesionService.existeSession()) {
       this.usuarioAutorTBLogin = this.sesionService.getUsuarioSesionActual();
     } else {
@@ -177,6 +177,7 @@ export class HeaderComponent implements OnInit {
     this.esRegistro = true;
     this.messageService.clear();
     this.srcImagenRegister = '';
+    this.archivoImagenRegister.rutaArchivo = '';
     this.usuarioAutorTBRegister = this.objectModelInitializer.getDataUsuarioAutorModel();
     this.usuarioAutorTBRegister.genero = { value: 0, label: this.sesionService.msg.lbl_enum_generico_valor_vacio };
     this.disModRegistrar = true;
@@ -189,7 +190,8 @@ export class HeaderComponent implements OnInit {
     this.usuarioAutorTBRegister = this.usuarioAutorTBLogin;
     this.usuarioAutorTBRegister.password = '';
     this.usuarioAutorTBRegister.fechaNacimiento = new Date(this.usuarioAutorTBRegister.fechaNacimiento);
-    this.usuarioAutorTBRegister.genero = this.util.getValorEnumerado(this.enumGenero, this.usuarioAutorTBRegister.genero);
+    this.usuarioAutorTBRegister.genero = this.util.getValorEnumerado(this.enumGenero, this.usuarioAutorTBRegister.genero.value !== undefined && this.usuarioAutorTBRegister.genero.value !== null && this.usuarioAutorTBRegister.genero.value > 0 ? this.usuarioAutorTBRegister.genero.value : this.usuarioAutorTBRegister.genero);
+    this.archivoImagenRegister.rutaArchivo = this.usuarioAutorTBRegister.urlImagen;
     this.disModRegistrar = true;
     this.mostrarImagenRegister = true;
   }
@@ -231,9 +233,6 @@ export class HeaderComponent implements OnInit {
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_mensaje_archivo_subido });
             this.archivoImagenRegister = respuesta;
             this.sanitizarUrlImgCargada(this.archivoImagenRegister.archivo, this.archivoImagenRegister.nombreArchivo.split(".")[1]);
-
-            // Volver a cargar mapa de imágenes
-            this.sesionService.obtenerArchivos();
           }
         },
           error => {
@@ -284,7 +283,7 @@ export class HeaderComponent implements OnInit {
               }
               localStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
               this.messageService.clear();
-              this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_mensaje_usuario_creado });
+              this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: crear ? this.sesionService.msg.lbl_mensaje_usuario_creado : this.sesionService.msg.lbl_mensaje_usuario_modificado });
             }
           },
             error => {
@@ -315,6 +314,7 @@ export class HeaderComponent implements OnInit {
             this.sesionService.objServiceSesion = this.objectModelInitializer.getDataServiceSesion();
             this.sesionService.objServiceSesion.usuarioSesion = respuesta;
             this.usuarioAutorTBLogin = respuesta;
+            this.archivoImagenRegister.rutaArchivo = this.usuarioAutorTBLogin.urlImagen;
             localStorage.setItem('objServiceSesion', JSON.stringify(this.sesionService.objServiceSesion));
             this.messageService.clear();
             this.messageService.add({ severity: this.const.severity[1], summary: this.sesionService.msg.lbl_summary_succes, detail: this.sesionService.msg.lbl_info_proceso_completo });

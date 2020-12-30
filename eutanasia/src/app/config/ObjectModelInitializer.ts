@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 
 //export var HOST = 'http://localhost:9002';
-export var HOST = 'http://192.81.210.103/eutanasia';
+export var HOST = 'http://192.81.210.103:8080/eutanasia';
 //export var HOST = 'http://192.168.1.15:9002';
+//export var HOST = 'https://eutanasia.cbaeneprojects.com/eutanasia';
 
 //export var SYSTEM = 'http://localhost:4200';
-export var SYSTEM = 'http://192.81.210.103/eutanasia';
+export var SYSTEM = 'http://192.81.210.103:8080/eutanasia';
 //export var SYSTEM = 'http://192.168.1.15:4200';
+//export var SYSTEM = 'https://eutanasia.cbaeneprojects.com/eutanasia';
 
 @Injectable()
 export class ObjectModelInitializer {
