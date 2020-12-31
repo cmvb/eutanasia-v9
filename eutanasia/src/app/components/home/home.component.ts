@@ -504,4 +504,8 @@ export class HomeComponent implements OnInit {
     audio.play();
   }
 
+  irPromo() {
+    this.router.navigate(['promo']);
+  }
+
 }

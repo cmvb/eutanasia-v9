@@ -60,6 +60,7 @@ export class PostComponent implements OnInit {
   ngOnInit() {
     console.clear();
     this.cargarEnumerados();
+    this.archivoImagenPost = this.objectModelInitializer.getDataArchivoDtoModel();
     this.activeIndex = 0;
     this.onlyConsulta = true;
     if (!this.esUsuarioLogueadoActivo()) {

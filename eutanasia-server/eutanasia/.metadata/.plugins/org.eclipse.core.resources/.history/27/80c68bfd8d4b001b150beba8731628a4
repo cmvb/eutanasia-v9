@@ -12,9 +12,9 @@ email.servidor.server=cmverab@ufpso.edu.co
 #ruta.recordar.clave=http://localhost:4200/#/recordarClave/
 #ruta.responder.comentario=http://localhost:4200/#/blog/
 
-ruta.verificar.cuenta.nueva=http://eutanasia.cbaeneprojects.com/#/activateUser/
-ruta.recordar.clave=http://eutanasia.cbaeneprojects.com/#/recordarClave/
-ruta.responder.comentario=http://eutanasia.cbaeneprojects.com/#/blog/
+ruta.verificar.cuenta.nueva=https://eutanasia.cbaeneprojects.com/#/activateUser/
+ruta.recordar.clave=https://eutanasia.cbaeneprojects.com/#/recordarClave/
+ruta.responder.comentario=https://eutanasia.cbaeneprojects.com/#/blog/
 
 #Al levantar el servidor se visualizan estas firmas de texto y de imagen
 banner.location=banner.txt

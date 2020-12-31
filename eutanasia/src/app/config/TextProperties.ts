@@ -86,6 +86,7 @@ export class TextProperties {
       lbl_ultimas_publicaciones: idioma === constant.idiomaEs ? 'Últimas Publicaciones' : 'Latest Posts',
       lbl_contacto: idioma === constant.idiomaEs ? 'Contacto' : 'Contact',
       lbl_leer_mas: idioma === constant.idiomaEs ? 'Leer Más...' : 'Read more...',
+      lbl_ver_mas: idioma === constant.idiomaEs ? 'Ver Más...' : 'See more...',
       lbl_disenador_grafico: idioma === constant.idiomaEs ? 'Diseñador Gráfico' : 'Graphic Designer',
       lbl_estudio_grabacion: idioma === constant.idiomaEs ? 'Estudio de Grabación' : 'Recording Studio',
       lbl_mensaje_agrega_comentario: idioma === constant.idiomaEs ? 'Agrega tu comentario (máximo 500 caracteres)' : 'Add your comment (max 500 chars)',
@@ -100,7 +101,7 @@ export class TextProperties {
       // Banda
       lbl_banda: idioma === constant.idiomaEs ? 'Banda' : 'Band',
       lbl_banda_frenetico_rock_and_roll: idioma === constant.idiomaEs ? 'Frenético Rock and Roll' : 'Frenzy Rock and Roll',
-      lbl_banda_descripcion_demo: idioma === constant.idiomaEs ? 'Este es el primer Demo de la banda. Temática de metamorfosis en el pensamiento crítico y en la influencia musical en la vida diaria. Esto es dedicado a todas esas personas que quieren descansar, pero no lo pueden expresar: ¡Eutanasia Para Todos!' : 'This is the first demo of the band. Metamorphosis theme in critical thinking and musical influence on daily life. This is dedicated to all those people who want to rest, but cannot express it: Eutanasia for All!',
+      lbl_banda_descripcion_demo: idioma === constant.idiomaEs ? 'Este es el primer Demo de la banda. Temática de metamorfosis en el pensamiento crítico y en la influencia musical en la vida diaria. Esto es dedicado a todas esas personas que no pueden expresar que solo quieren descansar: ¡Eutanasia Para Todos!' : 'This is the first demo of the band. Metamorphosis theme in critical thinking and musical influence on daily life. This is dedicated to all those people who want to rest, but cannot express it: Eutanasia for All!',
       lbl_compilado_santander_coalition: idioma === constant.idiomaEs ? 'Compilación Santander Coalition - Lado D' : 'Santander Coalition - Side D',
       lbl_banda_descripcion_compilado: idioma === constant.idiomaEs ? 'Compilado realizado en el año 2016. Colombian Label & Distro. XIIIC-001 XII CANDLES COMPILATION.' : 'Compiled in 2016. Colombian Label & Distro. XIIIC-001 XII CANDLES COMPILATION.',
       lbl_entrevista_cultura_subterranea: idioma === constant.idiomaEs ? 'Entrevista Cultura Subterránea' : 'Underground Culture Interview',

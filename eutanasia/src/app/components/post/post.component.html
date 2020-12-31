@@ -97,7 +97,7 @@
                                                 <div *ngIf="mostrarImagenPost" class="choose-files no-padding">
                                                     <img *ngIf="srcImagenPost !== undefined && srcImagenPost !== null"
                                                         class="w100"
-                                                        [src]="sesionService.realPathOf(postTB.urlImagen)"
+                                                        [src]="sesionService.realPathOf(archivoImagenPost.rutaArchivo)"
                                                         style="height: 196px;width: auto;" />
                                                     <i class="pi pi-times font-20px cerrarImagen"
                                                         (click)="limpiarAdjuntos($event)"></i>
