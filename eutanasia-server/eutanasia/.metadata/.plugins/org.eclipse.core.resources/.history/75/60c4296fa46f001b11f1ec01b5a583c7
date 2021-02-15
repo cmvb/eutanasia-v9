@@ -12,9 +12,9 @@ email.servidor.server=cmverab@ufpso.edu.co
 #ruta.recordar.clave=http://localhost:4200/#/recordarClave/
 #ruta.responder.comentario=http://localhost:4200/#/blog/
 
-ruta.verificar.cuenta.nueva=https://eutanasia.cbaeneprojects.com/#/activateUser/
-ruta.recordar.clave=https://eutanasia.cbaeneprojects.com/#/recordarClave/
-ruta.responder.comentario=https://eutanasia.cbaeneprojects.com/#/blog/
+ruta.verificar.cuenta.nueva=http://eutanasia.cbaeneprojects.com/#/activateUser/
+ruta.recordar.clave=http://eutanasia.cbaeneprojects.com/#/recordarClave/
+ruta.responder.comentario=http://eutanasia.cbaeneprojects.com/#/blog/
 
 #Al levantar el servidor se visualizan estas firmas de texto y de imagen
 banner.location=banner.txt
@@ -28,7 +28,7 @@ spring.jpa.properties.hibernate.default_schema=eutanasia
 
 #Propiedades del datasource y credenciales de conexion
 spring.datasource.driver-class-name=org.postgresql.Driver
-spring.datasource.url=jdbc:postgresql://192.81.210.103:5432/eutanasiabd
+spring.datasource.url=jdbc:postgresql://165.227.197.116:5432/eutanasiabd
 spring.datasource.username=postgres
 spring.datasource.password=eUtAnAsIaRnR
 #spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
@@ -37,7 +37,7 @@ spring.datasource.password=eUtAnAsIaRnR
 
 #SFTP
 sftp.puerto=22
-sftp.servidor=192.81.210.103
+sftp.servidor=165.227.197.116
 sftp.usuario=root
 sftp.password=SolracM.2021*CL
 #sftp.puerto=22
